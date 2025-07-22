@@ -4,9 +4,6 @@ from scipy.spatial import distance
 import numpy as np
 from sqlalchemy import create_engine
 import json
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
 def load_data():
     df = pd.read_csv('csv/sql.csv')
