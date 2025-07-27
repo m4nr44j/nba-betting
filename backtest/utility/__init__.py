@@ -1,1 +1,1 @@
-# Backtest utility package 
+# Backtest utility package

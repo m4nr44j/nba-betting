@@ -20,12 +20,12 @@ CSV_OUTPUT_FILENAME = "csv/output.csv"
 TXT_OUTPUT_FILENAME = "output.txt"
 NBA_JSON_FILE = "json/nba_stats.json"
 
-CSV_CHECK_INTERVAL_SECONDS  = 15
-TXT_CHECK_INTERVAL_SECONDS  = 15
-NBA_CHECK_INTERVAL_SECONDS  = 30
+CSV_CHECK_INTERVAL_SECONDS = 15
+TXT_CHECK_INTERVAL_SECONDS = 15
+NBA_CHECK_INTERVAL_SECONDS = 30
 
-TXT_TARGET_CELL   = "N2"
-NBA_TARGET_RANGE  = (2, 200)
+TXT_TARGET_CELL = "N2"
+NBA_TARGET_RANGE = (2, 200)
 NBA_TARGET_COLUMN = "J"
 
 scope = [
@@ -34,6 +34,7 @@ scope = [
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive",
 ]
+
 
 def format_date(date_string: str) -> str:
     try:
@@ -77,7 +78,9 @@ def update_range_in_first_empty(worksheet, sheet_name, row_data):
         col_a_values = worksheet.col_values(1)
         next_row_index = len(col_a_values) + 1
         target_range = f"A{next_row_index}:H{next_row_index}"
-        worksheet.update([row_to_write], target_range, value_input_option="USER_ENTERED")
+        worksheet.update(
+            [row_to_write], target_range, value_input_option="USER_ENTERED"
+        )
         return True
     except (gspread.exceptions.APIError, Exception):
         return False
@@ -94,7 +97,11 @@ def update_google_sheet_cell(client, sheet_id, content_to_paste, target_cell):
         worksheet = spreadsheet.worksheet(sheet_name)
         worksheet.update_acell(target_cell, content_to_paste)
         return True
-    except (gspread.exceptions.WorksheetNotFound, gspread.exceptions.APIError, Exception):
+    except (
+        gspread.exceptions.WorksheetNotFound,
+        gspread.exceptions.APIError,
+        Exception,
+    ):
         return False
 
 
@@ -143,27 +150,41 @@ def extract_player_stats(summary_data):
         for stat_group in team.get("statistics", []):
             labels = stat_group.get("labels", [])
             for athlete in stat_group.get("athletes", []):
-                player_name = athlete.get("athlete", {}).get("displayName", "Unknown Player")
-                
-                player_name = player_name.replace('Jimmy Butler', 'Jimmy Butler III')
-                player_name = player_name.replace('Ronald Holland II', 'Ron Holland')
-                player_name = player_name.replace('Bub Carrington', 'Carlton Carrington')
-                player_name = player_name.replace('Luka Doncic', 'Luka Dončić')
-                player_name = player_name.replace('Nikola Jokic', 'Nikola Jokić')
-                player_name = player_name.replace('Nikola Vucevic', 'Nikola Vučević')
-                player_name = player_name.replace('Jonas Valanciunas', 'Jonas Valančiūnas')
-                player_name = player_name.replace('Bojan Bogdanovic', 'Bojan Bogdanović')
-                player_name = player_name.replace('Dario Saric', 'Dario Šarić')
-                player_name = player_name.replace('Bogdan Bogdanovic', 'Bogdan Bogdanović')
-                player_name = player_name.replace('Karlo Matkovic', 'Karlo Matković')
-                player_name = player_name.replace('Boban Marjanovic', 'Boban Marjanović')
-                player_name = player_name.replace('Jusuf Nurkic', 'Jusuf Nurkić')
-                player_name = player_name.replace('Luka Samanic', 'Luka Šamanić')
-                player_name = player_name.replace('Nikola Jovic', 'Nikola Jović')
-                player_name = player_name.replace('Vasilije Micic', 'Vasilije Micić')
-                player_name = player_name.replace('Vit Krejci', 'Vít Krejčí')
-                player_name = player_name.replace('Tristan Vukcevic', 'Tristan Vukčević')
-                
+                player_name = athlete.get("athlete", {}).get(
+                    "displayName", "Unknown Player"
+                )
+
+                player_name = player_name.replace("Jimmy Butler", "Jimmy Butler III")
+                player_name = player_name.replace("Ronald Holland II", "Ron Holland")
+                player_name = player_name.replace(
+                    "Bub Carrington", "Carlton Carrington"
+                )
+                player_name = player_name.replace("Luka Doncic", "Luka Dončić")
+                player_name = player_name.replace("Nikola Jokic", "Nikola Jokić")
+                player_name = player_name.replace("Nikola Vucevic", "Nikola Vučević")
+                player_name = player_name.replace(
+                    "Jonas Valanciunas", "Jonas Valančiūnas"
+                )
+                player_name = player_name.replace(
+                    "Bojan Bogdanovic", "Bojan Bogdanović"
+                )
+                player_name = player_name.replace("Dario Saric", "Dario Šarić")
+                player_name = player_name.replace(
+                    "Bogdan Bogdanovic", "Bogdan Bogdanović"
+                )
+                player_name = player_name.replace("Karlo Matkovic", "Karlo Matković")
+                player_name = player_name.replace(
+                    "Boban Marjanovic", "Boban Marjanović"
+                )
+                player_name = player_name.replace("Jusuf Nurkic", "Jusuf Nurkić")
+                player_name = player_name.replace("Luka Samanic", "Luka Šamanić")
+                player_name = player_name.replace("Nikola Jovic", "Nikola Jović")
+                player_name = player_name.replace("Vasilije Micic", "Vasilije Micić")
+                player_name = player_name.replace("Vit Krejci", "Vít Krejčí")
+                player_name = player_name.replace(
+                    "Tristan Vukcevic", "Tristan Vukčević"
+                )
+
                 raw_stats = athlete.get("stats", [])
                 if len(raw_stats) != len(labels):
                     continue
@@ -187,12 +208,15 @@ def extract_player_stats(summary_data):
                     "a_r": combine(ast, trb),
                     "p_r_a": combine(pts, trb, ast),
                 }
-                players_out.append({"Team": team_name, "Player": player_name, "Stats": stats_proc})
+                players_out.append(
+                    {"Team": team_name, "Player": player_name, "Stats": stats_proc}
+                )
     return players_out
 
 
-def updateGoogleSheetWithNBAStats(client, sheet_id, column_range, date_yyyymmdd,
-                                  column_letter, json_stats_file):
+def updateGoogleSheetWithNBAStats(
+    client, sheet_id, column_range, date_yyyymmdd, column_letter, json_stats_file
+):
     try:
         sheet = client.open_by_key(sheet_id).worksheet(format_date(date_yyyymmdd))
     except gspread.exceptions.WorksheetNotFound:
@@ -210,10 +234,16 @@ def updateGoogleSheetWithNBAStats(client, sheet_id, column_range, date_yyyymmdd,
     sheet_data = sheet.get_values(read_range)
 
     market_key_map = {
-        "points": "pts", "rebounds": "trb", "assists": "ast",
-        "steals": "Steals", "blocks": "Blocks", "turnovers": "Turnovers",
-        "pts+rebs+asts": "p_r_a", "pts+rebs": "p_r",
-        "pts+asts": "p_a", "asts+rebs": "a_r",
+        "points": "pts",
+        "rebounds": "trb",
+        "assists": "ast",
+        "steals": "Steals",
+        "blocks": "Blocks",
+        "turnovers": "Turnovers",
+        "pts+rebs+asts": "p_r_a",
+        "pts+rebs": "p_r",
+        "pts+asts": "p_a",
+        "asts+rebs": "a_r",
         "three pointers made": "tpm",
     }
 
@@ -232,8 +262,9 @@ def updateGoogleSheetWithNBAStats(client, sheet_id, column_range, date_yyyymmdd,
     return True
 
 
-def run_nba_update(client, sheet_id, date_yyyymmdd, range_rows,
-                   column_letter, json_file):
+def run_nba_update(
+    client, sheet_id, date_yyyymmdd, range_rows, column_letter, json_file
+):
     os.makedirs(os.path.dirname(json_file), exist_ok=True)
     all_stats = []
     for eid in get_nba_game_event_ids(date_yyyymmdd):
@@ -244,19 +275,25 @@ def run_nba_update(client, sheet_id, date_yyyymmdd, range_rows,
         return
     with open(json_file, "w", encoding="utf-8") as fh:
         json.dump(all_stats, fh, indent=2)
-    updateGoogleSheetWithNBAStats(client, sheet_id, range_rows,
-                                  date_yyyymmdd, column_letter, json_file)
+    updateGoogleSheetWithNBAStats(
+        client, sheet_id, range_rows, date_yyyymmdd, column_letter, json_file
+    )
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Push NBA stats to Google Sheets")
-    parser.add_argument("--date", help="Target NBA date (YYYYMMDD or YYYY-MM-DD). "
-                                       "Default: today minus 10h (UTC).")
+    parser.add_argument(
+        "--date",
+        help="Target NBA date (YYYYMMDD or YYYY-MM-DD). "
+        "Default: today minus 10h (UTC).",
+    )
     args = parser.parse_args()
     target_nba_date = resolve_target_date(args.date)
 
     try:
-        creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_name(
+            CREDENTIALS_FILE, scope
+        )
         gs_client = gspread.authorize(creds)
     except Exception as exc:
         sys.exit(f"Google auth failed: {exc}")
@@ -268,8 +305,14 @@ if __name__ == "__main__":
 
         if now - last_run_time_nba >= NBA_CHECK_INTERVAL_SECONDS:
             try:
-                run_nba_update(gs_client, SHEET_ID, target_nba_date,
-                               NBA_TARGET_RANGE, NBA_TARGET_COLUMN, NBA_JSON_FILE)
+                run_nba_update(
+                    gs_client,
+                    SHEET_ID,
+                    target_nba_date,
+                    NBA_TARGET_RANGE,
+                    NBA_TARGET_COLUMN,
+                    NBA_JSON_FILE,
+                )
             except gspread.exceptions.APIError:
                 time.sleep(NBA_CHECK_INTERVAL_SECONDS)
             last_run_time_nba = now

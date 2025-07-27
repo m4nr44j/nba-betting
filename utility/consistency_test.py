@@ -1,8 +1,11 @@
-from sqlalchemy import create_engine
-import pandas as pd
 import os
+
+import pandas as pd
 from dotenv import load_dotenv
+from sqlalchemy import create_engine
+
 load_dotenv()
+
 
 def get_consistency(feature, limit, min_minutes):
     try:
@@ -42,8 +45,8 @@ def get_consistency(feature, limit, min_minutes):
                 FETCH NEXT {limit} ROWS ONLY;
         """
         player_data = pd.read_sql_query(query, conn)
-        
-        player_names = player_data['player'].tolist()
+
+        player_names = player_data["player"].tolist()
         return player_names, player_data
 
     except Exception as e:
@@ -52,4 +55,3 @@ def get_consistency(feature, limit, min_minutes):
     finally:
         if conn:
             conn.dispose()
-

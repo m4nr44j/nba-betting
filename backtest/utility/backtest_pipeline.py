@@ -1,42 +1,116 @@
-from io import StringIO
+import os
+
 import pandas as pd
 import psycopg2
+from dotenv import load_dotenv
 from psycopg2.extras import Json
 from sqlalchemy import create_engine
-from psycopg2 import sql
-import os
-from dotenv import load_dotenv
+
 load_dotenv()
+
 
 def reset_table(cursor):
     cursor.execute("DROP TABLE IF EXISTS public.nba_append;")
     cursor.execute("DROP TABLE IF EXISTS public.game_stats_append;")
     cursor.execute("DROP TABLE IF EXISTS public.latest_player_teams;")
 
+
 def process_csv():
     csv_columns = [
-        'Player', 'Date', 'Age', 'Team', 'HOA', 'Opp', 'Result', 'GS', 'MP', 'FG', 'FGA',
-        'FG%', '2P', '2PA', '2P%', '3P', '3PA', '3P%', 'FT', 'FTA', 'FT%', 'TS%', 'ORB', 
-        'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS', 'GmSc', 'BPM', '+/-', 'Pos.', 
-        'Player-additional'
+        "Player",
+        "Date",
+        "Age",
+        "Team",
+        "HOA",
+        "Opp",
+        "Result",
+        "GS",
+        "MP",
+        "FG",
+        "FGA",
+        "FG%",
+        "2P",
+        "2PA",
+        "2P%",
+        "3P",
+        "3PA",
+        "3P%",
+        "FT",
+        "FTA",
+        "FT%",
+        "TS%",
+        "ORB",
+        "DRB",
+        "TRB",
+        "AST",
+        "STL",
+        "BLK",
+        "TOV",
+        "PF",
+        "PTS",
+        "GmSc",
+        "BPM",
+        "+/-",
+        "Pos.",
+        "Player-additional",
     ]
 
     # Corresponding SQL column names (excluding 'id' which is auto-generated)
     sql_columns = [
-        'player', 'date', 'age', 'team', 'hoa', 'opp', 'result', 'gs', 'mp', 'fg', 'fga',
-        'fg_percent', 'twop', 'twopa', 'twop_percent', 'tpm', 'threepa', 'threep_percent',
-        'ft', 'fta', 'ft_percent', 'ts_percent', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 
-        'tov', 'pf', 'pts', 'gmsc', 'bpm', 'plus_minus', 'pos', 'player_additional'
+        "player",
+        "date",
+        "age",
+        "team",
+        "hoa",
+        "opp",
+        "result",
+        "gs",
+        "mp",
+        "fg",
+        "fga",
+        "fg_percent",
+        "twop",
+        "twopa",
+        "twop_percent",
+        "tpm",
+        "threepa",
+        "threep_percent",
+        "ft",
+        "fta",
+        "ft_percent",
+        "ts_percent",
+        "orb",
+        "drb",
+        "trb",
+        "ast",
+        "stl",
+        "blk",
+        "tov",
+        "pf",
+        "pts",
+        "gmsc",
+        "bpm",
+        "plus_minus",
+        "pos",
+        "player_additional",
     ]
 
     column_mapping = dict(zip(csv_columns, sql_columns))
-    df = pd.read_csv('csv/new_data.csv', keep_default_na=False,low_memory=False)
+    df = pd.read_csv("csv/new_data.csv", keep_default_na=False, low_memory=False)
     df["BPM"] = 0
-    df = df.drop(['Rk'], axis=1)
+    df = df.drop(["Rk"], axis=1)
     df.rename(columns=column_mapping, inplace=True)
 
     # Numeric columns that may contain empty strings
-    numeric_columns = ['fg_percent', 'twop_percent', 'threep_percent', 'ft_percent', 'ts_percent','plus_minus']
+    numeric_columns = [
+        "fg_percent",
+        "twop_percent",
+        "threep_percent",
+        "ft_percent",
+        "ts_percent",
+        "plus_minus",
+    ]
+
     def safe_to_float(value):
         """
         Convert value to string, strip whitespace, then:
@@ -51,15 +125,17 @@ def process_csv():
             return float(val_str)
         except ValueError:
             return None
-    
+
     # Apply the safe_to_float logic
     for column in numeric_columns:
         df[column] = df[column].apply(safe_to_float)
 
-    df.to_csv('csv/modified_data.csv', index=False, na_rep='None')
+    df.to_csv("csv/modified_data.csv", index=False, na_rep="None")
+
 
 def create_table(cursor):
-    cursor.execute("""
+    cursor.execute(
+        """
         CREATE TABLE public.nba_append
         (
             id SERIAL PRIMARY KEY,
@@ -100,12 +176,58 @@ def create_table(cursor):
             pos VARCHAR(4),
             player_additional VARCHAR(20)
         );
-    """)
+    """
+    )
+
 
 def load_data(cursor):
-    with open('csv/modified_data.csv', 'r') as f:
+    with open("csv/modified_data.csv", "r") as f:
         next(f)  # This skips the header line to prevent it from being read as data
-        cursor.copy_from(f, 'nba_append', sep=',', null='None', columns=('player', 'date', 'age', 'team', 'hoa', 'opp', 'result', 'gs', 'mp', 'fg', 'fga', 'fg_percent', 'twop', 'twopa', 'twop_percent', 'tpm', 'threepa', 'threep_percent', 'ft', 'fta', 'ft_percent', 'ts_percent', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf', 'pts', 'gmsc', 'bpm', 'plus_minus', 'pos', 'player_additional'))
+        cursor.copy_from(
+            f,
+            "nba_append",
+            sep=",",
+            null="None",
+            columns=(
+                "player",
+                "date",
+                "age",
+                "team",
+                "hoa",
+                "opp",
+                "result",
+                "gs",
+                "mp",
+                "fg",
+                "fga",
+                "fg_percent",
+                "twop",
+                "twopa",
+                "twop_percent",
+                "tpm",
+                "threepa",
+                "threep_percent",
+                "ft",
+                "fta",
+                "ft_percent",
+                "ts_percent",
+                "orb",
+                "drb",
+                "trb",
+                "ast",
+                "stl",
+                "blk",
+                "tov",
+                "pf",
+                "pts",
+                "gmsc",
+                "bpm",
+                "plus_minus",
+                "pos",
+                "player_additional",
+            ),
+        )
+
 
 def perform_updates(cursor):
     updates = [
@@ -141,13 +263,15 @@ def perform_updates(cursor):
         SELECT 
             player, date, age, team, hoa, opp, result, total_score, gs, mp, fg, fga, fg_percent, twop, twop_percent, tpm, ft, ft_percent, ts_percent, orb, drb, trb, ast, stl, blk, tov, pf, pts, gmsc, bpm, plus_minus, pos, player_additional, month, days_since
         FROM public.nba_append;
-        """
+        """,
     ]
     for command in updates:
         cursor.execute(command)
 
+
 def create_game_stats_table(cursor):
-    cursor.execute("""
+    cursor.execute(
+        """
         CREATE TABLE IF NOT EXISTS game_stats_append
         (
             game_id SERIAL PRIMARY KEY,
@@ -177,47 +301,112 @@ def create_game_stats_table(cursor):
             opponents_turnovers JSONB,
             opponents_minutes JSONB
         );
-    """)
+    """
+    )
+
 
 def update_game_stats(cursor):
     cursor.execute("SELECT DISTINCT date, team, opp FROM public.nba_append;")
     new_games = cursor.fetchall()
-    
+
     if not new_games:
         return
     rows_to_insert_append = []
     for game_date, team, opponent in new_games:
-        team_stats = {metric: {} for metric in ['points', 'rebounds', 'assists', 'tpm', 'pr', 'pa', 'ar', 'pra', 'blocks', 'turnovers','minutes']}
-        opponent_stats = {metric: {} for metric in ['points', 'rebounds', 'assists', 'tpm', 'pr', 'pa', 'ar', 'pra', 'blocks', 'turnovers','minutes']}
-        for relation, team_to_query in [('teammates', team), ('opponent', opponent)]:
-            cursor.execute("""
+        team_stats = {
+            metric: {}
+            for metric in [
+                "points",
+                "rebounds",
+                "assists",
+                "tpm",
+                "pr",
+                "pa",
+                "ar",
+                "pra",
+                "blocks",
+                "turnovers",
+                "minutes",
+            ]
+        }
+        opponent_stats = {
+            metric: {}
+            for metric in [
+                "points",
+                "rebounds",
+                "assists",
+                "tpm",
+                "pr",
+                "pa",
+                "ar",
+                "pra",
+                "blocks",
+                "turnovers",
+                "minutes",
+            ]
+        }
+        for relation, team_to_query in [("teammates", team), ("opponent", opponent)]:
+            cursor.execute(
+                """
                 SELECT player, 
                        COALESCE(pts,0), COALESCE(trb,0), COALESCE(ast,0), 
                        COALESCE(tpm,0), COALESCE(blk,0), COALESCE(tov,0), COALESCE(mp,0)
                 FROM public.nba -- Query the main table which should be up-to-date
                 WHERE date = %s AND team = %s;
-            """, (game_date, team_to_query))
+            """,
+                (game_date, team_to_query),
+            )
             stats_for_game = cursor.fetchall()
             if not stats_for_game:
-                 print(f"  Warning: No player stats found in public.nba for {relation} ({team_to_query}) on {game_date}.")
+                print(
+                    f"  Warning: No player stats found in public.nba for {relation} ({team_to_query}) on {game_date}."
+                )
             for player, pts, trb, ast, tpm, blk, tov, mp in stats_for_game:
                 metrics = {
-                    'points': pts, 'rebounds': trb, 'assists': ast, 'tpm': tpm,
-                    'pr': pts + trb, 'pa': pts + ast, 'ar': ast + trb, 'pra': pts + trb + ast,
-                    'blocks': blk, 'turnovers': tov, 'minutes': mp
+                    "points": pts,
+                    "rebounds": trb,
+                    "assists": ast,
+                    "tpm": tpm,
+                    "pr": pts + trb,
+                    "pa": pts + ast,
+                    "ar": ast + trb,
+                    "pra": pts + trb + ast,
+                    "blocks": blk,
+                    "turnovers": tov,
+                    "minutes": mp,
                 }
-                target_dict = team_stats if relation == 'teammates' else opponent_stats
+                target_dict = team_stats if relation == "teammates" else opponent_stats
                 for metric_name, value in metrics.items():
                     target_dict[metric_name][player] = value
-        rows_to_insert_append.append((
-            game_date, team, opponent,
-            Json(team_stats['points']), Json(team_stats['rebounds']), Json(team_stats['assists']),
-            Json(team_stats['tpm']), Json(team_stats['pr']), Json(team_stats['pa']),
-            Json(team_stats['ar']), Json(team_stats['pra']), Json(team_stats['blocks']), Json(team_stats['turnovers']),Json(team_stats['minutes']),
-            Json(opponent_stats['points']), Json(opponent_stats['rebounds']), Json(opponent_stats['assists']),
-            Json(opponent_stats['tpm']), Json(opponent_stats['pr']), Json(opponent_stats['pa']),
-            Json(opponent_stats['ar']), Json(opponent_stats['pra']), Json(opponent_stats['blocks']), Json(opponent_stats['turnovers']),Json(opponent_stats['minutes'])
-        ))
+        rows_to_insert_append.append(
+            (
+                game_date,
+                team,
+                opponent,
+                Json(team_stats["points"]),
+                Json(team_stats["rebounds"]),
+                Json(team_stats["assists"]),
+                Json(team_stats["tpm"]),
+                Json(team_stats["pr"]),
+                Json(team_stats["pa"]),
+                Json(team_stats["ar"]),
+                Json(team_stats["pra"]),
+                Json(team_stats["blocks"]),
+                Json(team_stats["turnovers"]),
+                Json(team_stats["minutes"]),
+                Json(opponent_stats["points"]),
+                Json(opponent_stats["rebounds"]),
+                Json(opponent_stats["assists"]),
+                Json(opponent_stats["tpm"]),
+                Json(opponent_stats["pr"]),
+                Json(opponent_stats["pa"]),
+                Json(opponent_stats["ar"]),
+                Json(opponent_stats["pra"]),
+                Json(opponent_stats["blocks"]),
+                Json(opponent_stats["turnovers"]),
+                Json(opponent_stats["minutes"]),
+            )
+        )
     if rows_to_insert_append:
         insert_query_append = """
             INSERT INTO game_stats_append (
@@ -226,14 +415,16 @@ def update_game_stats(cursor):
                 opponents_points, opponents_rebounds, opponents_assists, opponents_tpm, opponents_pr, opponents_pa, opponents_ar, opponents_pra, opponents_blocks, opponents_turnovers, opponents_minutes
             ) VALUES %s;
         """
-        psycopg2.extras.execute_values(cursor, insert_query_append, rows_to_insert_append)
+        psycopg2.extras.execute_values(
+            cursor, insert_query_append, rows_to_insert_append
+        )
+
 
 def create_most_recent_player_team_table(cursor, positions):
     # Ensure position updates apply to the main table that holds ALL games
     for player, pos in positions.items():
         cursor.execute(
-            "UPDATE public.nba SET pos = %s WHERE player = %s;",
-            (pos, player)
+            "UPDATE public.nba SET pos = %s WHERE player = %s;", (pos, player)
         )
     sql_query = """
     WITH RankedPlayerTeams AS (
@@ -335,150 +526,151 @@ def create_most_recent_player_team_table(cursor, positions):
     """
     cursor.execute(sql_query)
 
+
 # Function to connect to the PostgreSQL database and load data
 def load_data_csv():
     conn = create_engine(os.getenv("SQL_ENGINE"))
     df = pd.read_sql("SELECT * FROM nba;", conn)
-    df.to_csv('csv/sql.csv', encoding='utf-8', index=False)
+    df.to_csv("csv/sql.csv", encoding="utf-8", index=False)
 
 
 def run_pipeline():
     conn = psycopg2.connect(
-            host = os.getenv("DB_HOST"), 
-            dbname = os.getenv("DB_NAME"), 
-            user= os.getenv("DB_USER"), 
-            password = os.getenv("DB_PASS"), 
-            port = os.getenv("DB_PORT")
+        host=os.getenv("DB_HOST"),
+        dbname=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASS"),
+        port=os.getenv("DB_PORT"),
     )
     cursor = conn.cursor()
     positions = {
-        "Aaron Nesmith": 'F',
-        "Adem Bona": 'C', 
-        "Admiral Schofield": 'F', 
-        "Al Horford": 'C',  
-        "Alperen Sengun": 'C', 
-        "Andrew Wiggins": 'F', 
-        "Anthony Davis": 'F', 
-        "Anthony Edwards": 'G', 
-        "Bam Adebayo": 'C', 
-        "Ben Simmons": 'G', 
-        "Bennedict Mathurin": 'G', 
-        "Bismack Biyombo": 'C', 
-        "Bojan Bogdanović": 'F', 
-        "Bol Bol": 'C', 
-        "Brandon Boston Jr.": 'G', 
-        "Brandon Miller": 'F', 
-        "Bruce Brown": 'F', 
-        "Bryce McGowens": 'G', 
-        "Buddy Hield": 'G', 
-        "Caleb Houstan": 'G', 
-        "Caris LeVert": 'G', 
-        "Chet Holmgren": 'F', 
-        "Chimezie Metu": 'F', 
-        "Cody Martin": 'F', 
-        "Cody Williams": 'F', 
-        "Cody Zeller": 'C', 
-        "Corey Kispert": 'F', 
-        "DaQuan Jeffries": 'G', 
-        "Dalano Banton": 'G', 
-        "Damian Jones": 'C', 
-        "Daniel Gafford": 'C', 
-        "Dario Šarić": 'F', 
-        "DeMar DeRozan": 'F', 
-        "Deni Avdija": 'F', 
-        "Devin Vassell": 'G', 
-        "Dillon Brooks": 'F', 
-        "Domantas Sabonis": 'F', 
-        "Duncan Robinson": 'F', 
-        "Dwight Powell": 'C', 
-        "Dylan Windler": 'G', 
-        "Eric Gordon": 'G', 
-        "Evan Fournier": 'G', 
-        "Evan Mobley": 'F', 
-        "Filip Petrušev": 'C', 
-        "Franz Wagner": 'F', 
-        "Giannis Antetokounmpo": 'F', 
-        "Gordon Hayward": 'F', 
-        "Harry Giles": 'F', 
-        "Isaac Okoro": 'F', 
-        "Isaiah Jackson": 'F', 
-        "Isaiah Stewart": 'C', 
-        "Jaime Jaquez Jr.": 'G', 
-        "Jarrett Allen": 'C', 
-        "Jay Huff": 'C', 
-        "Jaylen Brown": 'G', 
-        "Jeremy Sochan": 'F', 
-        "Jimmy Butler III": 'F', 
-        "Joe Ingles": 'G', 
-        "Johnny Furphy": 'F', 
-        "Jontay Porter": 'C', 
-        "Jordan Walsh": 'G', 
-        "Josh Green": 'G', 
-        "Julius Randle": 'F', 
-        "Kai Jones": 'F', 
-        "Karl-Anthony Towns": 'C', 
-        "Karlo Matković": 'C', 
-        "Kelly Olynyk": 'F', 
-        "Kendall Brown": 'G', 
-        "Kenrich Williams": 'F', 
-        "Kevin Durant": 'F', 
-        "Kevin Love": 'F', 
-        "Kevon Looney": 'F', 
-        "Khris Middleton": 'F', 
-        "Klay Thompson": 'G', 
-        "Kobe Brown": 'G', 
-        "Kristaps Porziņģis": 'C', 
-        "Kyle Anderson": 'F', 
-        "Kyle Filipowski": 'F', 
-        "Larry Nance Jr.": 'F', 
-        "Lauri Markkanen": 'F', 
-        "LeBron James": 'F', 
-        "Luka Dončić": 'G', 
-        "Luka Garza": 'C', 
-        "Luke Kornet": 'C', 
-        "Marvin Bagley III": 'F', 
-        "Mason Plumlee": 'C', 
-        "Mikal Bridges": 'F', 
-        "Mike Muscala": 'C', 
-        "Miles Bridges": 'F', 
-        "Moritz Wagner": 'C', 
-        "Myles Turner": 'C', 
-        "Nick Richards": 'C', 
-        "Nicolas Batum": 'F', 
-        "Nikola Jokić": 'F', 
-        "Nikola Jović": 'F', 
-        "Pascal Siakam": 'F', 
-        "Patrick Baldwin Jr.": 'F', 
-        "Paul George": 'F', 
-        "Peyton Watson": 'F', 
-        "RJ Barrett": 'G', 
-        "Reggie Bullock": 'F', 
-        "Richaun Holmes": 'F', 
-        "Robert Covington": 'F', 
-        "Robert Williams": 'C', 
-        "Sandro Mamukelashvili": 'F', 
-        "Scottie Barnes": 'F', 
-        "Seth Lundy": 'G', 
-        "Svi Mykhailiuk": 'G', 
-        "Taj Gibson": 'F', 
-        "Talen Horton-Tucker": 'F', 
-        "Terance Mann": 'G', 
-        "Terry Taylor": 'F', 
-        "Torrey Craig": 'F', 
-        "Trentyn Flowers": 'C', 
-        "Tristan Thompson": 'C', 
-        "Tristan Vukcevic": 'F', 
-        "Troy Brown Jr.": 'F', 
-        "Ulrich Chomche": 'C', 
-        "Victor Wembanyama": 'C', 
-        "Wendell Moore Jr.": 'G', 
-        "Zach Collins": 'F', 
-        "Zach LaVine": 'G', 
-        "Zion Williamson": 'F',
-        "Alex Ducas": 'G',
-        "Alperen Şengün": 'C',
-        "Guerschon Yabusele": 'F',
-        "Tony Bradley": 'F'
+        "Aaron Nesmith": "F",
+        "Adem Bona": "C",
+        "Admiral Schofield": "F",
+        "Al Horford": "C",
+        "Alperen Sengun": "C",
+        "Andrew Wiggins": "F",
+        "Anthony Davis": "F",
+        "Anthony Edwards": "G",
+        "Bam Adebayo": "C",
+        "Ben Simmons": "G",
+        "Bennedict Mathurin": "G",
+        "Bismack Biyombo": "C",
+        "Bojan Bogdanović": "F",
+        "Bol Bol": "C",
+        "Brandon Boston Jr.": "G",
+        "Brandon Miller": "F",
+        "Bruce Brown": "F",
+        "Bryce McGowens": "G",
+        "Buddy Hield": "G",
+        "Caleb Houstan": "G",
+        "Caris LeVert": "G",
+        "Chet Holmgren": "F",
+        "Chimezie Metu": "F",
+        "Cody Martin": "F",
+        "Cody Williams": "F",
+        "Cody Zeller": "C",
+        "Corey Kispert": "F",
+        "DaQuan Jeffries": "G",
+        "Dalano Banton": "G",
+        "Damian Jones": "C",
+        "Daniel Gafford": "C",
+        "Dario Šarić": "F",
+        "DeMar DeRozan": "F",
+        "Deni Avdija": "F",
+        "Devin Vassell": "G",
+        "Dillon Brooks": "F",
+        "Domantas Sabonis": "F",
+        "Duncan Robinson": "F",
+        "Dwight Powell": "C",
+        "Dylan Windler": "G",
+        "Eric Gordon": "G",
+        "Evan Fournier": "G",
+        "Evan Mobley": "F",
+        "Filip Petrušev": "C",
+        "Franz Wagner": "F",
+        "Giannis Antetokounmpo": "F",
+        "Gordon Hayward": "F",
+        "Harry Giles": "F",
+        "Isaac Okoro": "F",
+        "Isaiah Jackson": "F",
+        "Isaiah Stewart": "C",
+        "Jaime Jaquez Jr.": "G",
+        "Jarrett Allen": "C",
+        "Jay Huff": "C",
+        "Jaylen Brown": "G",
+        "Jeremy Sochan": "F",
+        "Jimmy Butler III": "F",
+        "Joe Ingles": "G",
+        "Johnny Furphy": "F",
+        "Jontay Porter": "C",
+        "Jordan Walsh": "G",
+        "Josh Green": "G",
+        "Julius Randle": "F",
+        "Kai Jones": "F",
+        "Karl-Anthony Towns": "C",
+        "Karlo Matković": "C",
+        "Kelly Olynyk": "F",
+        "Kendall Brown": "G",
+        "Kenrich Williams": "F",
+        "Kevin Durant": "F",
+        "Kevin Love": "F",
+        "Kevon Looney": "F",
+        "Khris Middleton": "F",
+        "Klay Thompson": "G",
+        "Kobe Brown": "G",
+        "Kristaps Porziņģis": "C",
+        "Kyle Anderson": "F",
+        "Kyle Filipowski": "F",
+        "Larry Nance Jr.": "F",
+        "Lauri Markkanen": "F",
+        "LeBron James": "F",
+        "Luka Dončić": "G",
+        "Luka Garza": "C",
+        "Luke Kornet": "C",
+        "Marvin Bagley III": "F",
+        "Mason Plumlee": "C",
+        "Mikal Bridges": "F",
+        "Mike Muscala": "C",
+        "Miles Bridges": "F",
+        "Moritz Wagner": "C",
+        "Myles Turner": "C",
+        "Nick Richards": "C",
+        "Nicolas Batum": "F",
+        "Nikola Jokić": "F",
+        "Nikola Jović": "F",
+        "Pascal Siakam": "F",
+        "Patrick Baldwin Jr.": "F",
+        "Paul George": "F",
+        "Peyton Watson": "F",
+        "RJ Barrett": "G",
+        "Reggie Bullock": "F",
+        "Richaun Holmes": "F",
+        "Robert Covington": "F",
+        "Robert Williams": "C",
+        "Sandro Mamukelashvili": "F",
+        "Scottie Barnes": "F",
+        "Seth Lundy": "G",
+        "Svi Mykhailiuk": "G",
+        "Taj Gibson": "F",
+        "Talen Horton-Tucker": "F",
+        "Terance Mann": "G",
+        "Terry Taylor": "F",
+        "Torrey Craig": "F",
+        "Trentyn Flowers": "C",
+        "Tristan Thompson": "C",
+        "Tristan Vukcevic": "F",
+        "Troy Brown Jr.": "F",
+        "Ulrich Chomche": "C",
+        "Victor Wembanyama": "C",
+        "Wendell Moore Jr.": "G",
+        "Zach Collins": "F",
+        "Zach LaVine": "G",
+        "Zion Williamson": "F",
+        "Alex Ducas": "G",
+        "Alperen Şengün": "C",
+        "Guerschon Yabusele": "F",
+        "Tony Bradley": "F",
     }
     try:
         process_csv()
@@ -489,7 +681,7 @@ def run_pipeline():
         perform_updates(cursor)
         create_game_stats_table(cursor)
         update_game_stats(cursor)  # New function to update teammate details
-        create_most_recent_player_team_table(cursor,positions)
+        create_most_recent_player_team_table(cursor, positions)
         conn.commit()
         print("Pipeline executed successfully.")
         load_data_csv()
@@ -500,5 +692,6 @@ def run_pipeline():
         cursor.close()
         conn.close()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run_pipeline()
