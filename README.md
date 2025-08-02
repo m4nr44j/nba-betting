@@ -128,12 +128,6 @@ The project includes a comprehensive backtesting module located in the `backtest
 
 ### Running Backtests
 
-#### Option 1: Using the convenience script (Recommended)
-```bash
-python run_backtest.py
-```
-
-#### Option 2: Running as a Python module
 ```bash
 python -m backtest.backtest
 ```
@@ -151,5 +145,3 @@ The backtest will provide:
 - Win/loss record tracking
 - Running total across all tested days
 - Individual bet performance metrics
-
-For more details about the backtest module, see `backtest/README.md`.
