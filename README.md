@@ -75,16 +75,12 @@ Before you begin, ensure you have the following installed:
     # Optional: Google API & Sheets Integration
     GOOGLE_API="path/to/your/google_creds.json" # e.g., "json/nba_creds.json" (leave blank or comment out if not using)
     SHEET_ID=your_google_sheet_id             # Google Sheet ID (leave blank or comment out if not using)
-
-    # Project Base Path
-    # BASE_PATH is no longer needed - all paths are relative to repo root
     ```
 
     * Replace `your_db_username`, `your_db_name`, `your_db_password` with your actual PostgreSQL details.
     * Adjust `DB_HOST` and `DB_PORT` if your setup differs from the default.
-    * Get your API key from [The Odds API](https://the-odds-api.com/) and insert it.
+    * Get your API key from [The Odds API](https://the-odds-api.com/) and insert it (will need paid key to get backtesting odds beyond included dates).
     * Fill in `GOOGLE_API` path and `SHEET_ID` only if you intend to use the Google Sheets integration.
-    * All file paths are now relative to the repository root - no need to set BASE_PATH.
 
 ## Database Initialization
 
