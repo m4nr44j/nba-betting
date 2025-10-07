@@ -45,6 +45,7 @@ def generate_nba_stats(date_yyyymmdd: str) -> List[Dict[str, Any]]:
 
 def calculate_day_profit(
     stats_lookup: Dict[str, Dict[str, str]],
+    date_iso: str,
 ) -> Tuple[float, int, int]:
     """Return (net_profit, wins, losses) for the current day."""
 
@@ -55,6 +56,7 @@ def calculate_day_profit(
     total_rows = 0
     wins = 0
     losses = 0
+    day_bets = []
 
     with open(CSV_OUTPUT_FILE, newline="", encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
@@ -84,17 +86,52 @@ def calculate_day_profit(
                 predicted_val < line_val and real_val < line_val
             )
 
+            # Calculate profit for this bet
             if is_win:
                 wins += 1
                 gross_return = (
                     ((-100 / odds_val) + 1) if odds_val < 0 else ((odds_val / 100) + 1)
                 )
                 total_gross += gross_return
+                profit = gross_return - 1  # Net profit (gross return - stake)
             else:
                 losses += 1
+                profit = -1  # Loss of 1U stake
+
+            # Store bet details
+            bet_info = {
+                "player": player,
+                "market": market,
+                "line": line_val,
+                "odds": odds_val,
+                "stake": 1,  # Always 1U
+                "profit": round(profit,2),
+            }
+            day_bets.append(bet_info)
+
     total_rows = wins + losses
     net_profit = total_gross - total_rows
     print(f"Found {total_rows} bets | W-L: {wins}-{losses}")
+
+    results_file = "backtest/picks.json"
+    all_results = {}
+    
+    # Load existing results if file exists
+    if os.path.exists(results_file):
+        try:
+            with open(results_file, "r", encoding="utf-8") as f:
+                all_results = json.load(f)
+        except (json.JSONDecodeError, FileNotFoundError):
+            all_results = {}
+    
+    # Add current day's results (this will append or update the date)
+    all_results[date_iso] = day_bets
+    
+    # Save updated results (this preserves all previous days)
+    os.makedirs(os.path.dirname(results_file), exist_ok=True)
+    with open(results_file, "w", encoding="utf-8") as f:
+        json.dump(all_results, f, indent=2)
+
     return net_profit, wins, losses
 
 
@@ -105,11 +142,12 @@ def seed_output_csv():
         writer.writeheader()
 
 
-def run_processor():
+def run_processor(date_iso):
     cmd = [
         "python",
         "processor.py",
         "json/props.json",
+        date_iso,
     ]
     subprocess.run(cmd, check=True)
 
@@ -178,19 +216,19 @@ def main():
 
         run_backtest_run(date_iso, get_odds=False)
 
-        run_processor()
+        run_processor(date_iso)
 
         stats = generate_nba_stats(yyyymmdd)
         stats_lookup = {p["Player"]: p["Stats"] for p in stats}
 
-        day_profit, day_wins, day_losses = calculate_day_profit(stats_lookup)
+        day_profit, day_wins, day_losses = calculate_day_profit(stats_lookup, date_iso)
         running_total += day_profit
         total_wins += day_wins
         total_losses += day_losses
 
         print(
             f"Day profit: {day_profit:.2f} units | Running total: {running_total:.2f} units "
-            f"| Day W-L: {day_wins}-{day_losses} | Overall W-L: {total_wins}-{total_losses}\n"
+            f"| Day W-L: {day_wins}-{day_losses} | Overall W-L: {total_wins}-{total_losses} | Win Rate: {total_wins / (total_wins + total_losses):.2f}\n"
         )
 
     print(

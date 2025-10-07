@@ -7,6 +7,10 @@ import pandas as pd
 import pytz
 import requests
 from dotenv import load_dotenv
+from utility.get_injury_by_date import get
+from utility.initialize_database import create_database
+from utility.process_props import props
+from .backtest_pipeline import run_pipeline
 
 load_dotenv()
 
@@ -15,12 +19,6 @@ load_dotenv()
 sys.path.insert(
     0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 )
-
-from utility.get_injury_by_date import get
-from utility.initialize_database import create_database
-from utility.process_props import props
-
-from .backtest_pipeline import run_pipeline
 
 DATE = "2025-03-14"
 
@@ -254,38 +252,38 @@ def run(date: str | None = None, get_odds=True):
     ymd_str = date_obj.strftime("%Y-%m-%d")
     mm_dd_str = date_obj.strftime("%m_%d")
 
-    tomorrow = date_obj + timedelta(days=1)
-    tomorrow_at_5am = tomorrow.replace(hour=5, minute=0, second=0, microsecond=0)
-    commence_time_to = tomorrow_at_5am.strftime("%Y-%m-%dT%H:%M:%SZ")
-    id_times = game_ids(commence_time_to)
-    if not id_times:
-        return
-    id_times.sort(key=lambda x: x[1])
-    first_game_time = id_times[0][1]
-    first_game_dt = _parse_date(first_game_time)
-
-    one_hour_before = first_game_dt - timedelta(hours=1)
-
-    # Convert to Eastern time
-    if one_hour_before.tzinfo is None:
-        # Assume UTC if no timezone info
-        one_hour_before = pytz.utc.localize(one_hour_before)
-
-    eastern = pytz.timezone("US/Eastern")
-    one_hour_before_et = one_hour_before.astimezone(eastern)
-
-    hour_24 = one_hour_before_et.hour
-    if hour_24 == 0:
-        time_str = "12AM"
-    elif hour_24 < 12:
-        time_str = f"{hour_24:02d}AM"
-    elif hour_24 == 12:
-        time_str = "12PM"
-    else:
-        time_str = f"{hour_24 - 12:02d}PM"
-    get(ymd_str, time_str)
-
     if get_odds:
+        tomorrow = date_obj + timedelta(days=1)
+        tomorrow_at_5am = tomorrow.replace(hour=5, minute=0, second=0, microsecond=0)
+        commence_time_to = tomorrow_at_5am.strftime("%Y-%m-%dT%H:%M:%SZ")
+        id_times = game_ids(commence_time_to)
+        if not id_times:
+            return
+        id_times.sort(key=lambda x: x[1])
+        first_game_time = id_times[0][1]
+        first_game_dt = _parse_date(first_game_time)
+
+        one_hour_before = first_game_dt - timedelta(hours=1)
+
+        # Convert to Eastern time
+        if one_hour_before.tzinfo is None:
+            # Assume UTC if no timezone info
+            one_hour_before = pytz.utc.localize(one_hour_before)
+
+        eastern = pytz.timezone("US/Eastern")
+        one_hour_before_et = one_hour_before.astimezone(eastern)
+
+        hour_24 = one_hour_before_et.hour
+        if hour_24 == 0:
+            time_str = "12AM"
+        elif hour_24 < 12:
+            time_str = f"{hour_24:02d}AM"
+        elif hour_24 == 12:
+            time_str = "12PM"
+        else:
+            time_str = f"{hour_24 - 12:02d}PM"
+        get(ymd_str, time_str)
+
         one_hour_before_dt = first_game_dt - timedelta(minutes=30)
         date_for_url = one_hour_before_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -295,6 +293,9 @@ def run(date: str | None = None, get_odds=True):
         hist_path = f"backtest/historical/{mm_dd_str}_props.json"
         with open(hist_path, "w") as f:
             json.dump(all_bookmakers_data, f, indent=4)
+    else:
+        time_str = "12PM"
+        get(ymd_str, time_str)
 
     props(mm_dd_str)
 

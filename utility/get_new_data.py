@@ -15,8 +15,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from sqlalchemy import create_engine
 from webdriver_manager.chrome import ChromeDriverManager
 
-BASE_URL_PLAYER = "https://www.nba.com/stats/players/boxscores?SeasonType=Playoffs&DateFrom={date_from}&DateTo={date_to}"
-BASE_URL_TEAM = "https://www.nba.com/stats/teams/boxscores?SeasonType=Playoffs&DateFrom={date_from}&DateTo={date_to}"
+BASE_URL_PLAYER = "https://www.nba.com/stats/players/boxscores?SeasonType=Regular%20Season&DateFrom={date_from}&DateTo={date_to}"
+BASE_URL_TEAM = "https://www.nba.com/stats/teams/boxscores?SeasonType=Regular%20Season&DateFrom={date_from}&DateTo={date_to}"
 WAIT_TIMEOUT = 25
 POST_LOAD_PAUSE = 3
 
@@ -159,13 +159,16 @@ def get_new_data(start_date: date = None, end_date: date = None):
         try:
             end_date = datetime.now().date() - timedelta(days=1)
         except Exception as e:
+            print(f"Error setting end_date: {e}")
             return pd.DataFrame()
     elif isinstance(end_date, str):
         try:
             end_date = datetime.strptime(end_date, "%Y-%m-%d").date()
         except ValueError:
+            print("Invalid end_date format")
             return pd.DataFrame()
     elif not isinstance(end_date, date):
+        print("Invalid end_date type")
         return pd.DataFrame()
 
     if start_date is None:
@@ -174,11 +177,14 @@ def get_new_data(start_date: date = None, end_date: date = None):
         try:
             start_date = datetime.strptime(start_date, "%Y-%m-%d").date()
         except ValueError:
+            print("Invalid start_date format")
             return pd.DataFrame()
     elif not isinstance(start_date, date):
+        print("Invalid start_date type")
         return pd.DataFrame()
 
     if start_date > end_date:
+        print("start_date cannot be after end_date")
         return pd.DataFrame()
 
     start_date_url_fmt = start_date.strftime("%m%%2F%d%%2F%Y")
@@ -197,9 +203,8 @@ def get_new_data(start_date: date = None, end_date: date = None):
         try:
             db_engine = create_engine(db_connection_string)
         except Exception as e:
+            print(f"Database connection failed: {e}")
             db_engine = None
-    else:
-        pass
 
     driver = None
     player_stats_df = pd.DataFrame()
@@ -219,56 +224,69 @@ def get_new_data(start_date: date = None, end_date: date = None):
             service = Service(ChromeDriverManager().install())
             driver = webdriver.Chrome(service=service, options=options)
         except Exception as e:
+            print(f"Chrome driver initialization failed: {e}")
             return pd.DataFrame()
 
-        team_scores_raw_df = scrape_team_scores(driver, team_target_url)
-        if not team_scores_raw_df.empty:
-            game_results_lookup = create_game_result_lookup(team_scores_raw_df)
-
-        driver.get(player_target_url)
-        dropdown_selector = (
-            "div[class*='Pagination_pageDropdown'] select[class*='DropDown_select']"
-        )
+        # Set a shorter timeout for web scraping
+        driver.set_page_load_timeout(30)
+        
         try:
-            rows_dropdown = WebDriverWait(driver, WAIT_TIMEOUT).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, dropdown_selector))
+            team_scores_raw_df = scrape_team_scores(driver, team_target_url)
+            if not team_scores_raw_df.empty:
+                game_results_lookup = create_game_result_lookup(team_scores_raw_df)
+        except Exception as e:
+            print(f"Team scores scraping failed: {e}")
+
+        try:
+            driver.get(player_target_url)
+            dropdown_selector = (
+                "div[class*='Pagination_pageDropdown'] select[class*='DropDown_select']"
             )
-            driver.execute_script("arguments[0].click();", rows_dropdown)
-            time.sleep(1)
-            all_option_selector = "option[value='-1']"
             try:
-                all_option = WebDriverWait(driver, WAIT_TIMEOUT).until(
-                    EC.element_to_be_clickable((By.CSS_SELECTOR, all_option_selector))
+                rows_dropdown = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.CSS_SELECTOR, dropdown_selector))
                 )
-                all_option.click()
-                time.sleep(POST_LOAD_PAUSE)
+                driver.execute_script("arguments[0].click();", rows_dropdown)
+                time.sleep(1)
+                all_option_selector = "option[value='-1']"
+                try:
+                    all_option = WebDriverWait(driver, 10).until(
+                        EC.element_to_be_clickable((By.CSS_SELECTOR, all_option_selector))
+                    )
+                    all_option.click()
+                    time.sleep(POST_LOAD_PAUSE)
+                except TimeoutException:
+                    print("Timeout waiting for all option")
+                except Exception as e:
+                    print(f"Error clicking all option: {e}")
             except TimeoutException:
-                pass
+                print("Timeout waiting for dropdown")
             except Exception as e:
-                pass
-        except TimeoutException:
-            pass
-        except Exception as e:
-            pass
+                print(f"Error with dropdown: {e}")
 
-        try:
-            page_source = driver.page_source
-            dataframes = pd.read_html(io.StringIO(page_source))
-            if dataframes:
-                found_table = False
-                for i, df_check in enumerate(dataframes):
-                    if "PLAYER" in df_check.columns and "MIN" in df_check.columns:
-                        player_stats_df = df_check
-                        found_table = True
-                        break
-                if not found_table and dataframes:
-                    player_stats_df = dataframes[0]
+            try:
+                page_source = driver.page_source
+                dataframes = pd.read_html(io.StringIO(page_source))
+                if dataframes:
+                    found_table = False
+                    for i, df_check in enumerate(dataframes):
+                        if "PLAYER" in df_check.columns and "MIN" in df_check.columns:
+                            player_stats_df = df_check
+                            found_table = True
+                            break
+                    if not found_table and dataframes:
+                        player_stats_df = dataframes[0]
+            except Exception as e:
+                print(f"Error parsing player stats: {e}")
+
         except Exception as e:
-            pass
+            print(f"Player stats scraping failed: {e}")
 
         if player_stats_df is None or player_stats_df.empty:
+            print("No player stats data found")
             return pd.DataFrame()
 
+        # Continue with data processing...
         df = player_stats_df.copy()
         percentage_cols = ["FG%", "3P%", "FT%"]
         numeric_cols = [
@@ -469,6 +487,7 @@ def get_new_data(start_date: date = None, end_date: date = None):
         return df_final
 
     except Exception as e:
+        print(f"Error in get_new_data: {e}")
         if db_engine:
             try:
                 db_engine.dispose()
@@ -481,6 +500,7 @@ def get_new_data(start_date: date = None, end_date: date = None):
             try:
                 driver.quit()
             except Exception as e:
+                print(f"Error closing driver: {e}")
                 pass
 
 

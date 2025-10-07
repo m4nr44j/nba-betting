@@ -73,7 +73,7 @@ def game_ids(commence_time_to):
 def get_odds(game_id, market_types):
     market_data = {}
     for market_type in market_types:
-        url = f"{BASE_URL}/{game_id}/odds?apiKey={API_KEY}&markets={market_type}&oddsFormat=american&bookmakers=draftkings"
+        url = f"{BASE_URL}/{game_id}/odds?apiKey={API_KEY}&markets={market_type}&oddsFormat=american&bookmakers=fanduel"
         try:
             response = requests.get(url)
             if response.status_code == 200:
@@ -114,7 +114,7 @@ def collect_all_odds(game_ids):
         "player_points_rebounds_assists_alternate",
         "player_points_rebounds_alternate",
         "player_points_assists_alternate",
-        "player_rebounds_assists",
+        "player_rebounds_assists_alternate",
     ]
     all_bookmakers_data = {}
 
@@ -131,13 +131,49 @@ def collect_all_odds(game_ids):
 
 
 def data_update():
-    df = pd.read_csv(SQL_DATA_FILE)
-    date_column = pd.to_datetime(df["date"], errors="coerce").dt.date
-    max_date_in_csv: datetime.date = date_column.max()
-    next_day_to_process: datetime.date = max_date_in_csv + timedelta(days=1)
-    yesterday: datetime.date = datetime.now().date() - timedelta(days=1)
+    try:
+        df = pd.read_csv(SQL_DATA_FILE)
+        if df.empty:
+            print(f"Warning: {SQL_DATA_FILE} is empty. Skipping data update.")
+            return
+        
+        date_column = pd.to_datetime(df["date"], errors="coerce").dt.date
+        max_date_in_csv: datetime.date = date_column.max()
+        
+        # Handle case where all dates are invalid/NaN
+        if pd.isna(max_date_in_csv):
+            print(f"Warning: No valid dates found in {SQL_DATA_FILE}. Skipping data update.")
+            return
+            
+        next_day_to_process: datetime.date = max_date_in_csv + timedelta(days=1)
+        yesterday: datetime.date = datetime.now().date() - timedelta(days=1)
+    except FileNotFoundError:
+        print(f"Error: {SQL_DATA_FILE} not found. Please run database initialization first.")
+        return
+    except pd.errors.EmptyDataError:
+        print(f"Error: {SQL_DATA_FILE} is empty or corrupted.")
+        return
+    except Exception as e:
+        print(f"Error reading {SQL_DATA_FILE}: {e}")
+        return
+    
+    # Handle NBA season start - if we're in a new season and the last data is from previous season
+    current_date = datetime.now().date()
+    
+    # Define NBA season dates (season typically starts around October 21st)
+    if current_date.month >= 10:  # October onwards - new season
+        current_season_start = datetime(current_date.year, 10, 21).date()  # NBA season start
+    else:  # January-September - same season as previous year
+        current_season_start = datetime(current_date.year - 1, 10, 21).date()
+    
+    # If our last data is before the current season started AND the season has actually started, jump to season start
+    if max_date_in_csv < current_season_start and current_date >= current_season_start:
+        print(f"Season gap detected. Last data: {max_date_in_csv}, Season start: {current_season_start}")
+        print("Jumping to current season start for data update")
+        next_day_to_process = current_season_start
+    
     if next_day_to_process <= yesterday:
-        print("Running Pipeline")
+        print(f"Running Pipeline from {next_day_to_process} to {yesterday}")
         run_pipeline(next_day_to_process)
     else:
         print("Data is up to date")
@@ -146,21 +182,27 @@ def data_update():
 def run():
     data_update()
     load_injuries()
+    
     today = datetime.now()
-    tomorrow = today + timedelta(days=2)
+    tomorrow = today + timedelta(days=1)
     tomorrow_at_5am = tomorrow.replace(hour=5, minute=0, second=0, microsecond=0)
 
     commence_time_to = tomorrow_at_5am.isoformat() + "Z"
     games = game_ids(commence_time_to)
 
+    ids = [game_id for game_id, commence_time in games]
+    props = (collect_all_odds(ids))
+    with open(f"backtest/historical2/{today.strftime("%m_%d")}_props.json", "w") as f:
+        json.dump(process_props(props), f, indent=4)
     with open("json/props.json", "w") as f:
-        ids = [game_id for game_id, commence_time in games]
-        json.dump(process_props(collect_all_odds(ids)), f, indent=4)
+        json.dump(process_props(props), f, indent=4)
 
+    today_str = today.strftime("%Y-%m-%d")
     cmd = [
         "python",
         "processor.py",
         "json/props.json",
+        today_str,
     ]
     subprocess.run(cmd, check=True)
 

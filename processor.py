@@ -5,6 +5,7 @@ import os
 import sys
 import warnings
 from collections import defaultdict
+from datetime import datetime
 
 import pandas as pd
 from dotenv import load_dotenv
@@ -70,14 +71,9 @@ MARKET_DISPLAY_MAPPING = {
 BANNED = [
     "Aaron Wiggins",
     "Isaiah Joe",
-    "Domantas Sabonis",
-    "Haywood Highsmith",
-    "Jonas Valančiūnas",
-    "Royce O'Neale",
-    "Bennedict Mathurin",
-    "Jrue Holiday",
-    "Jaylen Brown",
     "Nikola Vučević",
+    "Brook Lopez",
+    "Kyle Kuzma"
 ]
 CSV_FIELDNAMES = [
     "Player",
@@ -90,6 +86,23 @@ CSV_FIELDNAMES = [
     "Odds",
     "Game",
 ]
+
+
+def get_season_phase_threshold(date_str=None):
+    if date_str is None:
+        date_obj = datetime.now()
+    else:
+        try:
+            date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+        except ValueError:
+            print(f"Warning: Invalid date format '{date_str}', using current date")
+            date_obj = datetime.now()
+    
+    month = date_obj.month
+    if 4 <= month <= 6:
+        return 6
+    
+    return 7
 
 
 def write_rows_to_csv(rows, filename=CSV_OUTPUT_FILE):
@@ -112,7 +125,7 @@ def append_to_text(row, filename=TEXT_OUTPUT_FILE):
     direction = "Over"
     market_formatted = MARKET_DISPLAY_MAPPING.get(market_key, market_key.upper())
     formatted_line = (
-        f"🏀 {game}: {player} {direction} {line_value} {market_formatted} ({odds} FD)"
+        f"{game}: {player} {direction} {line_value} {market_formatted} ({odds} FD)"
     )
     try:
         with open(filename, "a", encoding="utf-8") as f:
@@ -213,7 +226,7 @@ def get_player_last_ten_stats(player, market, line, data_source_path=SQL_DATA_FI
 
 
 def process_player_entry(
-    entry, consistent_players_map, current_best_rank, current_best_row, conn
+    entry, consistent_players_map, current_best_rank, current_best_row, conn, threshold=7
 ):
     try:
         player = entry["player"]
@@ -226,7 +239,7 @@ def process_player_entry(
         rank = get_rank(player, consistent_players_map, market)
         last_ten_over = get_player_last_ten_stats(player, market, line)
 
-        last_ten_trend_is_over = last_ten_over > 6
+        last_ten_trend_is_over = last_ten_over > threshold
 
         if rank < current_best_rank and last_ten_trend_is_over:
             team = entry["team"]
@@ -279,7 +292,7 @@ def process_player_entry(
         return current_best_rank, current_best_row
 
 
-def run_analysis(props_data):
+def run_analysis(props_data, date_str=None):
     load_dotenv()
     sql_engine = os.getenv("SQL_ENGINE")
     if not sql_engine:
@@ -290,6 +303,9 @@ def run_analysis(props_data):
     features_to_analyze = ["pts", "trb", "ast", "p_r", "p_a", "a_r", "p_r_a"]
     consistent_map = get_consistent_players(features_to_analyze, 300, 8)
     injuries = load_injury_report()
+    
+    # Get the appropriate threshold based on season phase
+    threshold = get_season_phase_threshold(date_str)\
 
     all_players_props = defaultdict(list)
     for bookmaker in transformed_odds.values():
@@ -313,7 +329,7 @@ def run_analysis(props_data):
 
         for entry in entries:
             best_rank, best_row = process_player_entry(
-                entry, consistent_map, best_rank, best_row, conn
+                entry, consistent_map, best_rank, best_row, conn, threshold
             )
             pbar.update(1)
 
@@ -344,6 +360,7 @@ def main():
         sys.exit(1)
 
     file_path = sys.argv[1]
+    date_str = sys.argv[2] if len(sys.argv) > 2 else None
 
     try:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -358,7 +375,7 @@ def main():
         print(f"An unexpected error occurred while loading {file_path}: {e}")
         sys.exit(1)
 
-    run_analysis(props_json_data)
+    run_analysis(props_json_data, date_str)
 
 
 if __name__ == "__main__":

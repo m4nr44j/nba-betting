@@ -5,6 +5,7 @@ import psycopg2
 from dotenv import load_dotenv
 from psycopg2.extras import Json
 from sqlalchemy import create_engine
+from datetime import datetime, timedelta
 
 load_dotenv()
 
@@ -239,9 +240,16 @@ def process_csv(start_date):
     # Get new data from start_date to yesterday
     yesterday = datetime.now().date() - timedelta(days=1)
     df = get_new_data(start_date=start_date, end_date=yesterday)
+    
+    # Check if we got any data
+    if df.empty:
+        print("No new data available for the specified date range.")
+        # Create an empty CSV file to prevent pipeline errors
+        empty_df = pd.DataFrame(columns=csv_columns)
+        empty_df.to_csv("csv/modified_data.csv", index=False, na_rep="None")
+        return
 
-    # Append to all_data.csv
-    csv_file = "csv/all_data.csv"
+    csv_file = "csv/all_data_full.csv"
     df.to_csv(csv_file, mode="a", header=False, index=False)
 
     # Process for database
@@ -282,23 +290,26 @@ def create_table(cursor):
             id SERIAL PRIMARY KEY,
             player VARCHAR(50),
             date DATE,
-            age INTEGER,
+            age VARCHAR(10),
             team VARCHAR(10),
-            hoa INTEGER,
+            hoa CHAR(1),
             opp VARCHAR(10),
-            result INTEGER,
-            total_score INTEGER,
-            gs INTEGER,
+            result VARCHAR(20),
+            gs CHAR(1),
             mp INTEGER,
             fg INTEGER,
             fga INTEGER,
-            fg_percent NUMERIC(5,3),
+            fg_percent NUMERIC(5,3) NULL,
             twop INTEGER,
-            twop_percent NUMERIC(5,3),
+            twopa INTEGER,
+            twop_percent NUMERIC(5,3) NULL,
             tpm INTEGER,
+            threepa INTEGER,
+            threep_percent NUMERIC(5,3) NULL,
             ft INTEGER,
-            ft_percent NUMERIC(5,3),
-            ts_percent NUMERIC(5,3),
+            fta INTEGER,
+            ft_percent NUMERIC(5,3) NULL,
+            ts_percent NUMERIC(5,3) NULL,
             orb INTEGER,
             drb INTEGER,
             trb INTEGER,
@@ -312,13 +323,7 @@ def create_table(cursor):
             bpm NUMERIC(5,1),
             plus_minus NUMERIC(5,1),
             pos VARCHAR(4),
-            player_additional VARCHAR(20),
-            p_r_a INTEGER GENERATED ALWAYS AS (pts + trb + ast) STORED,
-            p_r INTEGER GENERATED ALWAYS AS (pts + trb) STORED,
-            p_a INTEGER GENERATED ALWAYS AS (pts + ast) STORED,
-            a_r INTEGER GENERATED ALWAYS AS (ast + trb) STORED,
-            month INTEGER,
-            days_since INTEGER
+            player_additional VARCHAR(20)
         );
     """
     )
@@ -381,19 +386,27 @@ def perform_updates(cursor):
         "UPDATE public.nba_append SET result = REPLACE(result, ' (OT)', '');",
         "ALTER TABLE public.nba_append ADD COLUMN resultChar CHAR(1), ADD COLUMN score1 INTEGER, ADD COLUMN score2 INTEGER;",
         "UPDATE public.nba_append SET resultChar = TRIM(SUBSTRING(result FROM '^[WL]')), score1 = CAST(TRIM(SPLIT_PART(SUBSTRING(result FROM '[0-9]+-[0-9]+'), '-', 1)) AS INTEGER), score2 = CAST(TRIM(SPLIT_PART(SUBSTRING(result FROM '[0-9]+-[0-9]+'), '-', 2)) AS INTEGER);",
+        "ALTER TABLE public.nba_append ADD COLUMN total_score INTEGER;",
         "UPDATE public.nba_append SET total_score = score1 + score2;",
         "ALTER TABLE public.nba_append DROP COLUMN result, DROP COLUMN score1, DROP COLUMN score2;",
+        "ALTER TABLE public.nba_append ADD COLUMN p_r_a INTEGER GENERATED ALWAYS AS (pts + trb + ast) STORED, ADD COLUMN p_r INTEGER GENERATED ALWAYS AS (pts + trb) STORED, ADD COLUMN p_a INTEGER GENERATED ALWAYS AS (pts + ast) STORED, ADD COLUMN a_r INTEGER GENERATED ALWAYS AS (ast + trb) STORED;",
         "UPDATE public.nba_append SET age = CAST(SUBSTRING(age FROM 1 FOR 2) AS INTEGER);",
+        "ALTER TABLE public.nba_append ALTER COLUMN age TYPE INTEGER USING CAST(age AS INTEGER);",
         "UPDATE public.nba_append SET hoa = CASE WHEN hoa = '' THEN '0' WHEN hoa = '@' THEN '1' END;",
+        "ALTER TABLE public.nba_append ALTER COLUMN hoa TYPE INTEGER USING CAST(hoa AS INTEGER);",
         "UPDATE public.nba_append SET gs = CASE WHEN gs = '' THEN '0' WHEN gs = '*' THEN '1' END;",
+        "ALTER TABLE public.nba_append ALTER COLUMN gs TYPE INTEGER USING CAST(gs AS INTEGER);",
         "DELETE FROM public.nba_append WHERE mp = 0;",
         "UPDATE public.nba_append SET fg_percent = COALESCE(fg_percent, 0), twop_percent = COALESCE(twop_percent, 0);",
         "DELETE FROM public.nba_append WHERE fg_percent = 0;",
+        "ALTER TABLE public.nba_append ADD COLUMN month INTEGER;",
         "UPDATE public.nba_append SET month = EXTRACT(MONTH FROM date);",
+        "ALTER TABLE public.nba_append ADD COLUMN days_since INTEGER;",
         "UPDATE public.nba_append SET days_since = date - DATE '2023-10-24';",
         "ALTER TABLE public.nba_append DROP COLUMN threepa, DROP COLUMN threep_percent, DROP COLUMN fta, DROP COLUMN twopa;",
         "ALTER TABLE public.nba_append RENAME COLUMN resultChar TO result;",
         "UPDATE public.nba_append SET result = CASE WHEN result = 'L' THEN 0 WHEN result = 'W' THEN 1 END;",
+        "ALTER TABLE public.nba_append ALTER COLUMN result TYPE INTEGER USING CAST(result AS INTEGER);",
         "UPDATE public.nba_append SET team = REPLACE(team, 'CHO', 'CHA'), opp = REPLACE(opp, 'CHO', 'CHA');",
         "UPDATE public.nba_append SET team = REPLACE(team, 'PHO', 'PHX'), opp = REPLACE(opp, 'PHO', 'PHX');",
         "UPDATE public.nba_append SET team = REPLACE(team, 'BRK', 'BKN'), opp = REPLACE(opp, 'BRK', 'BKN');",
@@ -409,6 +422,34 @@ def perform_updates(cursor):
         cursor.execute(command)
 
 
+def update_game_stats_schema(cursor):
+    """Update the main game_stats table schema to match the new append table"""
+    # Add new columns to the main game_stats table if they don't exist
+    new_columns = [
+        "teammates_tpm JSONB",
+        "teammates_pr JSONB", 
+        "teammates_pa JSONB",
+        "teammates_ar JSONB",
+        "teammates_pra JSONB",
+        "teammates_blocks JSONB",
+        "teammates_minutes JSONB",
+        "opponents_tpm JSONB",
+        "opponents_pr JSONB",
+        "opponents_pa JSONB", 
+        "opponents_ar JSONB",
+        "opponents_pra JSONB",
+        "opponents_minutes JSONB"
+    ]
+    
+    for column_def in new_columns:
+        column_name = column_def.split()[0]
+        try:
+            cursor.execute(f"ALTER TABLE public.game_stats ADD COLUMN {column_def};")
+        except Exception:
+            # Column already exists, ignore
+            pass
+
+
 def create_game_stats_table(cursor):
     """Create append table for game stats"""
     cursor.execute(
@@ -422,12 +463,25 @@ def create_game_stats_table(cursor):
             teammates_points JSONB,
             teammates_rebounds JSONB,
             teammates_assists JSONB,
+            teammates_tpm JSONB,
+            teammates_pr JSONB,
+            teammates_pa JSONB,
+            teammates_ar JSONB,
+            teammates_pra JSONB,
+            teammates_blocks JSONB,
+            teammates_turnovers JSONB,
+            teammates_minutes JSONB,
             opponents_points JSONB,
             opponents_rebounds JSONB,
             opponents_assists JSONB,
-            teammates_turnovers JSONB,
+            opponents_tpm JSONB,
+            opponents_pr JSONB,
+            opponents_pa JSONB,
+            opponents_ar JSONB,
+            opponents_pra JSONB,
             opponents_blocks JSONB,
-            opponents_turnovers JSONB
+            opponents_turnovers JSONB,
+            opponents_minutes JSONB
         );
     """
     )
@@ -443,21 +497,46 @@ def update_game_stats(cursor):
 
     rows_to_insert = []
     for game_date, team, opponent in new_games:
-        team_stats = {"points": {}, "rebounds": {}, "assists": {}, "turnovers": {}}
+        team_stats = {
+            metric: {}
+            for metric in [
+                "points",
+                "rebounds",
+                "assists",
+                "tpm",
+                "pr",
+                "pa",
+                "ar",
+                "pra",
+                "blocks",
+                "turnovers",
+                "minutes",
+            ]
+        }
         opponent_stats = {
-            "points": {},
-            "rebounds": {},
-            "assists": {},
-            "blocks": {},
-            "turnovers": {},
+            metric: {}
+            for metric in [
+                "points",
+                "rebounds",
+                "assists",
+                "tpm",
+                "pr",
+                "pa",
+                "ar",
+                "pra",
+                "blocks",
+                "turnovers",
+                "minutes",
+            ]
         }
 
         for relation, team_to_query in [("teammates", team), ("opponent", opponent)]:
             cursor.execute(
                 """
-                SELECT player, COALESCE(pts,0), COALESCE(trb,0), COALESCE(ast,0), 
-                       COALESCE(blk,0), COALESCE(tov,0)
-                FROM public.nba
+                SELECT player, 
+                       COALESCE(pts,0), COALESCE(trb,0), COALESCE(ast,0), 
+                       COALESCE(tpm,0), COALESCE(blk,0), COALESCE(tov,0), COALESCE(mp,0)
+                FROM public.nba -- Query the main table which should be up-to-date
                 WHERE date = %s AND team = %s;
             """,
                 (game_date, team_to_query),
@@ -469,18 +548,23 @@ def update_game_stats(cursor):
                     f"Warning: No player stats found for {relation} ({team_to_query}) on {game_date}."
                 )
 
-            for player, pts, trb, ast, blk, tov in stats_for_game:
-                if relation == "teammates":
-                    team_stats["points"][player] = pts
-                    team_stats["rebounds"][player] = trb
-                    team_stats["assists"][player] = ast
-                    team_stats["turnovers"][player] = tov
-                else:
-                    opponent_stats["points"][player] = pts
-                    opponent_stats["rebounds"][player] = trb
-                    opponent_stats["assists"][player] = ast
-                    opponent_stats["blocks"][player] = blk
-                    opponent_stats["turnovers"][player] = tov
+            for player, pts, trb, ast, tpm, blk, tov, mp in stats_for_game:
+                metrics = {
+                    "points": pts,
+                    "rebounds": trb,
+                    "assists": ast,
+                    "tpm": tpm,
+                    "pr": pts + trb,
+                    "pa": pts + ast,
+                    "ar": ast + trb,
+                    "pra": pts + trb + ast,
+                    "blocks": blk,
+                    "turnovers": tov,
+                    "minutes": mp,
+                }
+                target_dict = team_stats if relation == "teammates" else opponent_stats
+                for metric_name, value in metrics.items():
+                    target_dict[metric_name][player] = value
 
         rows_to_insert.append(
             [
@@ -490,12 +574,25 @@ def update_game_stats(cursor):
                 Json(team_stats["points"]),
                 Json(team_stats["rebounds"]),
                 Json(team_stats["assists"]),
+                Json(team_stats["tpm"]),
+                Json(team_stats["pr"]),
+                Json(team_stats["pa"]),
+                Json(team_stats["ar"]),
+                Json(team_stats["pra"]),
+                Json(team_stats["blocks"]),
+                Json(team_stats["turnovers"]),
+                Json(team_stats["minutes"]),
                 Json(opponent_stats["points"]),
                 Json(opponent_stats["rebounds"]),
                 Json(opponent_stats["assists"]),
-                Json(team_stats["turnovers"]),
+                Json(opponent_stats["tpm"]),
+                Json(opponent_stats["pr"]),
+                Json(opponent_stats["pa"]),
+                Json(opponent_stats["ar"]),
+                Json(opponent_stats["pra"]),
                 Json(opponent_stats["blocks"]),
                 Json(opponent_stats["turnovers"]),
+                Json(opponent_stats["minutes"]),
             ]
         )
 
@@ -504,18 +601,24 @@ def update_game_stats(cursor):
             """
             INSERT INTO game_stats_append
             (date, team, opp, teammates_points, teammates_rebounds, teammates_assists,
-             opponents_points, opponents_rebounds, opponents_assists,
-             teammates_turnovers, opponents_blocks, opponents_turnovers)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+             teammates_tpm, teammates_pr, teammates_pa, teammates_ar, teammates_pra, teammates_blocks, teammates_turnovers, teammates_minutes,
+             opponents_points, opponents_rebounds, opponents_assists, opponents_tpm, opponents_pr, opponents_pa, opponents_ar, opponents_pra, opponents_blocks, opponents_turnovers, opponents_minutes)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """,
             rows_to_insert,
         )
 
-        # Insert into main game_stats table
+        # Insert into main game_stats table, avoiding duplicates
         cursor.execute(
             """
             INSERT INTO public.game_stats
-            SELECT * FROM public.game_stats_append
+            SELECT * FROM public.game_stats_append gsa
+            WHERE NOT EXISTS (
+                SELECT 1 FROM public.game_stats gs 
+                WHERE gs.date = gsa.date 
+                AND gs.team = gsa.team 
+                AND gs.opp = gsa.opp
+            )
         """
         )
 
@@ -583,38 +686,87 @@ def load_data_csv():
 
 def run_pipeline(start_date):
     """Run the pipeline to add new data starting from start_date"""
-    conn = psycopg2.connect(
-        host=os.getenv("DB_HOST"),
-        dbname=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASS"),
-        port=os.getenv("DB_PORT"),
-    )
-    cursor = conn.cursor()
-
+    conn = None
+    cursor = None
+    
     try:
+        # First, try to get new data and process it
         process_csv(start_date)
+        
+        # Check if we got any data by looking at the processed CSV
+        import os
+        if not os.path.exists("csv/modified_data.csv"):
+            print("No new data available for the specified date range.")
+            return
+            
+        # Check if the CSV has actual data (more than just headers)
+        import pandas as pd
+        try:
+            df_check = pd.read_csv("csv/modified_data.csv")
+            if df_check.empty:
+                print("No new data available for the specified date range.")
+                return
+        except (pd.errors.EmptyDataError, FileNotFoundError):
+            print("No new data available for the specified date range.")
+            return
+        
+        conn = psycopg2.connect(
+            host=os.getenv("DB_HOST"),
+            dbname=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASS"),
+            port=os.getenv("DB_PORT"),
+        )
+        cursor = conn.cursor()
+        
+        # Test database connection first
+        cursor.execute("SELECT 1")
+        cursor.fetchone()
         reset_tables(cursor)
         conn.commit()
         create_table(cursor)
         load_data(cursor)
         perform_updates(cursor)
+        update_game_stats_schema(cursor)
         create_most_recent_player_team_table(cursor)
         create_game_stats_table(cursor)
         update_game_stats(cursor)
         conn.commit()
         print("Pipeline executed successfully.")
         load_data_csv()
+        
     except Exception as e:
         print(f"An error occurred in pipeline: {e}")
-        conn.rollback()
+        if conn:
+            try:
+                conn.rollback()
+            except Exception as rollback_error:
+                print(f"Rollback failed: {rollback_error}")
+                # If rollback fails, we need to close and reconnect
+                if cursor:
+                    cursor.close()
+                conn.close()
+                # Try to reconnect and reset the connection
+                try:
+                    conn = psycopg2.connect(
+                        host=os.getenv("DB_HOST"),
+                        dbname=os.getenv("DB_NAME"),
+                        user=os.getenv("DB_USER"),
+                        password=os.getenv("DB_PASS"),
+                        port=os.getenv("DB_PORT"),
+                    )
+                    conn.rollback()
+                    conn.close()
+                except Exception:
+                    pass
     finally:
-        cursor.close()
-        conn.close()
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 
 if __name__ == "__main__":
-    from datetime import datetime, timedelta
 
     start_date = datetime.now().date() - timedelta(days=7)
     run_pipeline(start_date)
