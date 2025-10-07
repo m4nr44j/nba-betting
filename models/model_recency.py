@@ -23,7 +23,6 @@ from models.common import (
 
 load_dotenv()
 
-# All paths relative to repo root
 
 
 def gradient_boost_recency(player, market, conn, n_estimators, feature_weights=None):

@@ -20,7 +20,6 @@ from models.common import (
 
 load_dotenv()
 
-# All paths relative to repo root
 
 
 def gradient_boost(player, market, conn, n_estimators):

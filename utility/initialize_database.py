@@ -8,7 +8,6 @@ from sqlalchemy import create_engine
 
 load_dotenv()
 
-# All paths relative to repo root
 
 PLAYER_POSITIONS = {
     "Aaron Nesmith": "F",
@@ -152,7 +151,6 @@ def safe_to_float(value):
 
 
 def process_csv():
-    """Process all_data.csv for database initialization"""
     csv_columns = [
         "Player",
         "Date",
@@ -237,7 +235,6 @@ def process_csv():
     df = df.drop(["Rk"], axis=1, errors="ignore")
     df.rename(columns=column_mapping, inplace=True)
 
-    # Numeric columns that may contain empty strings
     numeric_columns = [
         "fg_percent",
         "twop_percent",
@@ -247,7 +244,6 @@ def process_csv():
         "plus_minus",
     ]
 
-    # Apply the safe_to_float logic
     for column in numeric_columns:
         df[column] = df[column].apply(safe_to_float)
 
@@ -255,14 +251,12 @@ def process_csv():
 
 
 def reset_tables(cursor):
-    """Drop and recreate tables for initialization"""
     cursor.execute("DROP TABLE IF EXISTS public.nba CASCADE;")
     cursor.execute("DROP TABLE IF EXISTS public.game_stats CASCADE;")
     cursor.execute("DROP TABLE IF EXISTS public.latest_player_teams CASCADE;")
 
 
 def create_table(cursor):
-    """Create the main NBA stats table"""
     cursor.execute(
         """
         CREATE TABLE public.nba
@@ -310,10 +304,9 @@ def create_table(cursor):
 
 
 def load_data(cursor):
-    """Load processed CSV data into the database"""
     csv_path = "csv/modified_data.csv"
     with open(csv_path, "r") as f:
-        next(f)  # Skip header
+        next(f)
         cursor.copy_from(
             f,
             "nba",
@@ -361,7 +354,6 @@ def load_data(cursor):
 
 
 def perform_updates(cursor):
-    """Perform data transformations and updates"""
     updates = [
         "UPDATE public.nba SET result = REPLACE(result, ' (OT)', '');",
         "ALTER TABLE public.nba ADD COLUMN resultChar CHAR(1), ADD COLUMN score1 INTEGER, ADD COLUMN score2 INTEGER;",
@@ -396,7 +388,6 @@ def perform_updates(cursor):
 
 
 def create_game_stats_table(cursor):
-    """Create the game stats table for teammate/opponent data"""
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS game_stats
@@ -420,7 +411,6 @@ def create_game_stats_table(cursor):
 
 
 def update_game_stats(cursor):
-    """Populate game stats with teammate/opponent data"""
     cursor.execute("SELECT DISTINCT date, team, opp FROM public.nba;")
     games = cursor.fetchall()
 
@@ -491,8 +481,6 @@ def update_game_stats(cursor):
 
 
 def create_most_recent_player_team_table(cursor):
-    """Create table with most recent team and stats for each player"""
-    # Update positions for all players
     for player, pos in PLAYER_POSITIONS.items():
         cursor.execute(
             "UPDATE public.nba SET pos = %s WHERE player = %s;", (pos, player)
@@ -544,7 +532,6 @@ def create_most_recent_player_team_table(cursor):
 
 
 def load_data_csv():
-    """Export final data to CSV"""
     conn = create_engine(os.getenv("SQL_ENGINE"))
     df = pd.read_sql("SELECT * FROM nba;", conn)
     df.to_csv("csv/sql.csv", encoding="utf-8", index=False)
@@ -552,7 +539,6 @@ def load_data_csv():
 
 
 def create_database():
-    """Main function to initialize the database from scratch"""
     conn = psycopg2.connect(
         host=os.getenv("DB_HOST"),
         dbname=os.getenv("DB_NAME"),

@@ -55,7 +55,6 @@ def process_csv():
         "Player-additional",
     ]
 
-    # Corresponding SQL column names (excluding 'id' which is auto-generated)
     sql_columns = [
         "player",
         "date",
@@ -112,12 +111,6 @@ def process_csv():
     ]
 
     def safe_to_float(value):
-        """
-        Convert value to string, strip whitespace, then:
-          - if empty => None
-          - else => float
-          - if float fails => None
-        """
         val_str = str(value).strip()
         if val_str == "":
             return None
@@ -126,7 +119,6 @@ def process_csv():
         except ValueError:
             return None
 
-    # Apply the safe_to_float logic
     for column in numeric_columns:
         df[column] = df[column].apply(safe_to_float)
 
@@ -150,17 +142,17 @@ def create_table(cursor):
             mp INTEGER,
             fg INTEGER,
             fga INTEGER,
-            fg_percent NUMERIC(5,3) NULL,  -- Allow NULLs
+            fg_percent NUMERIC(5,3) NULL,
             twop INTEGER,
             twopa INTEGER,
-            twop_percent NUMERIC(5,3) NULL,  -- Allow NULLs
+            twop_percent NUMERIC(5,3) NULL,
             tpm INTEGER,
             threepa INTEGER,
-            threep_percent NUMERIC(5,3) NULL,  -- Allow NULLs
+            threep_percent NUMERIC(5,3) NULL,
             ft INTEGER,
             fta INTEGER,
-            ft_percent NUMERIC(5,3) NULL,  -- Allow NULLs
-            ts_percent NUMERIC(5,3) NULL,  -- Allow NULLs
+            ft_percent NUMERIC(5,3) NULL,
+            ts_percent NUMERIC(5,3) NULL,
             orb INTEGER,
             drb INTEGER,
             trb INTEGER,
@@ -182,7 +174,7 @@ def create_table(cursor):
 
 def load_data(cursor):
     with open("csv/modified_data.csv", "r") as f:
-        next(f)  # This skips the header line to prevent it from being read as data
+        next(f)
         cursor.copy_from(
             f,
             "nba_append",
@@ -351,7 +343,7 @@ def update_game_stats(cursor):
                 SELECT player, 
                        COALESCE(pts,0), COALESCE(trb,0), COALESCE(ast,0), 
                        COALESCE(tpm,0), COALESCE(blk,0), COALESCE(tov,0), COALESCE(mp,0)
-                FROM public.nba -- Query the main table which should be up-to-date
+                FROM public.nba
                 WHERE date = %s AND team = %s;
             """,
                 (game_date, team_to_query),
@@ -421,7 +413,6 @@ def update_game_stats(cursor):
 
 
 def create_most_recent_player_team_table(cursor, positions):
-    # Ensure position updates apply to the main table that holds ALL games
     for player, pos in positions.items():
         cursor.execute(
             "UPDATE public.nba SET pos = %s WHERE player = %s;", (pos, player)
@@ -680,7 +671,7 @@ def run_pipeline():
         load_data(cursor)
         perform_updates(cursor)
         create_game_stats_table(cursor)
-        update_game_stats(cursor)  # New function to update teammate details
+        update_game_stats(cursor)
         create_most_recent_player_team_table(cursor, positions)
         conn.commit()
         print("Pipeline executed successfully.")

@@ -61,18 +61,6 @@ def process_props_and_output(cursor, data):
         "player_threes": "tpm",
     }
 
-    # market_mapping = {
-    #     "player_points": "pts",
-    #     "player_rebounds": "trb",
-    #     "player_assists": "ast",
-    #     "player_points_rebounds": "p_r",
-    #     "player_points_assists": "p_a",
-    #     "player_rebounds_assists": "a_r",
-    #     "player_points_rebounds_assists": "p_r_a",
-    #     "player_threes": "tpm"
-    #     # Add other mappings as needed
-    # }
-
     lowest_price_threshold = -130
     highest_price_threshold = 120
 

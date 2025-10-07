@@ -140,7 +140,6 @@ def data_update():
         date_column = pd.to_datetime(df["date"], errors="coerce").dt.date
         max_date_in_csv: datetime.date = date_column.max()
         
-        # Handle case where all dates are invalid/NaN
         if pd.isna(max_date_in_csv):
             print(f"Warning: No valid dates found in {SQL_DATA_FILE}. Skipping data update.")
             return
@@ -157,16 +156,13 @@ def data_update():
         print(f"Error reading {SQL_DATA_FILE}: {e}")
         return
     
-    # Handle NBA season start - if we're in a new season and the last data is from previous season
     current_date = datetime.now().date()
     
-    # Define NBA season dates (season typically starts around October 21st)
     if current_date.month >= 10:  # October onwards - new season
         current_season_start = datetime(current_date.year, 10, 21).date()  # NBA season start
     else:  # January-September - same season as previous year
         current_season_start = datetime(current_date.year - 1, 10, 21).date()
     
-    # If our last data is before the current season started AND the season has actually started, jump to season start
     if max_date_in_csv < current_season_start and current_date >= current_season_start:
         print(f"Season gap detected. Last data: {max_date_in_csv}, Season start: {current_season_start}")
         print("Jumping to current season start for data update")

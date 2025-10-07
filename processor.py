@@ -98,15 +98,13 @@ def get_season_phase_threshold(date_str=None):
             print(f"Warning: Invalid date format '{date_str}', using current date")
             date_obj = datetime.now()
     
-    month = date_obj.month
-    if 4 <= month <= 6:
+    if date_obj.month > 3 or (date_obj.month == 3 and date_obj.day >= 30):
         return 6
     
     return 7
 
 
 def write_rows_to_csv(rows, filename=CSV_OUTPUT_FILE):
-    """Writes a list of dictionary rows to a CSV file, overwriting the file."""
     try:
         with open(filename, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=CSV_FIELDNAMES)
@@ -304,7 +302,6 @@ def run_analysis(props_data, date_str=None):
     consistent_map = get_consistent_players(features_to_analyze, 300, 8)
     injuries = load_injury_report()
     
-    # Get the appropriate threshold based on season phase
     threshold = get_season_phase_threshold(date_str)\
 
     all_players_props = defaultdict(list)

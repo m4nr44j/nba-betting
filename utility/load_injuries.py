@@ -11,7 +11,6 @@ INJURY_FILE = "json/injury.json"
 
 
 def write_injury_data_to_json(data: dict, path: str = None):
-    """Write injury data to JSON file"""
     if path is None:
         path = INJURY_FILE
 
@@ -21,7 +20,6 @@ def write_injury_data_to_json(data: dict, path: str = None):
 
 
 def load_injuries_from_api():
-    """Load injury data from RotoWire API"""
     api_endpoint_url = (
         "https://www.rotowire.com/basketball/tables/injury-report.php?team=ALL&pos=ALL"
     )
@@ -78,7 +76,6 @@ def load_injuries_from_api():
 
 
 def load_injuries():
-    """Load injury data from RotoWire API"""
     return load_injuries_from_api()
 
 

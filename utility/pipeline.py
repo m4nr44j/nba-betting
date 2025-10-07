@@ -9,9 +9,7 @@ from datetime import datetime, timedelta
 
 load_dotenv()
 
-# All paths relative to repo root
 
-# Same player positions as in initialize_database.py
 PLAYER_POSITIONS = {
     "Aaron Nesmith": "F",
     "Adem Bona": "C",
@@ -154,7 +152,6 @@ def safe_to_float(value):
 
 
 def process_csv(start_date):
-    """Get new data and process it for pipeline"""
     from utility.get_new_data import get_new_data
 
     csv_columns = [
@@ -241,10 +238,8 @@ def process_csv(start_date):
     yesterday = datetime.now().date() - timedelta(days=1)
     df = get_new_data(start_date=start_date, end_date=yesterday)
     
-    # Check if we got any data
     if df.empty:
         print("No new data available for the specified date range.")
-        # Create an empty CSV file to prevent pipeline errors
         empty_df = pd.DataFrame(columns=csv_columns)
         empty_df.to_csv("csv/modified_data.csv", index=False, na_rep="None")
         return
@@ -252,12 +247,10 @@ def process_csv(start_date):
     csv_file = "csv/all_data_full.csv"
     df.to_csv(csv_file, mode="a", header=False, index=False)
 
-    # Process for database
     df["BPM"] = 0
     df = df.drop(["Rk"], axis=1, errors="ignore")
     df.rename(columns=column_mapping, inplace=True)
 
-    # Numeric columns that may contain empty strings
     numeric_columns = [
         "fg_percent",
         "twop_percent",
@@ -267,7 +260,6 @@ def process_csv(start_date):
         "plus_minus",
     ]
 
-    # Apply the safe_to_float logic
     for column in numeric_columns:
         df[column] = df[column].apply(safe_to_float)
 
@@ -275,14 +267,12 @@ def process_csv(start_date):
 
 
 def reset_tables(cursor):
-    """Reset append tables for pipeline"""
     cursor.execute("DROP TABLE IF EXISTS public.nba_append;")
     cursor.execute("DROP TABLE IF EXISTS public.game_stats_append;")
     cursor.execute("DROP TABLE IF EXISTS public.latest_player_teams;")
 
 
 def create_table(cursor):
-    """Create append table for new data"""
     cursor.execute(
         """
         CREATE TABLE public.nba_append
@@ -330,10 +320,9 @@ def create_table(cursor):
 
 
 def load_data(cursor):
-    """Load processed CSV data into append table"""
     csv_path = "csv/modified_data.csv"
     with open(csv_path, "r") as f:
-        next(f)  # Skip header
+        next(f)
         cursor.copy_from(
             f,
             "nba_append",
@@ -381,7 +370,6 @@ def load_data(cursor):
 
 
 def perform_updates(cursor):
-    """Perform data transformations and merge into main table"""
     updates = [
         "UPDATE public.nba_append SET result = REPLACE(result, ' (OT)', '');",
         "ALTER TABLE public.nba_append ADD COLUMN resultChar CHAR(1), ADD COLUMN score1 INTEGER, ADD COLUMN score2 INTEGER;",
@@ -410,7 +398,6 @@ def perform_updates(cursor):
         "UPDATE public.nba_append SET team = REPLACE(team, 'CHO', 'CHA'), opp = REPLACE(opp, 'CHO', 'CHA');",
         "UPDATE public.nba_append SET team = REPLACE(team, 'PHO', 'PHX'), opp = REPLACE(opp, 'PHO', 'PHX');",
         "UPDATE public.nba_append SET team = REPLACE(team, 'BRK', 'BKN'), opp = REPLACE(opp, 'BRK', 'BKN');",
-        # Insert new data into main table
         """INSERT INTO public.nba
             (player, date, age, team, hoa, opp, result, total_score, gs, mp, fg, fga, fg_percent, twop, twop_percent, tpm, ft, ft_percent, ts_percent, orb, drb, trb, ast, stl, blk, tov, pf, pts, gmsc, bpm, plus_minus, pos, player_additional, month, days_since)
         SELECT 
@@ -423,8 +410,6 @@ def perform_updates(cursor):
 
 
 def update_game_stats_schema(cursor):
-    """Update the main game_stats table schema to match the new append table"""
-    # Add new columns to the main game_stats table if they don't exist
     new_columns = [
         "teammates_tpm JSONB",
         "teammates_pr JSONB", 
@@ -446,12 +431,10 @@ def update_game_stats_schema(cursor):
         try:
             cursor.execute(f"ALTER TABLE public.game_stats ADD COLUMN {column_def};")
         except Exception:
-            # Column already exists, ignore
             pass
 
 
 def create_game_stats_table(cursor):
-    """Create append table for game stats"""
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS game_stats_append
@@ -488,7 +471,6 @@ def create_game_stats_table(cursor):
 
 
 def update_game_stats(cursor):
-    """Update game stats with new data"""
     cursor.execute("SELECT DISTINCT date, team, opp FROM public.nba_append;")
     new_games = cursor.fetchall()
 
@@ -536,7 +518,7 @@ def update_game_stats(cursor):
                 SELECT player, 
                        COALESCE(pts,0), COALESCE(trb,0), COALESCE(ast,0), 
                        COALESCE(tpm,0), COALESCE(blk,0), COALESCE(tov,0), COALESCE(mp,0)
-                FROM public.nba -- Query the main table which should be up-to-date
+                FROM public.nba
                 WHERE date = %s AND team = %s;
             """,
                 (game_date, team_to_query),
@@ -608,7 +590,6 @@ def update_game_stats(cursor):
             rows_to_insert,
         )
 
-        # Insert into main game_stats table, avoiding duplicates
         cursor.execute(
             """
             INSERT INTO public.game_stats
@@ -624,8 +605,6 @@ def update_game_stats(cursor):
 
 
 def create_most_recent_player_team_table(cursor):
-    """Recreate the latest player teams table with updated data"""
-    # Update positions for all players
     for player, pos in PLAYER_POSITIONS.items():
         cursor.execute(
             "UPDATE public.nba SET pos = %s WHERE player = %s;", (pos, player)
@@ -677,7 +656,6 @@ def create_most_recent_player_team_table(cursor):
 
 
 def load_data_csv():
-    """Export final data to CSV"""
     conn = create_engine(os.getenv("SQL_ENGINE"))
     df = pd.read_sql("SELECT * FROM nba;", conn)
     df.to_csv("csv/sql.csv", encoding="utf-8", index=False)
@@ -685,21 +663,17 @@ def load_data_csv():
 
 
 def run_pipeline(start_date):
-    """Run the pipeline to add new data starting from start_date"""
     conn = None
     cursor = None
     
     try:
-        # First, try to get new data and process it
         process_csv(start_date)
         
-        # Check if we got any data by looking at the processed CSV
         import os
         if not os.path.exists("csv/modified_data.csv"):
             print("No new data available for the specified date range.")
             return
             
-        # Check if the CSV has actual data (more than just headers)
         import pandas as pd
         try:
             df_check = pd.read_csv("csv/modified_data.csv")
@@ -719,7 +693,6 @@ def run_pipeline(start_date):
         )
         cursor = conn.cursor()
         
-        # Test database connection first
         cursor.execute("SELECT 1")
         cursor.fetchone()
         reset_tables(cursor)
@@ -742,11 +715,9 @@ def run_pipeline(start_date):
                 conn.rollback()
             except Exception as rollback_error:
                 print(f"Rollback failed: {rollback_error}")
-                # If rollback fails, we need to close and reconnect
                 if cursor:
                     cursor.close()
                 conn.close()
-                # Try to reconnect and reset the connection
                 try:
                     conn = psycopg2.connect(
                         host=os.getenv("DB_HOST"),

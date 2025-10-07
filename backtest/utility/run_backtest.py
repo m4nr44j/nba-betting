@@ -14,8 +14,6 @@ from .backtest_pipeline import run_pipeline
 
 load_dotenv()
 
-# Add parent directories to path so we can import from utility module
-# Add parent directory to path for imports
 sys.path.insert(
     0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 )
@@ -28,7 +26,6 @@ API_KEY = os.getenv("ODDS_KEY")
 BASE_URL = "https://api.the-odds-api.com/v4/historical/sports/basketball_nba/events"
 
 
-# File paths relative to repo root (since we're in backtest/utility/)
 CSV_OUTPUT_FILE = "csv/output.csv"
 TEXT_OUTPUT_FILE = "output.txt"
 INJURY_FILE = "json/injury.json"
@@ -265,9 +262,7 @@ def run(date: str | None = None, get_odds=True):
 
         one_hour_before = first_game_dt - timedelta(hours=1)
 
-        # Convert to Eastern time
         if one_hour_before.tzinfo is None:
-            # Assume UTC if no timezone info
             one_hour_before = pytz.utc.localize(one_hour_before)
 
         eastern = pytz.timezone("US/Eastern")

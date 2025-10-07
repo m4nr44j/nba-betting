@@ -37,7 +37,7 @@ def load_injury_data():
         with open("json/injury.json", "r") as file:
             return json.load(file)
     except FileNotFoundError:
-        print("Injury file not found, assuming no injuries")
+        pass
         return {}
 
 

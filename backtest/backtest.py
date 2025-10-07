@@ -9,7 +9,6 @@ from typing import Any, Dict, List, Tuple
 
 import pandas as pd
 
-# Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from backtest.utility.run_backtest import run as run_backtest_run
@@ -21,7 +20,6 @@ from utility.live_updates import (
     get_nba_game_summary,
 )
 
-# Paths relative to repo root (since we're in backtest/)
 HIST_DIR: str = "backtest/historical"
 CSV_OUTPUT_FILE: str = "csv/output.csv"
 NBA_STATS_FILE: str = "json/nba_stats.json"
@@ -47,7 +45,6 @@ def calculate_day_profit(
     stats_lookup: Dict[str, Dict[str, str]],
     date_iso: str,
 ) -> Tuple[float, int, int]:
-    """Return (net_profit, wins, losses) for the current day."""
 
     if not os.path.exists(CSV_OUTPUT_FILE):
         return 0.0, 0, 0
@@ -86,25 +83,23 @@ def calculate_day_profit(
                 predicted_val < line_val and real_val < line_val
             )
 
-            # Calculate profit for this bet
             if is_win:
                 wins += 1
                 gross_return = (
                     ((-100 / odds_val) + 1) if odds_val < 0 else ((odds_val / 100) + 1)
                 )
                 total_gross += gross_return
-                profit = gross_return - 1  # Net profit (gross return - stake)
+                profit = gross_return - 1
             else:
                 losses += 1
-                profit = -1  # Loss of 1U stake
+                profit = -1
 
-            # Store bet details
             bet_info = {
                 "player": player,
                 "market": market,
                 "line": line_val,
                 "odds": odds_val,
-                "stake": 1,  # Always 1U
+                "stake": 1,
                 "profit": round(profit,2),
             }
             day_bets.append(bet_info)
@@ -116,7 +111,6 @@ def calculate_day_profit(
     results_file = "backtest/picks.json"
     all_results = {}
     
-    # Load existing results if file exists
     if os.path.exists(results_file):
         try:
             with open(results_file, "r", encoding="utf-8") as f:
@@ -124,10 +118,8 @@ def calculate_day_profit(
         except (json.JSONDecodeError, FileNotFoundError):
             all_results = {}
     
-    # Add current day's results (this will append or update the date)
     all_results[date_iso] = day_bets
     
-    # Save updated results (this preserves all previous days)
     os.makedirs(os.path.dirname(results_file), exist_ok=True)
     with open(results_file, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2)
@@ -153,7 +145,6 @@ def run_processor(date_iso):
 
 
 def get_ordered_historical_files():
-    """Get historical files in correct order: 2024 December files first, then 2025 files"""
     historical_files = glob.glob(os.path.join(HIST_DIR, "*_props.json"))
 
     december_2024_files = []
@@ -228,7 +219,7 @@ def main():
 
         print(
             f"Day profit: {day_profit:.2f} units | Running total: {running_total:.2f} units "
-            f"| Day W-L: {day_wins}-{day_losses} | Overall W-L: {total_wins}-{total_losses} | Win Rate: {total_wins / (total_wins + total_losses):.2f}\n"
+            f"| Day W-L: {day_wins}-{day_losses} | Overall W-L: {total_wins}-{total_losses} ({total_wins * 100 / (total_wins + total_losses):.2f}%)\n"
         )
 
     print(

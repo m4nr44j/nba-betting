@@ -16,7 +16,6 @@ from sqlalchemy import create_engine
 from models.soft_predictor import soft
 
 load_dotenv()
-# All paths relative to repo root
 
 
 class LSTMWithAttention(nn.Module):
@@ -43,10 +42,8 @@ class LSTMWithAttention(nn.Module):
         self.relu = nn.ReLU()
 
     def forward(self, x):
-        # LSTM forward pass
         lstm_out, _ = self.lstm(x)  # (batch_size, seq_len, hidden_size)
 
-        # Attention mechanism
         attention_weights = torch.softmax(
             self.attention(lstm_out), dim=1
         )  # (batch_size, seq_len, 1)
@@ -54,7 +51,6 @@ class LSTMWithAttention(nn.Module):
             attention_weights * lstm_out, dim=1
         )  # (batch_size, hidden_size)
 
-        # Final prediction
         out = self.relu(self.fc1(attended_output))
         out = self.dropout(out)
         out = self.fc2(out)
@@ -159,7 +155,6 @@ def get_last_data(player, conn):
 
 
 def get_soft_predictions(team, opp, player_df, player):
-    """Generate soft predictions for teammates and opponents"""
     injuries = {}
     try:
         with open("json/injury.json", "r") as file:
@@ -251,21 +246,17 @@ def get_soft_predictions(team, opp, player_df, player):
 
 
 def create_sequences(X_data, y_data, seq_length=12):
-    """Create sequences for LSTM training with proper target extraction"""
     sequences = []
     targets = []
 
     for i in range(len(X_data) - seq_length + 1):
-        # X sequence: features from i to i+seq_length-1
         sequences.append(X_data[i : i + seq_length])
-        # y target: the actual target value at position i+seq_length-1
         targets.append(y_data[i + seq_length - 1])
 
     return np.array(sequences), np.array(targets)
 
 
 def rolling_lstm_train(player, market, conn, feature_weights=None):
-    """Rolling training approach - use all historical data to predict next game"""
     nba_data = load_nba(player)
     game_stats = load_game_stats(player, conn)
 
@@ -275,10 +266,9 @@ def rolling_lstm_train(player, market, conn, feature_weights=None):
     df = nba_data.merge(game_stats, on=["team", "opp", "date"])
     df = df.sort_values("date").reset_index(drop=True)
 
-    if len(df) < 20:  # Need minimum data
+    if len(df) < 20:
         return None, float("inf")
 
-    # Define features
     numerical_features = [
         "plus_minus",
         "mp",
@@ -311,29 +301,24 @@ def rolling_lstm_train(player, market, conn, feature_weights=None):
         "opponents_turnovers_G",
     ]
 
-    # Apply feature weights if provided
     if feature_weights:
         for feature in numerical_features:
             if feature in df.columns and feature in feature_weights:
                 weight = feature_weights[feature]
                 df[feature] = df[feature] * weight
 
-    # Prepare preprocessor
     transformers = [
         ("num", StandardScaler(), numerical_features),
         ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), ["opp"]),
     ]
     preprocessor = ColumnTransformer(transformers=transformers)
 
-    # Features and target
     features = [col for col in df.columns if col not in ["date", market]]
     X = df[features]
     y = df[market].values
 
-    # Fit preprocessor on all data
     X_processed = preprocessor.fit_transform(X)
 
-    # Rolling walk-forward validation
     predictions = []
     actual_values = []
     min_train_size = 15
@@ -342,40 +327,33 @@ def rolling_lstm_train(player, market, conn, feature_weights=None):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     for i in range(min_train_size + seq_length, len(X_processed)):
-        # Training data up to current point
         X_train = X_processed[:i]
         y_train = y[:i]
 
-        # Test data (next point)
         y_test = y[i]
 
         if len(X_train) < seq_length:
             continue
 
-        # Create sequences for LSTM - NOW WITH PROPER TARGET EXTRACTION
         X_seq, y_seq = create_sequences(X_train, y_train, seq_length)
 
         if len(X_seq) == 0:
             continue
 
-        # Convert to tensors
         X_tensor = torch.FloatTensor(X_seq).to(device)
         y_tensor = torch.FloatTensor(y_seq).to(device)
 
-        # Create model
         input_size = X_processed.shape[1]
         model = LSTMWithAttention(
             input_size, hidden_size=64, num_layers=2, dropout=0.3
         ).to(device)
 
-        # Training setup
         criterion = nn.MSELoss()
         optimizer = optim.Adam(model.parameters(), lr=0.002, weight_decay=1e-5)
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(
             optimizer, "min", patience=10, factor=0.5
         )
 
-        # Training
         model.train()
         best_loss = float("inf")
         patience_counter = 0
@@ -387,7 +365,6 @@ def rolling_lstm_train(player, market, conn, feature_weights=None):
             loss = criterion(outputs.squeeze(), y_tensor)
             loss.backward()
 
-            # Gradient clipping
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
             optimizer.step()
@@ -402,10 +379,8 @@ def rolling_lstm_train(player, market, conn, feature_weights=None):
             if patience_counter >= max_patience:
                 break
 
-        # Prediction
         model.eval()
         with torch.no_grad():
-            # Use last sequence from training data to predict next point
             last_seq = X_train[-seq_length:].reshape(1, seq_length, -1)
             last_seq_tensor = torch.FloatTensor(last_seq).to(device)
             pred = model(last_seq_tensor).cpu().item()
@@ -416,11 +391,9 @@ def rolling_lstm_train(player, market, conn, feature_weights=None):
     if len(predictions) == 0:
         return None, float("inf")
 
-    # Calculate error
     mse = mean_squared_error(actual_values, predictions)
     error = math.sqrt(mse)
 
-    # Train final model on all data for future predictions
     X_seq_final, y_seq_final = create_sequences(X_processed, y, seq_length)
     X_tensor_final = torch.FloatTensor(X_seq_final).to(device)
     y_tensor_final = torch.FloatTensor(y_seq_final).to(device)
@@ -460,10 +433,8 @@ def rolling_lstm_train(player, market, conn, feature_weights=None):
 
 
 def run_lstm(player, team, opp, hoa, market, nestimators, feature_weights=None):
-    """Main function to run LSTM prediction"""
     conn = create_engine(os.getenv("SQL_ENGINE"))
 
-    # Check if player has enough playing time
     avg_mp, avg_plus_minus = get_last_data(player, conn)
     if avg_mp < 10:
         conn.dispose()
@@ -471,7 +442,6 @@ def run_lstm(player, team, opp, hoa, market, nestimators, feature_weights=None):
 
     print(f"      Running {market} (LSTM)")
 
-    # Train model
     model_data, error = rolling_lstm_train(player, market, conn, feature_weights)
 
     if model_data is None:
@@ -480,16 +450,13 @@ def run_lstm(player, team, opp, hoa, market, nestimators, feature_weights=None):
 
     model, preprocessor, seq_length, device = model_data
 
-    # Get soft predictions for next game
     player_df = load_player_positions(conn)
     df = get_soft_predictions(team, opp, player_df, player)
 
-    # Add player-specific data
     df["plus_minus"] = avg_plus_minus
     df["opp"] = opp
     df["mp"] = avg_mp
 
-    # Apply feature weights to prediction data
     if feature_weights:
         numerical_features = [
             "plus_minus",
@@ -528,7 +495,6 @@ def run_lstm(player, team, opp, hoa, market, nestimators, feature_weights=None):
                 weight = feature_weights[feature]
                 df[feature] = df[feature] * weight
 
-    # Prepare prediction data
     expected_columns = [
         "plus_minus",
         "opp",
@@ -565,11 +531,9 @@ def run_lstm(player, team, opp, hoa, market, nestimators, feature_weights=None):
     pred_df = df[expected_columns]
     X_pred = preprocessor.transform(pred_df)
 
-    # Create sequence for prediction (repeat the prediction vector)
     X_pred_seq = np.tile(X_pred, (seq_length, 1)).reshape(1, seq_length, -1)
     X_pred_tensor = torch.FloatTensor(X_pred_seq).to(device)
 
-    # Make prediction
     model.eval()
     with torch.no_grad():
         prediction = model(X_pred_tensor).cpu().item()
@@ -579,7 +543,6 @@ def run_lstm(player, team, opp, hoa, market, nestimators, feature_weights=None):
 
 
 if __name__ == "__main__":
-    # Test the model
     conn = create_engine(os.getenv("SQL_ENGINE"))
 
     player_name = "Donovan Mitchell"

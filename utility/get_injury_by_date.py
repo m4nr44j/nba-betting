@@ -59,7 +59,6 @@ SUFFIXES = {"Jr.", "Jr", "Sr.", "Sr", "II", "III", "IV", "V"}
 
 
 def normalize_player_name(name: str) -> str:
-    """Normalize player names from 'Last, First' to 'First Last' format"""
     try:
         last_part, first_part = [s.strip() for s in name.split(",", 1)]
     except ValueError:
@@ -78,7 +77,6 @@ def normalize_player_name(name: str) -> str:
 
 
 def normalize_injury_status(raw_status: str) -> str | None:
-    """Normalize injury status to standard format"""
     if raw_status == "Questionable":
         return "Game Time Decision"
     if raw_status in {"Out", "Doubtful"}:
@@ -87,7 +85,6 @@ def normalize_injury_status(raw_status: str) -> str | None:
 
 
 def clear_pdf_folder(folder="pdf"):
-    """Clear and recreate the PDF folder"""
     if os.path.isdir(folder):
         shutil.rmtree(folder)
     os.makedirs(folder, exist_ok=True)
@@ -98,7 +95,6 @@ def download_injury_report_pdf(date_str: str, time_str: str) -> str:
     filename = f"Injury-Report_{date_str}.pdf"
     filepath = os.path.join("pdf", filename)
 
-    # Headers to avoid 403 Forbidden
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
         "Referer": "https://www.nba.com/",
@@ -120,7 +116,6 @@ def download_injury_report_pdf(date_str: str, time_str: str) -> str:
 
 
 def write_injury_data_to_json(data: dict, path: str | None = None):
-    """Write injury data to JSON file"""
     if path is None:
         path = INJURY_FILE
 
@@ -148,15 +143,12 @@ def parse_injury_report_pdf(pdf_path: str) -> dict:
             while i < len(lines):
                 line = lines[i]
 
-                # Check if this line is a team name
                 if line in TEAM_ABBR.values() or line in TEAM_ABBR.keys():
                     current_team = TEAM_ABBR.get(line)
                     i += 1
                     continue
 
-                # If we have a team and this looks like a player name, check the next few lines
                 if current_team and i + 2 < len(lines):
-                    # Skip header lines
                     if line in [
                         "Player Name",
                         "Current Status",
@@ -169,7 +161,6 @@ def parse_injury_report_pdf(pdf_path: str) -> dict:
                         i += 1
                         continue
 
-                    # Check if this might be a player name (contains comma or has proper format)
                     if ("," in line and any(c.isalpha() for c in line)) or (
                         line.replace(" ", "").replace("'", "").isalnum()
                         and len(line) > 3
@@ -178,7 +169,6 @@ def parse_injury_report_pdf(pdf_path: str) -> dict:
                         potential_status = lines[i + 1] if i + 1 < len(lines) else ""
                         potential_reason = lines[i + 2] if i + 2 < len(lines) else ""
 
-                        # Check if the next line looks like a status
                         if potential_status in [
                             "Out",
                             "Questionable",
@@ -204,7 +194,7 @@ def parse_injury_report_pdf(pdf_path: str) -> dict:
                                     }
                                 )
 
-                            i += 3  # Skip player, status, and reason lines
+                            i += 3
                             continue
 
                 i += 1
@@ -219,7 +209,6 @@ def parse_injury_report_pdf(pdf_path: str) -> dict:
 
 
 def fetch_and_process_injury_report(date_str: str, time_str: str):
-    """Fetch and process injury report for a specific date from PDF"""
     clear_pdf_folder("pdf")
     pdf_path = download_injury_report_pdf(date_str, time_str)
     injury_data = parse_injury_report_pdf(pdf_path)
@@ -232,7 +221,6 @@ norm_status = normalize_injury_status
 
 
 def get(date_str, time_str):
-    """Fetch and process injury report for the given date string (YYYY-MM-DD format)"""
     return fetch_and_process_injury_report(date_str, time_str)
 
 

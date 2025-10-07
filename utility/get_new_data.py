@@ -227,7 +227,6 @@ def get_new_data(start_date: date = None, end_date: date = None):
             print(f"Chrome driver initialization failed: {e}")
             return pd.DataFrame()
 
-        # Set a shorter timeout for web scraping
         driver.set_page_load_timeout(30)
         
         try:
@@ -286,7 +285,6 @@ def get_new_data(start_date: date = None, end_date: date = None):
             print("No player stats data found")
             return pd.DataFrame()
 
-        # Continue with data processing...
         df = player_stats_df.copy()
         percentage_cols = ["FG%", "3P%", "FT%"]
         numeric_cols = [
