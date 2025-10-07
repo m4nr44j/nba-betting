@@ -98,7 +98,7 @@ def get_season_phase_threshold(date_str=None):
             print(f"Warning: Invalid date format '{date_str}', using current date")
             date_obj = datetime.now()
     
-    if date_obj.month > 3 or (date_obj.month == 3 and date_obj.day >= 30):
+    if (date_obj.month == 3 and date_obj.day >= 30) or date_obj.month in [4, 5, 6]:
         return 6
     
     return 7

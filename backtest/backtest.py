@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from backtest.utility.run_backtest import run as run_backtest_run
 from processor import CSV_FIELDNAMES
 from utility.initialize_database import create_database
-from utility.live_updates import (
+from utility.nba_stats import (
     extract_player_stats,
     get_nba_game_event_ids,
     get_nba_game_summary,

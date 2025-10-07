@@ -72,15 +72,11 @@ Before you begin, ensure you have the following installed:
     # API Keys
     ODDS_KEY=your_the_odds_api_key # Get your API key from [https://the-odds-api.com/](https://the-odds-api.com/)
 
-    # Optional: Google API & Sheets Integration
-    GOOGLE_API="path/to/your/google_creds.json" # e.g., "json/nba_creds.json" (leave blank or comment out if not using)
-    SHEET_ID=your_google_sheet_id             # Google Sheet ID (leave blank or comment out if not using)
     ```
 
     * Replace `your_db_username`, `your_db_name`, `your_db_password` with your actual PostgreSQL details.
     * Adjust `DB_HOST` and `DB_PORT` if your setup differs from the default.
     * Get your API key from [The Odds API](https://the-odds-api.com/) and insert it (will need paid key to get backtesting odds beyond included dates).
-    * Fill in `GOOGLE_API` path and `SHEET_ID` only if you intend to use the Google Sheets integration.
 
 ## Database Initialization
 
@@ -97,7 +93,7 @@ This script should connect to the database specified in your .env file and perfo
 With the setup complete, you can now run the main script to find player prop opportunities.
 
 ### Timing:
-Run the script once per day. It's neccesary to run it >30 minutes before the first scheduled NBA game of that day. This will allow enough time to get odds and injury data to run the models. The script will schedule a job to run the props for that game 30 minutes before the game starts (keep your computer open and the script running)
+Run the script once per day. It's necessary to run it >30 minutes before the first scheduled NBA game of that day. This will allow enough time to get odds and injury data to run the models. The script will process all games for that day and generate predictions immediately.
 
 Execute the main script from your activated virtual environment:
 
@@ -106,16 +102,17 @@ python run.py
 ```
 
 ### Output
-The script is designed to write its findings, in real time, to a file named output.txt located in the project directory.
+The script generates two main output files:
 
-While run.py is running, check the contents of output.txt for the results before each game.
+1. **`output.txt`** - Easy-to-read betting recommendations
+2. **`csv/output.csv`** - Detailed CSV data with all predictions and odds
 
 #### Example Output (output.txt)
 
 ```
-🏀 CLE vs NYK: Donovan Mitchell Over 4.5 REB
-🏀 IND vs CHA: Pascal Siakam Over 2.5 AST
-                 ...
+MIN vs PHI: Donte DiVincenzo Over 15.5 P+A (102 FD)
+NOP vs LAL: Kelly Olynyk Over 18.5 P+R+A (-130 FD)
+                        ...
 ```
 
 ## Backtesting
@@ -131,6 +128,7 @@ python -m backtest.backtest
 ### Backtest Requirements
 
 - Historical odds data files in `backtest/historical/` directory (format: `MM_DD_props.json`)
+- Historical data includes November 2024 through June 2025 NBA season
 - Properly configured database connection (same as main application)
 - All main project dependencies installed
 
@@ -138,6 +136,7 @@ python -m backtest.backtest
 
 The backtest will provide:
 - Daily profit/loss analysis
-- Win/loss record tracking
+- Win/loss record tracking  
 - Running total across all tested days
 - Individual bet performance metrics
+- Results saved to `backtest/picks.json`
