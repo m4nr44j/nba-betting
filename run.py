@@ -1,13 +1,13 @@
 import json
 import os
 import subprocess
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import pandas as pd
 import requests
 from dotenv import load_dotenv
 
-from utility.load_injuries import load_injuries
+from utility.get_injury_by_date import get as get_injury_by_date
 from utility.pipeline import run_pipeline
 from utility.process_props import process_props
 
@@ -175,9 +175,35 @@ def data_update():
         print("Data is up to date")
 
 
+def load_injury_data(games, today_str):
+    if games:
+        first_game_time = games[0][1]
+        first_game_dt = datetime.fromisoformat(first_game_time.replace("Z", "+00:00"))
+        one_hour_before = first_game_dt - timedelta(hours=1)
+        
+        if one_hour_before.tzinfo is None:
+            one_hour_before = one_hour_before.replace(tzinfo=timezone.utc)
+        
+        eastern = timezone(timedelta(hours=-5))
+        one_hour_before_et = one_hour_before.astimezone(eastern)
+        
+        hour_24 = one_hour_before_et.hour
+        if hour_24 == 0:
+            time_str = "12AM"
+        elif hour_24 < 12:
+            time_str = f"{hour_24:02d}AM"
+        elif hour_24 == 12:
+            time_str = "12PM"
+        else:
+            time_str = f"{hour_24 - 12:02d}PM"
+    else:
+        time_str = "12PM"
+    
+    get_injury_by_date(today_str, time_str)
+
+
 def run():
     data_update()
-    load_injuries()
     
     today = datetime.now()
     tomorrow = today + timedelta(days=1)
@@ -185,6 +211,9 @@ def run():
 
     commence_time_to = tomorrow_at_5am.isoformat() + "Z"
     games = game_ids(commence_time_to)
+    today_str = today.strftime("%Y-%m-%d")
+    
+    load_injury_data(games, today_str)
 
     ids = [game_id for game_id, commence_time in games]
     props = (collect_all_odds(ids))
@@ -193,7 +222,6 @@ def run():
     with open("json/props.json", "w") as f:
         json.dump(process_props(props), f, indent=4)
 
-    today_str = today.strftime("%Y-%m-%d")
     cmd = [
         "python",
         "processor.py",
