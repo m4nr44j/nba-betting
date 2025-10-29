@@ -14,12 +14,16 @@ from tqdm import tqdm
 
 from utility.consistency_test import get_consistency
 
-MODEL_RECENCY = True
+MODEL_TYPE = "SOFT"
 
-if MODEL_RECENCY:
+if MODEL_TYPE == "SOFT":
     from models.soft_predictor import soft
-else:
+elif MODEL_TYPE == "XGB":
     from models.model_xgb import run_xgb
+elif MODEL_TYPE == "RECENCY":
+    from models.model_recency import run_recency
+elif MODEL_TYPE == "LSTM":
+    from models.model_lstm import run_lstm
 
 CSV_OUTPUT_FILE = "csv/output.csv"
 TEXT_OUTPUT_FILE = "output.txt"
@@ -69,11 +73,13 @@ MARKET_DISPLAY_MAPPING = {
     "a_r": "A+R",
 }
 BANNED = [
-    "Aaron Wiggins",
-    "Isaiah Joe",
-    "Nikola Vučević",
     "Brook Lopez",
-    "Kyle Kuzma"
+    "Kyle Kuzma",
+    "Jalen Duren",
+    "Christian Braun",
+    "Tyrese Haliburton",
+    "Russell Westbrook",
+    "Nick Richards"
 ]
 CSV_FIELDNAMES = [
     "Player",
@@ -253,12 +259,17 @@ def process_player_entry(
             else:
                 error = 6
 
-            if MODEL_RECENCY:
-                # predicted_stat, error = run_recency(player, team, opponent, home_or_away, market, 20, FEATURE_WEIGHTS)
+            if MODEL_TYPE == "SOFT":
                 predicted_stat = soft(player, opponent, market, home_or_away)
-            else:
+            elif MODEL_TYPE == "XGB":
                 predicted_stat, error = run_xgb(
                     player, team, opponent, home_or_away, market, 20
+                )
+            elif MODEL_TYPE == "RECENCY":
+                predicted_stat, error = run_recency(player, team, opponent, home_or_away, market, 20, FEATURE_WEIGHTS)
+            elif MODEL_TYPE == "LSTM":
+                predicted_stat, error = run_lstm(
+                    player, team, opponent, home_or_away, market, 20, FEATURE_WEIGHTS
                 )
 
             is_good_over_bet = predicted_stat is not None and (
@@ -302,7 +313,7 @@ def run_analysis(props_data, date_str=None):
     consistent_map = get_consistent_players(features_to_analyze, 300, 8)
     injuries = load_injury_report()
     
-    threshold = get_season_phase_threshold(date_str)\
+    threshold = get_season_phase_threshold(date_str)
 
     all_players_props = defaultdict(list)
     for bookmaker in transformed_odds.values():
@@ -335,7 +346,6 @@ def run_analysis(props_data, date_str=None):
 
     pbar.close()
     conn.dispose()
-
     if all_best_rows:
         sorted_rows = sorted(all_best_rows, key=lambda x: x["Rank"])
         top_15_rows = sorted_rows[:20]

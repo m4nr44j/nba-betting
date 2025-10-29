@@ -150,7 +150,6 @@ def safe_to_float(value):
     except ValueError:
         return None
 
-
 def process_csv(start_date):
     from utility.get_new_data import get_new_data
 
@@ -234,7 +233,6 @@ def process_csv(start_date):
 
     column_mapping = dict(zip(csv_columns, sql_columns))
 
-    # Get new data from start_date to yesterday
     yesterday = datetime.now().date() - timedelta(days=1)
     df = get_new_data(start_date=start_date, end_date=yesterday)
     
@@ -390,7 +388,24 @@ def perform_updates(cursor):
         "ALTER TABLE public.nba_append ADD COLUMN month INTEGER;",
         "UPDATE public.nba_append SET month = EXTRACT(MONTH FROM date);",
         "ALTER TABLE public.nba_append ADD COLUMN days_since INTEGER;",
-        "UPDATE public.nba_append SET days_since = date - DATE '2023-10-24';",
+        # Calculate days_since as game days (unique game dates), not calendar days
+        # This accounts for off-season gaps so June->October is treated as continuation
+        """WITH all_game_dates AS (
+            SELECT DISTINCT date FROM public.nba WHERE date >= DATE '2024-02-22'
+            UNION
+            SELECT DISTINCT date FROM public.nba_append WHERE date >= DATE '2024-02-22'
+        ),
+        game_date_ranks AS (
+            SELECT date,
+                   DENSE_RANK() OVER (ORDER BY date) - 1 AS game_day
+            FROM all_game_dates
+        )
+        UPDATE public.nba_append
+        SET days_since = COALESCE(
+            (SELECT game_day FROM game_date_ranks WHERE game_date_ranks.date = public.nba_append.date),
+            date - DATE '2024-02-22'
+        )
+        WHERE date >= DATE '2024-02-22';""",
         "ALTER TABLE public.nba_append DROP COLUMN threepa, DROP COLUMN threep_percent, DROP COLUMN fta, DROP COLUMN twopa;",
         "ALTER TABLE public.nba_append RENAME COLUMN resultChar TO result;",
         "UPDATE public.nba_append SET result = CASE WHEN result = 'L' THEN 0 WHEN result = 'W' THEN 1 END;",
@@ -593,7 +608,14 @@ def update_game_stats(cursor):
         cursor.execute(
             """
             INSERT INTO public.game_stats
-            SELECT * FROM public.game_stats_append gsa
+            (date, team, opp, teammates_points, teammates_rebounds, teammates_assists,
+             teammates_tpm, teammates_pr, teammates_pa, teammates_ar, teammates_pra, teammates_blocks, teammates_turnovers, teammates_minutes,
+             opponents_points, opponents_rebounds, opponents_assists, opponents_tpm, opponents_pr, opponents_pa, opponents_ar, opponents_pra, opponents_blocks, opponents_turnovers, opponents_minutes)
+            SELECT 
+                date, team, opp, teammates_points, teammates_rebounds, teammates_assists,
+                teammates_tpm, teammates_pr, teammates_pa, teammates_ar, teammates_pra, teammates_blocks, teammates_turnovers, teammates_minutes,
+                opponents_points, opponents_rebounds, opponents_assists, opponents_tpm, opponents_pr, opponents_pa, opponents_ar, opponents_pra, opponents_blocks, opponents_turnovers, opponents_minutes
+            FROM public.game_stats_append gsa
             WHERE NOT EXISTS (
                 SELECT 1 FROM public.game_stats gs 
                 WHERE gs.date = gsa.date 
@@ -605,6 +627,8 @@ def update_game_stats(cursor):
 
 
 def create_most_recent_player_team_table(cursor):
+    cursor.execute("DROP TABLE IF EXISTS public.latest_player_teams;")
+    
     for player, pos in PLAYER_POSITIONS.items():
         cursor.execute(
             "UPDATE public.nba SET pos = %s WHERE player = %s;", (pos, player)
@@ -612,6 +636,7 @@ def create_most_recent_player_team_table(cursor):
 
     cursor.execute(
         """
+        CREATE TABLE public.latest_player_teams AS
         WITH RankedPlayerTeams AS (
             SELECT
                 player, team, pos, date, pts, trb, ast, tpm, stl, blk, tov, p_r, p_a, a_r, p_r_a,
@@ -647,7 +672,6 @@ def create_most_recent_player_team_table(cursor):
         SELECT
             r.player, r.team, r.pos, a.avg_pts, a.avg_trb, a.avg_ast, a.avg_tpm,
             a.avg_stl, a.avg_blk, a.avg_tov, a.avg_p_r, a.avg_p_a, a.avg_a_r, a.avg_p_r_a
-        INTO public.latest_player_teams
         FROM RankedPlayerTeams r
         JOIN Averages a ON r.player = a.player
         WHERE r.rn = 1;

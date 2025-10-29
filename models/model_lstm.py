@@ -32,24 +32,22 @@ class LSTMWithAttention(nn.Module):
             dropout=dropout if num_layers > 1 else 0,
         )
 
-        # Attention mechanism
         self.attention = nn.Linear(hidden_size, 1)
 
-        # Final prediction layers
         self.fc1 = nn.Linear(hidden_size, 32)
         self.dropout = nn.Dropout(dropout)
         self.fc2 = nn.Linear(32, 1)
         self.relu = nn.ReLU()
 
     def forward(self, x):
-        lstm_out, _ = self.lstm(x)  # (batch_size, seq_len, hidden_size)
+        lstm_out, _ = self.lstm(x)
 
         attention_weights = torch.softmax(
             self.attention(lstm_out), dim=1
-        )  # (batch_size, seq_len, 1)
+        )
         attended_output = torch.sum(
             attention_weights * lstm_out, dim=1
-        )  # (batch_size, hidden_size)
+        )
 
         out = self.relu(self.fc1(attended_output))
         out = self.dropout(out)

@@ -133,7 +133,7 @@ def predict_player_stat(player, opponent, feature, hoa):
 
 
 def main():
-    print(soft("Jrue Holiday", "ORL", "trb", 0))
+    print(soft("Bennedict Mathurin", "MEM", "pts", 1))
 
 
 if __name__ == "__main__":

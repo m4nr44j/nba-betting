@@ -4,6 +4,7 @@ import subprocess
 from datetime import datetime, timedelta, timezone
 
 import pandas as pd
+import pytz
 import requests
 from dotenv import load_dotenv
 
@@ -12,6 +13,13 @@ from utility.pipeline import run_pipeline
 from utility.process_props import process_props
 
 load_dotenv()
+
+USE_ONE_HOUR_BEFORE_INJURY = False
+
+EASTERN_TZ = pytz.timezone('US/Eastern')
+
+def get_eastern_now():
+    return datetime.now(EASTERN_TZ)
 
 API_KEY = os.getenv("ODDS_KEY")
 BASE_URL = "https://api.the-odds-api.com/v4/sports/basketball_nba/events"
@@ -116,6 +124,15 @@ def collect_all_odds(game_ids):
         "player_points_assists_alternate",
         "player_rebounds_assists_alternate",
     ]
+    # market_types = [
+    #     "player_points",
+    #     "player_rebounds",
+    #     "player_assists",
+    #     "player_points_rebounds_assists",
+    #     "player_points_rebounds",
+    #     "player_points_assists",
+    #     "player_rebounds_assists",
+    # ]
     all_bookmakers_data = {}
 
     for game_id in game_ids:
@@ -145,7 +162,8 @@ def data_update():
             return
             
         next_day_to_process: datetime.date = max_date_in_csv + timedelta(days=1)
-        yesterday: datetime.date = datetime.now().date() - timedelta(days=1)
+        eastern_now = get_eastern_now()
+        yesterday: datetime.date = eastern_now.date() - timedelta(days=1)
     except FileNotFoundError:
         print(f"Error: {SQL_DATA_FILE} not found. Please run database initialization first.")
         return
@@ -156,16 +174,15 @@ def data_update():
         print(f"Error reading {SQL_DATA_FILE}: {e}")
         return
     
-    current_date = datetime.now().date()
+    eastern_now = get_eastern_now()
+    current_date = eastern_now.date()
     
-    if current_date.month >= 10:  # October onwards - new season
-        current_season_start = datetime(current_date.year, 10, 21).date()  # NBA season start
-    else:  # January-September - same season as previous year
+    if current_date.month >= 10: 
+        current_season_start = datetime(current_date.year, 10, 21).date()  
+    else:  
         current_season_start = datetime(current_date.year - 1, 10, 21).date()
     
     if max_date_in_csv < current_season_start and current_date >= current_season_start:
-        print(f"Season gap detected. Last data: {max_date_in_csv}, Season start: {current_season_start}")
-        print("Jumping to current season start for data update")
         next_day_to_process = current_season_start
     
     if next_day_to_process <= yesterday:
@@ -175,8 +192,9 @@ def data_update():
         print("Data is up to date")
 
 
-def load_injury_data(games, today_str):
-    if games:
+def load_injury_data(games, today_str, use_one_hour_before=True):
+
+    if games and use_one_hour_before:
         first_game_time = games[0][1]
         first_game_dt = datetime.fromisoformat(first_game_time.replace("Z", "+00:00"))
         one_hour_before = first_game_dt - timedelta(hours=1)
@@ -184,8 +202,7 @@ def load_injury_data(games, today_str):
         if one_hour_before.tzinfo is None:
             one_hour_before = one_hour_before.replace(tzinfo=timezone.utc)
         
-        eastern = timezone(timedelta(hours=-5))
-        one_hour_before_et = one_hour_before.astimezone(eastern)
+        one_hour_before_et = one_hour_before.astimezone(EASTERN_TZ)
         
         hour_24 = one_hour_before_et.hour
         if hour_24 == 0:
@@ -197,27 +214,31 @@ def load_injury_data(games, today_str):
         else:
             time_str = f"{hour_24 - 12:02d}PM"
     else:
-        time_str = "12PM"
+        time_str = "06PM"
     
     get_injury_by_date(today_str, time_str)
 
 
-def run():
+def run(use_one_hour_before=True):
     data_update()
     
-    today = datetime.now()
-    tomorrow = today + timedelta(days=1)
+    eastern_now = get_eastern_now()
+    today_eastern = eastern_now.replace(tzinfo=None)
+    tomorrow = today_eastern + timedelta(days=1)
     tomorrow_at_5am = tomorrow.replace(hour=5, minute=0, second=0, microsecond=0)
 
     commence_time_to = tomorrow_at_5am.isoformat() + "Z"
     games = game_ids(commence_time_to)
-    today_str = today.strftime("%Y-%m-%d")
+    today_str = today_eastern.strftime("%Y-%m-%d")
     
-    load_injury_data(games, today_str)
+    load_injury_data(games, today_str, use_one_hour_before)
 
     ids = [game_id for game_id, commence_time in games]
     props = (collect_all_odds(ids))
-    with open(f"backtest/historical2/{today.strftime("%m_%d")}_props.json", "w") as f:
+    
+    os.makedirs("backtest/historical_25-26", exist_ok=True)
+    
+    with open(f"backtest/historical_25-26/{today_eastern.strftime("%m_%d")}_props.json", "w") as f:
         json.dump(process_props(props), f, indent=4)
     with open("json/props.json", "w") as f:
         json.dump(process_props(props), f, indent=4)
@@ -232,4 +253,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    run(use_one_hour_before=USE_ONE_HOUR_BEFORE_INJURY)

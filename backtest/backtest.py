@@ -134,6 +134,10 @@ def seed_output_csv():
         writer.writeheader()
 
 
+def calculate_injury_time_for_date(date_iso):
+    return "06PM"
+
+
 def run_processor(date_iso):
     cmd = [
         "python",
@@ -205,7 +209,8 @@ def main():
 
         seed_output_csv()
 
-        run_backtest_run(date_iso, get_odds=False)
+        injury_time = calculate_injury_time_for_date(date_iso)
+        run_backtest_run(date_iso, get_odds=False, injury_time=injury_time)
 
         run_processor(date_iso)
 

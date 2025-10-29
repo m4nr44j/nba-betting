@@ -236,7 +236,7 @@ def data_update():
     run_pipeline()
 
 
-def run(date: str | None = None, get_odds=True):
+def run(date: str | None = None, get_odds=True, injury_time: str | None = None):
 
     global DATE
 
@@ -289,7 +289,7 @@ def run(date: str | None = None, get_odds=True):
         with open(hist_path, "w") as f:
             json.dump(all_bookmakers_data, f, indent=4)
     else:
-        time_str = "12PM"
+        time_str = injury_time if injury_time else "12PM"
         get(ymd_str, time_str)
 
     props(mm_dd_str)

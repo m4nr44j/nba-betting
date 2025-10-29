@@ -35,7 +35,6 @@ def extract_player_stats(summary_data):
                     "displayName", "Unknown Player"
                 )
 
-                player_name = player_name.replace("Jimmy Butler", "Jimmy Butler III")
                 player_name = player_name.replace("Ronald Holland II", "Ron Holland")
                 player_name = player_name.replace(
                     "Bub Carrington", "Carlton Carrington"

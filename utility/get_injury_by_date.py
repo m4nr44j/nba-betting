@@ -111,7 +111,20 @@ def download_injury_report_pdf(date_str: str, time_str: str) -> str:
         return filepath
 
     except requests.exceptions.RequestException as e:
-        print(f"Error downloading {url}: {e}")
+        
+        if time_str == "06PM":
+            fallback_url = f"https://ak-static.cms.nba.com/referee/injury/Injury-Report_{date_str}_12PM.pdf"
+            try:
+                response = requests.get(fallback_url, headers=headers, timeout=10)
+                response.raise_for_status()
+
+                with open(filepath, "wb") as f:
+                    f.write(response.content)
+                return filepath
+
+            except requests.exceptions.RequestException as fallback_e:
+                return ""
+        
         return ""
 
 
@@ -225,4 +238,4 @@ def get(date_str, time_str):
 
 
 if __name__ == "__main__":
-    get("2025-01-28", "09PM")
+    get("2025-10-27", "06PM")

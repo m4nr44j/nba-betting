@@ -374,7 +374,20 @@ def perform_updates(cursor):
         "ALTER TABLE public.nba ADD COLUMN month INTEGER;",
         "UPDATE public.nba SET month = EXTRACT(MONTH FROM date);",
         "ALTER TABLE public.nba ADD COLUMN days_since INTEGER;",
-        "UPDATE public.nba SET days_since = date - DATE '2023-10-24';",
+        # Calculate days_since as game days (unique game dates), not calendar days
+        # This accounts for off-season gaps so June->October is treated as continuation
+        """WITH game_date_ranks AS (
+            SELECT DISTINCT date,
+                   DENSE_RANK() OVER (ORDER BY date) - 1 AS game_day
+            FROM public.nba
+            WHERE date >= DATE '2024-02-22'
+        )
+        UPDATE public.nba
+        SET days_since = COALESCE(
+            (SELECT game_day FROM game_date_ranks WHERE game_date_ranks.date = public.nba.date),
+            date - DATE '2024-02-22'
+        )
+        WHERE date >= DATE '2024-02-22';""",
         "ALTER TABLE public.nba DROP COLUMN threepa, DROP COLUMN threep_percent, DROP COLUMN fta, DROP COLUMN twopa;",
         "ALTER TABLE public.nba RENAME COLUMN resultChar TO result;",
         "UPDATE public.nba SET result = CASE WHEN result = 'L' THEN 0 WHEN result = 'W' THEN 1 END;",

@@ -100,7 +100,6 @@ def process_csv():
     df = df.drop(["Rk"], axis=1)
     df.rename(columns=column_mapping, inplace=True)
 
-    # Numeric columns that may contain empty strings
     numeric_columns = [
         "fg_percent",
         "twop_percent",
@@ -242,14 +241,31 @@ def perform_updates(cursor):
         "ALTER TABLE public.nba_append ADD COLUMN month INTEGER;",
         "UPDATE public.nba_append SET month = EXTRACT(MONTH FROM date);",
         "ALTER TABLE public.nba_append ADD COLUMN days_since INTEGER;",
-        "UPDATE public.nba_append SET days_since = date - DATE '2023-10-24';",
+        # Calculate days_since as game days (unique game dates), not calendar days
+        # This accounts for off-season gaps so June->October is treated as continuation
+        """WITH all_game_dates AS (
+            SELECT DISTINCT date FROM public.nba WHERE date >= DATE '2024-02-22'
+            UNION
+            SELECT DISTINCT date FROM public.nba_append WHERE date >= DATE '2024-02-22'
+        ),
+        game_date_ranks AS (
+            SELECT date,
+                   DENSE_RANK() OVER (ORDER BY date) - 1 AS game_day
+            FROM all_game_dates
+        )
+        UPDATE public.nba_append
+        SET days_since = COALESCE(
+            (SELECT game_day FROM game_date_ranks WHERE game_date_ranks.date = public.nba_append.date),
+            date - DATE '2024-02-22'
+        )
+        WHERE date >= DATE '2024-02-22';""",
         "ALTER TABLE public.nba_append DROP COLUMN threepa, DROP COLUMN threep_percent, DROP COLUMN fta, DROP COLUMN twopa;",
         "ALTER TABLE public.nba_append RENAME COLUMN resultChar TO result;",
         "UPDATE public.nba_append SET result = CASE WHEN result = 'L' THEN 0 WHEN result = 'W' THEN 1 END;",
-        "ALTER TABLE public.nba_append ALTER COLUMN result TYPE INTEGER USING CAST(result AS INTEGER);"
-        "UPDATE public.nba_append SET team = REPLACE(team, 'CHO', 'CHA'), opp = REPLACE(opp, 'CHO', 'CHA');"
-        "UPDATE public.nba_append SET team = REPLACE(team, 'PHO', 'PHX'), opp = REPLACE(opp, 'PHO', 'PHX');"
-        "UPDATE public.nba_append SET team = REPLACE(team, 'BRK', 'BKN'), opp = REPLACE(opp, 'BRK', 'BKN');"
+        "ALTER TABLE public.nba_append ALTER COLUMN result TYPE INTEGER USING CAST(result AS INTEGER);",
+        "UPDATE public.nba_append SET team = REPLACE(team, 'CHO', 'CHA'), opp = REPLACE(opp, 'CHO', 'CHA');",
+        "UPDATE public.nba_append SET team = REPLACE(team, 'PHO', 'PHX'), opp = REPLACE(opp, 'PHO', 'PHX');",
+        "UPDATE public.nba_append SET team = REPLACE(team, 'BRK', 'BKN'), opp = REPLACE(opp, 'BRK', 'BKN');",
         """INSERT INTO public.nba
             (player, date, age, team, hoa, opp, result, total_score, gs, mp, fg, fga, fg_percent, twop, twop_percent, tpm, ft, ft_percent, ts_percent, orb, drb, trb, ast, stl, blk, tov, pf, pts, gmsc, bpm, plus_minus, pos, player_additional, month, days_since)
         SELECT 
@@ -518,7 +534,6 @@ def create_most_recent_player_team_table(cursor, positions):
     cursor.execute(sql_query)
 
 
-# Function to connect to the PostgreSQL database and load data
 def load_data_csv():
     conn = create_engine(os.getenv("SQL_ENGINE"))
     df = pd.read_sql("SELECT * FROM nba;", conn)
