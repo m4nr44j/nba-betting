@@ -239,7 +239,7 @@ def run(use_one_hour_before=True):
     os.makedirs("backtest/historical_25-26", exist_ok=True)
     
     with open(f"backtest/historical_25-26/{today_eastern.strftime("%m_%d")}_props.json", "w") as f:
-        json.dump(process_props(props), f, indent=4)
+        json.dump((props), f, indent=4)
     with open("json/props.json", "w") as f:
         json.dump(process_props(props), f, indent=4)
 

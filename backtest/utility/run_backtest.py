@@ -183,7 +183,7 @@ def collect_all_odds(game_ids, date_for_url: str):
 def data_update():
 
     try:
-        df_full = pd.read_csv("csv/all_data_full.csv")
+        df_full = pd.read_csv("csv/all_data_full.csv", low_memory=False)
     except Exception as e:
         print(f"Error reading all_data_full.csv: {e}")
         return
@@ -236,7 +236,7 @@ def data_update():
     run_pipeline()
 
 
-def run(date: str | None = None, get_odds=True, injury_time: str | None = None):
+def run(date: str | None = None, get_odds=True, injury_time: str | None = None, hist_dir: str | None = None):
 
     global DATE
 
@@ -292,7 +292,11 @@ def run(date: str | None = None, get_odds=True, injury_time: str | None = None):
         time_str = injury_time if injury_time else "12PM"
         get(ymd_str, time_str)
 
-    props(mm_dd_str)
+    # Use provided hist_dir or default to backtest/historical
+    if hist_dir is None:
+        hist_dir = "backtest/historical"
+    
+    props(mm_dd_str, hist_dir=hist_dir)
 
 
 if __name__ == "__main__":

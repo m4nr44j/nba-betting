@@ -95,10 +95,17 @@ def process_csv():
     ]
 
     column_mapping = dict(zip(csv_columns, sql_columns))
+
+    # 1) read
     df = pd.read_csv("csv/new_data.csv", keep_default_na=False, low_memory=False)
+
+    # 2) your old bits
     df["BPM"] = 0
-    df = df.drop(["Rk"], axis=1)
+    df = df.drop(["Rk"], axis=1, errors="ignore")
     df.rename(columns=column_mapping, inplace=True)
+
+    # 3) NEW: normalize empties exactly like in the other file
+    df = df.replace({"": pd.NA, " ": pd.NA})
 
     numeric_columns = [
         "fg_percent",
@@ -121,8 +128,8 @@ def process_csv():
     for column in numeric_columns:
         df[column] = df[column].apply(safe_to_float)
 
+    # 4) write actual NA as the literal "None"
     df.to_csv("csv/modified_data.csv", index=False, na_rep="None")
-
 
 def create_table(cursor):
     cursor.execute(

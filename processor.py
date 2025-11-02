@@ -79,7 +79,8 @@ BANNED = [
     "Christian Braun",
     "Tyrese Haliburton",
     "Russell Westbrook",
-    "Nick Richards"
+    "Nick Richards",
+    "Anthony Edwards"
 ]
 CSV_FIELDNAMES = [
     "Player",
@@ -105,7 +106,7 @@ def get_season_phase_threshold(date_str=None):
             date_obj = datetime.now()
     
     if (date_obj.month == 3 and date_obj.day >= 30) or date_obj.month in [4, 5, 6]:
-        return 6
+        return 7
     
     return 7
 
