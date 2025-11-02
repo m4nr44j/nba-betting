@@ -235,7 +235,6 @@ def process_csv():
     df = df.drop(["Rk"], axis=1, errors="ignore")
     df.rename(columns=column_mapping, inplace=True)
 
-    # 👇 turn empty strings into proper missing values
     df = df.replace({"": pd.NA, " ": pd.NA})
 
     numeric_columns = [
@@ -376,8 +375,6 @@ def perform_updates(cursor):
         "ALTER TABLE public.nba ADD COLUMN month INTEGER;",
         "UPDATE public.nba SET month = EXTRACT(MONTH FROM date);",
         "ALTER TABLE public.nba ADD COLUMN days_since INTEGER;",
-        # Calculate days_since as game days (unique game dates), not calendar days
-        # This accounts for off-season gaps so June->October is treated as continuation
         """WITH game_date_ranks AS (
             SELECT DISTINCT date,
                    DENSE_RANK() OVER (ORDER BY date) - 1 AS game_day

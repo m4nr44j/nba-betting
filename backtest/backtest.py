@@ -20,10 +20,8 @@ from utility.nba_stats import (
     get_nba_game_summary,
 )
 
-# Season toggle: True for 2025-26 season, False for 2024-25 season
 USE_2025_26_SEASON = True
 
-# Set historical directory and base year based on season
 if USE_2025_26_SEASON:
     HIST_DIR: str = "backtest/historical_25-26"
     BASE_YEAR: int = 2025
@@ -76,7 +74,6 @@ def calculate_day_profit(
             predicted_val = float(predicted_str)
         except (ValueError, TypeError):
             continue
-        # Lookup stat for player/date
         stat_row = all_data[(all_data["Player"] == player) & (all_data["Date"] == date_iso)]
         if stat_row.empty:
             print(f"No stats found for {player} on {date_iso}")
@@ -169,10 +166,8 @@ def get_ordered_historical_files():
     historical_files = glob.glob(os.path.join(HIST_DIR, "*_props.json"))
     
     if USE_2025_26_SEASON:
-        # 2025-26 season: all files are from 2025
         historical_files.sort()
     else:
-        # 2024-25 season: separate Nov/Dec 2024 files from 2025 files
         december_2024_files = []
         other_files = []
         
@@ -203,7 +198,6 @@ def main():
     first_mm_dd = first_basename.split("_props.json")[0]
     first_month, first_day = first_mm_dd.split("_")
     
-    # Determine year based on season and month
     if USE_2025_26_SEASON:
         first_year = 2025
     else:
@@ -229,7 +223,6 @@ def main():
         mm_dd = basename.split("_props.json")[0]
         month, day = mm_dd.split("_")
 
-        # Determine year based on season and month
         if USE_2025_26_SEASON:
             year = 2025 if (month == "12" or month == "11" or month == "10") else 2026
         else:
@@ -247,7 +240,6 @@ def main():
 
         run_processor(date_iso)
 
-        # Offset to next calendar day for ESPN API
         from datetime import datetime, timedelta
         dt = datetime(year, int(month), int(day)) + timedelta(days=1)
         yyyymmdd_stats = dt.strftime('%Y%m%d')

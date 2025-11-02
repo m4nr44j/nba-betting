@@ -20,14 +20,12 @@ sys.path.insert(
     0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 )
 
-# Eastern timezone - all operations use this regardless of system timezone
 EASTERN_TZ = pytz.timezone('US/Eastern')
 
 def get_eastern_now():
     """Get current datetime in Eastern timezone."""
     return datetime.now(EASTERN_TZ)
 
-# API key hardcoded (not from .env)
 API_KEY = "3b88f3f50771d9dddb421a0dd0cc31a8"
 BASE_URL = "https://api.the-odds-api.com/v4/historical/sports/basketball_nba/events"
 
@@ -178,10 +176,8 @@ def merge_bookmaker_data(data1: dict, data2: dict) -> dict:
     """Merge two bookmaker data dictionaries, combining lists for each market type."""
     merged = {}
     
-    # Get all unique bookmakers from both datasets
     all_bookmakers = set(data1.keys()) | set(data2.keys())
     
-    # Get all market types (should be the same, but get from both to be safe)
     market_types = set()
     for bookmaker_data in list(data1.values()) + list(data2.values()):
         market_types.update(bookmaker_data.keys())
@@ -192,11 +188,9 @@ def merge_bookmaker_data(data1: dict, data2: dict) -> dict:
         for market_type in market_types:
             merged_list = []
             
-            # Add entries from first dataset
             if bookmaker in data1 and market_type in data1[bookmaker]:
                 merged_list.extend(data1[bookmaker][market_type])
             
-            # Add entries from second dataset
             if bookmaker in data2 and market_type in data2[bookmaker]:
                 merged_list.extend(data2[bookmaker][market_type])
             
@@ -219,12 +213,8 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
     
     print(f"\nProcessing {ymd_str}...")
     
-    # Get games for this date
-    # We need to set a commenceTimeTo that's after all games that day
-    # Use next day at 5am Eastern (like in run_backtest)
     next_day = date + timedelta(days=1)
     next_day_at_5am_et = next_day.replace(hour=5, minute=0, second=0, microsecond=0)
-    # Localize to Eastern, then convert to UTC for API
     next_day_at_5am_et = EASTERN_TZ.localize(next_day_at_5am_et)
     next_day_at_5am_utc = next_day_at_5am_et.astimezone(pytz.utc)
     commence_time_to = next_day_at_5am_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -234,7 +224,6 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
         print(f"No games found for {ymd_str}")
         return False
     
-    # Sort by commence time and get first/last games
     id_times.sort(key=lambda x: x[1])
     first_game_time = id_times[0][1]
     last_game_time = id_times[-1][1]
@@ -242,7 +231,6 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
     first_game_dt = _parse_date(first_game_time)
     last_game_dt = _parse_date(last_game_time)
     
-    # Ensure datetimes are in UTC for calculations
     if first_game_dt.tzinfo is None:
         first_game_dt = pytz.utc.localize(first_game_dt)
     else:
@@ -253,14 +241,11 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
     else:
         last_game_dt = last_game_dt.astimezone(pytz.utc)
     
-    # Convert to Eastern for display
     first_game_dt_et = first_game_dt.astimezone(EASTERN_TZ)
     last_game_dt_et = last_game_dt.astimezone(EASTERN_TZ)
     
-    # Check if it's a Sunday (weekday 6)
     is_sunday = date.weekday() == 6
     
-    # Calculate time before first game
     time_before_first_dt = first_game_dt - timedelta(hours=hours_before)
     time_before_first_dt_et = time_before_first_dt.astimezone(EASTERN_TZ)
     date_for_url_first = time_before_first_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -268,18 +253,15 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
     print(f"First game: {first_game_time} UTC = {first_game_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET")
     print(f"Last game: {last_game_time} UTC = {last_game_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET")
     
-    # Get odds 1 hour before first game
     game_id_list = [gid for gid, _ in id_times]
     print(f"Fetching odds from: {date_for_url_first} UTC = {time_before_first_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET ({hours_before} hour{'s' if hours_before != 1 else ''} before first game)")
     all_bookmakers_data = collect_all_odds(game_id_list, date_for_url_first)
     
-    # If it's Sunday and there are multiple games, also fetch 4 hours after first game starts
     if is_sunday and len(id_times) > 1:
         time_after_first_dt = first_game_dt + timedelta(hours=4)
         time_after_first_dt_et = time_after_first_dt.astimezone(EASTERN_TZ)
         date_for_url_second = time_after_first_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
         
-        # Filter to only games that haven't started yet at the second fetch time
         games_not_started = []
         for gid, commence_time in id_times:
             game_dt = _parse_date(commence_time)
@@ -288,7 +270,6 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
             else:
                 game_dt = game_dt.astimezone(pytz.utc)
             
-            # Only include games that start after the second fetch time
             if game_dt > time_after_first_dt:
                 games_not_started.append(gid)
         
@@ -297,13 +278,11 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
             print(f"Fetching odds for {len(games_not_started)} game(s) that haven't started yet...")
             second_fetch_data = collect_all_odds(games_not_started, date_for_url_second)
             
-            # Merge the two datasets
             print("Merging odds from both fetches...")
             all_bookmakers_data = merge_bookmaker_data(all_bookmakers_data, second_fetch_data)
         else:
             print(f"\nSunday detected but all games have already started by the second fetch time - skipping second fetch")
     
-    # Save to historical_25-26
     output_dir = "backtest/historical_25-26"
     os.makedirs(output_dir, exist_ok=True)
     
@@ -322,17 +301,13 @@ def main(start_date_str: str = "2025-10-21", end_date_str: str = None):
     All dates are interpreted in Eastern timezone. If end_date_str is not provided,
     uses "today" in Eastern time, not local system time.
     """
-    # Parse start date (timezone-naive, treated as Eastern)
     start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
     
     if end_date_str:
-        # Parse end date (timezone-naive, treated as Eastern)
         end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
     else:
-        # Get "today" in Eastern timezone, not local timezone
         eastern_now = get_eastern_now()
-        # Extract the date from Eastern time and create timezone-naive datetime for comparison
-        eastern_date_only = eastern_now.date()  # Gets date in Eastern context
+        eastern_date_only = eastern_now.date()
         end_date = datetime(eastern_date_only.year, eastern_date_only.month, eastern_date_only.day) - timedelta(days=1)
         end_date_str = end_date.strftime("%Y-%m-%d")
         print(f"Using Eastern timezone - today is {end_date_str} ET")
@@ -351,7 +326,6 @@ def main(start_date_str: str = "2025-10-21", end_date_str: str = None):
         else:
             failed += 1
         
-        # Move to next day
         current_date += timedelta(days=1)
     
     print("\n" + "=" * 60)

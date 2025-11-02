@@ -242,7 +242,6 @@ def process_csv(start_date):
         empty_df.to_csv("csv/modified_data.csv", index=False, na_rep="None")
         return
 
-    # (optional) you were appending to a full csv:
     csv_file = "csv/all_data_full.csv"
     df.to_csv(csv_file, mode="a", header=False, index=False)
 
@@ -391,8 +390,6 @@ def perform_updates(cursor):
         "ALTER TABLE public.nba_append ADD COLUMN month INTEGER;",
         "UPDATE public.nba_append SET month = EXTRACT(MONTH FROM date);",
         "ALTER TABLE public.nba_append ADD COLUMN days_since INTEGER;",
-        # Calculate days_since as game days (unique game dates), not calendar days
-        # This accounts for off-season gaps so June->October is treated as continuation
         """WITH all_game_dates AS (
             SELECT DISTINCT date FROM public.nba WHERE date >= DATE '2024-02-22'
             UNION

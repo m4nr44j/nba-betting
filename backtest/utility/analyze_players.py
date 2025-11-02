@@ -35,7 +35,6 @@ def aggregate_by_player(picks_by_day: Dict[str, List[Dict[str, Any]]]) -> Dict[s
             s["stake_units"] += stake
             s["units"] += profit
 
-            # Track W/L/Push from profit sign (assuming -1 loss, >0 win, 0 push)
             if profit > 1e-9:
                 s["wins"] += 1
             elif profit < -1e-9:
@@ -43,17 +42,13 @@ def aggregate_by_player(picks_by_day: Dict[str, List[Dict[str, Any]]]) -> Dict[s
             else:
                 s["pushes"] += 1
 
-            # Running average odds
-            # Convert American odds to decimal implied edge metric if needed; here just mean American odds
             n = s.get("_odds_count", 0) + 1
             s["avg_odds"] = (s["avg_odds"] * (n - 1) + odds) / n
             s["_odds_count"] = n
 
-    # Compute ROI = units / stake_units (guard zero)
     for player, s in player_stats.items():
         stake_units = s["stake_units"]
         s["roi"] = s["units"] / stake_units if stake_units > 0 else float("nan")
-        # cleanup helper
         if "_odds_count" in s:
             del s["_odds_count"]
 
@@ -71,9 +66,7 @@ def print_worst_players(player_stats: Dict[str, Dict[str, Any]], min_bets: int, 
         print(f"No players with at least {min_bets} bets.")
         return
 
-    # Sort by total units (ascending) for worst by units
     by_units = sorted(players, key=lambda kv: kv[1]["units"])[:top]
-    # Sort by ROI (ascending) for worst by ROI
     by_roi = sorted(players, key=lambda kv: (math.isnan(kv[1]["roi"]), kv[1]["roi"]))[:top]
 
     def fmt_row(name: str, s: Dict[str, Any]) -> str:
@@ -97,7 +90,7 @@ def write_csv(player_stats: Dict[str, Dict[str, Any]], out_path: Path, min_bets:
     rows: List[Tuple[str, Dict[str, Any]]] = [
         (player, s) for player, s in player_stats.items() if s["bets"] >= min_bets
     ]
-    rows.sort(key=lambda kv: kv[1]["units"])  # worst first
+    rows.sort(key=lambda kv: kv[1]["units"])
 
     with out_path.open("w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)

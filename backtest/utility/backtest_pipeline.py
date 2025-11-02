@@ -96,15 +96,12 @@ def process_csv():
 
     column_mapping = dict(zip(csv_columns, sql_columns))
 
-    # 1) read
     df = pd.read_csv("csv/new_data.csv", keep_default_na=False, low_memory=False)
 
-    # 2) your old bits
     df["BPM"] = 0
     df = df.drop(["Rk"], axis=1, errors="ignore")
     df.rename(columns=column_mapping, inplace=True)
 
-    # 3) NEW: normalize empties exactly like in the other file
     df = df.replace({"": pd.NA, " ": pd.NA})
 
     numeric_columns = [
@@ -128,7 +125,6 @@ def process_csv():
     for column in numeric_columns:
         df[column] = df[column].apply(safe_to_float)
 
-    # 4) write actual NA as the literal "None"
     df.to_csv("csv/modified_data.csv", index=False, na_rep="None")
 
 def create_table(cursor):
@@ -248,8 +244,6 @@ def perform_updates(cursor):
         "ALTER TABLE public.nba_append ADD COLUMN month INTEGER;",
         "UPDATE public.nba_append SET month = EXTRACT(MONTH FROM date);",
         "ALTER TABLE public.nba_append ADD COLUMN days_since INTEGER;",
-        # Calculate days_since as game days (unique game dates), not calendar days
-        # This accounts for off-season gaps so June->October is treated as continuation
         """WITH all_game_dates AS (
             SELECT DISTINCT date FROM public.nba WHERE date >= DATE '2024-02-22'
             UNION

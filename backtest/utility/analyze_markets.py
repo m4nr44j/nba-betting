@@ -47,7 +47,6 @@ def analyze_by_market(picks_by_day: Dict[str, List[Dict[str, Any]]]) -> Dict[str
             else:
                 stats["pushes"] += 1
 
-    # Calculate derived metrics
     for market, stats in market_stats.items():
         bets = stats["bets"]
         stake = stats["total_stake"]
@@ -68,7 +67,6 @@ def print_market_analysis(market_stats: Dict[str, Dict[str, Any]]) -> None:
     print("MARKET ANALYSIS - picks.json")
     print("="*100)
     
-    # Sort by total bets (descending) for better readability
     sorted_markets = sorted(
         market_stats.items(),
         key=lambda x: x[1]["bets"],
@@ -93,7 +91,6 @@ def print_market_analysis(market_stats: Dict[str, Dict[str, Any]]) -> None:
             f"${stats['avg_profit_per_bet']:>10.2f}"
         )
     
-    # Summary statistics
     print("\n" + "-" * 100)
     total_bets = sum(s["bets"] for s in market_stats.values())
     total_wins = sum(s["wins"] for s in market_stats.values())
@@ -112,7 +109,6 @@ def print_market_analysis(market_stats: Dict[str, Dict[str, Any]]) -> None:
     print(f"  Total Staked: ${total_stake:.2f}")
     print(f"  Overall ROI: {overall_roi:.2f}%")
     
-    # Best and worst markets by ROI
     print("\n" + "-" * 100)
     print("TOP MARKETS BY ROI (min 10 bets):")
     sorted_by_roi = sorted(

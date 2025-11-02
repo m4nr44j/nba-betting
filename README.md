@@ -24,26 +24,27 @@ Before you begin, ensure you have the following installed:
     git clone https://github.com/m4nr44j/nba-betting
     cd nba_betting
     ```
+
 2.  **Create a Virtual Environment:**
     It's best practice to isolate project dependencies using a virtual environment.
     ```bash
-    python -m venv venv
+    python -m venv .venv
     ```
 
 3.  **Activate the Virtual Environment:**
     * **Windows (Command Prompt/PowerShell):**
         ```bash
-        .\venv\Scripts\activate
+        .\.venv\Scripts\activate
         ```
     * **Windows (Git Bash):**
         ```bash
-        source venv/Scripts/activate
+        source .venv/Scripts/activate
         ```
     * **macOS/Linux:**
         ```bash
-        source venv/bin/activate
+        source .venv/bin/activate
         ```
-    You should see `(venv)` prefixed to your command prompt line when activated.
+    You should see `(.venv)` prefixed to your command prompt line when activated.
 
 4.  **Install Dependencies:**
     Install all required Python packages listed in `requirements.txt`:
@@ -78,9 +79,29 @@ Before you begin, ensure you have the following installed:
     * Adjust `DB_HOST` and `DB_PORT` if your setup differs from the default.
     * Get your API key from [The Odds API](https://the-odds-api.com/) and insert it (will need paid key to get backtesting odds beyond included dates).
 
+## Data Collection
+
+Before initializing the database, you need to collect historical NBA player statistics. This script scrapes data from NBA.com and saves it to a CSV file.
+
+**Important:** This script uses Selenium with Chrome WebDriver. Make sure Chrome is installed on your system.
+
+With your virtual environment activated, run:
+
+```bash
+python utility/get_all_data.py
+```
+
+This script will:
+- Scrape NBA player statistics from the regular season, play-in, and playoffs
+- Clear any existing `csv/all_data_full.csv` file and start fresh
+- Save all collected data to `csv/all_data_full.csv`
+- This process may take a while depending on the date ranges configured
+
+**Note:** The script is configured to scrape data for the current NBA season. You can modify the date ranges in `utility/get_all_data.py` if needed.
+
 ## Database Initialization
 
-After setting up the environment and configuration, you need to initialize the database. This step typically creates necessary tables and populates them with initial data.
+After collecting the historical data, you need to initialize the database. This step creates necessary tables and populates them with the data from `csv/all_data_full.csv`.
 
 Ensure your virtual environment is activated and run:
 ```bash

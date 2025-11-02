@@ -292,7 +292,6 @@ def run(date: str | None = None, get_odds=True, injury_time: str | None = None, 
         time_str = injury_time if injury_time else "12PM"
         get(ymd_str, time_str)
 
-    # Use provided hist_dir or default to backtest/historical
     if hist_dir is None:
         hist_dir = "backtest/historical"
     
