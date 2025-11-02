@@ -235,19 +235,22 @@ def process_csv(start_date):
 
     yesterday = datetime.now().date() - timedelta(days=1)
     df = get_new_data(start_date=start_date, end_date=yesterday)
-    
+
     if df.empty:
         print("No new data available for the specified date range.")
         empty_df = pd.DataFrame(columns=csv_columns)
         empty_df.to_csv("csv/modified_data.csv", index=False, na_rep="None")
         return
 
+    # (optional) you were appending to a full csv:
     csv_file = "csv/all_data_full.csv"
     df.to_csv(csv_file, mode="a", header=False, index=False)
 
     df["BPM"] = 0
     df = df.drop(["Rk"], axis=1, errors="ignore")
     df.rename(columns=column_mapping, inplace=True)
+
+    df = df.replace({"": pd.NA, " ": pd.NA})
 
     numeric_columns = [
         "fg_percent",

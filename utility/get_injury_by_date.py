@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import json
 import os
 import re
@@ -5,6 +6,7 @@ import shutil
 from collections import defaultdict
 
 import fitz
+from pandas._libs.tslibs import delta_to_nanoseconds
 import requests
 from dotenv import load_dotenv
 
@@ -77,7 +79,7 @@ def normalize_player_name(name: str) -> str:
 
 
 def normalize_injury_status(raw_status: str) -> str | None:
-    if raw_status == "Questionable":
+    if raw_status == "Questionable" or raw_status == "Probable":
         return "Game Time Decision"
     if raw_status in {"Out", "Doubtful"}:
         return "Out"
@@ -238,4 +240,5 @@ def get(date_str, time_str):
 
 
 if __name__ == "__main__":
-    get("2025-10-27", "06PM")
+    today = (datetime.now()-timedelta(days=1)).strftime("%Y-%m-%d")
+    get(today, "06PM")

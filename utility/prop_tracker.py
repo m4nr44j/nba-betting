@@ -7,16 +7,7 @@ import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 
-try:
-    import psycopg2
-    PSYCOPG2_AVAILABLE = True
-except ImportError:
-    try:
-        import psycopg2_binary as psycopg2
-        PSYCOPG2_AVAILABLE = True
-    except ImportError:
-        psycopg2 = None
-        PSYCOPG2_AVAILABLE = False
+import psycopg2
 import pytz
 from dotenv import load_dotenv
 from utility.nba_stats import get_nba_game_event_ids, get_nba_game_summary, extract_player_stats
@@ -190,8 +181,6 @@ class PropTracker:
         return None
     
     def get_player_team_from_db(self, player_name: str) -> Optional[str]:
-        if not PSYCOPG2_AVAILABLE:
-            return None
             
         try:
             conn = psycopg2.connect(
@@ -305,10 +294,10 @@ class PropTracker:
                 progress = 100
             elif game_over:
                 status = 'miss'
-                progress = (current_value / line) * 100
+                progress = (current_value / (line+0.5)) * 100
             else:
                 status = 'active'
-                progress = (current_value / line) * 100
+                progress = (current_value / (line+0.5)) * 100
         else:
             if current_value <= line:
                 status = 'hit'
@@ -524,7 +513,7 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Track NBA prop betting progress')
-    parser.add_argument('--file', '-f', default='output copy.txt', 
+    parser.add_argument('--file', '-f', default='output.txt', 
                        help='Path to output.txt file (default: output.txt)')
     parser.add_argument('--once', action='store_true',
                        help='Run once and exit (default: continuous)')

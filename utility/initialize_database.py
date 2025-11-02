@@ -235,6 +235,9 @@ def process_csv():
     df = df.drop(["Rk"], axis=1, errors="ignore")
     df.rename(columns=column_mapping, inplace=True)
 
+    # 👇 turn empty strings into proper missing values
+    df = df.replace({"": pd.NA, " ": pd.NA})
+
     numeric_columns = [
         "fg_percent",
         "twop_percent",
@@ -243,7 +246,6 @@ def process_csv():
         "ts_percent",
         "plus_minus",
     ]
-
     for column in numeric_columns:
         df[column] = df[column].apply(safe_to_float)
 

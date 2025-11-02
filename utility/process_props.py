@@ -72,7 +72,7 @@ def process_props_and_output(cursor, data):
     #     "player_threes": "tpm",
     # }
 
-    lowest_price_threshold = -130
+    lowest_price_threshold = 100
     highest_price_threshold = 120
 
     results = {}
@@ -162,8 +162,8 @@ def process_props(data):
         conn.close()
 
 
-def props(date):
-    with open(f"backtest/historical/{date}_props.json", "r", encoding="utf-8") as f:
+def props(date, hist_dir="backtest/historical"):
+    with open(f"{hist_dir}/{date}_props.json", "r", encoding="utf-8") as f:
         props_json_data = json.load(f)
     data = process_props(props_json_data)
     with open("json/props.json", "w", encoding="utf-8") as file:
