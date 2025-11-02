@@ -6,13 +6,11 @@ from typing import Dict, List, Any
 
 
 def load_picks(picks_path: Path) -> Dict[str, List[Dict[str, Any]]]:
-    """Load picks from JSON file."""
     with picks_path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def analyze_by_market(picks_by_day: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Dict[str, Any]]:
-    """Aggregate picks by market type and calculate statistics."""
     market_stats = defaultdict(lambda: {
         "bets": 0,
         "wins": 0,
@@ -62,7 +60,6 @@ def analyze_by_market(picks_by_day: Dict[str, List[Dict[str, Any]]]) -> Dict[str
 
 
 def print_market_analysis(market_stats: Dict[str, Dict[str, Any]]) -> None:
-    """Print formatted market analysis."""
     print("\n" + "="*100)
     print("MARKET ANALYSIS - picks.json")
     print("="*100)
@@ -128,7 +125,6 @@ def print_market_analysis(market_stats: Dict[str, Dict[str, Any]]) -> None:
 
 
 def main(argv: List[str]) -> int:
-    """Main entry point."""
     picks_path = Path("backtest/picks.json")
     
     if len(argv) > 0:

@@ -32,9 +32,6 @@ NEW_BASE_URL_TEAM_TEMPLATE = (
 )
 
 def month_batches(start_date, end_date):
-    """
-    Generate (start, end) tuples for each month from start_date to end_date (inclusive window)
-    """
     batches = []
     current = start_date
     while current <= end_date:

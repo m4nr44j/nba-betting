@@ -1,10 +1,3 @@
-"""
-Fetch historical NBA odds from The Odds API.
-
-NOTE: All date/time operations run as if in US Eastern timezone, regardless of
-the actual system timezone. This ensures consistent behavior when running from
-different locations (e.g., India).
-"""
 import json
 import os
 import sys
@@ -23,10 +16,9 @@ sys.path.insert(
 EASTERN_TZ = pytz.timezone('US/Eastern')
 
 def get_eastern_now():
-    """Get current datetime in Eastern timezone."""
     return datetime.now(EASTERN_TZ)
 
-API_KEY = "3b88f3f50771d9dddb421a0dd0cc31a8"
+API_KEY = os.getenv("ODDS_KEY")
 BASE_URL = "https://api.the-odds-api.com/v4/historical/sports/basketball_nba/events"
 
 GAME_IDS_TIME_SUFFIX = "T16:30:00Z"
@@ -72,7 +64,6 @@ def _parse_date(date_str: str) -> datetime:
 
 
 def game_ids(date: str, commence_time_to: str):
-    """Get game IDs for a given date."""
     formatted_time = (
         commence_time_to.replace("+00:00", "Z")
         if "+00:00" in commence_time_to
@@ -101,7 +92,6 @@ def game_ids(date: str, commence_time_to: str):
 
 
 def get_odds(game_id: str, market_types, date_for_url: str):
-    """Get odds for a specific game at a specific date/time."""
     market_data: dict[str, dict[str, list]] = {}
 
     for market_type in market_types:
@@ -148,7 +138,6 @@ def get_odds(game_id: str, market_types, date_for_url: str):
 
 
 def collect_all_odds(game_ids, date_for_url: str):
-    """Collect odds for all games and all market types."""
     market_types = [
         "player_points_alternate",
         "player_rebounds_alternate",
@@ -173,7 +162,6 @@ def collect_all_odds(game_ids, date_for_url: str):
 
 
 def merge_bookmaker_data(data1: dict, data2: dict) -> dict:
-    """Merge two bookmaker data dictionaries, combining lists for each market type."""
     merged = {}
     
     all_bookmakers = set(data1.keys()) | set(data2.keys())
@@ -200,14 +188,6 @@ def merge_bookmaker_data(data1: dict, data2: dict) -> dict:
 
 
 def fetch_odds_for_date(date: datetime, hours_before: int = 1):
-    """
-    Fetch odds for a single date, N hours before the first game.
-    For Sundays, also fetches 1 hour before the last game and merges results.
-    
-    Args:
-        date: datetime object representing the date (timezone-naive, treated as Eastern)
-        hours_before: Number of hours before the first game to fetch odds (default: 1)
-    """
     ymd_str = date.strftime("%Y-%m-%d")
     mm_dd_str = date.strftime("%m_%d")
     
@@ -295,12 +275,6 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
 
 
 def main(start_date_str: str = "2025-10-21", end_date_str: str = None):
-    """
-    Fetch historical odds starting from start_date_str.
-    
-    All dates are interpreted in Eastern timezone. If end_date_str is not provided,
-    uses "today" in Eastern time, not local system time.
-    """
     start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
     
     if end_date_str:
