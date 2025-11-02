@@ -26,7 +26,7 @@ if USE_2025_26_SEASON:
     HIST_DIR: str = "backtest/historical_25-26"
     BASE_YEAR: int = 2025
 else:
-    HIST_DIR: str = "backtest/historical"
+    HIST_DIR: str = "backtest/historical_24-25"
     BASE_YEAR: int = 2024
 
 CSV_OUTPUT_FILE: str = "csv/output.csv"

@@ -187,7 +187,7 @@ def merge_bookmaker_data(data1: dict, data2: dict) -> dict:
     return merged
 
 
-def fetch_odds_for_date(date: datetime, hours_before: int = 1):
+def fetch_odds_for_date(date: datetime, hours_before: int = 1, season: str = "25-26"):
     ymd_str = date.strftime("%Y-%m-%d")
     mm_dd_str = date.strftime("%m_%d")
     
@@ -263,7 +263,7 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
         else:
             print(f"\nSunday detected but all games have already started by the second fetch time - skipping second fetch")
     
-    output_dir = "backtest/historical_25-26"
+    output_dir = f"backtest/historical_{season}"
     os.makedirs(output_dir, exist_ok=True)
     
     hist_path = os.path.join(output_dir, f"{mm_dd_str}_props.json")
@@ -274,7 +274,7 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1):
     return True
 
 
-def main(start_date_str: str = "2025-10-21", end_date_str: str = None):
+def main(start_date_str: str = "2025-10-21", end_date_str: str = None, season: str = "25-26"):
     start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
     
     if end_date_str:
@@ -286,15 +286,50 @@ def main(start_date_str: str = "2025-10-21", end_date_str: str = None):
         end_date_str = end_date.strftime("%Y-%m-%d")
         print(f"Using Eastern timezone - today is {end_date_str} ET")
     
+    if season not in ["24-25", "25-26"]:
+        print(f"Error: Season must be '24-25' or '25-26', got '{season}'")
+        return
+    
+    if season == "24-25":
+        season_start_year = 2024
+        season_end_year = 2025
+        season_start_month = 10
+        season_start_day = 22
+        season_end_month = 6
+        season_end_day = 22
+    else:
+        season_start_year = 2025
+        season_end_year = 2026
+        season_start_month = 10
+        season_start_day = 21
+        season_end_month = 6
+        season_end_day = 22
+    
+    season_start = datetime(season_start_year, season_start_month, season_start_day)
+    season_end = datetime(season_end_year, season_end_month, season_end_day)
+    
+    if start_date < season_start or start_date > season_end:
+        print(f"Error: Start date {start_date_str} is outside the {season} season range ({season_start.strftime('%Y-%m-%d')} to {season_end.strftime('%Y-%m-%d')})")
+        return
+    
+    if end_date < season_start or end_date > season_end:
+        print(f"Error: End date {end_date_str} is outside the {season} season range ({season_start.strftime('%Y-%m-%d')} to {season_end.strftime('%Y-%m-%d')})")
+        return
+    
+    if start_date > end_date:
+        print(f"Error: Start date {start_date_str} is after end date {end_date_str}")
+        return
+    
     current_date = start_date
     successful = 0
     failed = 0
     
-    print(f"Fetching historical odds from {start_date_str} to {end_date_str}")
+    print(f"Fetching historical odds from {start_date_str} to {end_date_str} for {season} season")
+    print(f"Output directory: backtest/historical_{season}")
     print("=" * 60)
     
     while current_date <= end_date:
-        success = fetch_odds_for_date(current_date)
+        success = fetch_odds_for_date(current_date, season=season)
         if success:
             successful += 1
         else:
@@ -322,6 +357,13 @@ if __name__ == "__main__":
         default=None,
         help="End date in YYYY-MM-DD format (default: today)",
     )
+    parser.add_argument(
+        "--season",
+        type=str,
+        default="25-26",
+        choices=["24-25", "25-26"],
+        help="NBA season to fetch odds for: '24-25' for 2024-25 season or '25-26' for 2025-26 season (default: 25-26)",
+    )
     
     args = parser.parse_args()
-    main(args.start_date, args.end_date)
+    main(args.start_date, args.end_date, args.season)

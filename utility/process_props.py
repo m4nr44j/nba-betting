@@ -162,7 +162,7 @@ def process_props(data):
         conn.close()
 
 
-def props(date, hist_dir="backtest/historical"):
+def props(date, hist_dir="backtest/historical_24-25"):
     with open(f"{hist_dir}/{date}_props.json", "r", encoding="utf-8") as f:
         props_json_data = json.load(f)
     data = process_props(props_json_data)
@@ -171,7 +171,7 @@ def props(date, hist_dir="backtest/historical"):
 
 
 if __name__ == "__main__":
-    with open("backtest/historical/12_05_props.json", "r", encoding="utf-8") as f:
+    with open("backtest/historical_24-25/12_05_props.json", "r", encoding="utf-8") as f:
         props_json_data = json.load(f)
     data = process_props(props_json_data)
     with open("json/props.json", "w", encoding="utf-8") as file:

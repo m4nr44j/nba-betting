@@ -1,4 +1,4 @@
-# 🏀 NBA PLAYER PROPS ALGORITHM 🏀
+# NBA PLAYER PROPS ALGORITHM 
 
 ## Getting Started
 
@@ -166,6 +166,31 @@ Press `Ctrl+C` to stop the tracker at any time.
 
 The project includes a comprehensive backtesting module located in the `backtest/` directory. This allows you to test the algorithm's performance against historical data.
 
+### Fetching Historical Odds
+
+Before running backtests, you need historical odds data. You can fetch this data from The Odds API for either the 2024-25 or 2025-26 season.
+
+**Fetch odds for the 2025-26 season:**
+```bash
+python -m backtest.utility.fetch_historical_odds --start-date 2025-10-21 --season 25-26
+```
+
+**Fetch odds for the 2024-25 season:**
+```bash
+python -m backtest.utility.fetch_historical_odds --start-date 2024-10-22 --end-date 2025-06-22 --season 24-25
+```
+
+**Options:**
+- `--start-date`: Start date in YYYY-MM-DD format (default: 2025-10-21)
+- `--end-date`: End date in YYYY-MM-DD format (default: today)
+- `--season`: Season to fetch odds for - either `24-25` or `25-26` (default: 25-26)
+
+The fetched odds will be saved to:
+- `backtest/historical_24-25/` for 2024-25 season data
+- `backtest/historical_25-26/` for 2025-26 season data
+
+**Note:** You need a valid API key from [The Odds API](https://the-odds-api.com/) set in your `.env` file as `ODDS_KEY`. A paid API key is required to fetch historical odds.
+
 ### Running Backtests
 
 ```bash
@@ -174,8 +199,8 @@ python -m backtest.backtest
 
 ### Backtest Requirements
 
-- Historical odds data files in `backtest/historical/` directory (format: `MM_DD_props.json`)
-- Historical data includes November 2024 through June 2025 NBA season
+- Historical odds data files in `backtest/historical_24-25/` or `backtest/historical_25-26/` directory (format: `MM_DD_props.json`)
+  - Use `fetch_historical_odds.py` to download this data (see above)
 - Properly configured database connection (same as main application)
 - All main project dependencies installed
 

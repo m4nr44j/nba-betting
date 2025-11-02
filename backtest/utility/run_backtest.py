@@ -285,7 +285,7 @@ def run(date: str | None = None, get_odds=True, injury_time: str | None = None, 
         game_id_list = [gid for gid, _ in id_times]
         all_bookmakers_data = collect_all_odds(game_id_list, date_for_url)
 
-        hist_path = f"backtest/historical/{mm_dd_str}_props.json"
+        hist_path = f"backtest/historical_24-25/{mm_dd_str}_props.json"
         with open(hist_path, "w") as f:
             json.dump(all_bookmakers_data, f, indent=4)
     else:
@@ -293,7 +293,7 @@ def run(date: str | None = None, get_odds=True, injury_time: str | None = None, 
         get(ymd_str, time_str)
 
     if hist_dir is None:
-        hist_dir = "backtest/historical"
+        hist_dir = "backtest/historical_24-25"
     
     props(mm_dd_str, hist_dir=hist_dir)
 
