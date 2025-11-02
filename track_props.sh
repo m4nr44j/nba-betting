@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🏀 Starting NBA Prop Tracker..."
+echo "  Starting NBA Prop Tracker..."
 echo ""
 
 if [ ! -d ".venv" ]; then
@@ -18,7 +18,7 @@ if [ ! -f "output.txt" ]; then
     exit 1
 fi
 
-echo "🚀 Launching prop tracker..."
+echo "  Launching prop tracker..."
 echo "   Press Ctrl+C to stop"
 echo ""
 
