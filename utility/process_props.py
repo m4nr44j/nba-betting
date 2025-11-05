@@ -58,7 +58,7 @@ def process_props_and_output(cursor, data):
         "player_points_assists_alternate": "p_a",
         "player_rebounds_assists_alternate": "a_r",
         "player_points_rebounds_assists_alternate": "p_r_a",
-        "player_threes": "tpm",
+        "player_threes_alternate": "tpm",
     }
 
     # market_mapping = {
@@ -171,7 +171,7 @@ def props(date, hist_dir="backtest/historical_24-25"):
 
 
 if __name__ == "__main__":
-    with open("backtest/historical_24-25/12_05_props.json", "r", encoding="utf-8") as f:
+    with open("backtest/historical_25-26/11_04_props.json", "r", encoding="utf-8") as f:
         props_json_data = json.load(f)
     data = process_props(props_json_data)
     with open("json/props.json", "w", encoding="utf-8") as file:

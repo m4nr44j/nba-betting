@@ -240,5 +240,5 @@ def get(date_str, time_str):
 
 
 if __name__ == "__main__":
-    today = (datetime.now()-timedelta(days=1)).strftime("%Y-%m-%d")
+    today = (datetime.now()-timedelta(days=0)).strftime("%Y-%m-%d")
     get(today, "06PM")

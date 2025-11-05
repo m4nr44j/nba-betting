@@ -149,7 +149,12 @@ def seed_output_csv():
 
 
 def calculate_injury_time_for_date(date_iso):
-    return "06PM"
+    import datetime as _dt
+    try:
+        dt = _dt.datetime.fromisoformat(date_iso)
+    except ValueError:
+        return "06PM"
+    return "02PM" if dt.weekday() == 6 else "06PM"
 
 
 def run_processor(date_iso):

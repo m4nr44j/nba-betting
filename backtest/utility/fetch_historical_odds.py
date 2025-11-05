@@ -187,7 +187,7 @@ def merge_bookmaker_data(data1: dict, data2: dict) -> dict:
     return merged
 
 
-def fetch_odds_for_date(date: datetime, hours_before: int = 1, season: str = "25-26"):
+def fetch_odds_for_date(date: datetime, minutes_before: int = 45, season: str = "25-26"):
     ymd_str = date.strftime("%Y-%m-%d")
     mm_dd_str = date.strftime("%m_%d")
     
@@ -225,8 +225,9 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1, season: str = "25
     last_game_dt_et = last_game_dt.astimezone(EASTERN_TZ)
     
     is_sunday = date.weekday() == 6
+    # is_sunday = False
     
-    time_before_first_dt = first_game_dt - timedelta(hours=hours_before)
+    time_before_first_dt = first_game_dt - timedelta(minutes=minutes_before)
     time_before_first_dt_et = time_before_first_dt.astimezone(EASTERN_TZ)
     date_for_url_first = time_before_first_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
     
@@ -234,7 +235,7 @@ def fetch_odds_for_date(date: datetime, hours_before: int = 1, season: str = "25
     print(f"Last game: {last_game_time} UTC = {last_game_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET")
     
     game_id_list = [gid for gid, _ in id_times]
-    print(f"Fetching odds from: {date_for_url_first} UTC = {time_before_first_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET ({hours_before} hour{'s' if hours_before != 1 else ''} before first game)")
+    print(f"Fetching odds from: {date_for_url_first} UTC = {time_before_first_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET ({minutes_before} minutes before first game)")
     all_bookmakers_data = collect_all_odds(game_id_list, date_for_url_first)
     
     if is_sunday and len(id_times) > 1:

@@ -14,7 +14,7 @@ from utility.process_props import process_props
 
 load_dotenv()
 
-USE_ONE_HOUR_BEFORE_INJURY = False
+USE_ONE_HOUR_BEFORE_INJURY = True
 
 EASTERN_TZ = pytz.timezone('US/Eastern')
 
@@ -122,7 +122,7 @@ def collect_all_odds(game_ids):
         "player_points_rebounds_assists_alternate",
         "player_points_rebounds_alternate",
         "player_points_assists_alternate",
-        "player_rebounds_assists_alternate",
+        "player_rebounds_assists_alternate"
     ]
     # market_types = [
     #     "player_points",
@@ -133,6 +133,7 @@ def collect_all_odds(game_ids):
     #     "player_points_assists",
     #     "player_rebounds_assists",
     # ]
+
     all_bookmakers_data = {}
 
     for game_id in game_ids:

@@ -269,29 +269,15 @@ def predict_features(df, player_id, opponent, hoa, feature):
             base_prediction = closest_games[feature].mean()
     except Exception:
         base_prediction = closest_games[feature].mean()
-    injury_context = get_injury_context(player_team, injuries) if player_team else {}
-
-    injury_multiplier = 1.0
-    injured = injury_context.get("injured_count", 0)
-    questionable = injury_context.get("questionable_count", 0)
-    recent_15_games = player_data.head(15)
-    player_avg_mp = recent_15_games["mp"].mean()
-
-    if player_avg_mp > 25:
-        injury_multiplier += 0.005 * injured
-    else:
-        injury_multiplier += 0.005 * questionable + 0.01 * injured
-
-    adjusted_prediction = base_prediction * injury_multiplier
 
     try:
         missing_ctx = _compute_missing_by_position(player_team)
     except Exception:
         missing_ctx = {}
     try:
-        final_prediction = _adjust_for_missing(adjusted_prediction, feature, player_pos, missing_ctx)
+        final_prediction = _adjust_for_missing(base_prediction, feature, player_pos, missing_ctx)
     except Exception:
-        final_prediction = adjusted_prediction
+        final_prediction = base_prediction
 
     return final_prediction
 
@@ -308,7 +294,7 @@ def predict_player_stat(player, opponent, feature, hoa):
 
 
 def main():
-    print(soft("Austin Reaves", "MIN", "ast", 1))
+    print(soft("Donte DiVincenzo", "BKN", "tpm", 1))
 
 
 if __name__ == "__main__":
