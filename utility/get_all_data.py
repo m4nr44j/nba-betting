@@ -17,6 +17,7 @@ REGULAR_SEASON_START = date(2024, 10, 22)
 REGULAR_SEASON_END   = date(2025, 4, 13)
 PLAYOFFS_START       = date(2025, 4, 14)
 PLAYOFFS_END         = date(2025, 6, 22)
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 OUTPUT_CSV = os.path.join(PROJECT_ROOT, "csv", "all_data_full.csv")
@@ -406,9 +407,10 @@ def fetch_and_format_batch_for_season(driver, season_type, start_dt, end_dt, sea
 
 def run_manual_batches(driver):
     custom_batches = [
-        (date(2025,10,21), date.today(), "Regular%20Season", "2025-26", "2025-10-21 to 2025-10-29 (25-26 REG)"),
-        (date(2024,2,22), date(2024,4,14), "Regular%20Season", "2023-24", "2024-02-22 to 2024-04-14 (23-24 REG)"),
-        (date(2024,4,18), date(2024,6,17), "Playoffs", "2023-24", "2024-04-18 to 2024-06-17 (23-24 PO)")
+        # (date(2025,10,21), date.today(), "Regular%20Season", "2025-26", "2025-10-21 to 2025-10-29 (25-26 REG)"),
+        # (date(2024,2,22), date(2024,4,14), "Regular%20Season", "2023-24", "2024-02-22 to 2024-04-14 (23-24 REG)"),
+        # (date(2024,4,18), date(2024,6,17), "Playoffs", "2023-24", "2024-04-18 to 2024-06-17 (23-24 PO)"),
+        (date(2024,12,14), date(2024,12,18), "IST", "2024-25", "NBA CUP")
     ]
     for start_dt, end_dt, season_type, season_str, label in custom_batches:
         print(f"\n[MANUAL RUN] Batch {label}...")
@@ -473,54 +475,54 @@ def main():
             print(f"Warning: Could not remove existing file {OUTPUT_CSV}: {e}")
 
     try:
-        print("\nScraping REGULAR SEASON data...\n")
-        for batch_start, batch_end in month_batches(REGULAR_SEASON_START, REGULAR_SEASON_END):
-            print(f"REGULAR: {batch_start} to {batch_end}")
-            batch_df = fetch_and_format_batch(driver, "Regular%20Season", batch_start, batch_end)
-            if batch_df is not None and not batch_df.empty:
-                append_batch_to_csv(batch_df, OUTPUT_CSV)
-                print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
-            else:
-                print(f"(No data found for {batch_start})")
+        # print("\nScraping REGULAR SEASON data...\n")
+        # for batch_start, batch_end in month_batches(REGULAR_SEASON_START, REGULAR_SEASON_END):
+        #     print(f"REGULAR: {batch_start} to {batch_end}")
+        #     batch_df = fetch_and_format_batch(driver, "Regular%20Season", batch_start, batch_end)
+        #     if batch_df is not None and not batch_df.empty:
+        #         append_batch_to_csv(batch_df, OUTPUT_CSV)
+        #         print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
+        #     else:
+        #         print(f"(No data found for {batch_start})")
 
-        print("\nScraping PLAY-IN data...\n")
-        playin_24_25_start = date(2025, 4, 14)
-        playin_24_25_end = date(2025, 4, 18)
-        print(f"PLAY-IN 24-25: {playin_24_25_start} to {playin_24_25_end}")
-        batch_df = fetch_and_format_batch(driver, "PlayIn", playin_24_25_start, playin_24_25_end)
-        if batch_df is not None and not batch_df.empty:
-            append_batch_to_csv(batch_df, OUTPUT_CSV)
-            print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
-        else:
-            print(f"(No data found for {playin_24_25_start})")
+        # print("\nScraping PLAY-IN data...\n")
+        # playin_24_25_start = date(2025, 4, 14)
+        # playin_24_25_end = date(2025, 4, 18)
+        # print(f"PLAY-IN 24-25: {playin_24_25_start} to {playin_24_25_end}")
+        # batch_df = fetch_and_format_batch(driver, "PlayIn", playin_24_25_start, playin_24_25_end)
+        # if batch_df is not None and not batch_df.empty:
+        #     append_batch_to_csv(batch_df, OUTPUT_CSV)
+        #     print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
+        # else:
+        #     print(f"(No data found for {playin_24_25_start})")
 
-        playin_23_24_start = date(2024, 4, 16)
-        playin_23_24_end = date(2024, 4, 19)
-        print(f"PLAY-IN 23-24: {playin_23_24_start} to {playin_23_24_end}")
-        batch_df = fetch_and_format_batch_for_season(
-            driver,
-            "PlayIn",
-            playin_23_24_start,
-            playin_23_24_end,
-            "2023-24",
-        )
-        if batch_df is not None and not batch_df.empty:
-            append_batch_to_csv(batch_df, OUTPUT_CSV)
-            print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
-        else:
-            print(f"(No data found for {playin_23_24_start})")
+        # playin_23_24_start = date(2024, 4, 16)
+        # playin_23_24_end = date(2024, 4, 19)
+        # print(f"PLAY-IN 23-24: {playin_23_24_start} to {playin_23_24_end}")
+        # batch_df = fetch_and_format_batch_for_season(
+        #     driver,
+        #     "PlayIn",
+        #     playin_23_24_start,
+        #     playin_23_24_end,
+        #     "2023-24",
+        # )
+        # if batch_df is not None and not batch_df.empty:
+        #     append_batch_to_csv(batch_df, OUTPUT_CSV)
+        #     print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
+        # else:
+        #     print(f"(No data found for {playin_23_24_start})")
 
-        print("\nScraping PLAYOFFS data...\n")
-        for batch_start, batch_end in month_batches(PLAYOFFS_START, PLAYOFFS_END):
-            print(f"PLAYOFFS: {batch_start} to {batch_end}")
-            batch_df = fetch_and_format_batch(driver, "Playoffs", batch_start, batch_end)
-            if batch_df is not None and not batch_df.empty:
-                append_batch_to_csv(batch_df, OUTPUT_CSV)
-                print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
-            else:
-                print(f"(No data found for {batch_start})")
+        # print("\nScraping PLAYOFFS data...\n")
+        # for batch_start, batch_end in month_batches(PLAYOFFS_START, PLAYOFFS_END):
+        #     print(f"PLAYOFFS: {batch_start} to {batch_end}")
+        #     batch_df = fetch_and_format_batch(driver, "Playoffs", batch_start, batch_end)
+        #     if batch_df is not None and not batch_df.empty:
+        #         append_batch_to_csv(batch_df, OUTPUT_CSV)
+        #         print(f"Appended {len(batch_df)} rows to {OUTPUT_CSV}")
+        #     else:
+        #         print(f"(No data found for {batch_start})")
 
-        print("Done writing batches.")
+        # print("Done writing batches.")
 
         run_manual_batches(driver)
 

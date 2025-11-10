@@ -1,1169 +1,126 @@
-Database initialization completed successfully.
-Starting back-test across 193 days…
+Starting back-test across 20 days…
 
-=== 2024-11-10 ===
-Processing props: 100%|█████████████████████| 334/334 [00:07<00:00, 46.88prop/s]
-Found 6 bets | W-L: 3-3
-Day profit: 0.18 units | Running total: 0.18 units | Day W-L: 3-3 | Overall W-L: 3-3 (50.00%)
-
-=== 2024-11-11 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 184/184 [00:04<00:00, 38.10prop/s]
-Found 4 bets | W-L: 3-1
-Day profit: 2.48 units | Running total: 2.66 units | Day W-L: 3-1 | Overall W-L: 6-4 (60.00%)
-
-=== 2024-11-12 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 307/307 [00:07<00:00, 41.42prop/s]
-Found 9 bets | W-L: 6-3
-Day profit: 3.74 units | Running total: 6.40 units | Day W-L: 6-3 | Overall W-L: 12-7 (63.16%)
-
-=== 2024-11-13 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 417/417 [00:10<00:00, 39.18prop/s]
-Found 15 bets | W-L: 10-5
-Day profit: 6.06 units | Running total: 12.46 units | Day W-L: 10-5 | Overall W-L: 22-12 (64.71%)
-
-=== 2024-11-14 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 43/43 [00:01<00:00, 33.92prop/s]
-Found 1 bets | W-L: 1-0
-Day profit: 1.16 units | Running total: 13.62 units | Day W-L: 1-0 | Overall W-L: 23-12 (65.71%)
-
-=== 2024-11-15 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 389/389 [00:09<00:00, 41.98prop/s]
-Found 11 bets | W-L: 8-3
-Day profit: 5.78 units | Running total: 19.40 units | Day W-L: 8-3 | Overall W-L: 31-15 (67.39%)
-
-=== 2024-11-16 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 85/85 [00:01<00:00, 44.82prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 19.40 units | Day W-L: 0-0 | Overall W-L: 31-15 (67.39%)
-
-=== 2024-11-17 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 329/329 [00:07<00:00, 42.42prop/s]
-Found 6 bets | W-L: 0-6
-Day profit: -6.00 units | Running total: 13.40 units | Day W-L: 0-6 | Overall W-L: 31-21 (59.62%)
-
-=== 2024-11-18 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 292/292 [00:07<00:00, 37.38prop/s]
-Found 6 bets | W-L: 4-2
-Day profit: 2.44 units | Running total: 15.84 units | Day W-L: 4-2 | Overall W-L: 35-23 (60.34%)
-
-=== 2024-11-19 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 243/243 [00:07<00:00, 33.62prop/s]
-Found 6 bets | W-L: 4-2
-Day profit: 2.52 units | Running total: 18.36 units | Day W-L: 4-2 | Overall W-L: 39-25 (60.94%)
-
-=== 2024-11-20 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 258/258 [00:06<00:00, 41.66prop/s]
-Found 7 bets | W-L: 3-4
-Day profit: -0.62 units | Running total: 17.74 units | Day W-L: 3-4 | Overall W-L: 42-29 (59.15%)
-
-=== 2024-11-21 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 149/149 [00:04<00:00, 35.93prop/s]
-Found 5 bets | W-L: 2-3
-Day profit: -0.72 units | Running total: 17.02 units | Day W-L: 2-3 | Overall W-L: 44-32 (57.89%)
-
-=== 2024-11-22 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 260/260 [00:08<00:00, 32.34prop/s]
-Found 7 bets | W-L: 5-2
-Day profit: 3.60 units | Running total: 20.62 units | Day W-L: 5-2 | Overall W-L: 49-34 (59.04%)
-
-=== 2024-11-23 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 268/268 [00:07<00:00, 36.01prop/s]
-No stats found for Jonathan Kuminga on 2024-11-23
-Found 9 bets | W-L: 5-3
-Day profit: 2.46 units | Running total: 23.08 units | Day W-L: 5-3 | Overall W-L: 54-37 (59.34%)
-
-=== 2024-11-24 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 179/179 [00:04<00:00, 38.22prop/s]
+=== 2025-10-21 ===
+Processing props: 100%|███████████████████████| 93/93 [00:04<00:00, 22.05prop/s]
 Found 3 bets | W-L: 3-0
-Day profit: 3.20 units | Running total: 26.28 units | Day W-L: 3-0 | Overall W-L: 57-37 (60.64%)
+Day profit: 3.36 units | Running total: 3.36 units | Day W-L: 3-0 | Overall W-L: 3-0 (100.00%)
 
-=== 2024-11-25 ===
+=== 2025-10-22 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 157/157 [00:05<00:00, 31.14prop/s]
-Found 4 bets | W-L: 2-2
-Day profit: 0.18 units | Running total: 26.46 units | Day W-L: 2-2 | Overall W-L: 59-39 (60.20%)
+Processing props: 100%|█████████████████████| 485/485 [00:26<00:00, 17.98prop/s]
+Found 15 bets | W-L: 7-8
+Day profit: -0.22 units | Running total: 3.14 units | Day W-L: 7-8 | Overall W-L: 10-8 (55.56%)
 
-=== 2024-11-26 ===
+=== 2025-10-23 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 219/219 [00:05<00:00, 41.72prop/s]
-Found 5 bets | W-L: 2-3
-Day profit: -0.80 units | Running total: 25.66 units | Day W-L: 2-3 | Overall W-L: 61-42 (59.22%)
+Processing props: 100%|███████████████████████| 93/93 [00:05<00:00, 18.50prop/s]
+Found 4 bets | W-L: 4-0
+Day profit: 4.66 units | Running total: 7.80 units | Day W-L: 4-0 | Overall W-L: 14-8 (63.64%)
 
-=== 2024-11-27 ===
+=== 2025-10-24 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 461/461 [00:12<00:00, 35.92prop/s]
-Found 20 bets | W-L: 13-7
-Day profit: 7.58 units | Running total: 33.24 units | Day W-L: 13-7 | Overall W-L: 74-49 (60.16%)
+Processing props: 100%|█████████████████████| 516/516 [00:25<00:00, 20.41prop/s]
+Found 15 bets | W-L: 9-6
+Day profit: 3.62 units | Running total: 11.42 units | Day W-L: 9-6 | Overall W-L: 23-14 (62.16%)
 
-=== 2024-11-29 ===
+=== 2025-10-25 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 189/189 [00:05<00:00, 35.94prop/s]
-Found 7 bets | W-L: 2-5
-Day profit: -2.86 units | Running total: 30.38 units | Day W-L: 2-5 | Overall W-L: 76-54 (58.46%)
+Processing props: 100%|█████████████████████| 230/230 [00:11<00:00, 19.26prop/s]
+No stats found for Brandon Miller on 2025-10-25
+Found 8 bets | W-L: 5-2
+Day profit: 3.66 units | Running total: 15.08 units | Day W-L: 5-2 | Overall W-L: 28-16 (63.64%)
 
-=== 2024-11-30 ===
+=== 2025-10-26 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 150/150 [00:04<00:00, 33.71prop/s]
-No stats found for Cade Cunningham on 2024-11-30
-Found 6 bets | W-L: 1-4
-Day profit: -2.86 units | Running total: 27.52 units | Day W-L: 1-4 | Overall W-L: 77-58 (57.04%)
+Processing props: 100%|█████████████████████| 260/260 [00:14<00:00, 18.11prop/s]
+Found 5 bets | W-L: 4-1
+Day profit: 3.50 units | Running total: 18.58 units | Day W-L: 4-1 | Overall W-L: 32-17 (65.31%)
 
-=== 2024-12-01 ===
+=== 2025-10-27 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 284/284 [00:08<00:00, 32.92prop/s]
+Processing props: 100%|█████████████████████| 468/468 [00:26<00:00, 17.52prop/s]
+Found 15 bets | W-L: 8-7
+Day profit: 1.62 units | Running total: 20.21 units | Day W-L: 8-7 | Overall W-L: 40-24 (62.50%)
+
+=== 2025-10-28 ===
+Pipeline executed successfully.
+Processing props: 100%|█████████████████████| 228/228 [00:10<00:00, 21.95prop/s]
+Found 13 bets | W-L: 7-6
+Day profit: 2.16 units | Running total: 22.37 units | Day W-L: 7-6 | Overall W-L: 47-30 (61.04%)
+
+=== 2025-10-29 ===
+Pipeline executed successfully.
+Processing props: 100%|█████████████████████| 445/445 [00:22<00:00, 19.83prop/s]
+No stats found for Trae Young on 2025-10-29
+Found 15 bets | W-L: 10-4
+Day profit: 6.92 units | Running total: 29.29 units | Day W-L: 10-4 | Overall W-L: 57-34 (62.64%)
+
+=== 2025-10-30 ===
+Pipeline executed successfully.
+Processing props: 100%|█████████████████████| 171/171 [00:09<00:00, 18.43prop/s]
+Found 7 bets | W-L: 4-3
+Day profit: 1.40 units | Running total: 30.69 units | Day W-L: 4-3 | Overall W-L: 61-37 (62.24%)
+
+=== 2025-10-31 ===
+Pipeline executed successfully.
+Processing props: 100%|█████████████████████| 416/416 [00:22<00:00, 18.72prop/s]
+Found 15 bets | W-L: 9-6
+Day profit: 3.76 units | Running total: 34.45 units | Day W-L: 9-6 | Overall W-L: 70-43 (61.95%)
+
+=== 2025-11-01 ===
+Pipeline executed successfully.
+Processing props: 100%|█████████████████████| 266/266 [00:14<00:00, 18.79prop/s]
 Found 9 bets | W-L: 4-5
-Day profit: -0.56 units | Running total: 26.96 units | Day W-L: 4-5 | Overall W-L: 81-63 (56.25%)
+Day profit: -0.74 units | Running total: 33.71 units | Day W-L: 4-5 | Overall W-L: 74-48 (60.66%)
 
-=== 2024-12-02 ===
+=== 2025-11-02 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 148/148 [00:04<00:00, 30.46prop/s]
+Processing props: 100%|█████████████████████| 345/345 [00:18<00:00, 18.97prop/s]
 Found 9 bets | W-L: 6-3
-Day profit: 3.74 units | Running total: 30.70 units | Day W-L: 6-3 | Overall W-L: 87-66 (56.86%)
+Day profit: 4.02 units | Running total: 37.73 units | Day W-L: 6-3 | Overall W-L: 80-51 (61.07%)
 
-=== 2024-12-03 ===
+=== 2025-11-03 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 449/449 [00:14<00:00, 31.56prop/s]
-Found 20 bets | W-L: 11-9
-Day profit: 3.52 units | Running total: 34.22 units | Day W-L: 11-9 | Overall W-L: 98-75 (56.65%)
-
-=== 2024-12-04 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 219/219 [00:06<00:00, 35.21prop/s]
-Found 12 bets | W-L: 7-5
-Day profit: 2.65 units | Running total: 36.87 units | Day W-L: 7-5 | Overall W-L: 105-80 (56.76%)
-
-=== 2024-12-05 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 349/349 [00:10<00:00, 33.28prop/s]
-Found 6 bets | W-L: 5-1
-Day profit: 4.36 units | Running total: 41.23 units | Day W-L: 5-1 | Overall W-L: 110-81 (57.59%)
-
-=== 2024-12-06 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 274/274 [00:08<00:00, 32.97prop/s]
-Found 8 bets | W-L: 4-4
-Day profit: 0.32 units | Running total: 41.55 units | Day W-L: 4-4 | Overall W-L: 114-85 (57.29%)
-
-=== 2024-12-07 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 168/168 [00:05<00:00, 33.50prop/s]
-Found 1 bets | W-L: 1-0
-Day profit: 1.08 units | Running total: 42.63 units | Day W-L: 1-0 | Overall W-L: 115-85 (57.50%)
-
-=== 2024-12-08 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 90/90 [00:02<00:00, 41.85prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 42.63 units | Day W-L: 0-0 | Overall W-L: 115-85 (57.50%)
-
-=== 2024-12-09 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 37/37 [00:01<00:00, 25.34prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.22 units | Running total: 43.85 units | Day W-L: 2-1 | Overall W-L: 117-86 (57.64%)
-
-=== 2024-12-10 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 65/65 [00:02<00:00, 32.19prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.14 units | Running total: 43.99 units | Day W-L: 1-1 | Overall W-L: 118-87 (57.56%)
-
-=== 2024-12-11 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 95/95 [00:03<00:00, 27.09prop/s]
-Found 5 bets | W-L: 4-1
-Day profit: 3.46 units | Running total: 47.45 units | Day W-L: 4-1 | Overall W-L: 122-88 (58.10%)
-
-=== 2024-12-12 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 102/102 [00:03<00:00, 27.69prop/s]
-Found 3 bets | W-L: 0-3
-Day profit: -3.00 units | Running total: 44.45 units | Day W-L: 0-3 | Overall W-L: 122-91 (57.28%)
-
-=== 2024-12-13 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 333/333 [00:10<00:00, 31.69prop/s]
-No stats found for Bradley Beal on 2024-12-13
-Found 19 bets | W-L: 11-7
-Day profit: 5.24 units | Running total: 49.69 units | Day W-L: 11-7 | Overall W-L: 133-98 (57.58%)
-
-=== 2024-12-14 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 89/89 [00:03<00:00, 28.26prop/s]
-Found 6 bets | W-L: 3-3
-Day profit: 0.30 units | Running total: 49.99 units | Day W-L: 3-3 | Overall W-L: 136-101 (57.38%)
-
-=== 2024-12-15 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 268/268 [00:09<00:00, 27.50prop/s]
+Processing props: 100%|█████████████████████| 370/370 [00:16<00:00, 22.90prop/s]
 Found 13 bets | W-L: 6-7
-Day profit: -0.48 units | Running total: 49.51 units | Day W-L: 6-7 | Overall W-L: 142-108 (56.80%)
+Day profit: -0.20 units | Running total: 37.53 units | Day W-L: 6-7 | Overall W-L: 86-58 (59.72%)
 
-=== 2024-12-16 ===
+=== 2025-11-04 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 234/234 [00:07<00:00, 30.17prop/s]
-Found 12 bets | W-L: 3-9
-Day profit: -5.70 units | Running total: 43.81 units | Day W-L: 3-9 | Overall W-L: 145-117 (55.34%)
+Processing props: 100%|█████████████████████| 273/273 [00:15<00:00, 17.47prop/s]
+No stats found for Andre Drummond on 2025-11-04
+Found 10 bets | W-L: 6-3
+Day profit: 3.36 units | Running total: 40.89 units | Day W-L: 6-3 | Overall W-L: 92-61 (60.13%)
 
-=== 2024-12-18 ===
+=== 2025-11-05 ===
 Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 33/33 [00:00<00:00, 33.17prop/s]
-No stats found for Giannis Antetokounmpo on 2024-12-18
-Found 1 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 43.81 units | Day W-L: 0-0 | Overall W-L: 145-117 (55.34%)
+Processing props: 100%|█████████████████████| 440/440 [00:21<00:00, 20.50prop/s]
+No stats found for Bam Adebayo on 2025-11-05
+Found 11 bets | W-L: 7-3
+Day profit: 4.52 units | Running total: 45.41 units | Day W-L: 7-3 | Overall W-L: 99-64 (60.74%)
 
-=== 2024-12-19 ===
-Processing props: 100%|█████████████████████| 431/431 [00:14<00:00, 30.38prop/s]
-Found 7 bets | W-L: 4-3
-Day profit: 1.36 units | Running total: 45.17 units | Day W-L: 4-3 | Overall W-L: 149-120 (55.39%)
-
-=== 2024-12-20 ===
+=== 2025-11-06 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 113/113 [00:03<00:00, 28.27prop/s]
-Found 3 bets | W-L: 1-2
-Day profit: -0.82 units | Running total: 44.35 units | Day W-L: 1-2 | Overall W-L: 150-122 (55.15%)
-
-=== 2024-12-21 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 403/403 [00:14<00:00, 27.44prop/s]
-Found 15 bets | W-L: 9-6
-Day profit: 3.92 units | Running total: 48.27 units | Day W-L: 9-6 | Overall W-L: 159-128 (55.40%)
-
-=== 2024-12-22 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 128/128 [00:04<00:00, 29.55prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.18 units | Running total: 48.45 units | Day W-L: 1-1 | Overall W-L: 160-129 (55.36%)
-
-=== 2024-12-23 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 513/513 [00:17<00:00, 29.86prop/s]
-Found 20 bets | W-L: 13-7
-Day profit: 7.18 units | Running total: 55.63 units | Day W-L: 13-7 | Overall W-L: 173-136 (55.99%)
-
-=== 2024-12-25 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 206/206 [00:06<00:00, 30.88prop/s]
-Found 10 bets | W-L: 7-3
-Day profit: 4.72 units | Running total: 60.35 units | Day W-L: 7-3 | Overall W-L: 180-139 (56.43%)
-
-=== 2024-12-26 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 340/340 [00:12<00:00, 28.18prop/s]
-Found 7 bets | W-L: 4-3
-Day profit: 1.32 units | Running total: 61.67 units | Day W-L: 4-3 | Overall W-L: 184-142 (56.44%)
-
-=== 2024-12-27 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 330/330 [00:10<00:00, 30.06prop/s]
-Found 7 bets | W-L: 4-3
-Day profit: 1.46 units | Running total: 63.13 units | Day W-L: 4-3 | Overall W-L: 188-145 (56.46%)
-
-=== 2024-12-28 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 161/161 [00:04<00:00, 33.93prop/s]
-Found 2 bets | W-L: 0-2
-Day profit: -2.00 units | Running total: 61.13 units | Day W-L: 0-2 | Overall W-L: 188-147 (56.12%)
-
-=== 2024-12-29 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 150/150 [00:05<00:00, 29.76prop/s]
-Found 4 bets | W-L: 1-3
-Day profit: -1.92 units | Running total: 59.21 units | Day W-L: 1-3 | Overall W-L: 189-150 (55.75%)
-
-=== 2024-12-30 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 298/298 [00:10<00:00, 28.99prop/s]
-Found 9 bets | W-L: 6-3
-Day profit: 3.74 units | Running total: 62.95 units | Day W-L: 6-3 | Overall W-L: 195-153 (56.03%)
-
-=== 2024-12-31 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 228/228 [00:24<00:00,  9.30prop/s]
-Found 8 bets | W-L: 3-5
-Day profit: -1.68 units | Running total: 61.27 units | Day W-L: 3-5 | Overall W-L: 198-158 (55.62%)
-
-=== 2025-01-01 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 292/292 [00:25<00:00, 11.54prop/s]
-Found 9 bets | W-L: 5-4
-Day profit: 1.72 units | Running total: 62.99 units | Day W-L: 5-4 | Overall W-L: 203-162 (55.62%)
-
-=== 2025-01-02 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 170/170 [00:13<00:00, 12.28prop/s]
-Found 8 bets | W-L: 4-4
-Day profit: 0.32 units | Running total: 63.31 units | Day W-L: 4-4 | Overall W-L: 207-166 (55.50%)
-
-=== 2025-01-03 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 360/360 [00:23<00:00, 15.62prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.24 units | Running total: 64.55 units | Day W-L: 2-1 | Overall W-L: 209-167 (55.59%)
-
-=== 2025-01-04 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 339/339 [00:17<00:00, 19.03prop/s]
-Found 10 bets | W-L: 5-5
-Day profit: 0.53 units | Running total: 65.08 units | Day W-L: 5-5 | Overall W-L: 214-172 (55.44%)
-
-=== 2025-01-05 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 179/179 [00:10<00:00, 17.70prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.16 units | Running total: 66.24 units | Day W-L: 2-1 | Overall W-L: 216-173 (55.53%)
-
-=== 2025-01-06 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 344/344 [00:19<00:00, 17.71prop/s]
-Found 12 bets | W-L: 5-7
-Day profit: -1.60 units | Running total: 64.64 units | Day W-L: 5-7 | Overall W-L: 221-180 (55.11%)
-
-=== 2025-01-07 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 229/229 [00:11<00:00, 19.66prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.18 units | Running total: 65.82 units | Day W-L: 2-1 | Overall W-L: 223-181 (55.20%)
-
-=== 2025-01-08 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 241/241 [00:10<00:00, 22.71prop/s]
-Found 4 bets | W-L: 2-2
-Day profit: 0.38 units | Running total: 66.20 units | Day W-L: 2-2 | Overall W-L: 225-183 (55.15%)
-
-=== 2025-01-09 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 269/269 [00:13<00:00, 19.25prop/s]
-Found 9 bets | W-L: 5-4
-Day profit: 1.36 units | Running total: 67.56 units | Day W-L: 5-4 | Overall W-L: 230-187 (55.16%)
-
-=== 2025-01-10 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 273/273 [00:17<00:00, 15.56prop/s]
-Found 12 bets | W-L: 10-2
-Day profit: 9.40 units | Running total: 76.96 units | Day W-L: 10-2 | Overall W-L: 240-189 (55.94%)
-
-=== 2025-01-11 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 165/165 [00:12<00:00, 13.40prop/s]
-Found 8 bets | W-L: 4-4
-Day profit: 0.25 units | Running total: 77.21 units | Day W-L: 4-4 | Overall W-L: 244-193 (55.84%)
-
-=== 2025-01-12 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 298/298 [00:20<00:00, 14.58prop/s]
-Found 14 bets | W-L: 8-6
-Day profit: 3.08 units | Running total: 80.29 units | Day W-L: 8-6 | Overall W-L: 252-199 (55.88%)
-
-=== 2025-01-13 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 226/226 [00:12<00:00, 17.62prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.14 units | Running total: 81.43 units | Day W-L: 2-1 | Overall W-L: 254-200 (55.95%)
-
-=== 2025-01-14 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 290/290 [00:16<00:00, 17.39prop/s]
-Found 10 bets | W-L: 7-3
-Day profit: 4.44 units | Running total: 85.87 units | Day W-L: 7-3 | Overall W-L: 261-203 (56.25%)
-
-=== 2025-01-15 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 467/467 [00:23<00:00, 19.80prop/s]
-Found 13 bets | W-L: 7-6
-Day profit: 1.46 units | Running total: 87.33 units | Day W-L: 7-6 | Overall W-L: 268-209 (56.18%)
-
-=== 2025-01-16 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 205/205 [00:11<00:00, 17.48prop/s]
-Found 5 bets | W-L: 3-2
-Day profit: 1.46 units | Running total: 88.79 units | Day W-L: 3-2 | Overall W-L: 271-211 (56.22%)
-
-=== 2025-01-17 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 330/330 [00:18<00:00, 18.05prop/s]
-Found 9 bets | W-L: 7-2
-Day profit: 5.64 units | Running total: 94.43 units | Day W-L: 7-2 | Overall W-L: 278-213 (56.62%)
-
-=== 2025-01-18 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 204/204 [00:11<00:00, 17.58prop/s]
-Found 5 bets | W-L: 4-1
-Day profit: 3.46 units | Running total: 97.89 units | Day W-L: 4-1 | Overall W-L: 282-214 (56.85%)
-
-=== 2025-01-19 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 122/122 [00:05<00:00, 21.00prop/s]
+Processing props: 100%|███████████████████████| 44/44 [00:03<00:00, 14.03prop/s]
 Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 97.89 units | Day W-L: 0-0 | Overall W-L: 282-214 (56.85%)
+Day profit: 0.00 units | Running total: 45.41 units | Day W-L: 0-0 | Overall W-L: 99-64 (60.74%)
 
-=== 2025-01-20 ===
+=== 2025-11-07 ===
 Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 87/87 [00:04<00:00, 19.52prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.20 units | Running total: 100.09 units | Day W-L: 2-0 | Overall W-L: 284-214 (57.03%)
+Processing props: 100%|█████████████████████| 534/534 [00:28<00:00, 18.42prop/s]
+Found 15 bets | W-L: 6-9
+Day profit: -2.72 units | Running total: 42.69 units | Day W-L: 6-9 | Overall W-L: 105-73 (58.99%)
 
-=== 2025-01-21 ===
+=== 2025-11-08 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 199/199 [00:11<00:00, 17.70prop/s]
-Found 7 bets | W-L: 2-5
-Day profit: -2.72 units | Running total: 97.37 units | Day W-L: 2-5 | Overall W-L: 286-219 (56.63%)
-
-=== 2025-01-22 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 294/294 [00:18<00:00, 16.11prop/s]
-Found 16 bets | W-L: 10-6
-Day profit: 4.76 units | Running total: 102.13 units | Day W-L: 10-6 | Overall W-L: 296-225 (56.81%)
-
-=== 2025-01-23 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 94/94 [00:05<00:00, 17.47prop/s]
-Found 3 bets | W-L: 1-2
-Day profit: -0.90 units | Running total: 101.23 units | Day W-L: 1-2 | Overall W-L: 297-227 (56.68%)
-
-=== 2025-01-24 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 103/103 [00:08<00:00, 11.64prop/s]
-Found 1 bets | W-L: 1-0
-Day profit: 1.14 units | Running total: 102.37 units | Day W-L: 1-0 | Overall W-L: 298-227 (56.76%)
-
-=== 2025-01-25 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 115/115 [00:08<00:00, 13.41prop/s]
-Found 7 bets | W-L: 5-2
-Day profit: 3.33 units | Running total: 105.70 units | Day W-L: 5-2 | Overall W-L: 303-229 (56.95%)
-
-=== 2025-01-26 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 40/40 [00:04<00:00,  9.07prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.34 units | Running total: 107.04 units | Day W-L: 2-1 | Overall W-L: 305-230 (57.01%)
-
-=== 2025-01-27 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 498/498 [00:33<00:00, 14.83prop/s]
-Found 14 bets | W-L: 11-3
-Day profit: 9.24 units | Running total: 116.28 units | Day W-L: 11-3 | Overall W-L: 316-233 (57.56%)
-
-=== 2025-01-28 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 166/166 [00:10<00:00, 16.20prop/s]
-Found 6 bets | W-L: 6-0
-Day profit: 6.76 units | Running total: 123.04 units | Day W-L: 6-0 | Overall W-L: 322-233 (58.02%)
-
-=== 2025-01-29 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 434/434 [00:30<00:00, 14.24prop/s]
-Found 16 bets | W-L: 11-5
-Day profit: 7.40 units | Running total: 130.44 units | Day W-L: 11-5 | Overall W-L: 333-238 (58.32%)
-
-=== 2025-01-30 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 183/183 [00:11<00:00, 15.96prop/s]
-Found 9 bets | W-L: 8-1
-Day profit: 7.86 units | Running total: 138.30 units | Day W-L: 8-1 | Overall W-L: 341-239 (58.79%)
-
-=== 2025-01-31 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 309/309 [00:19<00:00, 16.22prop/s]
-Found 13 bets | W-L: 11-2
-Day profit: 10.21 units | Running total: 148.51 units | Day W-L: 11-2 | Overall W-L: 352-241 (59.36%)
-
-=== 2025-02-01 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 336/336 [00:28<00:00, 11.74prop/s]
-Found 13 bets | W-L: 9-4
-Day profit: 5.70 units | Running total: 154.21 units | Day W-L: 9-4 | Overall W-L: 361-245 (59.57%)
-
-=== 2025-02-02 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 141/141 [00:10<00:00, 13.58prop/s]
-Found 6 bets | W-L: 4-2
-Day profit: 2.46 units | Running total: 156.67 units | Day W-L: 4-2 | Overall W-L: 365-247 (59.64%)
-
-=== 2025-02-03 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 336/336 [00:21<00:00, 15.76prop/s]
-Found 9 bets | W-L: 7-2
-Day profit: 5.93 units | Running total: 162.60 units | Day W-L: 7-2 | Overall W-L: 372-249 (59.90%)
-
-=== 2025-02-04 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 305/305 [00:20<00:00, 14.87prop/s]
-Found 11 bets | W-L: 2-9
-Day profit: -6.98 units | Running total: 155.62 units | Day W-L: 2-9 | Overall W-L: 374-258 (59.18%)
-
-=== 2025-02-05 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 447/447 [00:38<00:00, 11.53prop/s]
-Found 14 bets | W-L: 9-5
-Day profit: 4.80 units | Running total: 160.42 units | Day W-L: 9-5 | Overall W-L: 383-263 (59.29%)
-
-=== 2025-02-06 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 245/245 [00:19<00:00, 12.26prop/s]
-Found 11 bets | W-L: 6-5
-Day profit: 1.62 units | Running total: 162.04 units | Day W-L: 6-5 | Overall W-L: 389-268 (59.21%)
-
-=== 2025-02-07 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 232/232 [00:18<00:00, 12.72prop/s]
-Found 8 bets | W-L: 6-2
-Day profit: 4.52 units | Running total: 166.56 units | Day W-L: 6-2 | Overall W-L: 395-270 (59.40%)
-
-=== 2025-02-08 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 330/330 [00:27<00:00, 12.17prop/s]
-Found 13 bets | W-L: 7-6
-Day profit: 2.10 units | Running total: 168.66 units | Day W-L: 7-6 | Overall W-L: 402-276 (59.29%)
-
-=== 2025-02-09 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 64/64 [00:06<00:00,  9.82prop/s]
-Found 1 bets | W-L: 0-1
-Day profit: -1.00 units | Running total: 167.66 units | Day W-L: 0-1 | Overall W-L: 402-277 (59.20%)
-
-=== 2025-02-10 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 354/354 [00:37<00:00,  9.55prop/s]
-Found 14 bets | W-L: 7-7
-Day profit: 0.84 units | Running total: 168.50 units | Day W-L: 7-7 | Overall W-L: 409-284 (59.02%)
-
-=== 2025-02-12 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 575/575 [00:45<00:00, 12.53prop/s]
-Found 15 bets | W-L: 7-8
-Day profit: -0.12 units | Running total: 168.38 units | Day W-L: 7-8 | Overall W-L: 416-292 (58.76%)
-
-=== 2025-02-13 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 178/178 [00:14<00:00, 12.08prop/s]
-Found 8 bets | W-L: 6-2
-Day profit: 4.74 units | Running total: 173.12 units | Day W-L: 6-2 | Overall W-L: 422-294 (58.94%)
-
-=== 2025-02-19 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 39/39 [00:02<00:00, 15.98prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.10 units | Running total: 173.22 units | Day W-L: 1-1 | Overall W-L: 423-295 (58.91%)
-
-=== 2025-02-20 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 334/334 [00:25<00:00, 13.15prop/s]
-Found 15 bets | W-L: 11-4
-Day profit: 8.34 units | Running total: 181.56 units | Day W-L: 11-4 | Overall W-L: 434-299 (59.21%)
-
-=== 2025-02-21 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 321/321 [00:27<00:00, 11.85prop/s]
-No stats found for Jaime Jaquez Jr. on 2025-02-21
-Found 16 bets | W-L: 9-6
-Day profit: 3.88 units | Running total: 185.44 units | Day W-L: 9-6 | Overall W-L: 443-305 (59.22%)
-
-=== 2025-02-22 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 163/163 [00:09<00:00, 17.03prop/s]
-Found 4 bets | W-L: 2-2
-Day profit: 0.22 units | Running total: 185.66 units | Day W-L: 2-2 | Overall W-L: 445-307 (59.18%)
-
-=== 2025-02-23 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 121/121 [00:09<00:00, 12.54prop/s]
-Found 5 bets | W-L: 2-3
-Day profit: -0.96 units | Running total: 184.70 units | Day W-L: 2-3 | Overall W-L: 447-310 (59.05%)
-
-=== 2025-02-24 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 318/318 [00:23<00:00, 13.42prop/s]
-Found 11 bets | W-L: 5-6
-Day profit: -0.48 units | Running total: 184.22 units | Day W-L: 5-6 | Overall W-L: 452-316 (58.85%)
-
-=== 2025-02-25 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 317/317 [00:23<00:00, 13.73prop/s]
-Found 11 bets | W-L: 8-3
-Day profit: 6.32 units | Running total: 190.54 units | Day W-L: 8-3 | Overall W-L: 460-319 (59.05%)
-
-=== 2025-02-26 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 395/395 [00:28<00:00, 13.86prop/s]
-Found 6 bets | W-L: 5-1
-Day profit: 4.42 units | Running total: 194.96 units | Day W-L: 5-1 | Overall W-L: 465-320 (59.24%)
-
-=== 2025-02-27 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 202/202 [00:12<00:00, 16.14prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 194.96 units | Day W-L: 0-0 | Overall W-L: 465-320 (59.24%)
-
-=== 2025-02-28 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 354/354 [00:24<00:00, 14.62prop/s]
-Found 13 bets | W-L: 5-8
-Day profit: -2.40 units | Running total: 192.56 units | Day W-L: 5-8 | Overall W-L: 470-328 (58.90%)
-
-=== 2025-03-01 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 210/210 [00:08<00:00, 23.44prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.14 units | Running total: 193.70 units | Day W-L: 2-1 | Overall W-L: 472-329 (58.93%)
-
-=== 2025-03-02 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 130/130 [00:05<00:00, 23.07prop/s]
-Found 3 bets | W-L: 0-3
-Day profit: -3.00 units | Running total: 190.70 units | Day W-L: 0-3 | Overall W-L: 472-332 (58.71%)
-
-=== 2025-03-03 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 275/275 [00:12<00:00, 21.93prop/s]
-Found 3 bets | W-L: 1-2
-Day profit: -0.80 units | Running total: 189.90 units | Day W-L: 1-2 | Overall W-L: 473-334 (58.61%)
-
-=== 2025-03-04 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 346/346 [00:15<00:00, 21.67prop/s]
-Found 6 bets | W-L: 5-1
-Day profit: 4.80 units | Running total: 194.70 units | Day W-L: 5-1 | Overall W-L: 478-335 (58.79%)
-
-=== 2025-03-05 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 291/291 [00:13<00:00, 21.88prop/s]
-Found 6 bets | W-L: 3-3
-Day profit: 0.28 units | Running total: 194.98 units | Day W-L: 3-3 | Overall W-L: 481-338 (58.73%)
-
-=== 2025-03-06 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 242/242 [00:14<00:00, 16.40prop/s]
-Found 7 bets | W-L: 4-3
-Day profit: 1.48 units | Running total: 196.46 units | Day W-L: 4-3 | Overall W-L: 485-341 (58.72%)
-
-=== 2025-03-07 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 277/277 [00:20<00:00, 13.73prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.40 units | Running total: 198.86 units | Day W-L: 2-0 | Overall W-L: 487-341 (58.82%)
-
-=== 2025-03-08 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 295/295 [00:26<00:00, 11.22prop/s]
-Found 4 bets | W-L: 2-2
-Day profit: 0.26 units | Running total: 199.12 units | Day W-L: 2-2 | Overall W-L: 489-343 (58.77%)
-
-=== 2025-03-09 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 84/84 [00:06<00:00, 12.39prop/s]
-Found 1 bets | W-L: 0-1
-Day profit: -1.00 units | Running total: 198.12 units | Day W-L: 0-1 | Overall W-L: 489-344 (58.70%)
-
-=== 2025-03-10 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 355/355 [00:28<00:00, 12.41prop/s]
-Found 5 bets | W-L: 1-4
-Day profit: -2.84 units | Running total: 195.28 units | Day W-L: 1-4 | Overall W-L: 490-348 (58.47%)
-
-=== 2025-03-11 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 147/147 [00:11<00:00, 12.74prop/s]
-Found 6 bets | W-L: 4-2
-Day profit: 2.48 units | Running total: 197.76 units | Day W-L: 4-2 | Overall W-L: 494-350 (58.53%)
-
-=== 2025-03-12 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 356/356 [00:27<00:00, 12.81prop/s]
-Found 14 bets | W-L: 8-6
-Day profit: 2.82 units | Running total: 200.58 units | Day W-L: 8-6 | Overall W-L: 502-356 (58.51%)
-
-=== 2025-03-13 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 230/230 [00:18<00:00, 12.74prop/s]
-Found 8 bets | W-L: 6-2
-Day profit: 4.96 units | Running total: 205.54 units | Day W-L: 6-2 | Overall W-L: 508-358 (58.66%)
-
-=== 2025-03-14 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 202/202 [00:16<00:00, 12.36prop/s]
-Found 8 bets | W-L: 5-3
-Day profit: 2.40 units | Running total: 207.94 units | Day W-L: 5-3 | Overall W-L: 513-361 (58.70%)
-
-=== 2025-03-16 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 162/162 [00:10<00:00, 14.93prop/s]
-Found 5 bets | W-L: 4-1
-Day profit: 3.70 units | Running total: 211.64 units | Day W-L: 4-1 | Overall W-L: 517-362 (58.82%)
-
-=== 2025-03-17 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 368/368 [00:25<00:00, 14.21prop/s]
-Found 11 bets | W-L: 5-6
-Day profit: -0.60 units | Running total: 211.04 units | Day W-L: 5-6 | Overall W-L: 522-368 (58.65%)
-
-=== 2025-03-18 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 134/134 [00:07<00:00, 17.73prop/s]
-Found 3 bets | W-L: 0-3
-Day profit: -3.00 units | Running total: 208.04 units | Day W-L: 0-3 | Overall W-L: 522-371 (58.45%)
-
-=== 2025-03-19 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 425/425 [00:32<00:00, 13.10prop/s]
-No stats found for Nikola Jokić on 2025-03-19
-Found 12 bets | W-L: 7-4
-Day profit: 3.62 units | Running total: 211.66 units | Day W-L: 7-4 | Overall W-L: 529-375 (58.52%)
-
-=== 2025-03-20 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 201/201 [00:16<00:00, 12.31prop/s]
-Found 5 bets | W-L: 4-1
-Day profit: 3.60 units | Running total: 215.26 units | Day W-L: 4-1 | Overall W-L: 533-376 (58.64%)
-
-=== 2025-03-21 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 402/402 [00:34<00:00, 11.66prop/s]
-No stats found for Anfernee Simons on 2025-03-21
-Found 20 bets | W-L: 9-10
-Day profit: 0.02 units | Running total: 215.28 units | Day W-L: 9-10 | Overall W-L: 542-386 (58.41%)
-
-=== 2025-03-22 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 191/191 [00:12<00:00, 15.90prop/s]
-Found 5 bets | W-L: 4-1
-Day profit: 3.62 units | Running total: 218.90 units | Day W-L: 4-1 | Overall W-L: 546-387 (58.52%)
-
-=== 2025-03-23 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 204/204 [00:14<00:00, 14.16prop/s]
-Found 8 bets | W-L: 3-5
-Day profit: -1.76 units | Running total: 217.14 units | Day W-L: 3-5 | Overall W-L: 549-392 (58.34%)
-
-=== 2025-03-24 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 308/308 [00:20<00:00, 14.86prop/s]
-Found 4 bets | W-L: 2-2
-Day profit: 0.22 units | Running total: 217.36 units | Day W-L: 2-2 | Overall W-L: 551-394 (58.31%)
-
-=== 2025-03-26 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 176/176 [00:12<00:00, 13.65prop/s]
-Found 7 bets | W-L: 4-3
-Day profit: 1.22 units | Running total: 218.58 units | Day W-L: 4-3 | Overall W-L: 555-397 (58.30%)
-
-=== 2025-03-27 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 144/144 [00:10<00:00, 13.12prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.26 units | Running total: 220.84 units | Day W-L: 2-0 | Overall W-L: 557-397 (58.39%)
-
-=== 2025-03-28 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 198/198 [00:15<00:00, 12.57prop/s]
-Found 7 bets | W-L: 3-4
-Day profit: -0.78 units | Running total: 220.06 units | Day W-L: 3-4 | Overall W-L: 560-401 (58.27%)
-
-=== 2025-03-29 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 75/75 [00:06<00:00, 11.10prop/s]
-Found 1 bets | W-L: 0-1
-Day profit: -1.00 units | Running total: 219.06 units | Day W-L: 0-1 | Overall W-L: 560-402 (58.21%)
-
-=== 2025-03-30 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 119/119 [00:09<00:00, 12.46prop/s]
-Found 5 bets | W-L: 3-2
-Day profit: 1.48 units | Running total: 220.54 units | Day W-L: 3-2 | Overall W-L: 563-404 (58.22%)
-
-=== 2025-03-31 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 259/259 [00:23<00:00, 11.01prop/s]
-Found 15 bets | W-L: 7-8
-Day profit: -0.62 units | Running total: 219.92 units | Day W-L: 7-8 | Overall W-L: 570-412 (58.04%)
-
-=== 2025-04-01 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 275/275 [00:20<00:00, 13.32prop/s]
-No stats found for Jamal Murray on 2025-04-01
-Found 7 bets | W-L: 1-5
-Day profit: -3.96 units | Running total: 215.96 units | Day W-L: 1-5 | Overall W-L: 571-417 (57.79%)
-
-=== 2025-04-02 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 261/261 [00:21<00:00, 12.08prop/s]
-Found 15 bets | W-L: 9-6
-Day profit: 3.88 units | Running total: 219.84 units | Day W-L: 9-6 | Overall W-L: 580-423 (57.83%)
-
-=== 2025-04-03 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 208/208 [00:15<00:00, 13.06prop/s]
-Found 7 bets | W-L: 1-6
-Day profit: -4.82 units | Running total: 215.02 units | Day W-L: 1-6 | Overall W-L: 581-429 (57.52%)
-
-=== 2025-04-04 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 270/270 [00:19<00:00, 13.73prop/s]
-Found 13 bets | W-L: 8-5
-Day profit: 3.64 units | Running total: 218.66 units | Day W-L: 8-5 | Overall W-L: 589-434 (57.58%)
-
-=== 2025-04-05 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 110/110 [00:07<00:00, 14.71prop/s]
-Found 3 bets | W-L: 1-2
-Day profit: -0.98 units | Running total: 217.68 units | Day W-L: 1-2 | Overall W-L: 590-436 (57.50%)
-
-=== 2025-04-06 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 137/137 [00:08<00:00, 15.89prop/s]
-Found 3 bets | W-L: 0-3
-Day profit: -3.00 units | Running total: 214.68 units | Day W-L: 0-3 | Overall W-L: 590-439 (57.34%)
-
-=== 2025-04-07 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 56/56 [00:03<00:00, 16.79prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.18 units | Running total: 216.86 units | Day W-L: 2-0 | Overall W-L: 592-439 (57.42%)
-
-=== 2025-04-08 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 308/308 [00:15<00:00, 19.33prop/s]
-Found 11 bets | W-L: 6-5
-Day profit: 1.84 units | Running total: 218.70 units | Day W-L: 6-5 | Overall W-L: 598-444 (57.39%)
-
-=== 2025-04-09 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 286/286 [00:16<00:00, 17.57prop/s]
-Found 9 bets | W-L: 6-3
-Day profit: 3.74 units | Running total: 222.44 units | Day W-L: 6-3 | Overall W-L: 604-447 (57.47%)
-
-=== 2025-04-10 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 159/159 [00:09<00:00, 16.66prop/s]
-Found 6 bets | W-L: 3-3
-Day profit: 0.46 units | Running total: 222.90 units | Day W-L: 3-3 | Overall W-L: 607-450 (57.43%)
-
-=== 2025-04-11 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 82/82 [00:03<00:00, 21.14prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.04 units | Running total: 224.94 units | Day W-L: 2-0 | Overall W-L: 609-450 (57.51%)
-
-=== 2025-04-13 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 81/81 [00:04<00:00, 19.54prop/s]
-No stats found for Jonathan Kuminga on 2025-04-13
-Found 2 bets | W-L: 1-0
-Day profit: 1.10 units | Running total: 226.04 units | Day W-L: 1-0 | Overall W-L: 610-450 (57.55%)
-
-=== 2025-04-15 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 80/80 [00:05<00:00, 14.89prop/s]
-Found 5 bets | W-L: 3-2
-Day profit: 1.34 units | Running total: 227.38 units | Day W-L: 3-2 | Overall W-L: 613-452 (57.56%)
-
-=== 2025-04-16 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 84/84 [00:05<00:00, 16.47prop/s]
-Found 5 bets | W-L: 3-2
-Day profit: 1.38 units | Running total: 228.76 units | Day W-L: 3-2 | Overall W-L: 616-454 (57.57%)
-
-=== 2025-04-18 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 65/65 [00:03<00:00, 17.78prop/s]
-Found 1 bets | W-L: 1-0
-Day profit: 1.16 units | Running total: 229.92 units | Day W-L: 1-0 | Overall W-L: 617-454 (57.61%)
-
-=== 2025-04-19 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 168/168 [00:10<00:00, 16.29prop/s]
-Found 6 bets | W-L: 4-2
-Day profit: 2.22 units | Running total: 232.14 units | Day W-L: 4-2 | Overall W-L: 621-456 (57.66%)
-
-=== 2025-04-20 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 145/145 [00:11<00:00, 13.18prop/s]
-Found 7 bets | W-L: 3-4
-Day profit: -0.74 units | Running total: 231.40 units | Day W-L: 3-4 | Overall W-L: 624-460 (57.56%)
-
-=== 2025-04-21 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 81/81 [00:05<00:00, 14.48prop/s]
-Found 3 bets | W-L: 3-0
-Day profit: 3.26 units | Running total: 234.66 units | Day W-L: 3-0 | Overall W-L: 627-460 (57.68%)
-
-=== 2025-04-22 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 109/109 [00:07<00:00, 14.25prop/s]
-Found 8 bets | W-L: 2-6
-Day profit: -3.62 units | Running total: 231.04 units | Day W-L: 2-6 | Overall W-L: 629-466 (57.44%)
-
-=== 2025-04-23 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 118/118 [00:10<00:00, 11.45prop/s]
+Processing props: 100%|█████████████████████| 376/376 [00:21<00:00, 17.57prop/s]
 Found 11 bets | W-L: 7-4
-Day profit: 3.76 units | Running total: 234.80 units | Day W-L: 7-4 | Overall W-L: 636-470 (57.50%)
+Day profit: 4.04 units | Running total: 46.73 units | Day W-L: 7-4 | Overall W-L: 112-77 (59.26%)
 
-=== 2025-04-24 ===
+=== 2025-11-09 ===
 Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 108/108 [00:08<00:00, 12.02prop/s]
-Found 4 bets | W-L: 4-0
-Day profit: 4.48 units | Running total: 239.28 units | Day W-L: 4-0 | Overall W-L: 640-470 (57.66%)
-
-=== 2025-04-25 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 120/120 [00:07<00:00, 15.28prop/s]
+Processing props: 100%|█████████████████████| 230/230 [00:12<00:00, 17.78prop/s]
 Found 7 bets | W-L: 5-2
-Day profit: 3.50 units | Running total: 242.78 units | Day W-L: 5-2 | Overall W-L: 645-472 (57.74%)
+Day profit: 3.36 units | Running total: 50.09 units | Day W-L: 5-2 | Overall W-L: 117-79 (59.69%)
 
-=== 2025-04-26 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 121/121 [00:08<00:00, 13.89prop/s]
-Found 7 bets | W-L: 6-1
-Day profit: 5.82 units | Running total: 248.60 units | Day W-L: 6-1 | Overall W-L: 651-473 (57.92%)
-
-=== 2025-04-27 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 155/155 [00:08<00:00, 18.63prop/s]
-Found 6 bets | W-L: 3-3
-Day profit: 0.44 units | Running total: 249.04 units | Day W-L: 3-3 | Overall W-L: 654-476 (57.88%)
-
-=== 2025-04-28 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 78/78 [00:05<00:00, 14.46prop/s]
-Found 4 bets | W-L: 2-2
-Day profit: 0.18 units | Running total: 249.22 units | Day W-L: 2-2 | Overall W-L: 656-478 (57.85%)
-
-=== 2025-04-29 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 125/125 [00:08<00:00, 14.87prop/s]
-Found 7 bets | W-L: 3-4
-Day profit: -0.68 units | Running total: 248.54 units | Day W-L: 3-4 | Overall W-L: 659-482 (57.76%)
-
-=== 2025-04-30 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 84/84 [00:04<00:00, 18.02prop/s]
-Found 3 bets | W-L: 1-2
-Day profit: -0.86 units | Running total: 247.68 units | Day W-L: 1-2 | Overall W-L: 660-484 (57.69%)
-
-=== 2025-05-01 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 67/67 [00:05<00:00, 11.78prop/s]
-Found 4 bets | W-L: 3-1
-Day profit: 2.54 units | Running total: 250.22 units | Day W-L: 3-1 | Overall W-L: 663-485 (57.75%)
-
-=== 2025-05-02 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 49/49 [00:02<00:00, 20.12prop/s]
-Found 3 bets | W-L: 1-2
-Day profit: -0.80 units | Running total: 249.42 units | Day W-L: 1-2 | Overall W-L: 664-487 (57.69%)
-
-=== 2025-05-03 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 39/39 [00:02<00:00, 15.15prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.14 units | Running total: 249.56 units | Day W-L: 1-1 | Overall W-L: 665-488 (57.68%)
-
-=== 2025-05-04 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 77/77 [00:04<00:00, 18.54prop/s]
-Found 4 bets | W-L: 4-0
-Day profit: 4.46 units | Running total: 254.02 units | Day W-L: 4-0 | Overall W-L: 669-488 (57.82%)
-
-=== 2025-05-05 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 48/48 [00:03<00:00, 15.01prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.26 units | Running total: 255.28 units | Day W-L: 2-1 | Overall W-L: 671-489 (57.84%)
-
-=== 2025-05-06 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 73/73 [00:03<00:00, 23.56prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 255.28 units | Day W-L: 0-0 | Overall W-L: 671-489 (57.84%)
-
-=== 2025-05-07 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 107/107 [00:07<00:00, 14.55prop/s]
-Found 8 bets | W-L: 5-3
-Day profit: 2.30 units | Running total: 257.58 units | Day W-L: 5-3 | Overall W-L: 676-492 (57.88%)
-
-=== 2025-05-08 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 31/31 [00:01<00:00, 17.52prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 257.58 units | Day W-L: 0-0 | Overall W-L: 676-492 (57.88%)
-
-=== 2025-05-09 ===
-Pipeline executed successfully.
-Processing props: 100%|█████████████████████| 102/102 [00:03<00:00, 27.27prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.02 units | Running total: 259.60 units | Day W-L: 2-0 | Overall W-L: 678-492 (57.95%)
-
-=== 2025-05-10 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 87/87 [00:05<00:00, 15.91prop/s]
-Found 5 bets | W-L: 2-3
-Day profit: -0.68 units | Running total: 258.92 units | Day W-L: 2-3 | Overall W-L: 680-495 (57.87%)
-
-=== 2025-05-11 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 70/70 [00:03<00:00, 18.62prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.36 units | Running total: 260.28 units | Day W-L: 2-1 | Overall W-L: 682-496 (57.89%)
-
-=== 2025-05-12 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 91/91 [00:04<00:00, 18.47prop/s]
-Found 3 bets | W-L: 3-0
-Day profit: 3.42 units | Running total: 263.70 units | Day W-L: 3-0 | Overall W-L: 685-496 (58.00%)
-
-=== 2025-05-13 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 76/76 [00:03<00:00, 19.51prop/s]
-Found 5 bets | W-L: 2-3
-Day profit: -0.80 units | Running total: 262.90 units | Day W-L: 2-3 | Overall W-L: 687-499 (57.93%)
-
-=== 2025-05-14 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 59/59 [00:03<00:00, 18.57prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 262.90 units | Day W-L: 0-0 | Overall W-L: 687-499 (57.93%)
-
-=== 2025-05-15 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 25/25 [00:01<00:00, 15.65prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.16 units | Running total: 263.06 units | Day W-L: 1-1 | Overall W-L: 688-500 (57.91%)
-
-=== 2025-05-16 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 57/57 [00:03<00:00, 18.96prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 263.06 units | Day W-L: 0-0 | Overall W-L: 688-500 (57.91%)
-
-=== 2025-05-18 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 14/14 [00:00<00:00, 22.22prop/s]
-Found 1 bets | W-L: 1-0
-Day profit: 1.18 units | Running total: 264.24 units | Day W-L: 1-0 | Overall W-L: 689-500 (57.95%)
-
-=== 2025-05-20 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 38/38 [00:02<00:00, 15.58prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.02 units | Running total: 264.26 units | Day W-L: 1-1 | Overall W-L: 690-501 (57.93%)
-
-=== 2025-05-21 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 20/20 [00:01<00:00, 17.73prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 264.26 units | Day W-L: 0-0 | Overall W-L: 690-501 (57.93%)
-
-=== 2025-05-22 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 49/49 [00:03<00:00, 14.13prop/s]
-Found 5 bets | W-L: 3-2
-Day profit: 1.24 units | Running total: 265.50 units | Day W-L: 3-2 | Overall W-L: 693-503 (57.94%)
-
-=== 2025-05-23 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 38/38 [00:02<00:00, 18.11prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.24 units | Running total: 267.74 units | Day W-L: 2-0 | Overall W-L: 695-503 (58.01%)
-
-=== 2025-05-24 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 43/43 [00:02<00:00, 14.77prop/s]
-Found 3 bets | W-L: 1-2
-Day profit: -0.82 units | Running total: 266.92 units | Day W-L: 1-2 | Overall W-L: 696-505 (57.95%)
-
-=== 2025-05-25 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 38/38 [00:02<00:00, 18.75prop/s]
-Found 3 bets | W-L: 3-0
-Day profit: 3.30 units | Running total: 270.22 units | Day W-L: 3-0 | Overall W-L: 699-505 (58.06%)
-
-=== 2025-05-26 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 49/49 [00:03<00:00, 15.63prop/s]
-Found 5 bets | W-L: 3-2
-Day profit: 1.26 units | Running total: 271.48 units | Day W-L: 3-2 | Overall W-L: 702-507 (58.06%)
-
-=== 2025-05-27 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 39/39 [00:02<00:00, 18.27prop/s]
-Found 1 bets | W-L: 1-0
-Day profit: 1.18 units | Running total: 272.66 units | Day W-L: 1-0 | Overall W-L: 703-507 (58.10%)
-
-=== 2025-05-28 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 33/33 [00:01<00:00, 21.36prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.16 units | Running total: 272.82 units | Day W-L: 1-1 | Overall W-L: 704-508 (58.09%)
-
-=== 2025-05-29 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 37/37 [00:02<00:00, 17.56prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.04 units | Running total: 272.86 units | Day W-L: 1-1 | Overall W-L: 705-509 (58.07%)
-
-=== 2025-05-31 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 47/47 [00:02<00:00, 17.51prop/s]
-Found 4 bets | W-L: 1-3
-Day profit: -2.00 units | Running total: 270.86 units | Day W-L: 1-3 | Overall W-L: 706-512 (57.96%)
-
-=== 2025-06-05 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 49/49 [00:02<00:00, 18.63prop/s]
-Found 2 bets | W-L: 2-0
-Day profit: 2.36 units | Running total: 273.22 units | Day W-L: 2-0 | Overall W-L: 708-512 (58.03%)
-
-=== 2025-06-08 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 47/47 [00:02<00:00, 16.24prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.08 units | Running total: 273.30 units | Day W-L: 1-1 | Overall W-L: 709-513 (58.02%)
-
-=== 2025-06-11 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 48/48 [00:02<00:00, 21.08prop/s]
-Found 3 bets | W-L: 2-1
-Day profit: 1.24 units | Running total: 274.54 units | Day W-L: 2-1 | Overall W-L: 711-514 (58.04%)
-
-=== 2025-06-13 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 44/44 [00:02<00:00, 17.20prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.14 units | Running total: 274.68 units | Day W-L: 1-1 | Overall W-L: 712-515 (58.03%)
-
-=== 2025-06-16 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 61/61 [00:03<00:00, 18.51prop/s]
-Found 2 bets | W-L: 1-1
-Day profit: 0.10 units | Running total: 274.78 units | Day W-L: 1-1 | Overall W-L: 713-516 (58.01%)
-
-=== 2025-06-19 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 65/65 [00:03<00:00, 20.02prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 274.78 units | Day W-L: 0-0 | Overall W-L: 713-516 (58.01%)
-
-=== 2025-06-22 ===
-Pipeline executed successfully.
-Processing props: 100%|███████████████████████| 46/46 [00:01<00:00, 24.07prop/s]
-Found 0 bets | W-L: 0-0
-Day profit: 0.00 units | Running total: 274.78 units | Day W-L: 0-0 | Overall W-L: 713-516 (58.01%)
-
-Back-test completed. Final total: 274.78 units | Overall W-L: 713-516
+Back-test completed. Final total: 50.09 units | Overall W-L: 117-79

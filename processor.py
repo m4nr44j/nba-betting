@@ -12,9 +12,25 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from tqdm import tqdm
 
+from config import (
+    BANNED_PLAYERS,
+    CSV_FIELDNAMES,
+    CSV_OUTPUT_FILE,
+    CSV_SQL_DATA_FILE,
+    FEATURE_WEIGHTS,
+    FEATURES_TO_ANALYZE,
+    JSON_INJURY_FILE,
+    MARKET_DISPLAY_MAPPING,
+    MODEL_TYPE,
+    SEASON_PHASE_THRESHOLD,
+    TEXT_OUTPUT_FILE,
+    CONSISTENCY_LIMIT,
+    MIN_MINUTES_FOR_CONSISTENCY,
+    TOP_PICKS_COUNT,
+    get_error_threshold,
+    get_over_check_line,
+)
 from utility.consistency_test import get_consistency
-
-MODEL_TYPE = "SOFT"
 
 if MODEL_TYPE == "SOFT":
     from models.soft_predictor import soft
@@ -24,75 +40,6 @@ elif MODEL_TYPE == "RECENCY":
     from models.model_recency import run_recency
 elif MODEL_TYPE == "LSTM":
     from models.model_lstm import run_lstm
-
-CSV_OUTPUT_FILE = "csv/output.csv"
-TEXT_OUTPUT_FILE = "output.txt"
-INJURY_FILE = "json/injury.json"
-SQL_DATA_FILE = "csv/sql.csv"
-
-FEATURE_WEIGHTS = {
-    "mp": 2.5,
-    "plus_minus": 1.8,
-    "opp": 3.0,
-    "teammates_points_G": 1.3,
-    "teammates_points_F": 1.4,
-    "teammates_points_C": 1.2,
-    "teammates_rebounds_G": 1.1,
-    "teammates_rebounds_F": 1.3,
-    "teammates_rebounds_C": 1.5,
-    "teammates_assists_G": 1.4,
-    "teammates_assists_F": 1.2,
-    "teammates_assists_C": 1.0,
-    "opponents_points_G": 1.2,
-    "opponents_points_F": 1.3,
-    "opponents_points_C": 1.1,
-    "opponents_rebounds_G": 1.1,
-    "opponents_rebounds_F": 1.2,
-    "opponents_rebounds_C": 1.4,
-    "opponents_assists_G": 1.3,
-    "opponents_assists_F": 1.1,
-    "opponents_assists_C": 1.0,
-    "teammates_turnovers_G": 1.2,
-    "teammates_turnovers_F": 1.1,
-    "teammates_turnovers_C": 1.0,
-    "opponents_blocks_G": 1.1,
-    "opponents_blocks_F": 1.2,
-    "opponents_blocks_C": 1.4,
-    "opponents_turnovers_G": 1.2,
-    "opponents_turnovers_F": 1.1,
-    "opponents_turnovers_C": 1.0,
-}
-
-MARKET_DISPLAY_MAPPING = {
-    "pts": "PTS",
-    "trb": "REB",
-    "ast": "AST",
-    "p_r": "P+R",
-    "p_a": "P+A",
-    "p_r_a": "P+R+A",
-    "a_r": "A+R",
-}
-BANNED = [
-    "Brook Lopez",
-    "Kyle Kuzma",
-    "Jalen Duren",
-    "Christian Braun",
-    "Tyrese Haliburton",
-    "Russell Westbrook",
-    "Nick Richards",
-    "Anthony Edwards"
-]
-CSV_FIELDNAMES = [
-    "Player",
-    "Market",
-    "Predicted",
-    "Buffer",
-    "Line",
-    "Rank",
-    "Last Ten",
-    "Odds",
-    "Game",
-]
 
 
 def get_season_phase_threshold(date_str=None):
@@ -106,9 +53,9 @@ def get_season_phase_threshold(date_str=None):
             date_obj = datetime.now()
     
     if (date_obj.month == 3 and date_obj.day >= 30) or date_obj.month in [4, 5, 6]:
-        return 7
+        return SEASON_PHASE_THRESHOLD
     
-    return 7
+    return SEASON_PHASE_THRESHOLD
 
 
 def write_rows_to_csv(rows, filename=CSV_OUTPUT_FILE):
@@ -139,7 +86,7 @@ def append_to_text(row, filename=TEXT_OUTPUT_FILE):
         print(f"Error writing to text file {filename}: {e}")
 
 
-def load_injury_report(filename=INJURY_FILE):
+def load_injury_report(filename=JSON_INJURY_FILE):
     injured_players = set()
     try:
         with open(filename, "r", encoding="utf-8") as file:
@@ -152,7 +99,11 @@ def load_injury_report(filename=INJURY_FILE):
     return injured_players
 
 
-def get_consistent_players(features, consistency_limit, minutes):
+def get_consistent_players(features, consistency_limit=None, minutes=None):
+    if consistency_limit is None:
+        consistency_limit = CONSISTENCY_LIMIT
+    if minutes is None:
+        minutes = MIN_MINUTES_FOR_CONSISTENCY
     consistent_players = {}
     for feature in features:
         try:
@@ -200,7 +151,7 @@ def get_rank(player, consistent_players_map, market):
         return float("inf")
 
 
-def get_player_last_ten_stats(player, market, line, data_source_path=SQL_DATA_FILE):
+def get_player_last_ten_stats(player, market, line, data_source_path=CSV_SQL_DATA_FILE):
     try:
         df = pd.read_csv(data_source_path)
         df["date"] = pd.to_datetime(df["date"])
@@ -217,14 +168,7 @@ def get_player_last_ten_stats(player, market, line, data_source_path=SQL_DATA_FI
 
     if last_ten.empty:
         return 0
-    if line > 30.5:
-        over_check_line = line - 3
-    elif line > 20.5:
-        over_check_line = line - 2
-    elif line > 8.5:
-        over_check_line = line - 1
-    else:
-        over_check_line = line
+    over_check_line = get_over_check_line(line)
     over_count = (last_ten[market] >= abs(over_check_line)).sum()
 
     return over_count
@@ -239,7 +183,7 @@ def process_player_entry(
         line = float(entry["line"])
         odds = entry["over"]
 
-        if player not in consistent_players_map.get(market, []) or player in BANNED:
+        if player not in consistent_players_map.get(market, []) or player in BANNED_PLAYERS:
             return current_best_rank, current_best_row
         rank = get_rank(player, consistent_players_map, market)
         last_ten_over = get_player_last_ten_stats(player, market, line)
@@ -251,14 +195,7 @@ def process_player_entry(
             opponent = entry["opp"]
             home_or_away = entry["hoa"]
 
-            if line <= 8.5:
-                error = 2
-            elif line <= 18.5:
-                error = 3
-            elif line <= 30.5:
-                error = 4
-            else:
-                error = 6
+            error = get_error_threshold(line)
 
             if MODEL_TYPE == "SOFT":
                 predicted_stat = soft(player, opponent, market, home_or_away)
@@ -310,8 +247,7 @@ def run_analysis(props_data, date_str=None):
     conn = create_engine(sql_engine)
 
     transformed_odds = transform_props_data(props_data)
-    features_to_analyze = ["pts", "trb", "ast", "p_r", "p_a", "a_r", "p_r_a"]
-    consistent_map = get_consistent_players(features_to_analyze, 300, 8)
+    consistent_map = get_consistent_players(FEATURES_TO_ANALYZE)
     injuries = load_injury_report()
     
     threshold = get_season_phase_threshold(date_str)
@@ -349,7 +285,7 @@ def run_analysis(props_data, date_str=None):
     conn.dispose()
     if all_best_rows:
         sorted_rows = sorted(all_best_rows, key=lambda x: x["Rank"])
-        top_15_rows = sorted_rows[:20]
+        top_15_rows = sorted_rows[:TOP_PICKS_COUNT]
 
         write_rows_to_csv(top_15_rows, CSV_OUTPUT_FILE)
 

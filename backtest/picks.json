@@ -1,20 +1,20 @@
 {
   "2024-11-10": [
     {
-      "player": "Domantas Sabonis",
-      "market": "p_r_a",
-      "line": 36.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
       "player": "Josh Hart",
       "market": "p_r_a",
       "line": 24.5,
       "odds": 106,
       "stake": 1,
       "profit": 1.06
+    },
+    {
+      "player": "Domantas Sabonis",
+      "market": "p_r",
+      "line": 28.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "Deni Avdija",
@@ -25,28 +25,12 @@
       "profit": -1
     },
     {
-      "player": "Pascal Siakam",
-      "market": "p_a",
-      "line": 23.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Jordan Poole",
       "market": "pts",
       "line": 19.5,
       "odds": 108,
       "stake": 1,
       "profit": 1.08
-    },
-    {
-      "player": "Miles McBride",
-      "market": "p_a",
-      "line": 12.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": -1
     }
   ],
   "2024-11-11": [
@@ -139,22 +123,6 @@
       "odds": 108,
       "stake": 1,
       "profit": 1.08
-    },
-    {
-      "player": "Jaden Ivey",
-      "market": "p_r",
-      "line": 20.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Anthony Edwards",
-      "market": "p_a",
-      "line": 29.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
     }
   ],
   "2024-11-13": [
@@ -239,6 +207,14 @@
       "profit": 1.16
     },
     {
+      "player": "Amen Thompson",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
+    },
+    {
       "player": "DeMar DeRozan",
       "market": "p_a",
       "line": 25.5,
@@ -263,20 +239,12 @@
       "profit": 1.04
     },
     {
-      "player": "Jonas Valan\u010di\u016bnas",
-      "market": "p_r",
-      "line": 15.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
-      "player": "De'Aaron Fox",
+      "player": "Jabari Smith Jr.",
       "market": "trb",
-      "line": 4.5,
-      "odds": 102,
+      "line": 5.5,
+      "odds": -104,
       "stake": 1,
-      "profit": 1.02
+      "profit": -1
     }
   ],
   "2024-11-14": [
@@ -291,36 +259,12 @@
   ],
   "2024-11-15": [
     {
-      "player": "Domantas Sabonis",
-      "market": "trb",
-      "line": 11.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
-    },
-    {
-      "player": "Tobias Harris",
-      "market": "trb",
-      "line": 6.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
       "player": "Nikola Vu\u010devi\u0107",
       "market": "p_r",
       "line": 25.5,
       "odds": 120,
       "stake": 1,
       "profit": 1.2
-    },
-    {
-      "player": "Jalen Johnson",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     },
     {
       "player": "Chris Paul",
@@ -331,12 +275,28 @@
       "profit": 1.16
     },
     {
+      "player": "Cameron Johnson",
+      "market": "pts",
+      "line": 14.5,
+      "odds": -105,
+      "stake": 1,
+      "profit": 0.95
+    },
+    {
       "player": "Devin Vassell",
       "market": "pts",
       "line": 14.5,
       "odds": 102,
       "stake": 1,
       "profit": 1.02
+    },
+    {
+      "player": "Joel Embiid",
+      "market": "ast",
+      "line": 3.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Ayo Dosunmu",
@@ -347,26 +307,10 @@
       "profit": 1.04
     },
     {
-      "player": "Trae Young",
-      "market": "a_r",
-      "line": 14.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Zach LaVine",
       "market": "p_a",
       "line": 23.5,
       "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Joel Embiid",
-      "market": "p_a",
-      "line": 25.5,
-      "odds": 104,
       "stake": 1,
       "profit": -1
     },
@@ -416,10 +360,10 @@
     {
       "player": "Naz Reid",
       "market": "pts",
-      "line": 13.5,
-      "odds": 102,
+      "line": 12.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Santi Aldama",
@@ -441,11 +385,11 @@
     },
     {
       "player": "Trae Young",
-      "market": "ast",
-      "line": 9.5,
-      "odds": 104,
+      "market": "a_r",
+      "line": 12.5,
+      "odds": 102,
       "stake": 1,
-      "profit": 1.04
+      "profit": 1.02
     },
     {
       "player": "Ayo Dosunmu",
@@ -465,11 +409,11 @@
     },
     {
       "player": "Nikola Vu\u010devi\u0107",
-      "market": "p_r_a",
-      "line": 30.5,
-      "odds": 102,
+      "market": "p_r",
+      "line": 27.5,
+      "odds": 108,
       "stake": 1,
-      "profit": 1.02
+      "profit": 1.08
     },
     {
       "player": "Norman Powell",
@@ -508,10 +452,10 @@
     {
       "player": "Chris Paul",
       "market": "pts",
-      "line": 10.5,
-      "odds": 102,
+      "line": 9.5,
+      "odds": -104,
       "stake": 1,
-      "profit": 1.02
+      "profit": 0.96
     },
     {
       "player": "Evan Mobley",
@@ -564,6 +508,14 @@
       "profit": 1.06
     },
     {
+      "player": "Jaylen Wells",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
       "player": "Nikola Vu\u010devi\u0107",
       "market": "pts",
       "line": 17.5,
@@ -572,39 +524,15 @@
       "profit": -1
     },
     {
-      "player": "Coby White",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Jarrett Allen",
+      "player": "Toumani Camara",
       "market": "p_r",
-      "line": 22.5,
-      "odds": 116,
+      "line": 13.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.16
+      "profit": 0.98
     }
   ],
   "2024-11-21": [
-    {
-      "player": "Anthony Edwards",
-      "market": "p_a",
-      "line": 29.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Cade Cunningham",
-      "market": "p_r",
-      "line": 27.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
     {
       "player": "Naz Reid",
       "market": "pts",
@@ -690,20 +618,12 @@
   ],
   "2024-11-23": [
     {
-      "player": "Julian Champagnie",
+      "player": "Nikola Joki\u0107",
       "market": "pts",
-      "line": 9.5,
+      "line": 25.5,
       "odds": 118,
       "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Nikola Joki\u0107",
-      "market": "p_r_a",
-      "line": 48.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": 1.14
+      "profit": 1.18
     },
     {
       "player": "Jaren Jackson Jr.",
@@ -714,28 +634,20 @@
       "profit": 1.16
     },
     {
-      "player": "Jamal Murray",
-      "market": "p_a",
-      "line": 25.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Scotty Pippen Jr.",
-      "market": "p_a",
-      "line": 16.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": 1.12
-    },
-    {
       "player": "LeBron James",
       "market": "p_a",
       "line": 32.5,
       "odds": 114,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Scotty Pippen Jr.",
+      "market": "pts",
+      "line": 10.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": 1.1
     },
     {
       "player": "Michael Porter Jr.",
@@ -757,30 +669,30 @@
   "2024-11-24": [
     {
       "player": "Scottie Barnes",
-      "market": "p_a",
-      "line": 21.5,
+      "market": "p_r_a",
+      "line": 27.5,
       "odds": 116,
       "stake": 1,
       "profit": 1.16
     },
     {
-      "player": "Daniel Gafford",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 102,
+      "player": "Ochai Agbaji",
+      "market": "pts",
+      "line": 8.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.02
-    },
-    {
-      "player": "Jakob Poeltl",
-      "market": "a_r",
-      "line": 12.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
+      "profit": 0.98
     }
   ],
   "2024-11-25": [
+    {
+      "player": "Clint Capela",
+      "market": "trb",
+      "line": 8.5,
+      "odds": 112,
+      "stake": 1,
+      "profit": -1
+    },
     {
       "player": "Jaren Jackson Jr.",
       "market": "pts",
@@ -815,14 +727,6 @@
     }
   ],
   "2024-11-26": [
-    {
-      "player": "Chris Paul",
-      "market": "pts",
-      "line": 9.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
     {
       "player": "Rudy Gobert",
       "market": "p_r",
@@ -866,22 +770,6 @@
       "profit": -1
     },
     {
-      "player": "Anthony Edwards",
-      "market": "pts",
-      "line": 24.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": 1.12
-    },
-    {
-      "player": "Zach LaVine",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Nikola Vu\u010devi\u0107",
       "market": "a_r",
       "line": 11.5,
@@ -892,26 +780,10 @@
     {
       "player": "Julian Champagnie",
       "market": "pts",
-      "line": 10.5,
-      "odds": 102,
+      "line": 9.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.02
-    },
-    {
-      "player": "Julius Randle",
-      "market": "p_r",
-      "line": 26.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": 1.06
-    },
-    {
-      "player": "Draymond Green",
-      "market": "p_a",
-      "line": 13.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
+      "profit": 0.98
     },
     {
       "player": "Domantas Sabonis",
@@ -922,28 +794,12 @@
       "profit": 1.06
     },
     {
-      "player": "De'Aaron Fox",
-      "market": "ast",
-      "line": 4.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
       "player": "Isaiah Joe",
       "market": "pts",
       "line": 9.5,
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "Jalen Williams",
-      "market": "pts",
-      "line": 21.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": -1
     },
     {
       "player": "Josh Giddey",
@@ -962,12 +818,28 @@
       "profit": -1
     },
     {
+      "player": "Draymond Green",
+      "market": "pts",
+      "line": 7.5,
+      "odds": 112,
+      "stake": 1,
+      "profit": 1.12
+    },
+    {
       "player": "Stephon Castle",
       "market": "p_a",
       "line": 15.5,
       "odds": 120,
       "stake": 1,
       "profit": 1.2
+    },
+    {
+      "player": "Rudy Gobert",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "Coby White",
@@ -986,28 +858,20 @@
       "profit": -1
     },
     {
-      "player": "Jalen Johnson",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "De'Andre Hunter",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
-      "player": "Clint Capela",
+      "player": "Terry Rozier",
       "market": "pts",
       "line": 9.5,
-      "odds": 116,
+      "odds": -104,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "De'Aaron Fox",
+      "market": "p_a",
+      "line": 30.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
     },
     {
       "player": "Ayo Dosunmu",
@@ -1028,14 +892,6 @@
       "profit": 1.08
     },
     {
-      "player": "LeBron James",
-      "market": "p_r_a",
-      "line": 37.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Dyson Daniels",
       "market": "p_r",
       "line": 15.5,
@@ -1052,42 +908,18 @@
       "profit": -1
     },
     {
-      "player": "Trae Young",
-      "market": "a_r",
-      "line": 14.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Evan Mobley",
       "market": "p_r",
       "line": 25.5,
       "odds": 106,
       "stake": 1,
       "profit": 1.06
-    },
-    {
-      "player": "Mikal Bridges",
-      "market": "pts",
-      "line": 13.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
     }
   ],
   "2024-11-30": [
     {
       "player": "Collin Sexton",
       "market": "pts",
-      "line": 16.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Dyson Daniels",
-      "market": "p_r",
       "line": 16.5,
       "odds": 116,
       "stake": 1,
@@ -1110,10 +942,10 @@
       "profit": -1
     },
     {
-      "player": "Trae Young",
-      "market": "a_r",
-      "line": 13.5,
-      "odds": 108,
+      "player": "Dyson Daniels",
+      "market": "pts",
+      "line": 11.5,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     }
@@ -1152,12 +984,12 @@
       "profit": -1
     },
     {
-      "player": "Ben Simmons",
-      "market": "a_r",
+      "player": "Jakob Poeltl",
+      "market": "trb",
       "line": 10.5,
-      "odds": 106,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Amen Thompson",
@@ -1202,36 +1034,12 @@
       "profit": 1.06
     },
     {
-      "player": "Anthony Edwards",
-      "market": "pts",
-      "line": 25.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "LeBron James",
       "market": "p_r",
       "line": 27.5,
       "odds": 114,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Dyson Daniels",
-      "market": "p_r_a",
-      "line": 18.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "Nikola Vu\u010devi\u0107",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
     },
     {
       "player": "Rudy Gobert",
@@ -1242,39 +1050,15 @@
       "profit": 1.16
     },
     {
-      "player": "Clint Capela",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
       "player": "Jaden McDaniels",
       "market": "p_r",
       "line": 12.5,
       "odds": 106,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Jalen Smith",
-      "market": "trb",
-      "line": 4.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
     }
   ],
   "2024-12-03": [
-    {
-      "player": "Cade Cunningham",
-      "market": "a_r",
-      "line": 14.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "John Collins",
       "market": "pts",
@@ -1290,14 +1074,6 @@
       "odds": 110,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Michael Porter Jr.",
-      "market": "pts",
-      "line": 15.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     },
     {
       "player": "Deni Avdija",
@@ -1332,12 +1108,12 @@
       "profit": -1
     },
     {
-      "player": "Jamal Murray",
-      "market": "p_a",
-      "line": 24.5,
-      "odds": 104,
+      "player": "Cade Cunningham",
+      "market": "pts",
+      "line": 22.5,
+      "odds": 102,
       "stake": 1,
-      "profit": -1
+      "profit": 1.02
     },
     {
       "player": "Devin Vassell",
@@ -1346,6 +1122,14 @@
       "odds": 120,
       "stake": 1,
       "profit": 1.2
+    },
+    {
+      "player": "Jamal Murray",
+      "market": "ast",
+      "line": 5.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": 1.06
     },
     {
       "player": "Bradley Beal",
@@ -1380,14 +1164,6 @@
       "profit": 1.14
     },
     {
-      "player": "Jalen Brunson",
-      "market": "pts",
-      "line": 23.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Malik Beasley",
       "market": "pts",
       "line": 12.5,
@@ -1399,30 +1175,6 @@
       "player": "Norman Powell",
       "market": "p_r",
       "line": 21.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": 1.14
-    },
-    {
-      "player": "Toumani Camara",
-      "market": "p_r",
-      "line": 12.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": 1.12
-    },
-    {
-      "player": "Chris Boucher",
-      "market": "trb",
-      "line": 3.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "T.J. McConnell",
-      "market": "p_a",
-      "line": 13.5,
       "odds": 114,
       "stake": 1,
       "profit": 1.14
@@ -1496,18 +1248,10 @@
     {
       "player": "Clint Capela",
       "market": "trb",
-      "line": 9.5,
-      "odds": 105,
+      "line": 8.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.05
-    },
-    {
-      "player": "Anthony Edwards",
-      "market": "pts",
-      "line": 23.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Tobias Harris",
@@ -1574,6 +1318,14 @@
       "odds": 104,
       "stake": 1,
       "profit": 1.04
+    },
+    {
+      "player": "Ochai Agbaji",
+      "market": "pts",
+      "line": 8.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2024-12-06": [
@@ -1586,18 +1338,10 @@
       "profit": -1
     },
     {
-      "player": "Derrick White",
-      "market": "p_a",
-      "line": 20.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Deni Avdija",
       "market": "pts",
-      "line": 11.5,
-      "odds": 104,
+      "line": 10.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -1626,41 +1370,41 @@
       "profit": 1.06
     },
     {
-      "player": "Paul George",
-      "market": "a_r",
-      "line": 9.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
-    },
-    {
       "player": "Jared McCain",
       "market": "pts",
       "line": 12.5,
       "odds": 104,
       "stake": 1,
       "profit": -1
-    }
-  ],
-  "2024-12-07": [
+    },
     {
-      "player": "Evan Mobley",
-      "market": "trb",
+      "player": "Clint Capela",
+      "market": "pts",
       "line": 8.5,
-      "odds": 108,
+      "odds": 116,
       "stake": 1,
-      "profit": 1.08
+      "profit": -1
     }
   ],
-  "2024-12-08": [],
+  "2024-12-07": [],
+  "2024-12-08": [
+    {
+      "player": "Jaden McDaniels",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -105,
+      "stake": 1,
+      "profit": -1
+    }
+  ],
   "2024-12-09": [
     {
       "player": "Jalen Brunson",
-      "market": "p_a",
-      "line": 30.5,
-      "odds": 120,
+      "market": "pts",
+      "line": 23.5,
+      "odds": 108,
       "stake": 1,
-      "profit": 1.2
+      "profit": -1
     },
     {
       "player": "Mikal Bridges",
@@ -1701,8 +1445,8 @@
     {
       "player": "Zaccharie Risacher",
       "market": "p_r",
-      "line": 14.5,
-      "odds": 120,
+      "line": 12.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -1767,14 +1511,6 @@
   ],
   "2024-12-13": [
     {
-      "player": "Julius Randle",
-      "market": "p_r_a",
-      "line": 29.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Kelly Oubre Jr.",
       "market": "pts",
       "line": 10.5,
@@ -1791,14 +1527,6 @@
       "profit": -1
     },
     {
-      "player": "Devin Booker",
-      "market": "p_a",
-      "line": 30.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
       "player": "Mike Conley",
       "market": "p_r_a",
       "line": 16.5,
@@ -1807,20 +1535,20 @@
       "profit": -1
     },
     {
+      "player": "Devin Booker",
+      "market": "pts",
+      "line": 24.5,
+      "odds": 108,
+      "stake": 1,
+      "profit": 1.08
+    },
+    {
       "player": "John Collins",
       "market": "pts",
       "line": 15.5,
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "Anthony Edwards",
-      "market": "a_r",
-      "line": 9.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
     },
     {
       "player": "Santi Aldama",
@@ -1863,17 +1591,17 @@
       "profit": 1.18
     },
     {
-      "player": "T.J. McConnell",
-      "market": "p_r",
-      "line": 13.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Toumani Camara",
       "market": "pts",
       "line": 7.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
+    },
+    {
+      "player": "T.J. McConnell",
+      "market": "pts",
+      "line": 10.5,
       "odds": 120,
       "stake": 1,
       "profit": 1.2
@@ -1893,32 +1621,16 @@
       "odds": 112,
       "stake": 1,
       "profit": 1.12
-    },
-    {
-      "player": "Keyonte George",
-      "market": "pts",
-      "line": 13.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Julian Champagnie",
-      "market": "pts",
-      "line": 12.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
     }
   ],
   "2024-12-14": [
     {
       "player": "De'Andre Hunter",
-      "market": "p_r",
-      "line": 18.5,
-      "odds": 116,
+      "market": "pts",
+      "line": 14.5,
+      "odds": 118,
       "stake": 1,
-      "profit": 1.16
+      "profit": 1.18
     },
     {
       "player": "Khris Middleton",
@@ -1971,6 +1683,22 @@
       "profit": 1.02
     },
     {
+      "player": "Jaylen Brown",
+      "market": "p_r_a",
+      "line": 30.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Jaylen Wells",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -105,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Jayson Tatum",
       "market": "a_r",
       "line": 13.5,
@@ -1983,22 +1711,6 @@
       "market": "p_r",
       "line": 15.5,
       "odds": 102,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Jaylen Brown",
-      "market": "p_a",
-      "line": 24.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Victor Wembanyama",
-      "market": "p_r",
-      "line": 32.5,
-      "odds": 110,
       "stake": 1,
       "profit": -1
     },
@@ -2019,14 +1731,6 @@
       "profit": -1
     },
     {
-      "player": "Jaylen Wells",
-      "market": "p_r",
-      "line": 11.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Toumani Camara",
       "market": "pts",
       "line": 7.5,
@@ -2035,12 +1739,12 @@
       "profit": 1.16
     },
     {
-      "player": "Kyrie Irving",
+      "player": "Victor Wembanyama",
       "market": "p_a",
-      "line": 26.5,
-      "odds": 108,
+      "line": 25.5,
+      "odds": 116,
       "stake": 1,
-      "profit": 1.08
+      "profit": -1
     },
     {
       "player": "Scoot Henderson",
@@ -2077,6 +1781,14 @@
       "profit": -1
     },
     {
+      "player": "LaMelo Ball",
+      "market": "ast",
+      "line": 5.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
       "player": "Cade Cunningham",
       "market": "pts",
       "line": 21.5,
@@ -2086,19 +1798,11 @@
     },
     {
       "player": "Jamal Murray",
-      "market": "a_r",
-      "line": 9.5,
-      "odds": 102,
+      "market": "ast",
+      "line": 5.5,
+      "odds": 120,
       "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Haywood Highsmith",
-      "market": "p_r",
-      "line": 9.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
+      "profit": 1.2
     },
     {
       "player": "Keyonte George",
@@ -2155,14 +1859,6 @@
       "odds": 114,
       "stake": 1,
       "profit": 1.14
-    },
-    {
-      "player": "LaMelo Ball",
-      "market": "pts",
-      "line": 20.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": -1
     }
   ],
   "2024-12-17": [],
@@ -2176,28 +1872,28 @@
       "profit": 1.18
     },
     {
-      "player": "Zach Edey",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 108,
+      "player": "Payton Pritchard",
+      "market": "pts",
+      "line": 14.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
     {
-      "player": "Payton Pritchard",
-      "market": "p_a",
-      "line": 17.5,
+      "player": "Zach Edey",
+      "market": "pts",
+      "line": 9.5,
       "odds": 100,
       "stake": 1,
       "profit": -1
     },
     {
       "player": "Kelly Olynyk",
-      "market": "p_r",
-      "line": 12.5,
-      "odds": 106,
+      "market": "pts",
+      "line": 8.5,
+      "odds": 100,
       "stake": 1,
-      "profit": 1.06
+      "profit": -1
     },
     {
       "player": "Miles Bridges",
@@ -2216,12 +1912,12 @@
       "profit": 1.06
     },
     {
-      "player": "Draymond Green",
+      "player": "Santi Aldama",
       "market": "pts",
-      "line": 7.5,
-      "odds": 118,
+      "line": 9.5,
+      "odds": -104,
       "stake": 1,
-      "profit": -1
+      "profit": 0.96
     }
   ],
   "2024-12-20": [
@@ -2248,17 +1944,17 @@
       "odds": 100,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Terry Rozier",
+      "market": "p_r",
+      "line": 13.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2024-12-21": [
-    {
-      "player": "Payton Pritchard",
-      "market": "p_r",
-      "line": 17.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Mikal Bridges",
       "market": "pts",
@@ -2270,10 +1966,10 @@
     {
       "player": "Daniel Gafford",
       "market": "pts",
-      "line": 9.5,
-      "odds": 110,
+      "line": 8.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.1
+      "profit": 0.98
     },
     {
       "player": "Trey Murphy III",
@@ -2284,18 +1980,18 @@
       "profit": 1.02
     },
     {
-      "player": "Domantas Sabonis",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": 1.14
-    },
-    {
       "player": "Derrick White",
       "market": "p_r_a",
       "line": 24.5,
       "odds": 116,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Payton Pritchard",
+      "market": "pts",
+      "line": 13.5,
+      "odds": 108,
       "stake": 1,
       "profit": -1
     },
@@ -2324,10 +2020,10 @@
       "profit": -1
     },
     {
-      "player": "Donovan Mitchell",
-      "market": "p_r_a",
-      "line": 30.5,
-      "odds": 120,
+      "player": "Yves Missi",
+      "market": "p_r",
+      "line": 18.5,
+      "odds": -104,
       "stake": 1,
       "profit": -1
     },
@@ -2340,18 +2036,10 @@
       "profit": 1.06
     },
     {
-      "player": "Yves Missi",
-      "market": "pts",
-      "line": 8.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
       "player": "Julian Champagnie",
       "market": "p_r",
-      "line": 15.5,
-      "odds": 104,
+      "line": 14.5,
+      "odds": -104,
       "stake": 1,
       "profit": -1
     },
@@ -2362,14 +2050,6 @@
       "odds": 104,
       "stake": 1,
       "profit": 1.04
-    },
-    {
-      "player": "Scoot Henderson",
-      "market": "p_a",
-      "line": 12.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
     }
   ],
   "2024-12-22": [
@@ -2440,14 +2120,6 @@
       "profit": 1.18
     },
     {
-      "player": "Tyrese Maxey",
-      "market": "pts",
-      "line": 21.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
-    },
-    {
       "player": "Anfernee Simons",
       "market": "a_r",
       "line": 7.5,
@@ -2496,14 +2168,6 @@
       "profit": -1
     },
     {
-      "player": "Miles Bridges",
-      "market": "a_r",
-      "line": 8.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
       "player": "Shaedon Sharpe",
       "market": "p_r_a",
       "line": 21.5,
@@ -2520,36 +2184,12 @@
       "profit": 1.02
     },
     {
-      "player": "Cade Cunningham",
-      "market": "a_r",
+      "player": "Gradey Dick",
+      "market": "pts",
       "line": 14.5,
-      "odds": 118,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Scottie Barnes",
-      "market": "a_r",
-      "line": 13.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "T.J. McConnell",
-      "market": "p_a",
-      "line": 14.5,
-      "odds": 115,
-      "stake": 1,
-      "profit": 1.15
-    },
-    {
-      "player": "Santi Aldama",
-      "market": "p_r",
-      "line": 14.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
+      "profit": 0.98
     }
   ],
   "2024-12-25": [
@@ -2654,18 +2294,18 @@
     {
       "player": "T.J. McConnell",
       "market": "p_a",
-      "line": 15.5,
-      "odds": 110,
+      "line": 13.5,
+      "odds": -105,
       "stake": 1,
-      "profit": 1.1
+      "profit": 0.95
     },
     {
       "player": "Alex Sarr",
-      "market": "p_r",
-      "line": 18.5,
-      "odds": 100,
+      "market": "pts",
+      "line": 11.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Miles Bridges",
@@ -2676,39 +2316,23 @@
       "profit": 1.04
     },
     {
-      "player": "Malcolm Brogdon",
-      "market": "a_r",
-      "line": 6.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
       "player": "Yves Missi",
       "market": "pts",
       "line": 9.5,
       "odds": 116,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Malcolm Brogdon",
+      "market": "p_r",
+      "line": 14.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2024-12-27": [
-    {
-      "player": "Jayson Tatum",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
-      "player": "Goga Bitadze",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
     {
       "player": "T.J. McConnell",
       "market": "p_a",
@@ -2734,10 +2358,10 @@
       "profit": 1.04
     },
     {
-      "player": "Tyus Jones",
-      "market": "pts",
-      "line": 11.5,
-      "odds": 104,
+      "player": "Karl-Anthony Towns",
+      "market": "a_r",
+      "line": 15.5,
+      "odds": -104,
       "stake": 1,
       "profit": -1
     },
@@ -2795,11 +2419,11 @@
     },
     {
       "player": "Andrew Nembhard",
-      "market": "p_r_a",
-      "line": 17.5,
-      "odds": 108,
+      "market": "p_r",
+      "line": 13.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.08
+      "profit": 0.98
     }
   ],
   "2024-12-30": [
@@ -2886,14 +2510,6 @@
       "profit": -1
     },
     {
-      "player": "Norman Powell",
-      "market": "pts",
-      "line": 23.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Khris Middleton",
       "market": "pts",
       "line": 11.5,
@@ -2903,9 +2519,9 @@
     },
     {
       "player": "Damian Lillard",
-      "market": "p_r_a",
-      "line": 33.5,
-      "odds": 110,
+      "market": "p_a",
+      "line": 29.5,
+      "odds": 108,
       "stake": 1,
       "profit": -1
     },
@@ -2970,8 +2586,8 @@
     {
       "player": "Onyeka Okongwu",
       "market": "pts",
-      "line": 11.5,
-      "odds": 104,
+      "line": 10.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -2982,14 +2598,6 @@
       "odds": 118,
       "stake": 1,
       "profit": 1.18
-    },
-    {
-      "player": "Jalen Smith",
-      "market": "p_r",
-      "line": 12.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
     },
     {
       "player": "Gradey Dick",
@@ -3014,17 +2622,17 @@
       "odds": 110,
       "stake": 1,
       "profit": 1.1
+    },
+    {
+      "player": "Jalen Smith",
+      "market": "pts",
+      "line": 7.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2025-01-02": [
-    {
-      "player": "Giannis Antetokounmpo",
-      "market": "pts",
-      "line": 28.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Pascal Siakam",
       "market": "pts",
@@ -3040,6 +2648,14 @@
       "odds": 105,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Bobby Portis",
+      "market": "trb",
+      "line": 7.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
     },
     {
       "player": "Andrew Nembhard",
@@ -3059,11 +2675,11 @@
     },
     {
       "player": "Damian Lillard",
-      "market": "p_a",
-      "line": 28.5,
-      "odds": 102,
+      "market": "p_r",
+      "line": 25.5,
+      "odds": 108,
       "stake": 1,
-      "profit": 1.02
+      "profit": 1.08
     },
     {
       "player": "Terry Rozier",
@@ -3072,6 +2688,14 @@
       "odds": 100,
       "stake": 1,
       "profit": 1.0
+    },
+    {
+      "player": "Obi Toppin",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "T.J. McConnell",
@@ -3144,10 +2768,26 @@
     {
       "player": "Deni Avdija",
       "market": "pts",
-      "line": 15.5,
-      "odds": 102,
+      "line": 14.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.02
+      "profit": 0.98
+    },
+    {
+      "player": "Nikola Joki\u0107",
+      "market": "ast",
+      "line": 8.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
+      "player": "Guerschon Yabusele",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Josh Hart",
@@ -3182,6 +2822,14 @@
       "profit": -1
     },
     {
+      "player": "Kawhi Leonard",
+      "market": "pts",
+      "line": 14.5,
+      "odds": 105,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "T.J. McConnell",
       "market": "p_a",
       "line": 12.5,
@@ -3201,9 +2849,9 @@
     },
     {
       "player": "Jrue Holiday",
-      "market": "pts",
-      "line": 10.5,
-      "odds": 100,
+      "market": "p_a",
+      "line": 13.5,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     },
@@ -3218,6 +2866,14 @@
   ],
   "2025-01-06": [
     {
+      "player": "Brandon Clarke",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Nikola Vu\u010devi\u0107",
       "market": "p_r",
       "line": 28.5,
@@ -3227,9 +2883,9 @@
     },
     {
       "player": "Deni Avdija",
-      "market": "pts",
-      "line": 16.5,
-      "odds": 100,
+      "market": "p_r",
+      "line": 23.5,
+      "odds": 114,
       "stake": 1,
       "profit": -1
     },
@@ -3251,9 +2907,9 @@
     },
     {
       "player": "Myles Turner",
-      "market": "p_r",
-      "line": 20.5,
-      "odds": 118,
+      "market": "pts",
+      "line": 13.5,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     },
@@ -3290,14 +2946,6 @@
       "profit": -1
     },
     {
-      "player": "Ivica Zubac",
-      "market": "pts",
-      "line": 13.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
       "player": "Kawhi Leonard",
       "market": "pts",
       "line": 13.5,
@@ -3324,6 +2972,14 @@
       "profit": 1.18
     },
     {
+      "player": "Dejounte Murray",
+      "market": "p_r_a",
+      "line": 28.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
+    },
+    {
       "player": "Miles Bridges",
       "market": "p_r",
       "line": 23.5,
@@ -3332,23 +2988,15 @@
       "profit": 1.0
     },
     {
-      "player": "De'Andre Hunter",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 108,
+      "player": "Fred VanVleet",
+      "market": "a_r",
+      "line": 10.5,
+      "odds": -104,
       "stake": 1,
-      "profit": -1
+      "profit": 0.96
     }
   ],
   "2025-01-08": [
-    {
-      "player": "Nikola Vu\u010devi\u0107",
-      "market": "p_r",
-      "line": 29.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Scottie Barnes",
       "market": "pts",
@@ -3377,17 +3025,9 @@
   "2025-01-09": [
     {
       "player": "Bam Adebayo",
-      "market": "p_r",
-      "line": 25.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Toumani Camara",
-      "market": "p_r",
-      "line": 14.5,
-      "odds": 104,
+      "market": "trb",
+      "line": 8.5,
+      "odds": 110,
       "stake": 1,
       "profit": -1
     },
@@ -3424,6 +3064,14 @@
       "profit": 1.04
     },
     {
+      "player": "Grayson Allen",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
+    },
+    {
       "player": "Scottie Barnes",
       "market": "pts",
       "line": 16.5,
@@ -3450,36 +3098,20 @@
   ],
   "2025-01-10": [
     {
-      "player": "Shai Gilgeous-Alexander",
-      "market": "pts",
-      "line": 30.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Giannis Antetokounmpo",
-      "market": "p_a",
-      "line": 33.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
-    },
-    {
       "player": "Nikola Joki\u0107",
-      "market": "p_r_a",
-      "line": 48.5,
-      "odds": 116,
+      "market": "ast",
+      "line": 8.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.16
+      "profit": 0.98
     },
     {
       "player": "Domantas Sabonis",
-      "market": "p_r",
-      "line": 31.5,
-      "odds": 110,
+      "market": "p_a",
+      "line": 24.5,
+      "odds": 100,
       "stake": 1,
-      "profit": 1.1
+      "profit": 1.0
     },
     {
       "player": "Josh Hart",
@@ -3490,12 +3122,12 @@
       "profit": 1.1
     },
     {
-      "player": "Pascal Siakam",
-      "market": "p_a",
-      "line": 20.5,
-      "odds": 118,
+      "player": "Jalen Williams",
+      "market": "p_r_a",
+      "line": 30.5,
+      "odds": 110,
       "stake": 1,
-      "profit": 1.18
+      "profit": -1
     },
     {
       "player": "Mikal Bridges",
@@ -3504,22 +3136,6 @@
       "odds": 120,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Damian Lillard",
-      "market": "p_a",
-      "line": 27.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": 1.12
-    },
-    {
-      "player": "Paolo Banchero",
-      "market": "a_r",
-      "line": 8.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     },
     {
       "player": "Alex Sarr",
@@ -3580,14 +3196,6 @@
       "profit": 1.04
     },
     {
-      "player": "Jaren Jackson Jr.",
-      "market": "p_a",
-      "line": 22.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": 1.06
-    },
-    {
       "player": "Deni Avdija",
       "market": "p_a",
       "line": 17.5,
@@ -3622,12 +3230,12 @@
       "profit": -1
     },
     {
-      "player": "Shai Gilgeous-Alexander",
-      "market": "pts",
-      "line": 31.5,
-      "odds": 106,
+      "player": "Pascal Siakam",
+      "market": "p_r_a",
+      "line": 27.5,
+      "odds": 104,
       "stake": 1,
-      "profit": -1
+      "profit": 1.04
     },
     {
       "player": "Jordan Poole",
@@ -3638,25 +3246,9 @@
       "profit": -1
     },
     {
-      "player": "Pascal Siakam",
-      "market": "p_r_a",
-      "line": 27.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
       "player": "Dejounte Murray",
       "market": "p_r_a",
       "line": 27.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "Josh Hart",
-      "market": "trb",
-      "line": 8.5,
       "odds": 116,
       "stake": 1,
       "profit": 1.16
@@ -3670,12 +3262,12 @@
       "profit": 1.18
     },
     {
-      "player": "Michael Porter Jr.",
-      "market": "p_r",
-      "line": 21.5,
-      "odds": 118,
+      "player": "Al Horford",
+      "market": "trb",
+      "line": 4.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Myles Turner",
@@ -3692,14 +3284,6 @@
       "odds": 116,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Trey Murphy III",
-      "market": "pts",
-      "line": 16.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
     },
     {
       "player": "Khris Middleton",
@@ -3719,22 +3303,22 @@
     },
     {
       "player": "Jamal Murray",
-      "market": "p_r_a",
-      "line": 25.5,
-      "odds": 120,
+      "market": "p_r",
+      "line": 20.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Miles McBride",
+      "market": "p_a",
+      "line": 8.5,
+      "odds": 105,
       "stake": 1,
       "profit": -1
     }
   ],
   "2025-01-13": [
-    {
-      "player": "Jaren Jackson Jr.",
-      "market": "pts",
-      "line": 21.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Jordan Poole",
       "market": "pts",
@@ -3744,12 +3328,20 @@
       "profit": 1.0
     },
     {
-      "player": "Malik Beasley",
+      "player": "Jalen Green",
       "market": "pts",
-      "line": 14.5,
-      "odds": 114,
+      "line": 20.5,
+      "odds": 100,
       "stake": 1,
-      "profit": 1.14
+      "profit": 1.0
+    },
+    {
+      "player": "Jaren Jackson Jr.",
+      "market": "pts",
+      "line": 21.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2025-01-14": [
@@ -3760,6 +3352,14 @@
       "odds": 100,
       "stake": 1,
       "profit": 1.0
+    },
+    {
+      "player": "Nikola Joki\u0107",
+      "market": "ast",
+      "line": 8.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "Jalen Smith",
@@ -3778,6 +3378,14 @@
       "profit": -1
     },
     {
+      "player": "Michael Porter Jr.",
+      "market": "pts",
+      "line": 16.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Evan Mobley",
       "market": "pts",
       "line": 17.5,
@@ -3786,28 +3394,12 @@
       "profit": 1.02
     },
     {
-      "player": "Michael Porter Jr.",
-      "market": "p_r",
-      "line": 21.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Nikola Vu\u010devi\u0107",
       "market": "p_r_a",
       "line": 31.5,
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "Darius Garland",
-      "market": "p_r_a",
-      "line": 29.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
     },
     {
       "player": "Royce O'Neale",
@@ -3819,11 +3411,11 @@
     },
     {
       "player": "Jamal Murray",
-      "market": "p_r_a",
-      "line": 25.5,
-      "odds": 114,
+      "market": "p_r",
+      "line": 20.5,
+      "odds": 104,
       "stake": 1,
-      "profit": 1.14
+      "profit": 1.04
     },
     {
       "player": "Grayson Allen",
@@ -3861,11 +3453,11 @@
     },
     {
       "player": "Josh Hart",
-      "market": "p_r_a",
-      "line": 30.5,
-      "odds": 100,
+      "market": "p_r",
+      "line": 24.5,
+      "odds": 110,
       "stake": 1,
-      "profit": 1.0
+      "profit": 1.1
     },
     {
       "player": "Stephen Curry",
@@ -3886,8 +3478,8 @@
     {
       "player": "Jalen Smith",
       "market": "pts",
-      "line": 8.5,
-      "odds": 108,
+      "line": 7.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -3938,17 +3530,25 @@
       "odds": 110,
       "stake": 1,
       "profit": 1.1
+    },
+    {
+      "player": "Ayo Dosunmu",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Max Christie",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
     }
   ],
   "2025-01-16": [
-    {
-      "player": "Domantas Sabonis",
-      "market": "p_a",
-      "line": 23.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
     {
       "player": "Pascal Siakam",
       "market": "a_r",
@@ -3958,12 +3558,12 @@
       "profit": 1.14
     },
     {
-      "player": "Evan Mobley",
-      "market": "p_r",
-      "line": 27.5,
-      "odds": 102,
+      "player": "Domantas Sabonis",
+      "market": "pts",
+      "line": 17.5,
+      "odds": 112,
       "stake": 1,
-      "profit": -1
+      "profit": 1.12
     },
     {
       "player": "De'Aaron Fox",
@@ -3972,6 +3572,14 @@
       "odds": 102,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Keegan Murray",
+      "market": "pts",
+      "line": 10.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
     },
     {
       "player": "DeMar DeRozan",
@@ -4000,6 +3608,14 @@
       "profit": 1.2
     },
     {
+      "player": "Jakob Poeltl",
+      "market": "p_r",
+      "line": 20.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
+    },
+    {
       "player": "Jaylen Brown",
       "market": "p_r_a",
       "line": 29.5,
@@ -4014,6 +3630,14 @@
       "odds": 114,
       "stake": 1,
       "profit": 1.14
+    },
+    {
+      "player": "Dejounte Murray",
+      "market": "p_r_a",
+      "line": 30.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Bam Adebayo",
@@ -4038,14 +3662,6 @@
       "odds": 110,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Nikola Jovi\u0107",
-      "market": "p_r",
-      "line": 13.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": 1.06
     },
     {
       "player": "Anthony Black",
@@ -4083,9 +3699,9 @@
     },
     {
       "player": "Jonas Valan\u010di\u016bnas",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 100,
+      "market": "pts",
+      "line": 8.5,
+      "odds": 120,
       "stake": 1,
       "profit": -1
     },
@@ -4107,14 +3723,6 @@
       "odds": 120,
       "stake": 1,
       "profit": 1.2
-    },
-    {
-      "player": "Jalen Johnson",
-      "market": "trb",
-      "line": 9.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": 1.0
     }
   ],
   "2025-01-21": [
@@ -4143,14 +3751,6 @@
       "profit": -1
     },
     {
-      "player": "Deni Avdija",
-      "market": "p_a",
-      "line": 16.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
       "player": "Anfernee Simons",
       "market": "p_a",
       "line": 20.5,
@@ -4159,12 +3759,28 @@
       "profit": 1.1
     },
     {
+      "player": "Jalen Wilson",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Cameron Johnson",
       "market": "pts",
       "line": 16.5,
       "odds": 116,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Deni Avdija",
+      "market": "pts",
+      "line": 13.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
     },
     {
       "player": "Tristan da Silva",
@@ -4209,26 +3825,10 @@
       "profit": -1
     },
     {
-      "player": "Keyonte George",
-      "market": "ast",
-      "line": 4.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
-    },
-    {
       "player": "De'Andre Hunter",
-      "market": "p_r",
-      "line": 19.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Anthony Edwards",
       "market": "pts",
-      "line": 24.5,
-      "odds": 116,
+      "line": 16.5,
+      "odds": -104,
       "stake": 1,
       "profit": -1
     },
@@ -4239,14 +3839,6 @@
       "odds": 114,
       "stake": 1,
       "profit": 1.14
-    },
-    {
-      "player": "Trae Young",
-      "market": "p_r_a",
-      "line": 37.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": -1
     },
     {
       "player": "John Collins",
@@ -4265,28 +3857,12 @@
       "profit": -1
     },
     {
-      "player": "Devin Booker",
-      "market": "p_a",
-      "line": 30.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
       "player": "Walker Kessler",
       "market": "pts",
-      "line": 9.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
-    },
-    {
-      "player": "Jalen Johnson",
-      "market": "trb",
       "line": 8.5,
-      "odds": 110,
+      "odds": -104,
       "stake": 1,
-      "profit": 1.1
+      "profit": 0.96
     },
     {
       "player": "Lauri Markkanen",
@@ -4435,28 +4011,20 @@
       "profit": 1.0
     },
     {
-      "player": "Domantas Sabonis",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
-      "player": "Bam Adebayo",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": 1.14
-    },
-    {
       "player": "Franz Wagner",
       "market": "pts",
       "line": 19.5,
       "odds": 118,
       "stake": 1,
       "profit": 1.18
+    },
+    {
+      "player": "Wendell Carter Jr.",
+      "market": "pts",
+      "line": 7.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
     },
     {
       "player": "Day'Ron Sharpe",
@@ -4515,6 +4083,14 @@
       "profit": 1.16
     },
     {
+      "player": "Naz Reid",
+      "market": "pts",
+      "line": 13.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
       "player": "Dejounte Murray",
       "market": "p_r_a",
       "line": 28.5,
@@ -4529,14 +4105,6 @@
       "odds": 112,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Malik Beasley",
-      "market": "pts",
-      "line": 13.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
     }
   ],
   "2025-01-28": [
@@ -4591,22 +4159,6 @@
   ],
   "2025-01-29": [
     {
-      "player": "Norman Powell",
-      "market": "pts",
-      "line": 20.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "Trey Murphy III",
-      "market": "p_a",
-      "line": 22.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
-    },
-    {
       "player": "Tyler Herro",
       "market": "pts",
       "line": 22.5,
@@ -4615,10 +4167,10 @@
       "profit": -1
     },
     {
-      "player": "Moses Moody",
-      "market": "pts",
-      "line": 8.5,
-      "odds": 104,
+      "player": "Tyus Jones",
+      "market": "p_a",
+      "line": 13.5,
+      "odds": -105,
       "stake": 1,
       "profit": -1
     },
@@ -4639,20 +4191,12 @@
       "profit": 1.08
     },
     {
-      "player": "Tyus Jones",
-      "market": "p_r_a",
-      "line": 15.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Coby White",
       "market": "pts",
-      "line": 15.5,
-      "odds": 100,
+      "line": 14.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.0
+      "profit": 0.98
     },
     {
       "player": "Malik Monk",
@@ -4709,6 +4253,14 @@
       "odds": 106,
       "stake": 1,
       "profit": 1.06
+    },
+    {
+      "player": "Rudy Gobert",
+      "market": "pts",
+      "line": 10.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Andrew Wiggins",
@@ -4779,8 +4331,8 @@
     {
       "player": "Toumani Camara",
       "market": "p_r",
-      "line": 16.5,
-      "odds": 104,
+      "line": 15.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -4827,14 +4379,6 @@
       "profit": 1.04
     },
     {
-      "player": "Devin Booker",
-      "market": "pts",
-      "line": 25.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
       "player": "Payton Pritchard",
       "market": "p_r_a",
       "line": 16.5,
@@ -4844,11 +4388,11 @@
     },
     {
       "player": "Trey Murphy III",
-      "market": "p_a",
-      "line": 22.5,
-      "odds": 115,
+      "market": "pts",
+      "line": 19.5,
+      "odds": 118,
       "stake": 1,
-      "profit": 1.15
+      "profit": 1.18
     },
     {
       "player": "Gradey Dick",
@@ -4909,28 +4453,12 @@
       "profit": -1
     },
     {
-      "player": "Domantas Sabonis",
-      "market": "p_a",
-      "line": 23.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Devin Booker",
       "market": "p_r",
       "line": 29.5,
       "odds": 120,
       "stake": 1,
       "profit": 1.2
-    },
-    {
-      "player": "Collin Sexton",
-      "market": "p_a",
-      "line": 20.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
     },
     {
       "player": "Wendell Carter Jr.",
@@ -4965,12 +4493,28 @@
       "profit": 1.06
     },
     {
+      "player": "Collin Sexton",
+      "market": "pts",
+      "line": 16.5,
+      "odds": 100,
+      "stake": 1,
+      "profit": 1.0
+    },
+    {
       "player": "John Collins",
       "market": "p_r",
       "line": 20.5,
       "odds": 104,
       "stake": 1,
       "profit": 1.04
+    },
+    {
+      "player": "Domantas Sabonis",
+      "market": "pts",
+      "line": 17.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Nikola Jovi\u0107",
@@ -4997,12 +4541,12 @@
       "profit": 1.08
     },
     {
-      "player": "Isaiah Collier",
-      "market": "a_r",
+      "player": "Corey Kispert",
+      "market": "pts",
       "line": 8.5,
-      "odds": 102,
+      "odds": 110,
       "stake": 1,
-      "profit": 1.02
+      "profit": -1
     }
   ],
   "2025-02-02": [
@@ -5039,31 +4583,23 @@
       "profit": -1
     },
     {
-      "player": "James Harden",
-      "market": "a_r",
-      "line": 13.5,
-      "odds": 110,
+      "player": "Gradey Dick",
+      "market": "pts",
+      "line": 11.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Immanuel Quickley",
       "market": "p_a",
-      "line": 16.5,
-      "odds": 100,
+      "line": 15.5,
+      "odds": -104,
       "stake": 1,
-      "profit": 1.0
+      "profit": 0.96
     }
   ],
   "2025-02-03": [
-    {
-      "player": "Devin Booker",
-      "market": "p_r_a",
-      "line": 37.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": 1.06
-    },
     {
       "player": "Malcolm Brogdon",
       "market": "ast",
@@ -5071,6 +4607,14 @@
       "odds": 114,
       "stake": 1,
       "profit": 1.14
+    },
+    {
+      "player": "Devin Booker",
+      "market": "pts",
+      "line": 26.5,
+      "odds": 104,
+      "stake": 1,
+      "profit": 1.04
     },
     {
       "player": "Wendell Carter Jr.",
@@ -5089,20 +4633,20 @@
       "profit": 1.18
     },
     {
-      "player": "Brandin Podziemski",
-      "market": "pts",
-      "line": 8.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Shaedon Sharpe",
       "market": "p_r",
       "line": 16.5,
       "odds": 108,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Brandin Podziemski",
+      "market": "p_a",
+      "line": 9.5,
+      "odds": 115,
+      "stake": 1,
+      "profit": 1.15
     },
     {
       "player": "Moses Moody",
@@ -5119,6 +4663,14 @@
       "odds": 112,
       "stake": 1,
       "profit": 1.12
+    },
+    {
+      "player": "Trey Murphy III",
+      "market": "pts",
+      "line": 20.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": 1.1
     },
     {
       "player": "Scoot Henderson",
@@ -5147,14 +4699,6 @@
       "profit": -1
     },
     {
-      "player": "Norman Powell",
-      "market": "pts",
-      "line": 21.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Tyrese Maxey",
       "market": "pts",
       "line": 26.5,
@@ -5169,14 +4713,6 @@
       "odds": 102,
       "stake": 1,
       "profit": 1.02
-    },
-    {
-      "player": "Evan Mobley",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": -1
     },
     {
       "player": "Kelly Oubre Jr.",
@@ -5203,10 +4739,18 @@
       "profit": -1
     },
     {
-      "player": "Jakob Poeltl",
-      "market": "p_r_a",
+      "player": "Evan Mobley",
+      "market": "p_r",
       "line": 24.5,
-      "odds": 106,
+      "odds": 114,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Day'Ron Sharpe",
+      "market": "p_r",
+      "line": 13.5,
+      "odds": -104,
       "stake": 1,
       "profit": -1
     },
@@ -5246,19 +4790,19 @@
     },
     {
       "player": "Nikola Jovi\u0107",
-      "market": "pts",
-      "line": 11.5,
+      "market": "p_r",
+      "line": 16.5,
       "odds": 110,
       "stake": 1,
       "profit": 1.1
     },
     {
-      "player": "Wendell Carter Jr.",
-      "market": "trb",
-      "line": 6.5,
-      "odds": 106,
+      "player": "Malik Beasley",
+      "market": "pts",
+      "line": 14.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.06
+      "profit": -1
     },
     {
       "player": "Zion Williamson",
@@ -5285,14 +4829,6 @@
       "profit": -1
     },
     {
-      "player": "Malik Beasley",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Darius Garland",
       "market": "pts",
       "line": 21.5,
@@ -5315,6 +4851,14 @@
       "odds": 100,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Jordan Hawkins",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -105,
+      "stake": 1,
+      "profit": 0.95
     },
     {
       "player": "Zach LaVine",
@@ -5407,6 +4951,14 @@
       "profit": -1
     },
     {
+      "player": "Rudy Gobert",
+      "market": "pts",
+      "line": 10.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
       "player": "Cole Anthony",
       "market": "p_a",
       "line": 16.5,
@@ -5441,6 +4993,14 @@
       "profit": 1.1
     },
     {
+      "player": "Cameron Johnson",
+      "market": "pts",
+      "line": 16.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
       "player": "Walker Kessler",
       "market": "trb",
       "line": 10.5,
@@ -5457,20 +5017,20 @@
       "profit": -1
     },
     {
-      "player": "Cameron Johnson",
-      "market": "p_r",
-      "line": 19.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": 1.0
-    },
-    {
       "player": "Jalen Williams",
       "market": "pts",
       "line": 18.5,
       "odds": 108,
       "stake": 1,
       "profit": 1.08
+    },
+    {
+      "player": "Duncan Robinson",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": 1.06
     },
     {
       "player": "Taurean Prince",
@@ -5499,6 +5059,14 @@
       "profit": 1.2
     },
     {
+      "player": "De'Aaron Fox",
+      "market": "p_r_a",
+      "line": 30.5,
+      "odds": 112,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Derrick White",
       "market": "pts",
       "line": 13.5,
@@ -5521,14 +5089,6 @@
       "odds": 120,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Alperen Sengun",
-      "market": "p_r_a",
-      "line": 32.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
     },
     {
       "player": "Jalen Williams",
@@ -5603,14 +5163,6 @@
       "odds": 106,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Cade Cunningham",
-      "market": "a_r",
-      "line": 14.5,
-      "odds": -122,
-      "stake": 1,
-      "profit": 0.82
     }
   ],
   "2025-02-10": [
@@ -5647,6 +5199,14 @@
       "profit": 1.02
     },
     {
+      "player": "Cameron Johnson",
+      "market": "p_r",
+      "line": 20.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "John Collins",
       "market": "p_r",
       "line": 22.5,
@@ -5671,26 +5231,10 @@
       "profit": 1.04
     },
     {
-      "player": "Shai Gilgeous-Alexander",
-      "market": "pts",
-      "line": 30.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
-    },
-    {
       "player": "Zion Williamson",
-      "market": "p_r_a",
-      "line": 33.5,
+      "market": "p_r",
+      "line": 28.5,
       "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Miles Bridges",
-      "market": "a_r",
-      "line": 10.5,
-      "odds": 104,
       "stake": 1,
       "profit": -1
     },
@@ -5711,14 +5255,6 @@
       "profit": 1.04
     },
     {
-      "player": "Nikola Jovi\u0107",
-      "market": "pts",
-      "line": 11.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Chet Holmgren",
       "market": "p_r",
       "line": 18.5,
@@ -5728,14 +5264,6 @@
     }
   ],
   "2025-02-12": [
-    {
-      "player": "Ausar Thompson",
-      "market": "pts",
-      "line": 11.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": 1.14
-    },
     {
       "player": "Nikola Joki\u0107",
       "market": "p_r",
@@ -5759,6 +5287,14 @@
       "odds": 108,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Ausar Thompson",
+      "market": "p_r_a",
+      "line": 17.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
     },
     {
       "player": "Darius Garland",
@@ -5785,14 +5321,6 @@
       "profit": 1.16
     },
     {
-      "player": "Cade Cunningham",
-      "market": "p_r_a",
-      "line": 42.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Zach LaVine",
       "market": "p_r",
       "line": 25.5,
@@ -5802,9 +5330,9 @@
     },
     {
       "player": "Jalen Williams",
-      "market": "p_r_a",
-      "line": 28.5,
-      "odds": 114,
+      "market": "p_a",
+      "line": 24.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -5859,36 +5387,12 @@
       "profit": 1.04
     },
     {
-      "player": "John Collins",
-      "market": "pts",
-      "line": 16.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Norman Powell",
-      "market": "pts",
-      "line": 22.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "Jalen Williams",
-      "market": "a_r",
-      "line": 9.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Zach LaVine",
-      "market": "p_r",
-      "line": 25.5,
-      "odds": 108,
+      "market": "pts",
+      "line": 21.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.08
+      "profit": 0.98
     },
     {
       "player": "Shai Gilgeous-Alexander",
@@ -5905,6 +5409,14 @@
       "odds": 118,
       "stake": 1,
       "profit": 1.18
+    },
+    {
+      "player": "Jalen Williams",
+      "market": "p_r_a",
+      "line": 27.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": 1.14
     },
     {
       "player": "Jordan Hawkins",
@@ -5926,11 +5438,19 @@
     },
     {
       "player": "Miles Bridges",
-      "market": "p_r_a",
-      "line": 29.5,
-      "odds": 110,
+      "market": "p_r",
+      "line": 25.5,
+      "odds": 114,
       "stake": 1,
-      "profit": 1.1
+      "profit": 1.14
+    },
+    {
+      "player": "Josh Green",
+      "market": "p_r",
+      "line": 8.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2025-02-20": [
@@ -5941,6 +5461,14 @@
       "odds": 102,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Miles Bridges",
+      "market": "trb",
+      "line": 6.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
     },
     {
       "player": "Nikola Joki\u0107",
@@ -5991,28 +5519,20 @@
       "profit": -1
     },
     {
-      "player": "Donovan Mitchell",
-      "market": "p_r_a",
-      "line": 30.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
-      "player": "Anthony Black",
-      "market": "p_a",
-      "line": 11.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Kelly Oubre Jr.",
       "market": "p_r",
       "line": 16.5,
       "odds": 118,
       "stake": 1,
       "profit": 1.18
+    },
+    {
+      "player": "Donovan Mitchell",
+      "market": "pts",
+      "line": 21.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": 1.02
     },
     {
       "player": "Payton Pritchard",
@@ -6029,14 +5549,6 @@
       "odds": 112,
       "stake": 1,
       "profit": 1.12
-    },
-    {
-      "player": "Nikola Vu\u010devi\u0107",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
     },
     {
       "player": "Evan Mobley",
@@ -6113,14 +5625,6 @@
       "profit": -1
     },
     {
-      "player": "Isaiah Hartenstein",
-      "market": "p_r",
-      "line": 18.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
       "player": "Corey Kispert",
       "market": "p_r",
       "line": 13.5,
@@ -6137,6 +5641,14 @@
       "profit": -1
     },
     {
+      "player": "Domantas Sabonis",
+      "market": "p_a",
+      "line": 22.5,
+      "odds": -105,
+      "stake": 1,
+      "profit": 0.95
+    },
+    {
       "player": "Walker Kessler",
       "market": "p_r",
       "line": 20.5,
@@ -6145,12 +5657,12 @@
       "profit": 1.12
     },
     {
-      "player": "Scottie Barnes",
-      "market": "p_r_a",
-      "line": 32.5,
-      "odds": 110,
+      "player": "Aaron Wiggins",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Zion Williamson",
@@ -6159,14 +5671,6 @@
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "Jalen Green",
-      "market": "p_r",
-      "line": 24.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
     },
     {
       "player": "Yves Missi",
@@ -6178,22 +5682,6 @@
     }
   ],
   "2025-02-22": [
-    {
-      "player": "Rui Hachimura",
-      "market": "p_r",
-      "line": 18.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": 1.06
-    },
-    {
-      "player": "Joel Embiid",
-      "market": "p_a",
-      "line": 29.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Mark Williams",
       "market": "trb",
@@ -6209,6 +5697,14 @@
       "odds": 116,
       "stake": 1,
       "profit": 1.16
+    },
+    {
+      "player": "Rui Hachimura",
+      "market": "pts",
+      "line": 13.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": 1.02
     }
   ],
   "2025-02-23": [
@@ -6221,14 +5717,6 @@
       "profit": 1.04
     },
     {
-      "player": "Max Christie",
-      "market": "pts",
-      "line": 12.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Josh Hart",
       "market": "p_a",
       "line": 16.5,
@@ -6237,20 +5725,20 @@
       "profit": 1.0
     },
     {
-      "player": "Giannis Antetokounmpo",
-      "market": "pts",
-      "line": 24.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Payton Pritchard",
       "market": "p_r",
       "line": 13.5,
       "odds": 102,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Myles Turner",
+      "market": "pts",
+      "line": 14.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
     }
   ],
   "2025-02-24": [
@@ -6271,14 +5759,6 @@
       "profit": -1
     },
     {
-      "player": "Anthony Edwards",
-      "market": "p_a",
-      "line": 29.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Tobias Harris",
       "market": "pts",
       "line": 13.5,
@@ -6287,26 +5767,18 @@
       "profit": 1.02
     },
     {
-      "player": "Day'Ron Sharpe",
-      "market": "p_r",
-      "line": 14.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Khris Middleton",
-      "market": "pts",
-      "line": 12.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Mike Conley",
       "market": "p_a",
       "line": 12.5,
       "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Day'Ron Sharpe",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 100,
       "stake": 1,
       "profit": -1
     },
@@ -6320,11 +5792,11 @@
     },
     {
       "player": "Naz Reid",
-      "market": "p_r",
-      "line": 26.5,
-      "odds": 110,
+      "market": "p_a",
+      "line": 20.5,
+      "odds": 116,
       "stake": 1,
-      "profit": 1.1
+      "profit": 1.16
     },
     {
       "player": "Aaron Wiggins",
@@ -6359,6 +5831,14 @@
       "odds": 120,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Trey Murphy III",
+      "market": "pts",
+      "line": 20.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "Klay Thompson",
@@ -6445,10 +5925,10 @@
     {
       "player": "Derrick White",
       "market": "pts",
-      "line": 16.5,
-      "odds": 100,
+      "line": 15.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.0
+      "profit": 0.98
     },
     {
       "player": "Tobias Harris",
@@ -6483,7 +5963,16 @@
       "profit": -1
     }
   ],
-  "2025-02-27": [],
+  "2025-02-27": [
+    {
+      "player": "Moses Moody",
+      "market": "pts",
+      "line": 11.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": -1
+    }
+  ],
   "2025-02-28": [
     {
       "player": "Derrick White",
@@ -6498,14 +5987,6 @@
       "market": "pts",
       "line": 16.5,
       "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Santi Aldama",
-      "market": "p_r",
-      "line": 17.5,
-      "odds": 110,
       "stake": 1,
       "profit": -1
     },
@@ -6536,10 +6017,10 @@
     {
       "player": "De'Andre Hunter",
       "market": "pts",
-      "line": 12.5,
-      "odds": 104,
+      "line": 11.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Myles Turner",
@@ -6558,20 +6039,20 @@
       "profit": -1
     },
     {
-      "player": "Isaiah Collier",
-      "market": "p_a",
-      "line": 16.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
       "player": "Chet Holmgren",
       "market": "p_r",
       "line": 23.5,
       "odds": 118,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Malik Beasley",
+      "market": "pts",
+      "line": 14.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
     },
     {
       "player": "Max Strus",
@@ -6598,6 +6079,14 @@
       "odds": 102,
       "stake": 1,
       "profit": 1.02
+    },
+    {
+      "player": "Justin Edwards",
+      "market": "pts",
+      "line": 6.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Dillon Brooks",
@@ -6660,6 +6149,22 @@
       "profit": -1
     },
     {
+      "player": "DeMar DeRozan",
+      "market": "pts",
+      "line": 20.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Isaiah Hartenstein",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 108,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Corey Kispert",
       "market": "p_r",
       "line": 14.5,
@@ -6678,28 +6183,20 @@
       "profit": -1
     },
     {
+      "player": "Kevin Durant",
+      "market": "pts",
+      "line": 23.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": 1.14
+    },
+    {
       "player": "Cam Thomas",
       "market": "p_r",
       "line": 20.5,
       "odds": 116,
       "stake": 1,
       "profit": 1.16
-    },
-    {
-      "player": "Alperen Sengun",
-      "market": "p_r_a",
-      "line": 34.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
-      "player": "Immanuel Quickley",
-      "market": "a_r",
-      "line": 7.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     },
     {
       "player": "Scottie Barnes",
@@ -6716,6 +6213,14 @@
       "odds": 118,
       "stake": 1,
       "profit": 1.18
+    },
+    {
+      "player": "Kelly Olynyk",
+      "market": "p_r_a",
+      "line": 18.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2025-03-05": [
@@ -6744,12 +6249,12 @@
       "profit": -1
     },
     {
-      "player": "Donovan Mitchell",
-      "market": "p_a",
-      "line": 28.5,
-      "odds": 100,
+      "player": "James Harden",
+      "market": "a_r",
+      "line": 13.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.0
+      "profit": -1
     },
     {
       "player": "Ty Jerome",
@@ -6758,6 +6263,14 @@
       "odds": 110,
       "stake": 1,
       "profit": 1.1
+    },
+    {
+      "player": "Donovan Mitchell",
+      "market": "pts",
+      "line": 22.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "Taurean Prince",
@@ -6829,11 +6342,11 @@
   "2025-03-07": [
     {
       "player": "Evan Mobley",
-      "market": "p_r",
-      "line": 25.5,
-      "odds": 120,
+      "market": "pts",
+      "line": 16.5,
+      "odds": 114,
       "stake": 1,
-      "profit": 1.2
+      "profit": 1.14
     },
     {
       "player": "Kevin Durant",
@@ -6852,14 +6365,6 @@
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "Onyeka Okongwu",
-      "market": "a_r",
-      "line": 11.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
     },
     {
       "player": "Trey Murphy III",
@@ -6891,8 +6396,16 @@
   "2025-03-10": [
     {
       "player": "Malik Monk",
-      "market": "p_r_a",
-      "line": 24.5,
+      "market": "p_a",
+      "line": 21.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
+      "player": "Jamal Murray",
+      "market": "p_a",
+      "line": 23.5,
       "odds": 116,
       "stake": 1,
       "profit": 1.16
@@ -6906,25 +6419,9 @@
       "profit": -1
     },
     {
-      "player": "DeMar DeRozan",
-      "market": "pts",
-      "line": 20.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Jalen Wilson",
       "market": "pts",
       "line": 6.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Scottie Barnes",
-      "market": "p_a",
-      "line": 23.5,
       "odds": 120,
       "stake": 1,
       "profit": -1
@@ -6964,6 +6461,14 @@
       "profit": -1
     },
     {
+      "player": "Aaron Nesmith",
+      "market": "pts",
+      "line": 10.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "T.J. McConnell",
       "market": "p_a",
       "line": 10.5,
@@ -6981,14 +6486,6 @@
     }
   ],
   "2025-03-12": [
-    {
-      "player": "Kevin Durant",
-      "market": "p_r_a",
-      "line": 34.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Devin Booker",
       "market": "ast",
@@ -7022,6 +6519,14 @@
       "profit": 1.02
     },
     {
+      "player": "Kevin Durant",
+      "market": "p_a",
+      "line": 28.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Jabari Smith Jr.",
       "market": "p_r",
       "line": 17.5,
@@ -7030,28 +6535,12 @@
       "profit": -1
     },
     {
-      "player": "Ivica Zubac",
-      "market": "p_r",
-      "line": 29.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
       "player": "Davion Mitchell",
       "market": "p_a",
       "line": 10.5,
       "odds": 114,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Bradley Beal",
-      "market": "p_r_a",
-      "line": 22.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     },
     {
       "player": "Dillon Brooks",
@@ -7104,18 +6593,10 @@
       "profit": 1.16
     },
     {
-      "player": "Cade Cunningham",
-      "market": "p_a",
-      "line": 34.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
-    },
-    {
-      "player": "Nikola Vu\u010devi\u0107",
-      "market": "trb",
-      "line": 8.5,
-      "odds": 120,
+      "player": "Malik Beasley",
+      "market": "pts",
+      "line": 14.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -7145,8 +6626,8 @@
     },
     {
       "player": "Jordan Poole",
-      "market": "p_r_a",
-      "line": 24.5,
+      "market": "p_r",
+      "line": 20.5,
       "odds": 114,
       "stake": 1,
       "profit": 1.14
@@ -7171,11 +6652,11 @@
     },
     {
       "player": "Julius Randle",
-      "market": "p_a",
-      "line": 21.5,
-      "odds": 104,
+      "market": "p_r_a",
+      "line": 28.5,
+      "odds": 102,
       "stake": 1,
-      "profit": 1.04
+      "profit": 1.02
     },
     {
       "player": "Rudy Gobert",
@@ -7190,6 +6671,14 @@
       "market": "pts",
       "line": 12.5,
       "odds": 118,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Naz Reid",
+      "market": "p_r",
+      "line": 17.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -7216,25 +6705,9 @@
       "odds": 112,
       "stake": 1,
       "profit": 1.12
-    },
-    {
-      "player": "Onyeka Okongwu",
-      "market": "pts",
-      "line": 13.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": 1.0
     }
   ],
   "2025-03-16": [
-    {
-      "player": "Bradley Beal",
-      "market": "p_r_a",
-      "line": 21.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Paolo Banchero",
       "market": "pts",
@@ -7242,6 +6715,14 @@
       "odds": 120,
       "stake": 1,
       "profit": 1.2
+    },
+    {
+      "player": "Bradley Beal",
+      "market": "pts",
+      "line": 14.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Donovan Mitchell",
@@ -7258,24 +6739,16 @@
       "odds": 118,
       "stake": 1,
       "profit": 1.18
-    },
-    {
-      "player": "Darius Garland",
-      "market": "a_r",
-      "line": 8.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     }
   ],
   "2025-03-17": [
     {
       "player": "Donte DiVincenzo",
       "market": "p_a",
-      "line": 16.5,
-      "odds": 102,
+      "line": 15.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.02
+      "profit": 0.98
     },
     {
       "player": "Scottie Barnes",
@@ -7294,18 +6767,18 @@
       "profit": -1
     },
     {
-      "player": "Tyler Herro",
-      "market": "ast",
-      "line": 5.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "OG Anunoby",
       "market": "p_r",
       "line": 21.5,
       "odds": 116,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Haywood Highsmith",
+      "market": "pts",
+      "line": 6.5,
+      "odds": -104,
       "stake": 1,
       "profit": -1
     },
@@ -7342,6 +6815,14 @@
       "profit": 1.06
     },
     {
+      "player": "Kel'el Ware",
+      "market": "trb",
+      "line": 6.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Josh Hart",
       "market": "p_r",
       "line": 21.5,
@@ -7368,14 +6849,6 @@
       "profit": -1
     },
     {
-      "player": "Mark Williams",
-      "market": "trb",
-      "line": 10.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Cameron Johnson",
       "market": "pts",
       "line": 16.5,
@@ -7386,20 +6859,20 @@
   ],
   "2025-03-19": [
     {
-      "player": "Tobias Harris",
-      "market": "trb",
-      "line": 5.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Josh Giddey",
       "market": "trb",
       "line": 7.5,
       "odds": 112,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Tim Hardaway Jr.",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "Yves Missi",
@@ -7426,12 +6899,12 @@
       "profit": -1
     },
     {
-      "player": "Tim Hardaway Jr.",
-      "market": "p_r",
-      "line": 11.5,
-      "odds": 108,
+      "player": "Mike Conley",
+      "market": "pts",
+      "line": 7.5,
+      "odds": -104,
       "stake": 1,
-      "profit": 1.08
+      "profit": 0.96
     },
     {
       "player": "Kevin Huerter",
@@ -7450,6 +6923,14 @@
       "profit": 1.02
     },
     {
+      "player": "Chris Paul",
+      "market": "a_r",
+      "line": 8.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
+    },
+    {
       "player": "Zion Williamson",
       "market": "trb",
       "line": 5.5,
@@ -7458,12 +6939,12 @@
       "profit": -1
     },
     {
-      "player": "Chris Paul",
-      "market": "p_a",
-      "line": 12.5,
-      "odds": 104,
+      "player": "Nickeil Alexander-Walker",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 120,
       "stake": 1,
-      "profit": 1.04
+      "profit": 1.2
     },
     {
       "player": "Brice Sensabaugh",
@@ -7476,20 +6957,20 @@
   ],
   "2025-03-20": [
     {
+      "player": "Scottie Barnes",
+      "market": "pts",
+      "line": 16.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
       "player": "Immanuel Quickley",
       "market": "ast",
       "line": 4.5,
       "odds": 118,
       "stake": 1,
       "profit": 1.18
-    },
-    {
-      "player": "Scottie Barnes",
-      "market": "p_r",
-      "line": 21.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
     },
     {
       "player": "Jonathan Kuminga",
@@ -7534,14 +7015,6 @@
       "profit": -1
     },
     {
-      "player": "Anthony Edwards",
-      "market": "pts",
-      "line": 26.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Isaiah Collier",
       "market": "a_r",
       "line": 9.5,
@@ -7562,6 +7035,14 @@
       "market": "p_r",
       "line": 15.5,
       "odds": 110,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Kyshawn George",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     },
@@ -7606,12 +7087,12 @@
       "profit": 1.1
     },
     {
-      "player": "Duncan Robinson",
-      "market": "pts",
-      "line": 9.5,
-      "odds": 108,
+      "player": "Isaiah Hartenstein",
+      "market": "p_a",
+      "line": 14.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Tyus Jones",
@@ -7622,52 +7103,20 @@
       "profit": 1.02
     },
     {
+      "player": "Tyler Herro",
+      "market": "pts",
+      "line": 20.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Khris Middleton",
       "market": "pts",
       "line": 7.5,
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "Chet Holmgren",
-      "market": "p_r",
-      "line": 22.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Klay Thompson",
-      "market": "p_a",
-      "line": 16.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Royce O'Neale",
-      "market": "p_r",
-      "line": 11.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Davion Mitchell",
-      "market": "pts",
-      "line": 5.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Jordan Poole",
-      "market": "p_a",
-      "line": 15.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": 1.06
     }
   ],
   "2025-03-22": [
@@ -7678,6 +7127,14 @@
       "odds": 120,
       "stake": 1,
       "profit": 1.2
+    },
+    {
+      "player": "Kyshawn George",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
     },
     {
       "player": "Caris LeVert",
@@ -7694,6 +7151,14 @@
       "odds": 114,
       "stake": 1,
       "profit": 1.14
+    },
+    {
+      "player": "Georges Niang",
+      "market": "trb",
+      "line": 3.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Noah Clowney",
@@ -7715,33 +7180,9 @@
   "2025-03-23": [
     {
       "player": "James Harden",
-      "market": "p_a",
-      "line": 28.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Kawhi Leonard",
-      "market": "pts",
-      "line": 19.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "Quentin Grimes",
-      "market": "p_a",
-      "line": 30.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
-      "player": "Ivica Zubac",
-      "market": "pts",
-      "line": 15.5,
-      "odds": 110,
+      "market": "p_r_a",
+      "line": 33.5,
+      "odds": 112,
       "stake": 1,
       "profit": -1
     },
@@ -7764,10 +7205,10 @@
     {
       "player": "Isaiah Hartenstein",
       "market": "p_a",
-      "line": 14.5,
-      "odds": 104,
+      "line": 13.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.04
+      "profit": 0.98
     },
     {
       "player": "Max Strus",
@@ -7838,20 +7279,12 @@
       "profit": 1.1
     },
     {
-      "player": "Mikal Bridges",
-      "market": "p_r_a",
-      "line": 24.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": 1.0
-    },
-    {
       "player": "Ivica Zubac",
       "market": "pts",
-      "line": 16.5,
-      "odds": 104,
+      "line": 15.5,
+      "odds": -104,
       "stake": 1,
-      "profit": 1.04
+      "profit": 0.96
     },
     {
       "player": "Scottie Barnes",
@@ -7868,6 +7301,14 @@
       "odds": 106,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Jamal Shead",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 112,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2025-03-27": [
@@ -7880,6 +7321,14 @@
       "profit": 1.1
     },
     {
+      "player": "Jaxson Hayes",
+      "market": "p_r",
+      "line": 13.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
       "player": "Jordan Poole",
       "market": "p_a",
       "line": 17.5,
@@ -7889,14 +7338,6 @@
     }
   ],
   "2025-03-28": [
-    {
-      "player": "Immanuel Quickley",
-      "market": "p_r",
-      "line": 21.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "James Harden",
       "market": "p_a",
@@ -7936,14 +7377,6 @@
       "odds": 114,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Kevin Durant",
-      "market": "p_r_a",
-      "line": 34.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
     }
   ],
   "2025-03-29": [
@@ -7958,36 +7391,12 @@
   ],
   "2025-03-30": [
     {
-      "player": "Mikal Bridges",
-      "market": "p_a",
-      "line": 22.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
-    },
-    {
-      "player": "Devin Vassell",
-      "market": "p_r",
-      "line": 20.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Jabari Smith Jr.",
       "market": "pts",
       "line": 10.5,
       "odds": 100,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Donovan Clingan",
-      "market": "trb",
-      "line": 9.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
     },
     {
       "player": "Jalen Green",
@@ -8016,14 +7425,6 @@
       "profit": -1
     },
     {
-      "player": "Ivica Zubac",
-      "market": "pts",
-      "line": 14.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
       "player": "DeMar DeRozan",
       "market": "p_r",
       "line": 24.5,
@@ -8046,14 +7447,6 @@
       "odds": 114,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Amen Thompson",
-      "market": "p_r_a",
-      "line": 24.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
     },
     {
       "player": "Obi Toppin",
@@ -8082,8 +7475,8 @@
     {
       "player": "Alex Sarr",
       "market": "pts",
-      "line": 16.5,
-      "odds": 102,
+      "line": 15.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -8098,8 +7491,8 @@
     {
       "player": "Spencer Dinwiddie",
       "market": "p_a",
-      "line": 20.5,
-      "odds": 102,
+      "line": 19.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -8155,11 +7548,19 @@
     },
     {
       "player": "Terance Mann",
-      "market": "p_r",
-      "line": 10.5,
-      "odds": 110,
+      "market": "pts",
+      "line": 7.5,
+      "odds": 108,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Tyus Jones",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
     },
     {
       "player": "Zach Collins",
@@ -8204,28 +7605,12 @@
       "profit": -1
     },
     {
-      "player": "James Harden",
-      "market": "pts",
-      "line": 19.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
       "player": "Walker Kessler",
       "market": "trb",
       "line": 9.5,
       "odds": 114,
       "stake": 1,
       "profit": 1.14
-    },
-    {
-      "player": "Jalen Green",
-      "market": "p_r_a",
-      "line": 30.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": -1
     },
     {
       "player": "Darius Garland",
@@ -8244,6 +7629,14 @@
       "profit": 1.08
     },
     {
+      "player": "Jalen Green",
+      "market": "p_r",
+      "line": 25.5,
+      "odds": 112,
+      "stake": 1,
+      "profit": 1.12
+    },
+    {
       "player": "Jabari Smith Jr.",
       "market": "p_r",
       "line": 16.5,
@@ -8260,20 +7653,20 @@
       "profit": 1.1
     },
     {
+      "player": "Yves Missi",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Isaiah Collier",
       "market": "p_a",
       "line": 15.5,
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "Luguentz Dort",
-      "market": "p_r",
-      "line": 12.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
     },
     {
       "player": "Keyonte George",
@@ -8310,6 +7703,14 @@
       "profit": -1
     },
     {
+      "player": "Donte DiVincenzo",
+      "market": "p_r_a",
+      "line": 18.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Ricky Council IV",
       "market": "pts",
       "line": 10.5,
@@ -8318,12 +7719,12 @@
       "profit": -1
     },
     {
-      "player": "Donte DiVincenzo",
-      "market": "p_r",
-      "line": 14.5,
-      "odds": 108,
+      "player": "Kel'el Ware",
+      "market": "trb",
+      "line": 8.5,
+      "odds": -104,
       "stake": 1,
-      "profit": -1
+      "profit": 0.96
     },
     {
       "player": "Toumani Camara",
@@ -8378,10 +7779,10 @@
     {
       "player": "Yves Missi",
       "market": "p_r",
-      "line": 18.5,
-      "odds": 102,
+      "line": 17.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.02
+      "profit": 0.98
     },
     {
       "player": "Payton Pritchard",
@@ -8460,10 +7861,10 @@
     {
       "player": "Mike Conley",
       "market": "p_a",
-      "line": 12.5,
-      "odds": 102,
+      "line": 11.5,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
+      "profit": 0.98
     },
     {
       "player": "Tim Hardaway Jr.",
@@ -8492,14 +7893,6 @@
       "profit": -1
     },
     {
-      "player": "Jalen Williams",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Isaiah Hartenstein",
       "market": "a_r",
       "line": 11.5,
@@ -8510,14 +7903,6 @@
   ],
   "2025-04-07": [
     {
-      "player": "DeMar DeRozan",
-      "market": "pts",
-      "line": 22.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": 1.0
-    },
-    {
       "player": "Cade Cunningham",
       "market": "p_r_a",
       "line": 36.5,
@@ -8527,14 +7912,6 @@
     }
   ],
   "2025-04-08": [
-    {
-      "player": "Trae Young",
-      "market": "p_a",
-      "line": 33.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
     {
       "player": "Karl-Anthony Towns",
       "market": "p_r",
@@ -8618,28 +7995,12 @@
   ],
   "2025-04-09": [
     {
-      "player": "Nikola Joki\u0107",
-      "market": "a_r",
-      "line": 21.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": 1.12
-    },
-    {
       "player": "Anthony Black",
       "market": "p_a",
       "line": 9.5,
       "odds": 118,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Kawhi Leonard",
-      "market": "pts",
-      "line": 21.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": 1.14
     },
     {
       "player": "Max Christie",
@@ -8658,14 +8019,6 @@
       "profit": 1.16
     },
     {
-      "player": "Ivica Zubac",
-      "market": "pts",
-      "line": 15.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
       "player": "Spencer Dinwiddie",
       "market": "pts",
       "line": 11.5,
@@ -8675,9 +8028,9 @@
     },
     {
       "player": "Austin Reaves",
-      "market": "p_r_a",
-      "line": 28.5,
-      "odds": 104,
+      "market": "p_a",
+      "line": 23.5,
+      "odds": 118,
       "stake": 1,
       "profit": -1
     },
@@ -8752,22 +8105,13 @@
     {
       "player": "Rudy Gobert",
       "market": "pts",
-      "line": 12.5,
-      "odds": 104,
+      "line": 11.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.04
+      "profit": 0.98
     }
   ],
-  "2025-04-13": [
-    {
-      "player": "Ivica Zubac",
-      "market": "pts",
-      "line": 15.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    }
-  ],
+  "2025-04-13": [],
   "2025-04-15": [
     {
       "player": "Santi Aldama",
@@ -8794,20 +8138,20 @@
       "profit": 1.14
     },
     {
-      "player": "Jaren Jackson Jr.",
-      "market": "p_a",
-      "line": 21.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
       "player": "Terance Mann",
       "market": "pts",
       "line": 6.5,
       "odds": 112,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Georges Niang",
+      "market": "p_r",
+      "line": 8.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
     }
   ],
   "2025-04-16": [
@@ -8818,14 +8162,6 @@
       "odds": 108,
       "stake": 1,
       "profit": 1.08
-    },
-    {
-      "player": "Tyler Herro",
-      "market": "pts",
-      "line": 23.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
     },
     {
       "player": "Spencer Dinwiddie",
@@ -8860,6 +8196,14 @@
       "odds": 116,
       "stake": 1,
       "profit": 1.16
+    },
+    {
+      "player": "Daniel Gafford",
+      "market": "p_r",
+      "line": 13.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2025-04-19": [
@@ -8880,20 +8224,20 @@
       "profit": 1.02
     },
     {
-      "player": "Austin Reaves",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Nikola Joki\u0107",
       "market": "pts",
       "line": 27.5,
       "odds": 106,
       "stake": 1,
       "profit": 1.06
+    },
+    {
+      "player": "Austin Reaves",
+      "market": "p_a",
+      "line": 23.5,
+      "odds": 108,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Malik Beasley",
@@ -8930,12 +8274,20 @@
       "profit": -1
     },
     {
-      "player": "Amen Thompson",
-      "market": "p_r",
-      "line": 21.5,
-      "odds": 106,
+      "player": "Jaren Jackson Jr.",
+      "market": "pts",
+      "line": 18.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Ty Jerome",
+      "market": "pts",
+      "line": 9.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
     },
     {
       "player": "Tyler Herro",
@@ -8946,17 +8298,17 @@
       "profit": -1
     },
     {
-      "player": "Jalen Williams",
-      "market": "p_a",
-      "line": 25.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": 1.12
-    },
-    {
       "player": "Paolo Banchero",
       "market": "p_a",
       "line": 27.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": 1.14
+    },
+    {
+      "player": "Darius Garland",
+      "market": "p_r",
+      "line": 20.5,
       "odds": 114,
       "stake": 1,
       "profit": 1.14
@@ -9038,28 +8390,20 @@
       "profit": -1
     },
     {
+      "player": "Donte DiVincenzo",
+      "market": "p_a",
+      "line": 12.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Mike Conley",
       "market": "p_a",
       "line": 11.5,
       "odds": 114,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Anthony Edwards",
-      "market": "p_r_a",
-      "line": 35.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Alex Caruso",
-      "market": "p_r",
-      "line": 9.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     }
   ],
   "2025-04-23": [
@@ -9154,36 +8498,12 @@
   ],
   "2025-04-24": [
     {
-      "player": "Nikola Joki\u0107",
-      "market": "ast",
-      "line": 8.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
-    },
-    {
-      "player": "Kawhi Leonard",
-      "market": "p_r",
-      "line": 30.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
       "player": "Jalen Williams",
-      "market": "p_r_a",
-      "line": 30.5,
-      "odds": 118,
+      "market": "p_a",
+      "line": 25.5,
+      "odds": 116,
       "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Alex Caruso",
-      "market": "p_r",
-      "line": 11.5,
-      "odds": 112,
-      "stake": 1,
-      "profit": 1.12
+      "profit": 1.16
     }
   ],
   "2025-04-25": [
@@ -9228,18 +8548,10 @@
       "profit": 1.12
     },
     {
-      "player": "Anthony Edwards",
-      "market": "p_a",
-      "line": 30.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
       "player": "Payton Pritchard",
-      "market": "p_r",
-      "line": 13.5,
-      "odds": 116,
+      "market": "pts",
+      "line": 10.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     }
@@ -9252,14 +8564,6 @@
       "odds": 118,
       "stake": 1,
       "profit": 1.18
-    },
-    {
-      "player": "Kawhi Leonard",
-      "market": "p_r",
-      "line": 30.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
     },
     {
       "player": "Bam Adebayo",
@@ -9288,10 +8592,10 @@
     {
       "player": "Jabari Smith Jr.",
       "market": "p_r",
-      "line": 14.5,
-      "odds": 102,
+      "line": 13.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.02
+      "profit": 0.98
     },
     {
       "player": "De'Andre Hunter",
@@ -9396,14 +8700,6 @@
       "profit": -1
     },
     {
-      "player": "Kawhi Leonard",
-      "market": "p_r",
-      "line": 30.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Cade Cunningham",
       "market": "pts",
       "line": 25.5,
@@ -9426,6 +8722,14 @@
       "odds": 120,
       "stake": 1,
       "profit": 1.2
+    },
+    {
+      "player": "Kawhi Leonard",
+      "market": "p_a",
+      "line": 27.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": 1.14
     },
     {
       "player": "Ausar Thompson",
@@ -9488,6 +8792,14 @@
       "profit": -1
     },
     {
+      "player": "Ivica Zubac",
+      "market": "pts",
+      "line": 17.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Aaron Gordon",
       "market": "p_r",
       "line": 18.5,
@@ -9502,6 +8814,14 @@
       "odds": 120,
       "stake": 1,
       "profit": 1.2
+    },
+    {
+      "player": "OG Anunoby",
+      "market": "p_r",
+      "line": 20.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": 1.06
     }
   ],
   "2025-05-02": [
@@ -9533,11 +8853,11 @@
   "2025-05-03": [
     {
       "player": "Aaron Gordon",
-      "market": "p_r_a",
-      "line": 22.5,
-      "odds": 114,
+      "market": "p_r",
+      "line": 20.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.14
+      "profit": 0.98
     },
     {
       "player": "Ivica Zubac",
@@ -9549,6 +8869,14 @@
     }
   ],
   "2025-05-04": [
+    {
+      "player": "Tari Eason",
+      "market": "trb",
+      "line": 3.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
     {
       "player": "Amen Thompson",
       "market": "p_r_a",
@@ -9564,6 +8892,14 @@
       "odds": 100,
       "stake": 1,
       "profit": 1.0
+    },
+    {
+      "player": "Sam Merrill",
+      "market": "p_r",
+      "line": 9.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
     },
     {
       "player": "Bennedict Mathurin",
@@ -9600,12 +8936,12 @@
       "profit": -1
     },
     {
-      "player": "Derrick White",
-      "market": "p_a",
-      "line": 18.5,
-      "odds": 108,
+      "player": "Karl-Anthony Towns",
+      "market": "p_r",
+      "line": 30.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.08
+      "profit": -1
     }
   ],
   "2025-05-06": [],
@@ -9655,6 +8991,14 @@
       "market": "p_r",
       "line": 10.5,
       "odds": 118,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "OG Anunoby",
+      "market": "p_r",
+      "line": 20.5,
+      "odds": 100,
       "stake": 1,
       "profit": -1
     },
@@ -9728,6 +9072,14 @@
       "profit": -1
     },
     {
+      "player": "Al Horford",
+      "market": "p_a",
+      "line": 8.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
+    },
+    {
       "player": "Payton Pritchard",
       "market": "pts",
       "line": 7.5,
@@ -9740,8 +9092,8 @@
     {
       "player": "De'Andre Hunter",
       "market": "p_r",
-      "line": 14.5,
-      "odds": 100,
+      "line": 13.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -9760,9 +9112,25 @@
       "odds": 116,
       "stake": 1,
       "profit": 1.16
+    },
+    {
+      "player": "Bennedict Mathurin",
+      "market": "p_r",
+      "line": 15.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
     }
   ],
   "2025-05-12": [
+    {
+      "player": "Jrue Holiday",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
     {
       "player": "Derrick White",
       "market": "p_r_a",
@@ -9862,14 +9230,6 @@
   ],
   "2025-05-20": [
     {
-      "player": "Anthony Edwards",
-      "market": "p_r_a",
-      "line": 36.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": -1
-    },
-    {
       "player": "Mike Conley",
       "market": "a_r",
       "line": 5.5,
@@ -9887,14 +9247,6 @@
       "odds": 108,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Shai Gilgeous-Alexander",
-      "market": "pts",
-      "line": 30.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
     },
     {
       "player": "Chet Holmgren",
@@ -9929,14 +9281,6 @@
       "odds": 108,
       "stake": 1,
       "profit": 1.08
-    },
-    {
-      "player": "Aaron Nesmith",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
     }
   ],
   "2025-05-24": [
@@ -9951,8 +9295,8 @@
     {
       "player": "Isaiah Hartenstein",
       "market": "p_r",
-      "line": 16.5,
-      "odds": 104,
+      "line": 15.5,
+      "odds": -104,
       "stake": 1,
       "profit": -1
     },
@@ -10035,6 +9379,14 @@
   ],
   "2025-05-27": [
     {
+      "player": "Karl-Anthony Towns",
+      "market": "pts",
+      "line": 20.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": 1.1
+    },
+    {
       "player": "Josh Hart",
       "market": "p_r",
       "line": 15.5,
@@ -10098,9 +9450,9 @@
     },
     {
       "player": "Josh Hart",
-      "market": "p_a",
-      "line": 12.5,
-      "odds": 118,
+      "market": "pts",
+      "line": 8.5,
+      "odds": 110,
       "stake": 1,
       "profit": -1
     },
@@ -10139,14 +9491,6 @@
       "odds": 116,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "T.J. McConnell",
-      "market": "p_a",
-      "line": 9.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
     }
   ],
   "2025-06-11": [
@@ -10223,6 +9567,14 @@
       "profit": 1.04
     },
     {
+      "player": "Buddy Hield",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": 1.14
+    },
+    {
       "player": "Kevin Durant",
       "market": "p_r",
       "line": 26.5,
@@ -10236,7 +9588,7 @@
       "player": "Dyson Daniels",
       "market": "p_r",
       "line": 16.5,
-      "odds": 112,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     },
@@ -10252,17 +9604,9 @@
       "player": "Stephon Castle",
       "market": "pts",
       "line": 14.5,
-      "odds": 120,
-      "stake": 1,
-      "profit": 1.2
-    },
-    {
-      "player": "Walker Kessler",
-      "market": "trb",
-      "line": 9.5,
       "odds": 118,
       "stake": 1,
-      "profit": -1
+      "profit": 1.18
     },
     {
       "player": "Franz Wagner",
@@ -10297,34 +9641,10 @@
       "profit": 1.06
     },
     {
-      "player": "Ja Morant",
-      "market": "pts",
-      "line": 22.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "P.J. Washington",
-      "market": "p_r",
-      "line": 18.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
-      "player": "John Collins",
-      "market": "pts",
-      "line": 13.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": 1.04
-    },
-    {
       "player": "Chris Paul",
       "market": "p_a",
-      "line": 11.5,
-      "odds": 112,
+      "line": 9.5,
+      "odds": 118,
       "stake": 1,
       "profit": -1
     },
@@ -10345,6 +9665,14 @@
       "profit": -1
     },
     {
+      "player": "P.J. Washington",
+      "market": "pts",
+      "line": 12.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": 1.06
+    },
+    {
       "player": "Collin Sexton",
       "market": "p_a",
       "line": 15.5,
@@ -10356,7 +9684,7 @@
       "player": "Jordan Clarkson",
       "market": "pts",
       "line": 10.5,
-      "odds": 102,
+      "odds": 100,
       "stake": 1,
       "profit": -1
     },
@@ -10364,7 +9692,7 @@
       "player": "Trey Murphy III",
       "market": "p_r",
       "line": 23.5,
-      "odds": 110,
+      "odds": 112,
       "stake": 1,
       "profit": -1
     },
@@ -10372,25 +9700,9 @@
       "player": "Jalen Brunson",
       "market": "pts",
       "line": 22.5,
-      "odds": 120,
+      "odds": 116,
       "stake": 1,
-      "profit": 1.2
-    },
-    {
-      "player": "Guerschon Yabusele",
-      "market": "p_r",
-      "line": 13.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Brice Sensabaugh",
-      "market": "p_r",
-      "line": 13.5,
-      "odds": 100,
-      "stake": 1,
-      "profit": 1.0
+      "profit": 1.16
     }
   ],
   "2025-10-23": [
@@ -10453,20 +9765,20 @@
       "profit": 1.08
     },
     {
+      "player": "P.J. Washington",
+      "market": "pts",
+      "line": 13.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
+    },
+    {
       "player": "Paolo Banchero",
       "market": "p_r_a",
       "line": 36.5,
       "odds": 104,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "P.J. Washington",
-      "market": "p_r",
-      "line": 18.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
     },
     {
       "player": "Brice Sensabaugh",
@@ -10483,6 +9795,14 @@
       "odds": 108,
       "stake": 1,
       "profit": 1.08
+    },
+    {
+      "player": "Donovan Clingan",
+      "market": "pts",
+      "line": 8.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
     },
     {
       "player": "Buddy Hield",
@@ -10517,6 +9837,14 @@
       "profit": 1.18
     },
     {
+      "player": "Mark Williams",
+      "market": "p_r",
+      "line": 19.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
       "player": "Jordan Poole",
       "market": "p_a",
       "line": 19.5,
@@ -10525,105 +9853,73 @@
       "profit": 1.2
     },
     {
-      "player": "Jakob Poeltl",
+      "player": "Toumani Camara",
       "market": "pts",
       "line": 10.5,
-      "odds": 108,
+      "odds": -102,
       "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Dyson Daniels",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Jaden McDaniels",
-      "market": "p_r",
-      "line": 16.5,
-      "odds": 104,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Bobby Portis",
-      "market": "trb",
-      "line": 5.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "Anfernee Simons",
-      "market": "p_r",
-      "line": 17.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Draymond Green",
-      "market": "p_a",
-      "line": 12.5,
-      "odds": 118,
-      "stake": 1,
-      "profit": 1.18
-    },
-    {
-      "player": "Day'Ron Sharpe",
-      "market": "p_r",
-      "line": 11.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": -1
-    },
-    {
-      "player": "Kevin Durant",
-      "market": "p_r_a",
-      "line": 33.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
+      "profit": 0.98
     }
   ],
   "2025-10-25": [
     {
+      "player": "Anthony Black",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": 1.14
+    },
+    {
       "player": "Tre Jones",
       "market": "p_a",
       "line": 15.5,
-      "odds": 106,
+      "odds": 114,
       "stake": 1,
-      "profit": 1.06
+      "profit": 1.14
+    },
+    {
+      "player": "Trae Young",
+      "market": "pts",
+      "line": 22.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Collin Sexton",
       "market": "p_a",
       "line": 14.5,
-      "odds": 104,
+      "odds": 102,
       "stake": 1,
-      "profit": 1.04
+      "profit": 1.02
+    },
+    {
+      "player": "Desmond Bane",
+      "market": "trb",
+      "line": 4.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
+    },
+    {
+      "player": "Jamal Murray",
+      "market": "p_r",
+      "line": 22.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
     },
     {
       "player": "Joel Embiid",
       "market": "a_r",
       "line": 9.5,
-      "odds": 104,
+      "odds": 110,
       "stake": 1,
       "profit": -1
     }
   ],
   "2025-10-26": [
-    {
-      "player": "Stephon Castle",
-      "market": "pts",
-      "line": 16.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
-    },
     {
       "player": "Naji Marshall",
       "market": "p_r",
@@ -10670,23 +9966,31 @@
       "player": "Cade Cunningham",
       "market": "pts",
       "line": 24.5,
-      "odds": 118,
+      "odds": 116,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "P.J. Washington",
+      "market": "p_r",
+      "line": 20.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
     },
     {
       "player": "Draymond Green",
       "market": "p_a",
       "line": 14.5,
-      "odds": 118,
+      "odds": 120,
       "stake": 1,
-      "profit": 1.18
+      "profit": 1.2
     },
     {
       "player": "Kevin Durant",
       "market": "p_r_a",
       "line": 32.5,
-      "odds": 116,
+      "odds": 118,
       "stake": 1,
       "profit": -1
     },
@@ -10708,11 +10012,27 @@
     },
     {
       "player": "Stephon Castle",
-      "market": "pts",
-      "line": 15.5,
-      "odds": 104,
+      "market": "p_r_a",
+      "line": 25.5,
+      "odds": 102,
       "stake": 1,
-      "profit": 1.04
+      "profit": 1.02
+    },
+    {
+      "player": "Jamal Shead",
+      "market": "ast",
+      "line": 3.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
+    },
+    {
+      "player": "Alperen Sengun",
+      "market": "trb",
+      "line": 9.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Desmond Bane",
@@ -10732,17 +10052,17 @@
     },
     {
       "player": "Donovan Clingan",
-      "market": "p_r",
-      "line": 18.5,
-      "odds": 102,
+      "market": "trb",
+      "line": 8.5,
+      "odds": 106,
       "stake": 1,
-      "profit": 1.02
+      "profit": 1.06
     },
     {
       "player": "Keldon Johnson",
       "market": "p_r_a",
       "line": 18.5,
-      "odds": 112,
+      "odds": 120,
       "stake": 1,
       "profit": -1
     },
@@ -10750,9 +10070,9 @@
       "player": "Jimmy Butler III",
       "market": "p_r_a",
       "line": 29.5,
-      "odds": 114,
+      "odds": 110,
       "stake": 1,
-      "profit": 1.14
+      "profit": 1.1
     },
     {
       "player": "Deni Avdija",
@@ -10761,30 +10081,14 @@
       "odds": 106,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Anthony Black",
-      "market": "p_r",
-      "line": 9.5,
-      "odds": 114,
-      "stake": 1,
-      "profit": 1.14
     }
   ],
   "2025-10-28": [
     {
-      "player": "John Collins",
-      "market": "trb",
-      "line": 5.5,
-      "odds": 108,
-      "stake": 1,
-      "profit": 1.08
-    },
-    {
       "player": "Draymond Green",
       "market": "p_a",
       "line": 15.5,
-      "odds": 116,
+      "odds": 110,
       "stake": 1,
       "profit": -1
     },
@@ -10792,33 +10096,49 @@
       "player": "Giannis Antetokounmpo",
       "market": "pts",
       "line": 28.5,
-      "odds": 116,
+      "odds": 120,
       "stake": 1,
-      "profit": 1.16
+      "profit": 1.2
+    },
+    {
+      "player": "John Collins",
+      "market": "pts",
+      "line": 12.5,
+      "odds": 100,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Domantas Sabonis",
       "market": "a_r",
       "line": 16.5,
-      "odds": 116,
+      "odds": 120,
       "stake": 1,
-      "profit": 1.16
+      "profit": 1.2
     },
     {
       "player": "Mikal Bridges",
       "market": "pts",
-      "line": 15.5,
-      "odds": 102,
+      "line": 14.5,
+      "odds": 100,
       "stake": 1,
-      "profit": 1.02
+      "profit": 1.0
     },
     {
       "player": "Jalen Brunson",
-      "market": "pts",
-      "line": 24.5,
-      "odds": 110,
+      "market": "p_a",
+      "line": 30.5,
+      "odds": 120,
       "stake": 1,
-      "profit": 1.1
+      "profit": 1.2
+    },
+    {
+      "player": "Jonathan Kuminga",
+      "market": "p_r",
+      "line": 20.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Jimmy Butler III",
@@ -10832,7 +10152,7 @@
       "player": "Kawhi Leonard",
       "market": "pts",
       "line": 22.5,
-      "odds": 108,
+      "odds": 112,
       "stake": 1,
       "profit": -1
     },
@@ -10840,9 +10160,9 @@
       "player": "Quentin Grimes",
       "market": "p_r_a",
       "line": 20.5,
-      "odds": 118,
+      "odds": 116,
       "stake": 1,
-      "profit": 1.18
+      "profit": 1.16
     },
     {
       "player": "Ivica Zubac",
@@ -10856,7 +10176,7 @@
       "player": "Bobby Portis",
       "market": "p_r",
       "line": 15.5,
-      "odds": 116,
+      "odds": 114,
       "stake": 1,
       "profit": -1
     },
@@ -10864,7 +10184,7 @@
       "player": "Buddy Hield",
       "market": "pts",
       "line": 7.5,
-      "odds": 118,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     }
@@ -10879,6 +10199,14 @@
       "profit": -1
     },
     {
+      "player": "Franz Wagner",
+      "market": "a_r",
+      "line": 8.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": 1.1
+    },
+    {
       "player": "Jusuf Nurki\u0107",
       "market": "p_r",
       "line": 13.5,
@@ -10887,12 +10215,12 @@
       "profit": 1.0
     },
     {
-      "player": "Franz Wagner",
-      "market": "p_r",
-      "line": 25.5,
+      "player": "Wendell Carter Jr.",
+      "market": "pts",
+      "line": 9.5,
       "odds": 110,
       "stake": 1,
-      "profit": 1.1
+      "profit": -1
     },
     {
       "player": "Cade Cunningham",
@@ -10927,10 +10255,10 @@
       "profit": 1.04
     },
     {
-      "player": "Yves Missi",
-      "market": "trb",
-      "line": 6.5,
-      "odds": 102,
+      "player": "Donovan Clingan",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     },
@@ -10944,11 +10272,11 @@
     },
     {
       "player": "Paolo Banchero",
-      "market": "p_r_a",
-      "line": 34.5,
-      "odds": 118,
+      "market": "p_r",
+      "line": 30.5,
+      "odds": 108,
       "stake": 1,
-      "profit": 1.18
+      "profit": 1.08
     },
     {
       "player": "Jamal Shead",
@@ -10973,14 +10301,6 @@
       "odds": 104,
       "stake": 1,
       "profit": 1.04
-    },
-    {
-      "player": "Kyle Filipowski",
-      "market": "p_r_a",
-      "line": 17.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
     }
   ],
   "2025-10-30": [
@@ -10988,23 +10308,15 @@
       "player": "Franz Wagner",
       "market": "p_r",
       "line": 25.5,
-      "odds": 110,
+      "odds": 104,
       "stake": 1,
-      "profit": 1.1
-    },
-    {
-      "player": "Collin Sexton",
-      "market": "pts",
-      "line": 18.5,
-      "odds": 110,
-      "stake": 1,
-      "profit": 1.1
+      "profit": 1.04
     },
     {
       "player": "Cam Whitmore",
       "market": "pts",
-      "line": 8.5,
-      "odds": 110,
+      "line": 7.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -11019,10 +10331,10 @@
     {
       "player": "Bam Adebayo",
       "market": "trb",
-      "line": 8.5,
-      "odds": 110,
+      "line": 9.5,
+      "odds": 100,
       "stake": 1,
-      "profit": 1.1
+      "profit": 1.0
     },
     {
       "player": "Bobby Portis",
@@ -11034,11 +10346,19 @@
     },
     {
       "player": "Jonathan Kuminga",
-      "market": "p_r_a",
-      "line": 23.5,
-      "odds": 116,
+      "market": "p_r",
+      "line": 20.5,
+      "odds": 118,
       "stake": 1,
-      "profit": 1.16
+      "profit": 1.18
+    },
+    {
+      "player": "Corey Kispert",
+      "market": "p_r_a",
+      "line": 9.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
     }
   ],
   "2025-10-31": [
@@ -11046,17 +10366,9 @@
       "player": "Onyeka Okongwu",
       "market": "p_r",
       "line": 22.5,
-      "odds": 108,
+      "odds": 106,
       "stake": 1,
-      "profit": 1.08
-    },
-    {
-      "player": "Quentin Grimes",
-      "market": "a_r",
-      "line": 7.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": -1
+      "profit": 1.06
     },
     {
       "player": "Joel Embiid",
@@ -11070,15 +10382,15 @@
       "player": "Jerami Grant",
       "market": "pts",
       "line": 15.5,
-      "odds": 102,
+      "odds": 104,
       "stake": 1,
-      "profit": 1.02
+      "profit": 1.04
     },
     {
       "player": "Jusuf Nurki\u0107",
       "market": "p_r",
-      "line": 14.5,
-      "odds": 100,
+      "line": 13.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -11094,25 +10406,49 @@
       "player": "Ivica Zubac",
       "market": "p_r_a",
       "line": 27.5,
-      "odds": 116,
+      "odds": 118,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Josh Giddey",
+      "market": "trb",
+      "line": 7.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
     },
     {
       "player": "Kyle Filipowski",
       "market": "p_r",
       "line": 13.5,
-      "odds": 104,
+      "odds": 102,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Mikal Bridges",
+      "market": "p_a",
+      "line": 17.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
     },
     {
       "player": "Zion Williamson",
       "market": "pts",
       "line": 20.5,
-      "odds": 116,
+      "odds": 114,
       "stake": 1,
-      "profit": 1.16
+      "profit": 1.14
+    },
+    {
+      "player": "Quentin Grimes",
+      "market": "p_r_a",
+      "line": 22.5,
+      "odds": 108,
+      "stake": 1,
+      "profit": -1
     },
     {
       "player": "Jordan Poole",
@@ -11126,15 +10462,15 @@
       "player": "Kelly Oubre Jr.",
       "market": "pts",
       "line": 13.5,
-      "odds": 100,
+      "odds": 102,
       "stake": 1,
-      "profit": 1.0
+      "profit": 1.02
     },
     {
       "player": "Svi Mykhailiuk",
       "market": "p_a",
       "line": 9.5,
-      "odds": 110,
+      "odds": 112,
       "stake": 1,
       "profit": -1
     },
@@ -11145,32 +10481,24 @@
       "odds": 110,
       "stake": 1,
       "profit": 1.1
-    },
-    {
-      "player": "James Harden",
-      "market": "a_r",
-      "line": 13.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
     }
   ],
   "2025-11-01": [
     {
-      "player": "Tari Eason",
-      "market": "trb",
-      "line": 4.5,
+      "player": "Giannis Antetokounmpo",
+      "market": "p_r",
+      "line": 40.5,
       "odds": 118,
       "stake": 1,
-      "profit": 1.18
+      "profit": -1
     },
     {
       "player": "Zach LaVine",
       "market": "p_r_a",
       "line": 29.5,
-      "odds": 104,
+      "odds": 106,
       "stake": 1,
-      "profit": 1.04
+      "profit": 1.06
     },
     {
       "player": "Collin Sexton",
@@ -11191,8 +10519,8 @@
     {
       "player": "Naji Marshall",
       "market": "p_r",
-      "line": 13.5,
-      "odds": 104,
+      "line": 12.5,
+      "odds": 100,
       "stake": 1,
       "profit": -1
     },
@@ -11213,12 +10541,20 @@
       "profit": -1
     },
     {
+      "player": "Jonathan Kuminga",
+      "market": "pts",
+      "line": 16.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": 1.06
+    },
+    {
       "player": "Bobby Portis",
       "market": "pts",
-      "line": 9.5,
-      "odds": 110,
+      "line": 8.5,
+      "odds": -104,
       "stake": 1,
-      "profit": 1.1
+      "profit": 0.96
     }
   ],
   "2025-11-02": [
@@ -11279,20 +10615,20 @@
       "profit": -1
     },
     {
-      "player": "Jordan Poole",
-      "market": "pts",
-      "line": 15.5,
-      "odds": 102,
+      "player": "Josh Hart",
+      "market": "a_r",
+      "line": 8.5,
+      "odds": 120,
       "stake": 1,
-      "profit": -1
+      "profit": 1.2
     },
     {
-      "player": "Zion Williamson",
-      "market": "p_r_a",
-      "line": 30.5,
-      "odds": 118,
+      "player": "Jordan Poole",
+      "market": "pts",
+      "line": 14.5,
+      "odds": -102,
       "stake": 1,
-      "profit": 1.18
+      "profit": -1
     }
   ],
   "2025-11-03": [
@@ -11308,7 +10644,7 @@
       "player": "Nikola Joki\u0107",
       "market": "a_r",
       "line": 21.5,
-      "odds": 102,
+      "odds": 100,
       "stake": 1,
       "profit": -1
     },
@@ -11321,26 +10657,26 @@
       "profit": -1
     },
     {
+      "player": "Domantas Sabonis",
+      "market": "trb",
+      "line": 11.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": 1.06
+    },
+    {
       "player": "Jerami Grant",
       "market": "pts",
-      "line": 16.5,
+      "line": 15.5,
       "odds": 100,
       "stake": 1,
       "profit": 1.0
     },
     {
-      "player": "Giannis Antetokounmpo",
-      "market": "pts",
-      "line": 29.5,
-      "odds": 116,
-      "stake": 1,
-      "profit": 1.16
-    },
-    {
-      "player": "DeMar DeRozan",
-      "market": "p_a",
-      "line": 23.5,
-      "odds": 100,
+      "player": "Santi Aldama",
+      "market": "p_r",
+      "line": 17.5,
+      "odds": -102,
       "stake": 1,
       "profit": -1
     },
@@ -11355,15 +10691,23 @@
     {
       "player": "Karl-Anthony Towns",
       "market": "p_r",
-      "line": 34.5,
-      "odds": 104,
+      "line": 33.5,
+      "odds": 120,
       "stake": 1,
-      "profit": 1.04
+      "profit": 1.2
+    },
+    {
+      "player": "Max Christie",
+      "market": "pts",
+      "line": 9.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
     },
     {
       "player": "Bobby Portis",
-      "market": "pts",
-      "line": 9.5,
+      "market": "p_r",
+      "line": 15.5,
       "odds": 108,
       "stake": 1,
       "profit": -1
@@ -11377,18 +10721,18 @@
       "profit": 1.16
     },
     {
-      "player": "Donovan Clingan",
-      "market": "p_r",
-      "line": 17.5,
-      "odds": 114,
+      "player": "DeMar DeRozan",
+      "market": "p_a",
+      "line": 23.5,
+      "odds": 102,
       "stake": 1,
       "profit": -1
     },
     {
-      "player": "Gary Trent Jr.",
-      "market": "pts",
-      "line": 11.5,
-      "odds": 104,
+      "player": "Donovan Clingan",
+      "market": "p_r",
+      "line": 17.5,
+      "odds": 116,
       "stake": 1,
       "profit": -1
     }
@@ -11403,20 +10747,20 @@
       "profit": -1
     },
     {
-      "player": "Jamal Shead",
-      "market": "p_a",
-      "line": 11.5,
-      "odds": 106,
-      "stake": 1,
-      "profit": 1.06
-    },
-    {
       "player": "Giannis Antetokounmpo",
       "market": "p_a",
       "line": 34.5,
       "odds": 118,
       "stake": 1,
       "profit": -1
+    },
+    {
+      "player": "Jamal Shead",
+      "market": "p_a",
+      "line": 10.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
     },
     {
       "player": "Jalen Smith",
@@ -11427,12 +10771,12 @@
       "profit": 1.0
     },
     {
-      "player": "Anthony Black",
-      "market": "p_r_a",
-      "line": 14.5,
-      "odds": 116,
+      "player": "Kelly Oubre Jr.",
+      "market": "pts",
+      "line": 13.5,
+      "odds": 102,
       "stake": 1,
-      "profit": -1
+      "profit": 1.02
     },
     {
       "player": "Quentin Grimes",
@@ -11441,14 +10785,6 @@
       "odds": 108,
       "stake": 1,
       "profit": -1
-    },
-    {
-      "player": "Kelly Oubre Jr.",
-      "market": "pts",
-      "line": 13.5,
-      "odds": 102,
-      "stake": 1,
-      "profit": 1.02
     },
     {
       "player": "Mark Williams",
@@ -11473,6 +10809,360 @@
       "odds": 118,
       "stake": 1,
       "profit": 1.18
+    }
+  ],
+  "2025-11-05": [
+    {
+      "player": "Jerami Grant",
+      "market": "pts",
+      "line": 14.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
+    },
+    {
+      "player": "Josh Okogie",
+      "market": "pts",
+      "line": 7.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
+    },
+    {
+      "player": "Davion Mitchell",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 104,
+      "stake": 1,
+      "profit": 1.04
+    },
+    {
+      "player": "Mike Conley",
+      "market": "pts",
+      "line": 5.5,
+      "odds": -104,
+      "stake": 1,
+      "profit": 0.96
+    },
+    {
+      "player": "Trendon Watford",
+      "market": "pts",
+      "line": 7.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": 1.06
+    },
+    {
+      "player": "Tyrese Maxey",
+      "market": "pts",
+      "line": 27.5,
+      "odds": 106,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Simone Fontecchio",
+      "market": "pts",
+      "line": 6.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Rui Hachimura",
+      "market": "pts",
+      "line": 14.5,
+      "odds": 100,
+      "stake": 1,
+      "profit": 1.0
+    },
+    {
+      "player": "Reed Sheppard",
+      "market": "pts",
+      "line": 6.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": 1.1
+    },
+    {
+      "player": "Darius Garland",
+      "market": "p_r_a",
+      "line": 20.5,
+      "odds": 108,
+      "stake": 1,
+      "profit": -1
+    }
+  ],
+  "2025-11-06": [],
+  "2024-12-18": [],
+  "2025-11-07": [
+    {
+      "player": "Paolo Banchero",
+      "market": "p_r_a",
+      "line": 35.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Shai Gilgeous-Alexander",
+      "market": "pts",
+      "line": 30.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Alex Caruso",
+      "market": "pts",
+      "line": 8.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Franz Wagner",
+      "market": "p_r",
+      "line": 25.5,
+      "odds": 100,
+      "stake": 1,
+      "profit": 1.0
+    },
+    {
+      "player": "Alperen Sengun",
+      "market": "a_r",
+      "line": 14.5,
+      "odds": 100,
+      "stake": 1,
+      "profit": 1.0
+    },
+    {
+      "player": "Zach LaVine",
+      "market": "p_r_a",
+      "line": 27.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "DeMar DeRozan",
+      "market": "pts",
+      "line": 19.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Jonas Valan\u010di\u016bnas",
+      "market": "p_r",
+      "line": 9.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": 1.1
+    },
+    {
+      "player": "Anthony Black",
+      "market": "p_r_a",
+      "line": 14.5,
+      "odds": 100,
+      "stake": 1,
+      "profit": 1.0
+    },
+    {
+      "player": "Malik Monk",
+      "market": "p_r_a",
+      "line": 17.5,
+      "odds": 104,
+      "stake": 1,
+      "profit": 1.04
+    },
+    {
+      "player": "Naji Marshall",
+      "market": "p_a",
+      "line": 10.5,
+      "odds": 114,
+      "stake": 1,
+      "profit": 1.14
+    },
+    {
+      "player": "Keldon Johnson",
+      "market": "pts",
+      "line": 10.5,
+      "odds": 104,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Taylor Hendricks",
+      "market": "trb",
+      "line": 3.5,
+      "odds": 100,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Kevin Love",
+      "market": "p_r",
+      "line": 9.5,
+      "odds": 104,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Onyeka Okongwu",
+      "market": "p_r",
+      "line": 19.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": -1
+    }
+  ],
+  "2025-11-08": [
+    {
+      "player": "Stephon Castle",
+      "market": "p_a",
+      "line": 22.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
+      "player": "Jerami Grant",
+      "market": "pts",
+      "line": 16.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
+    },
+    {
+      "player": "Jamal Shead",
+      "market": "p_a",
+      "line": 8.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
+    },
+    {
+      "player": "Devin Booker",
+      "market": "p_r",
+      "line": 28.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
+    },
+    {
+      "player": "Collin Gillespie",
+      "market": "p_r",
+      "line": 10.5,
+      "odds": 116,
+      "stake": 1,
+      "profit": 1.16
+    },
+    {
+      "player": "Kelly Oubre Jr.",
+      "market": "pts",
+      "line": 13.5,
+      "odds": 118,
+      "stake": 1,
+      "profit": 1.18
+    },
+    {
+      "player": "Sam Merrill",
+      "market": "pts",
+      "line": 9.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Keldon Johnson",
+      "market": "p_r",
+      "line": 13.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
+    },
+    {
+      "player": "Ryan Dunn",
+      "market": "trb",
+      "line": 4.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Devin Vassell",
+      "market": "p_r_a",
+      "line": 20.5,
+      "odds": 110,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Quentin Grimes",
+      "market": "p_r_a",
+      "line": 21.5,
+      "odds": 108,
+      "stake": 1,
+      "profit": -1
+    }
+  ],
+  "2025-11-09": [
+    {
+      "player": "Paolo Banchero",
+      "market": "trb",
+      "line": 7.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
+    },
+    {
+      "player": "Karl-Anthony Towns",
+      "market": "trb",
+      "line": 11.5,
+      "odds": -102,
+      "stake": 1,
+      "profit": 0.98
+    },
+    {
+      "player": "Franz Wagner",
+      "market": "p_r",
+      "line": 26.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": 1.02
+    },
+    {
+      "player": "Tyrese Maxey",
+      "market": "pts",
+      "line": 27.5,
+      "odds": 104,
+      "stake": 1,
+      "profit": 1.04
+    },
+    {
+      "player": "DeMar DeRozan",
+      "market": "pts",
+      "line": 19.5,
+      "odds": 120,
+      "stake": 1,
+      "profit": 1.2
+    },
+    {
+      "player": "Giannis Antetokounmpo",
+      "market": "pts",
+      "line": 27.5,
+      "odds": 112,
+      "stake": 1,
+      "profit": 1.12
+    },
+    {
+      "player": "Amen Thompson",
+      "market": "p_r",
+      "line": 22.5,
+      "odds": 102,
+      "stake": 1,
+      "profit": -1
     }
   ]
 }

@@ -8,9 +8,11 @@ from sqlalchemy import create_engine
 load_dotenv()
 
 
+from config import CSV_SQL_DATA_FILE, JSON_INJURY_FILE
+
 def load_nba(player):
     try:
-        df = pd.read_csv("csv/sql.csv")
+        df = pd.read_csv(CSV_SQL_DATA_FILE)
         df["date"] = pd.to_datetime(df["date"])
         player_df = df[df["player"] == player]
         return player_df
@@ -112,7 +114,7 @@ def get_soft_predictions(team, opp, player_df, player):
     from models.soft_predictor import predict_player_stat
 
     injuries = {}
-    with open("json/injury.json", "r") as file:
+    with open(JSON_INJURY_FILE, "r") as file:
         rosters = json.load(file)
         for team_players in rosters.values():
             for player_info in team_players:

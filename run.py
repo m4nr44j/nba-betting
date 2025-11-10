@@ -1,71 +1,46 @@
 import json
 import os
+import shutil
 import subprocess
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 import pandas as pd
 import pytz
 import requests
 from dotenv import load_dotenv
 
+from config import (
+    BACKTEST_HISTORICAL_25_26_DIR,
+    CSV_SQL_DATA_FILE,
+    EASTERN_TIMEZONE,
+    JSON_INJURY_FILE,
+    JSON_PROPS_FILE,
+    NBA_TEAMS,
+    ODDS_API_BASE_URL,
+    ODDS_API_BOOKMAKER,
+    ODDS_API_FORMAT,
+    ODDS_API_REGIONS,
+    USE_ONE_HOUR_BEFORE_INJURY,
+    get_market_types,
+)
 from utility.get_injury_by_date import get as get_injury_by_date
 from utility.pipeline import run_pipeline
 from utility.process_props import process_props
 
 load_dotenv()
 
-USE_ONE_HOUR_BEFORE_INJURY = True
-
-EASTERN_TZ = pytz.timezone('US/Eastern')
+EASTERN_TZ = pytz.timezone(EASTERN_TIMEZONE)
 
 def get_eastern_now():
     return datetime.now(EASTERN_TZ)
 
 API_KEY = os.getenv("ODDS_KEY")
-BASE_URL = "https://api.the-odds-api.com/v4/sports/basketball_nba/events"
-
-
-CSV_OUTPUT_FILE = "csv/output.csv"
-TEXT_OUTPUT_FILE = "output.txt"
-INJURY_FILE = "json/injury.json"
-SQL_DATA_FILE = "csv/sql.csv"
-
-nba_teams = {
-    "Atlanta Hawks": "ATL",
-    "Boston Celtics": "BOS",
-    "Brooklyn Nets": "BKN",
-    "Charlotte Hornets": "CHA",
-    "Chicago Bulls": "CHI",
-    "Cleveland Cavaliers": "CLE",
-    "Dallas Mavericks": "DAL",
-    "Denver Nuggets": "DEN",
-    "Detroit Pistons": "DET",
-    "Golden State Warriors": "GSW",
-    "Houston Rockets": "HOU",
-    "Indiana Pacers": "IND",
-    "Los Angeles Clippers": "LAC",
-    "Los Angeles Lakers": "LAL",
-    "Memphis Grizzlies": "MEM",
-    "Miami Heat": "MIA",
-    "Milwaukee Bucks": "MIL",
-    "Minnesota Timberwolves": "MIN",
-    "New Orleans Pelicans": "NOP",
-    "New York Knicks": "NYK",
-    "Oklahoma City Thunder": "OKC",
-    "Orlando Magic": "ORL",
-    "Philadelphia 76ers": "PHI",
-    "Phoenix Suns": "PHX",
-    "Portland Trail Blazers": "POR",
-    "Sacramento Kings": "SAC",
-    "San Antonio Spurs": "SAS",
-    "Toronto Raptors": "TOR",
-    "Utah Jazz": "UTA",
-    "Washington Wizards": "WAS",
-}
+BASE_URL = ODDS_API_BASE_URL
 
 
 def game_ids(commence_time_to):
-    url = f"{BASE_URL}?apiKey={API_KEY}&regions=us&oddsFormat=american&commenceTimeTo={commence_time_to}"
+    url = f"{BASE_URL}?apiKey={API_KEY}&regions={ODDS_API_REGIONS}&oddsFormat={ODDS_API_FORMAT}&commenceTimeTo={commence_time_to}"
     try:
         response = requests.get(url)
         if response.status_code == 200:
@@ -81,7 +56,7 @@ def game_ids(commence_time_to):
 def get_odds(game_id, market_types):
     market_data = {}
     for market_type in market_types:
-        url = f"{BASE_URL}/{game_id}/odds?apiKey={API_KEY}&markets={market_type}&oddsFormat=american&bookmakers=fanduel"
+        url = f"{BASE_URL}/{game_id}/odds?apiKey={API_KEY}&markets={market_type}&oddsFormat={ODDS_API_FORMAT}&bookmakers={ODDS_API_BOOKMAKER}"
         try:
             response = requests.get(url)
             if response.status_code == 200:
@@ -96,8 +71,8 @@ def get_odds(game_id, market_types):
                             market_data[bookmaker["title"]][market_type].append(
                                 {
                                     "description": outcome["description"],
-                                    "home_team": nba_teams.get(data["home_team"]),
-                                    "away_team": nba_teams.get(data["away_team"]),
+                                    "home_team": NBA_TEAMS.get(data["home_team"]),
+                                    "away_team": NBA_TEAMS.get(data["away_team"]),
                                     "name": outcome["name"],
                                     "point": outcome.get("point", None),
                                     "price": outcome["price"],
@@ -115,24 +90,7 @@ def get_odds(game_id, market_types):
 
 
 def collect_all_odds(game_ids):
-    market_types = [
-        "player_points_alternate",
-        "player_rebounds_alternate",
-        "player_assists_alternate",
-        "player_points_rebounds_assists_alternate",
-        "player_points_rebounds_alternate",
-        "player_points_assists_alternate",
-        "player_rebounds_assists_alternate"
-    ]
-    # market_types = [
-    #     "player_points",
-    #     "player_rebounds",
-    #     "player_assists",
-    #     "player_points_rebounds_assists",
-    #     "player_points_rebounds",
-    #     "player_points_assists",
-    #     "player_rebounds_assists",
-    # ]
+    market_types = get_market_types(use_alternate=True)
 
     all_bookmakers_data = {}
 
@@ -150,29 +108,29 @@ def collect_all_odds(game_ids):
 
 def data_update():
     try:
-        df = pd.read_csv(SQL_DATA_FILE)
+        df = pd.read_csv(CSV_SQL_DATA_FILE)
         if df.empty:
-            print(f"Warning: {SQL_DATA_FILE} is empty. Skipping data update.")
+            print(f"Warning: {CSV_SQL_DATA_FILE} is empty. Skipping data update.")
             return
         
         date_column = pd.to_datetime(df["date"], errors="coerce").dt.date
         max_date_in_csv: datetime.date = date_column.max()
         
         if pd.isna(max_date_in_csv):
-            print(f"Warning: No valid dates found in {SQL_DATA_FILE}. Skipping data update.")
+            print(f"Warning: No valid dates found in {CSV_SQL_DATA_FILE}. Skipping data update.")
             return
             
         next_day_to_process: datetime.date = max_date_in_csv + timedelta(days=1)
         eastern_now = get_eastern_now()
         yesterday: datetime.date = eastern_now.date() - timedelta(days=1)
     except FileNotFoundError:
-        print(f"Error: {SQL_DATA_FILE} not found. Please run database initialization first.")
+        print(f"Error: {CSV_SQL_DATA_FILE} not found. Please run database initialization first.")
         return
     except pd.errors.EmptyDataError:
-        print(f"Error: {SQL_DATA_FILE} is empty or corrupted.")
+        print(f"Error: {CSV_SQL_DATA_FILE} is empty or corrupted.")
         return
     except Exception as e:
-        print(f"Error reading {SQL_DATA_FILE}: {e}")
+        print(f"Error reading {CSV_SQL_DATA_FILE}: {e}")
         return
     
     eastern_now = get_eastern_now()
@@ -194,7 +152,6 @@ def data_update():
 
 
 def load_injury_data(games, today_str, use_one_hour_before=True):
-
     if games and use_one_hour_before:
         first_game_time = games[0][1]
         first_game_dt = datetime.fromisoformat(first_game_time.replace("Z", "+00:00"))
@@ -215,9 +172,10 @@ def load_injury_data(games, today_str, use_one_hour_before=True):
         else:
             time_str = f"{hour_24 - 12:02d}PM"
     else:
-        time_str = "06PM"
+        time_str = "10AM"
     
     get_injury_by_date(today_str, time_str)
+    return time_str
 
 
 def run(use_one_hour_before=True):
@@ -232,22 +190,33 @@ def run(use_one_hour_before=True):
     games = game_ids(commence_time_to)
     today_str = today_eastern.strftime("%Y-%m-%d")
     
-    load_injury_data(games, today_str, use_one_hour_before)
+    _injury_time = load_injury_data(games, today_str, use_one_hour_before)
 
     ids = [game_id for game_id, commence_time in games]
     props = (collect_all_odds(ids))
     
-    os.makedirs("backtest/historical_25-26", exist_ok=True)
-    
-    with open(f"backtest/historical_25-26/{today_eastern.strftime("%m_%d")}_props.json", "w") as f:
+    hist_dir = Path(BACKTEST_HISTORICAL_25_26_DIR)
+    hist_dir.mkdir(parents=True, exist_ok=True)
+
+    injury_reports_dir = hist_dir / "injury_reports"
+    injury_reports_dir.mkdir(parents=True, exist_ok=True)
+
+    pdf_source = Path("pdf") / f"Injury-Report_{today_str}.pdf"
+    if pdf_source.exists():
+        shutil.copyfile(pdf_source, injury_reports_dir / pdf_source.name)
+    else:
+        print(f"Warning: injury report PDF not found at {pdf_source}")
+
+    props_path = hist_dir / f"{today_eastern.strftime('%m_%d')}_props.json"
+    with open(props_path, "w") as f:
         json.dump((props), f, indent=4)
-    with open("json/props.json", "w") as f:
+    with open(JSON_PROPS_FILE, "w") as f:
         json.dump(process_props(props), f, indent=4)
 
     cmd = [
         "python",
         "processor.py",
-        "json/props.json",
+        JSON_PROPS_FILE,
         today_str,
     ]
     subprocess.run(cmd, check=True)

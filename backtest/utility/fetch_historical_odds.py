@@ -13,48 +13,28 @@ sys.path.insert(
     0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 )
 
-EASTERN_TZ = pytz.timezone('US/Eastern')
+from config import (
+    BACKTEST_HISTORICAL_24_25_DIR,
+    BACKTEST_HISTORICAL_25_26_DIR,
+    EASTERN_TIMEZONE,
+    GAME_IDS_TIME_SUFFIX,
+    NBA_TEAMS,
+    ODDS_API_HISTORICAL_BASE_URL,
+    ODDS_API_BOOKMAKER,
+    ODDS_API_FORMAT,
+    ODDS_API_REGIONS,
+    ODDS_API_TIMEOUT,
+    get_historical_dir,
+    get_market_types,
+)
+
+EASTERN_TZ = pytz.timezone(EASTERN_TIMEZONE)
 
 def get_eastern_now():
     return datetime.now(EASTERN_TZ)
 
 API_KEY = os.getenv("ODDS_KEY")
-BASE_URL = "https://api.the-odds-api.com/v4/historical/sports/basketball_nba/events"
-
-GAME_IDS_TIME_SUFFIX = "T16:30:00Z"
-
-nba_teams = {
-    "Atlanta Hawks": "ATL",
-    "Boston Celtics": "BOS",
-    "Brooklyn Nets": "BKN",
-    "Charlotte Hornets": "CHA",
-    "Chicago Bulls": "CHI",
-    "Cleveland Cavaliers": "CLE",
-    "Dallas Mavericks": "DAL",
-    "Denver Nuggets": "DEN",
-    "Detroit Pistons": "DET",
-    "Golden State Warriors": "GSW",
-    "Houston Rockets": "HOU",
-    "Indiana Pacers": "IND",
-    "Los Angeles Clippers": "LAC",
-    "Los Angeles Lakers": "LAL",
-    "Memphis Grizzlies": "MEM",
-    "Miami Heat": "MIA",
-    "Milwaukee Bucks": "MIL",
-    "Minnesota Timberwolves": "MIN",
-    "New Orleans Pelicans": "NOP",
-    "New York Knicks": "NYK",
-    "Oklahoma City Thunder": "OKC",
-    "Orlando Magic": "ORL",
-    "Philadelphia 76ers": "PHI",
-    "Phoenix Suns": "PHX",
-    "Portland Trail Blazers": "POR",
-    "Sacramento Kings": "SAC",
-    "San Antonio Spurs": "SAS",
-    "Toronto Raptors": "TOR",
-    "Utah Jazz": "UTA",
-    "Washington Wizards": "WAS",
-}
+BASE_URL = ODDS_API_HISTORICAL_BASE_URL
 
 
 def _parse_date(date_str: str) -> datetime:
@@ -73,12 +53,12 @@ def game_ids(date: str, commence_time_to: str):
     url = (
         f"{BASE_URL}?apiKey={API_KEY}"
         f"&date={date}{GAME_IDS_TIME_SUFFIX}"
-        f"&regions=us&oddsFormat=american"
+        f"&regions={ODDS_API_REGIONS}&oddsFormat={ODDS_API_FORMAT}"
         f"&commenceTimeTo={formatted_time}"
     )
 
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=ODDS_API_TIMEOUT)
         if response.status_code == 200:
             payload = response.json()
             games = payload.get("data", [])
@@ -99,13 +79,13 @@ def get_odds(game_id: str, market_types, date_for_url: str):
             f"{BASE_URL}/{game_id}/odds"
             f"?apiKey={API_KEY}"
             f"&markets={market_type}"
-            f"&oddsFormat=american"
-            f"&bookmakers=fanduel"
+            f"&oddsFormat={ODDS_API_FORMAT}"
+            f"&bookmakers={ODDS_API_BOOKMAKER}"
             f"&date={date_for_url}"
         )
 
         try:
-            resp = requests.get(url, timeout=10)
+            resp = requests.get(url, timeout=ODDS_API_TIMEOUT)
             if resp.status_code != 200:
                 print(f"Failed {market_type} for game {game_id}: {resp.status_code} – {resp.text}")
                 continue
@@ -122,8 +102,8 @@ def get_odds(game_id: str, market_types, date_for_url: str):
                         market_data[title][market_type].append(
                             {
                                 "description": outcome["description"],
-                                "home_team": nba_teams.get(event["home_team"]),
-                                "away_team": nba_teams.get(event["away_team"]),
+                                "home_team": NBA_TEAMS.get(event["home_team"]),
+                                "away_team": NBA_TEAMS.get(event["away_team"]),
                                 "name": outcome["name"],
                                 "point": outcome.get("point"),
                                 "price": outcome["price"],
@@ -138,15 +118,7 @@ def get_odds(game_id: str, market_types, date_for_url: str):
 
 
 def collect_all_odds(game_ids, date_for_url: str):
-    market_types = [
-        "player_points_alternate",
-        "player_rebounds_alternate",
-        "player_assists_alternate",
-        "player_points_rebounds_assists_alternate",
-        "player_points_rebounds_alternate",
-        "player_points_assists_alternate",
-        "player_rebounds_assists_alternate",
-    ]
+    market_types = get_market_types(use_alternate=True)
     all_bookmakers_data = {}
 
     for game_id in game_ids:
@@ -187,11 +159,14 @@ def merge_bookmaker_data(data1: dict, data2: dict) -> dict:
     return merged
 
 
-def fetch_odds_for_date(date: datetime, minutes_before: int = 45, season: str = "25-26"):
+def fetch_odds_for_date(date: datetime, minutes_before: int = 30, season: str = "25-26"):
     ymd_str = date.strftime("%Y-%m-%d")
     mm_dd_str = date.strftime("%m_%d")
     
     print(f"\nProcessing {ymd_str}...")
+    
+    output_dir = get_historical_dir(season)
+    hist_path = os.path.join(output_dir, f"{mm_dd_str}_props.json")
     
     next_day = date + timedelta(days=1)
     next_day_at_5am_et = next_day.replace(hour=5, minute=0, second=0, microsecond=0)
@@ -224,18 +199,27 @@ def fetch_odds_for_date(date: datetime, minutes_before: int = 45, season: str = 
     first_game_dt_et = first_game_dt.astimezone(EASTERN_TZ)
     last_game_dt_et = last_game_dt.astimezone(EASTERN_TZ)
     
-    is_sunday = date.weekday() == 6
-    # is_sunday = False
+    first_game_hour = first_game_dt_et.hour
+    fetch_hour = first_game_hour - 1
+    if fetch_hour < 0:
+        fetch_time_et = first_game_dt_et - timedelta(days=1)
+        fetch_time_et = fetch_time_et.replace(hour=23, minute=30, second=0, microsecond=0)
+    else:
+        fetch_time_et = first_game_dt_et.replace(hour=fetch_hour, minute=31, second=0, microsecond=0)
     
-    time_before_first_dt = first_game_dt - timedelta(minutes=minutes_before)
-    time_before_first_dt_et = time_before_first_dt.astimezone(EASTERN_TZ)
-    date_for_url_first = time_before_first_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    fetch_time_utc = fetch_time_et.astimezone(pytz.utc)
+    date_for_url_first = fetch_time_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+    time_before_first_dt_et = fetch_time_et
     
     print(f"First game: {first_game_time} UTC = {first_game_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET")
     print(f"Last game: {last_game_time} UTC = {last_game_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET")
+    print(f"First game at {first_game_dt_et.strftime('%I:%M %p')} ET - fetching at {fetch_time_et.strftime('%I:%M %p')} ET (previous hour :30)")
+    
+    is_sunday = date.weekday() == 6
+    is_sunday = False
     
     game_id_list = [gid for gid, _ in id_times]
-    print(f"Fetching odds from: {date_for_url_first} UTC = {time_before_first_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET ({minutes_before} minutes before first game)")
+    print(f"Fetching odds from: {date_for_url_first} UTC = {time_before_first_dt_et.strftime('%Y-%m-%d %H:%M:%S %Z')} ET")
     all_bookmakers_data = collect_all_odds(game_id_list, date_for_url_first)
     
     if is_sunday and len(id_times) > 1:
@@ -264,10 +248,8 @@ def fetch_odds_for_date(date: datetime, minutes_before: int = 45, season: str = 
         else:
             print(f"\nSunday detected but all games have already started by the second fetch time - skipping second fetch")
     
-    output_dir = f"backtest/historical_{season}"
     os.makedirs(output_dir, exist_ok=True)
     
-    hist_path = os.path.join(output_dir, f"{mm_dd_str}_props.json")
     with open(hist_path, "w") as f:
         json.dump(all_bookmakers_data, f, indent=4)
     

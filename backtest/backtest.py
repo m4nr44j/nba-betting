@@ -4,61 +4,47 @@ import json
 import os
 import subprocess
 import sys
-import time
-from typing import Any, Dict, List, Tuple
+from typing import Dict, Tuple
 
 import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from backtest.utility.run_backtest import run as run_backtest_run
+from config import (
+    BACKTEST_HISTORICAL_24_25_DIR,
+    BACKTEST_HISTORICAL_25_26_DIR,
+    CSV_ALL_DATA_FILE,
+    CSV_ALL_DATA_PROCESSED_FILE,
+    CSV_OUTPUT_FILE,
+    JSON_PROPS_FILE,
+    USE_2025_26_SEASON,
+)
 from processor import CSV_FIELDNAMES
 from utility.initialize_database import create_database
-from utility.nba_stats import (
-    extract_player_stats,
-    get_nba_game_event_ids,
-    get_nba_game_summary,
-)
-
-USE_2025_26_SEASON = True
 
 if USE_2025_26_SEASON:
-    HIST_DIR: str = "backtest/historical_25-26"
+    HIST_DIR: str = BACKTEST_HISTORICAL_25_26_DIR
     BASE_YEAR: int = 2025
 else:
-    HIST_DIR: str = "backtest/historical_24-25"
+    HIST_DIR: str = BACKTEST_HISTORICAL_24_25_DIR
     BASE_YEAR: int = 2024
-
-CSV_OUTPUT_FILE: str = "csv/output.csv"
-NBA_STATS_FILE: str = "json/nba_stats.json"
 
 YEAR: int = BASE_YEAR
 
 
-def generate_nba_stats(date_yyyymmdd: str) -> List[Dict[str, Any]]:
-    event_ids = get_nba_game_event_ids(date_yyyymmdd)
-    all_stats: List[Dict[str, Any]] = []
-    for eid in event_ids:
-        summary = get_nba_game_summary(eid)
-        if summary:
-            all_stats.extend(extract_player_stats(summary))
-            time.sleep(0.3)
-    os.makedirs(os.path.dirname(NBA_STATS_FILE), exist_ok=True)
-    with open(NBA_STATS_FILE, "w", encoding="utf-8") as fh:
-        json.dump(all_stats, fh, indent=2)
-    return all_stats
-
-
 def calculate_day_profit(
-    bets_lookup: Dict[str, Dict[str, str]],
+    all_data: pd.DataFrame,
     date_iso: str,
 ) -> Tuple[float, int, int]:
-    all_data = pd.read_csv("csv/all_data_full.csv", low_memory=False)
     total_gross = 0.0
     total_row = 0
     wins = 0
     losses = 0
     day_bets = []
+    date_mask = all_data["Date"] == date_iso
+    day_stats = all_data[date_mask]
+
     for row in csv.DictReader(open(CSV_OUTPUT_FILE, newline="", encoding="utf-8")):
         total_row += 1
         player = row.get("Player", "")
@@ -74,7 +60,7 @@ def calculate_day_profit(
             predicted_val = float(predicted_str)
         except (ValueError, TypeError):
             continue
-        stat_row = all_data[(all_data["Player"] == player) & (all_data["Date"] == date_iso)]
+        stat_row = day_stats[day_stats["Player"] == player]
         if stat_row.empty:
             print(f"No stats found for {player} on {date_iso}")
             continue
@@ -126,7 +112,7 @@ def calculate_day_profit(
     total_rows = wins + losses
     net_profit = total_gross - total_rows
     print(f"Found {total_row} bets | W-L: {wins}-{losses}")
-    results_file = "backtest/picks.json"
+    results_file = os.path.join(os.path.dirname(HIST_DIR), "picks.json") if HIST_DIR else "backtest/picks.json"
     all_results = {}
     if os.path.exists(results_file):
         try:
@@ -161,7 +147,7 @@ def run_processor(date_iso):
     cmd = [
         "python",
         "processor.py",
-        "json/props.json",
+        JSON_PROPS_FILE,
         date_iso,
     ]
     subprocess.run(cmd, check=True)
@@ -211,9 +197,14 @@ def main():
     first_date_iso = f"{first_year}-{first_month}-{first_day}"
 
     try:
-        df_full = pd.read_csv("csv/all_data_full.csv", low_memory=False)
-        df_initial = df_full[df_full["Date"] < first_date_iso]
-        df_initial.to_csv("csv/all_data.csv", index=False)
+        all_data_full = pd.read_csv(CSV_ALL_DATA_FILE, low_memory=False)
+    except Exception as e:
+        print(f"Failed to read {CSV_ALL_DATA_FILE}:", e)
+        return
+
+    try:
+        df_initial = all_data_full[all_data_full["Date"] < first_date_iso]
+        df_initial.to_csv(CSV_ALL_DATA_PROCESSED_FILE, index=False)
         create_database()
     except Exception as e:
         print("Failed to bootstrap database:", e)
@@ -245,13 +236,7 @@ def main():
 
         run_processor(date_iso)
 
-        from datetime import datetime, timedelta
-        dt = datetime(year, int(month), int(day)) + timedelta(days=1)
-        yyyymmdd_stats = dt.strftime('%Y%m%d')
-        stats = generate_nba_stats(yyyymmdd_stats)
-        stats_lookup = {p["Player"]: p["Stats"] for p in stats}
-
-        day_profit, day_wins, day_losses = calculate_day_profit(stats_lookup, date_iso)
+        day_profit, day_wins, day_losses = calculate_day_profit(all_data_full, date_iso)
         running_total += day_profit
         total_wins += day_wins
         total_losses += day_losses

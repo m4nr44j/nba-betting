@@ -5,11 +5,13 @@ from scipy.spatial import distance
 from sklearn.preprocessing import MinMaxScaler
 
 
+from config import CSV_SQL_DATA_FILE, JSON_INJURY_FILE
+
 def load_data():
-    df = pd.read_csv("csv/sql.csv")
+    df = pd.read_csv(CSV_SQL_DATA_FILE)
     return df
 
-def _compute_missing_by_position(team: str, injuries_path: str = "json/injury.json", sql_path: str = "csv/sql.csv", recent_games: int = 8) -> dict:
+def _compute_missing_by_position(team: str, injuries_path: str = JSON_INJURY_FILE, sql_path: str = CSV_SQL_DATA_FILE, recent_games: int = 8) -> dict:
     try:
         with open(injuries_path, "r", encoding="utf-8") as f:
             injury_rosters = json.load(f)
@@ -156,7 +158,7 @@ def get_injury_context(player_team, injuries):
 
 def load_injury_data():
     try:
-        with open("json/injury.json", "r") as file:
+        with open(JSON_INJURY_FILE, "r") as file:
             return json.load(file)
     except FileNotFoundError:
         pass

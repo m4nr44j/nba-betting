@@ -1,8 +1,7 @@
-#!/usr/bin/env python3
-
 import json
 import os
 import re
+import sys
 import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
@@ -10,6 +9,9 @@ from typing import Dict, List, Optional, Tuple
 import psycopg2
 import pytz
 from dotenv import load_dotenv
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from utility.nba_stats import get_nba_game_event_ids, get_nba_game_summary, extract_player_stats
 
 load_dotenv()

@@ -162,7 +162,7 @@ def get_soft_predictions(team, opp, player_df, player):
                     player_name = player_info["player"]
                     status = player_info["status"]
                     injuries[player_name] = status
-    except:  # noqa: E722
+    except:
         pass
 
     team_players = player_df[player_df["team"] == team]["player"].tolist()
@@ -189,7 +189,7 @@ def get_soft_predictions(team, opp, player_df, player):
                             predicted_value = predicted_value[0]
                         else:
                             predicted_value = 0
-                except:  # noqa: E722
+                except:
                     predicted_value = 0
 
                 stats[key][player_name] = predicted_value

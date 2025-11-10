@@ -1,8 +1,21 @@
 import json
 import os
+import sys
 
 import psycopg2
 from dotenv import load_dotenv
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from config import (
+    JSON_PROPS_FILE,
+    LOWEST_PRICE_THRESHOLD,
+    HIGHEST_PRICE_THRESHOLD,
+    MIN_PROP_LINE,
+    MARKET_MAPPING,
+    NBA_TEAMS,
+    PLAYER_NAME_CORRECTIONS,
+)
 
 load_dotenv()
 
@@ -14,23 +27,8 @@ def read_json_file(file_path):
 
 
 def fetch_player_details(cursor, description, home_team, away_team):
-    description = description.replace(" Jr", " Jr.")
-    description = description.replace("Jimmy Butler", "Jimmy Butler III")
-    description = description.replace("Luka Doncic", "Luka Dončić")
-    description = description.replace("Nikola Jokic", "Nikola Jokić")
-    description = description.replace("Nikola Vucevic", "Nikola Vučević")
-    description = description.replace("Jonas Valanciunas", "Jonas Valančiūnas")
-    description = description.replace("Bojan Bogdanovic", "Bojan Bogdanović")
-    description = description.replace("Dario Saric", "Dario Šarić")
-    description = description.replace("Bogdan Bogdanovic", "Bogdan Bogdanović")
-    description = description.replace("Karlo Matkovic", "Karlo Matković")
-    description = description.replace("Boban Marjanovic", "Boban Marjanović")
-    description = description.replace("Jusuf Nurkic", "Jusuf Nurkić")
-    description = description.replace("Luka Samanic", "Luka Šamanić")
-    description = description.replace("Nikola Jovic", "Nikola Jović")
-    description = description.replace("Vasilije Micic", "Vasilije Micić")
-    description = description.replace("Vit Krejci", "Vít Krejčí")
-    description = description.replace("Tristan Vukcevic", "Tristan Vukčević")
+    for old_name, new_name in PLAYER_NAME_CORRECTIONS.items():
+        description = description.replace(old_name, new_name)
     cursor.execute(
         """
     SELECT team, pos FROM public.latest_player_teams WHERE player = %s;
@@ -49,31 +47,7 @@ def fetch_player_details(cursor, description, home_team, away_team):
 
 
 def process_props_and_output(cursor, data):
-
-    market_mapping = {
-        "player_points_alternate": "pts",
-        "player_rebounds_alternate": "trb",
-        "player_assists_alternate": "ast",
-        "player_points_rebounds_alternate": "p_r",
-        "player_points_assists_alternate": "p_a",
-        "player_rebounds_assists_alternate": "a_r",
-        "player_points_rebounds_assists_alternate": "p_r_a",
-        "player_threes_alternate": "tpm",
-    }
-
-    # market_mapping = {
-    #     "player_points": "pts",
-    #     "player_rebounds": "trb",
-    #     "player_assists": "ast",
-    #     "player_points_rebounds": "p_r",
-    #     "player_points_assists": "p_a",
-    #     "player_rebounds_assists": "a_r",
-    #     "player_points_rebounds_assists": "p_r_a",
-    #     "player_threes": "tpm",
-    # }
-
-    lowest_price_threshold = 100
-    highest_price_threshold = 120
+    market_mapping = MARKET_MAPPING
 
     results = {}
     for platform, markets in data.items():
@@ -96,8 +70,8 @@ def process_props_and_output(cursor, data):
                     continue
 
                 if (
-                    lowest_price_threshold <= prop["price"] <= highest_price_threshold
-                    and prop["point"] > 2.5
+                    LOWEST_PRICE_THRESHOLD <= prop["price"] <= HIGHEST_PRICE_THRESHOLD
+                    and prop["point"] > MIN_PROP_LINE
                 ):
                     key = (prop["description"], prop["game_id"])
                     current_line = prop["point"]
@@ -106,9 +80,9 @@ def process_props_and_output(cursor, data):
                     if key in best_props_for_market:
                         if (
                             current_line < best_props_for_market[key]["line"]
-                            and lowest_price_threshold
+                            and LOWEST_PRICE_THRESHOLD
                             <= current_price
-                            <= highest_price_threshold
+                            <= HIGHEST_PRICE_THRESHOLD
                         ):
                             best_props_for_market[key]["line"] = current_line
                             best_props_for_market[key]["over"] = current_price
@@ -162,17 +136,24 @@ def process_props(data):
         conn.close()
 
 
-def props(date, hist_dir="backtest/historical_24-25"):
+def props(date, hist_dir=None):
+    from config import BACKTEST_HISTORICAL_24_25_DIR, get_historical_dir
+    
+    if hist_dir is None:
+        hist_dir = BACKTEST_HISTORICAL_24_25_DIR
+    
     with open(f"{hist_dir}/{date}_props.json", "r", encoding="utf-8") as f:
         props_json_data = json.load(f)
     data = process_props(props_json_data)
-    with open("json/props.json", "w", encoding="utf-8") as file:
+    with open(JSON_PROPS_FILE, "w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
 
 
 if __name__ == "__main__":
-    with open("backtest/historical_25-26/11_04_props.json", "r", encoding="utf-8") as f:
+    from config import BACKTEST_HISTORICAL_25_26_DIR
+    
+    with open(f"{BACKTEST_HISTORICAL_25_26_DIR}/11_09_props.json", "r", encoding="utf-8") as f:
         props_json_data = json.load(f)
     data = process_props(props_json_data)
-    with open("json/props.json", "w", encoding="utf-8") as file:
+    with open(JSON_PROPS_FILE, "w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=4)

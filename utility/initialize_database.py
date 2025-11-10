@@ -1,10 +1,14 @@
 import os
+import sys
+import shutil
 
 import pandas as pd
 import psycopg2
 from dotenv import load_dotenv
 from psycopg2.extras import Json
 from sqlalchemy import create_engine
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 load_dotenv()
 
@@ -582,4 +586,8 @@ def create_database():
 
 
 if __name__ == "__main__":
+    try:
+        shutil.copyfile("csv/all_data_full.csv", "csv/all_data.csv")
+    except FileNotFoundError:
+        print("csv/all_data_full.csv not found; skipping copy.")
     create_database()
