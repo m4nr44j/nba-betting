@@ -51,6 +51,8 @@ def calculate_day_profit(
         market = row.get("Market", "").lower()
         line_str = row.get("Line", "")
         odds_str = row.get("Odds", "")
+        rank = row.get("Rank", "")
+        last_ten = row.get("Last Ten", "")
         predicted_str = row.get("Predicted", "")
         if not player or not market or not line_str:
             continue
@@ -105,6 +107,9 @@ def calculate_day_profit(
             "market": market,
             "line": line_val,
             "odds": odds_val,
+            "rank": rank,
+            "last_ten": last_ten,
+            "actual": real_val,
             "stake": 1,
             "profit": round(profit,2),
         }
@@ -252,7 +257,8 @@ def main():
         "Back-test completed. Final total:",
         f"{running_total:.2f}",
         "units | Overall W-L:",
-        f"{total_wins}-{total_losses}",
+        f"{total_wins}-{total_losses} (" + (f"{total_wins * 100 / (total_wins + total_losses):.2f}%" if (total_wins + total_losses) else "0.00%"),
+        ")",
     )
 
 

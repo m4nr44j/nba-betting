@@ -223,7 +223,7 @@ def fetch_odds_for_date(date: datetime, minutes_before: int = 30, season: str = 
     all_bookmakers_data = collect_all_odds(game_id_list, date_for_url_first)
     
     if is_sunday and len(id_times) > 1:
-        time_after_first_dt = first_game_dt + timedelta(hours=4)
+        time_after_first_dt = first_game_dt + timedelta(hours=3)
         time_after_first_dt_et = time_after_first_dt.astimezone(EASTERN_TZ)
         date_for_url_second = time_after_first_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
         
@@ -265,7 +265,7 @@ def main(start_date_str: str = "2025-10-21", end_date_str: str = None, season: s
     else:
         eastern_now = get_eastern_now()
         eastern_date_only = eastern_now.date()
-        end_date = datetime(eastern_date_only.year, eastern_date_only.month, eastern_date_only.day) - timedelta(days=1)
+        end_date = datetime(eastern_date_only.year, eastern_date_only.month, eastern_date_only.day) - timedelta(days=0)
         end_date_str = end_date.strftime("%Y-%m-%d")
         print(f"Using Eastern timezone - today is {end_date_str} ET")
     
@@ -331,7 +331,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--start-date",
         type=str,
-        default="2025-10-21",
+        default="2025-11-19",
         help="Start date in YYYY-MM-DD format (default: 2025-10-21)",
     )
     parser.add_argument(

@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 
 load_dotenv()
 
+from config import GAMES_FOR_CONSISTENCY
 
 def get_consistency(feature, limit, min_minutes):
     try:
@@ -34,7 +35,7 @@ def get_consistency(feature, limit, min_minutes):
                 FROM
                     RecentGames
                 WHERE
-                    rn <= 5
+                    rn <= {GAMES_FOR_CONSISTENCY}
                 GROUP BY
                     player, team
                 HAVING

@@ -25,7 +25,9 @@ from config import (
     SEASON_PHASE_THRESHOLD,
     TEXT_OUTPUT_FILE,
     CONSISTENCY_LIMIT,
+    MIN_CONSISTENCY_RANK,
     MIN_MINUTES_FOR_CONSISTENCY,
+    REVERSE_SORT,
     TOP_PICKS_COUNT,
     get_error_threshold,
     get_over_check_line,
@@ -102,6 +104,7 @@ def load_injury_report(filename=JSON_INJURY_FILE):
 def get_consistent_players(features, consistency_limit=None, minutes=None):
     if consistency_limit is None:
         consistency_limit = CONSISTENCY_LIMIT
+   
     if minutes is None:
         minutes = MIN_MINUTES_FOR_CONSISTENCY
     consistent_players = {}
@@ -183,9 +186,14 @@ def process_player_entry(
         line = float(entry["line"])
         odds = entry["over"]
 
-        if player not in consistent_players_map.get(market, []) or player in BANNED_PLAYERS:
+        if player not in consistent_players_map.get(market, []) or player in BANNED_PLAYERS or market =="p_r_a":
             return current_best_rank, current_best_row
         rank = get_rank(player, consistent_players_map, market)
+        
+        # Exclude players ranked in the top MIN_CONSISTENCY_RANK (top 50 by default)
+        if rank < MIN_CONSISTENCY_RANK:
+            return current_best_rank, current_best_row
+            
         last_ten_over = get_player_last_ten_stats(player, market, line)
 
         last_ten_trend_is_over = last_ten_over > threshold
@@ -211,7 +219,7 @@ def process_player_entry(
                 )
 
             is_good_over_bet = predicted_stat is not None and (
-                math.ceil(predicted_stat) >= line + error
+                math.ceil(predicted_stat) >= line + error - 1
             )
             if not is_good_over_bet:
                 return current_best_rank, current_best_row
@@ -284,9 +292,8 @@ def run_analysis(props_data, date_str=None):
     pbar.close()
     conn.dispose()
     if all_best_rows:
-        sorted_rows = sorted(all_best_rows, key=lambda x: x["Rank"])
+        sorted_rows = sorted(all_best_rows, key=lambda x: x["Rank"], reverse=REVERSE_SORT)
         top_15_rows = sorted_rows[:TOP_PICKS_COUNT]
-
         write_rows_to_csv(top_15_rows, CSV_OUTPUT_FILE)
 
         try:

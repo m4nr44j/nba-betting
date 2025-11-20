@@ -138,14 +138,8 @@ MARKET_TYPES_STANDARD = [
 ]
 
 BANNED_PLAYERS = [
-    "Brook Lopez",
-    "Kyle Kuzma",
-    "Jalen Duren",
-    "Christian Braun",
-    "Tyrese Haliburton",
-    "Russell Westbrook",
-    "Nick Richards",
     "Anthony Edwards",
+    "Joel Embiid"
 ]
 
 PLAYER_NAME_CORRECTIONS: Dict[str, str] = {
@@ -178,15 +172,20 @@ CSV_FIELDNAMES = [
     "Last Ten",
     "Odds",
     "Game",
+    "Edge",
 ]
 
-CONSISTENCY_LIMIT = 300
+CONSISTENCY_LIMIT = 200
 MIN_MINUTES_FOR_CONSISTENCY = 8
+MIN_CONSISTENCY_RANK = 0
+GAMES_FOR_CONSISTENCY = 10
+REVERSE_SORT = False
 
 SEASON_PHASE_THRESHOLD = 7
+TOP_PICKS_COUNT =  10
 
-LOWEST_PRICE_THRESHOLD = -105
-HIGHEST_PRICE_THRESHOLD = 120
+LOWEST_PRICE_THRESHOLD = -115
+HIGHEST_PRICE_THRESHOLD = 105
 MIN_PROP_LINE = 2.5
 
 ERROR_THRESHOLDS = {
@@ -203,8 +202,6 @@ LAST_TEN_OVER_CHECK_LINES = {
     "very_low": (0.0, 8.5, 0),
 }
 
-TOP_PICKS_COUNT =  15
-
 ODDS_API_BASE_URL = "https://api.the-odds-api.com/v4/sports/basketball_nba/events"
 ODDS_API_HISTORICAL_BASE_URL = (
     "https://api.the-odds-api.com/v4/historical/sports/basketball_nba/events"
@@ -219,7 +216,7 @@ GAME_IDS_TIME_SUFFIX = "T16:30:00Z"
 
 EASTERN_TIMEZONE = "US/Eastern"
 
-USE_ONE_HOUR_BEFORE_INJURY = True
+USE_ONE_HOUR_BEFORE_INJURY = False
 USE_2025_26_SEASON = True
 
 BACKTEST_HIST_DIR_24_25 = "backtest/historical_24-25"

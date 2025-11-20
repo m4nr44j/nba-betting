@@ -235,4 +235,4 @@ def get(date_str, time_str, local_pdf_dir: str | None = None):
 
 if __name__ == "__main__":
     today = (datetime.now()-timedelta(days=1)).strftime("%Y-%m-%d")
-    get(today, "02PM")
+    get(today, "06PM")

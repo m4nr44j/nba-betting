@@ -1,9 +1,10 @@
 import json
+import sys
 import numpy as np
 import pandas as pd
+from pathlib import Path
 from scipy.spatial import distance
 from sklearn.preprocessing import MinMaxScaler
-
 
 from config import CSV_SQL_DATA_FILE, JSON_INJURY_FILE
 
@@ -296,7 +297,7 @@ def predict_player_stat(player, opponent, feature, hoa):
 
 
 def main():
-    print(soft("Donte DiVincenzo", "BKN", "tpm", 1))
+    print(soft("Immanuel Quickley", "CLE", "ast", 1))
 
 
 if __name__ == "__main__":

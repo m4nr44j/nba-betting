@@ -113,7 +113,7 @@ def main(argv: List[str]) -> int:
         default=Path("backtest/picks.json"),
         help="Path to picks.json (date -> list of picks)",
     )
-    parser.add_argument("--min-bets", type=int, default=10, help="Minimum bets per player to include")
+    parser.add_argument("--min-bets", type=int, default=2, help="Minimum bets per player to include")
     parser.add_argument("--top", type=int, default=25, help="How many worst players to show")
     parser.add_argument("--csv", type=Path, default=None, help="Optional output CSV path for full table")
 

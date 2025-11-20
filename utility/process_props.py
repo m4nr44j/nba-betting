@@ -64,9 +64,14 @@ def process_props_and_output(cursor, data):
 
             for prop in props:
                 if not all(
-                    k in prop for k in ["description", "game_id", "point", "price"]
+                    k in prop for k in ["description", "game_id", "point", "price", "name"]
                 ):
                     print(f"Warning: Skipping prop due to missing keys: {prop}")
+                    continue
+
+                # Filter out "Under" props - only process "Over" props
+                prop_name = prop.get("name", "").lower()
+                if prop_name != "over":
                     continue
 
                 if (
@@ -152,7 +157,7 @@ def props(date, hist_dir=None):
 if __name__ == "__main__":
     from config import BACKTEST_HISTORICAL_25_26_DIR
     
-    with open(f"{BACKTEST_HISTORICAL_25_26_DIR}/11_09_props.json", "r", encoding="utf-8") as f:
+    with open(f"{BACKTEST_HISTORICAL_25_26_DIR}/11_20_props.json", "r", encoding="utf-8") as f:
         props_json_data = json.load(f)
     data = process_props(props_json_data)
     with open(JSON_PROPS_FILE, "w", encoding="utf-8") as file:

@@ -115,7 +115,8 @@ class PropTracker:
     
     def get_today_games(self) -> List[str]:
         eastern_now = get_eastern_now()
-        today = eastern_now.strftime("%Y%m%d")
+        date_obj = eastern_now - timedelta(days=1)
+        today = date_obj.strftime("%Y%m%d")
         return get_nba_game_event_ids(today)
     
     def update_game_stats(self):
@@ -519,7 +520,7 @@ def main():
                        help='Path to output.txt file (default: output.txt)')
     parser.add_argument('--once', action='store_true',
                        help='Run once and exit (default: continuous)')
-    parser.add_argument('--interval', '-i', type=int, default=30,
+    parser.add_argument('--interval', '-i', type=int, default=5,
                        help='Update interval in seconds for continuous mode (default: 30)')
     
     args = parser.parse_args()

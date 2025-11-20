@@ -172,7 +172,7 @@ def load_injury_data(games, today_str, use_one_hour_before=True):
         else:
             time_str = f"{hour_24 - 12:02d}PM"
     else:
-        time_str = "10AM"
+        time_str = "06PM"
     
     get_injury_by_date(today_str, time_str)
     return time_str
